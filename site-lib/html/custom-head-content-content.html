@@ -1,0 +1,243 @@
+<script>
+(function() {
+    // 1. ENVIRONMENT DETECTION
+    const isObsidian = typeof app !== "undefined" && !window.location.href.startsWith('http');
+
+    // 2. PATH RESOLUTION (SLUGIFY)
+    function slugify(path) {
+        if (!path) return "";
+        let s = path.toLowerCase().replace(".md", ".html");
+        s = s.replace(/\s+/g, '-');
+        s = s.replace(/[^a-z0-9\/\.\[\]\-]/g, '');
+        s = s.replace(/-+/g, '-');
+        return s;
+    }
+
+    // 3. GLOBAL CLICK HANDLER (BRIDGE)
+    document.addEventListener("click", function(e) {
+        const navEl = e.target.closest('[data-nav]');
+        if (navEl) {
+            e.preventDefault();
+            e.stopPropagation();
+            const rawPath = navEl.getAttribute('data-nav');
+            
+            if (isObsidian) {
+                app.workspace.openLinkText(rawPath, '');
+            } else {
+                // Determine if we need to go up levels for the links
+                const pathParts = window.location.pathname.split('/').filter(p => p);
+                const depth = window.location.pathname.endsWith('/') ? pathParts.length : pathParts.length - 1;
+                const rel = "../".repeat(Math.max(0, depth));
+                window.location.href = rel + slugify(rawPath);
+            }
+            return;
+        }
+
+        let ghostLink = e.target.closest('.ghost-card a');
+        if (ghostLink) {
+            e.preventDefault();
+            let href = ghostLink.getAttribute('href');
+            if (href) window.location.href = href;
+            return;
+        }
+
+        let tabLi = e.target.closest('.tab-container .tab');
+        if (tabLi) {
+            e.preventDefault();
+            let ul = tabLi.closest('.tab-container');
+            let allTabs = Array.from(ul.querySelectorAll('.tab'));
+            let index = allTabs.indexOf(tabLi);
+            allTabs.forEach(t => t.classList.remove('selected'));
+            tabLi.classList.add('selected');
+            let panelContainer = tabLi.closest('.tab-panel-container');
+            if (panelContainer) {
+                let contentContainer = panelContainer.querySelector('.content-container');
+                if (contentContainer) {
+                    let contentDivs = Array.from(contentContainer.children);
+                    contentDivs.forEach((div, i) => {
+                        div.classList.toggle('selected', i === index);
+                        let header = div.querySelector('.pdf-tab-header');
+                        if (header) header.classList.toggle('selected', i === index);
+                    });
+                }
+            }
+        }
+        const hubCard = e.target.closest('.js-hub-card');
+        if (hubCard) {
+            const target = hubCard.getAttribute('data-target');
+            const overlay = document.getElementById('nexus-overlay-' + target);
+            if (overlay) overlay.classList.add('active');
+            return;
+        }
+
+        const closeBtn = e.target.closest('.js-close-overlay');
+        if (closeBtn) {
+            const overlay = closeBtn.closest('.nexus-overlay');
+            if (overlay) overlay.classList.remove('active');
+            return;
+        }
+    }, true);
+
+    // 4. PSI Monitor Animation
+    function initPsiMonitor() {
+        let tempo = 0;
+        const wPath = document.querySelector("#wave-p");
+        const pDisp = document.querySelector("#live-p");
+        const stabDisp = document.querySelector("#live-stab");
+        if (!wPath || !pDisp) return;
+        const psiBaseStr = pDisp.innerText.replace(/[^0-9]/g, '');
+        const psiBase = parseInt(psiBaseStr) || 50;
+
+        setInterval(() => {
+            let logSide = wPath.closest('div').parentElement;
+            const svgWidth = logSide && logSide.offsetWidth > 0 ? logSide.offsetWidth : 800;
+            const midY = 80; 
+            tempo += 0.07; 
+            let dStr = `M 0 ${midY} `;
+            const baseAmp = Math.min(65, (psiBase/28) + 12); 
+            for(let i = 0; i <= svgWidth; i += 10) {
+                let distortion = 0;
+                if (psiBase > 300) distortion = (Math.random() - 0.5) * (psiBase / 50);
+                if (psiBase > 900) distortion = (Math.random() - 0.5) * (psiBase / 18);
+                let yPos = midY + Math.sin(i * 0.015 - tempo) * baseAmp + distortion;
+                yPos = Math.max(10, Math.min(150, yPos));
+                dStr += `L ${i} ${yPos} `;
+            }
+            wPath.setAttribute("d", dStr);
+            let vLive = psiBase + Math.sin(tempo) * (psiBase > 500 ? 4 : 1);
+            pDisp.innerText = Math.max(0, Math.floor(vLive));
+            if (stabDisp) stabDisp.innerText = (100 - (vLive/20) + (Math.random() * 0.3)).toFixed(1) + "%";
+        }, 70);
+    }
+
+    // 5. NOOSPHERA BOOT PROTOCOL (PRELOADER)
+    function initPreloader() {
+        if (isObsidian) return;
+        const preloader = document.createElement('div');
+        preloader.id = 'ryke-preloader';
+        preloader.innerHTML = `
+            <div class="loader-content">
+                <div class="noosphera-spinner"></div>
+                <div class="loader-status">ACESSANDO_SISTEMA...</div>
+            </div>
+        `;
+        document.body.appendChild(preloader);
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+            setTimeout(() => preloader.remove(), 800);
+        }, 1200);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            initPsiMonitor();
+            initPreloader();
+        });
+    } else {
+        initPsiMonitor();
+        initPreloader();
+    }
+})();
+</script>
+<style>
+.tab-panel-container .content-container > div:not(.selected) { display: none !important; }
+.tab-panel-container .content-container > div.selected { display: block !important; }
+body { --line-width: 100% !important; --line-width-adaptive: 100% !important; --file-line-width: 100% !important; background: #000 !important; }
+.markdown-preview-sizer { max-width: 100% !important; width: 100% !important; }
+.obsidian-document.is-readable-line-width .markdown-preview-sizer { max-width: 100% !important; }
+
+#ryke-preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #000; z-index: 10000; display: flex; align-items: center; justify-content: center;
+}
+#ryke-preloader.fade-out { opacity: 0; visibility: hidden; transition: 0.8s; }
+.noosphera-spinner { width: 50px; height: 50px; border: 2px solid rgba(0, 255, 136, 0.1); border-top: 2px solid #00ff88; border-radius: 50%; animation: spin 1s infinite; }
+.loader-status { font-family: 'Orbitron'; color: #00ff88; font-size: 10px; letter-spacing: 4px; margin-top: 20px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Títulos */
+.view-header-title, .inline-title, h1.inline-title {
+    color: #ffffff !important; font-size: 2.5rem !important; text-transform: uppercase !important;
+    letter-spacing: 8px !important; font-family: 'Orbitron', sans-serif !important;
+    text-align: center !important; margin: 40px auto 60px auto !important; border: none !important;
+}
+
+/* Nav Bridge */
+.noosphera-nav-bridge {
+    position: fixed; top: 0; left: 0; width: 100%; height: 120px;
+    background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px);
+    border-bottom: 2px solid rgba(0, 255, 136, 0.3); z-index: 99999;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 50px;
+}
+.nav-bridge-logo-img { height: 50px; width: auto; cursor: pointer; }
+.nav-bridge-links { display: flex; gap: 40px; }
+.nav-bridge-item { color: #fff; font-size: 18px; text-transform: uppercase; letter-spacing: 4px; text-decoration: none; opacity: 0.6; font-family: 'Orbitron'; font-weight: bold; }
+.nav-bridge-item:hover, .nav-bridge-item.active { opacity: 1; color: #00ff88; }
+.wargame-theme { border-color: rgba(190, 99, 255, 0.4) !important; }
+.wargame-theme .nav-bridge-item:hover, .wargame-theme .nav-bridge-item.active { color: #be63ff !important; }
+
+body.has-nav-bridge { padding-top: 120px !important; }
+.noosphera-footer { margin-top: 100px; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Orbitron'; text-align: center; }
+.footer-status { font-size: 10px; color: #00ff88; letter-spacing: 4px; }
+
+/* Metadata Hide */
+.metadata-container, .metadata-content, .mod-tags, a.tag, .tag { display: none !important; }
+body.show-tags .metadata-container, body.show-tags .mod-tags { display: flex !important; }
+</style>
+
+<script>
+(function() {
+    const path = window.location.pathname.toLowerCase();
+    const isWargame = path.includes('/wargame/');
+    const isLore = path.includes('/worldbuilding/') || path.includes('/lore/') || path.includes('/locais/') || path.includes('/pessoas/');
+    const isHome = path === '/' || path.endsWith('index.html') || path === '' || path.endsWith('/') || path.split('/').pop() === '';
+
+    const pathParts = window.location.pathname.split('/').filter(p => p);
+    const depth = window.location.pathname.endsWith('/') ? pathParts.length : pathParts.length - 1;
+    const relPath = "../".repeat(Math.max(0, depth));
+
+    document.body.classList.add('has-nav-bridge');
+    const nav = document.createElement('div');
+    nav.className = 'noosphera-nav-bridge' + (isWargame ? ' wargame-theme' : '');
+
+    let linksHTML = '';
+    if (isHome) {
+        linksHTML = `
+            <a data-nav="INDEX.md" class="nav-bridge-item active"><span>HOME</span></a>
+            <a data-nav="Wargame/Models.md" class="nav-bridge-item"><span>WARGAME</span></a>
+            <a data-nav="Worldbuilding/Lore Geral.md" class="nav-bridge-item"><span>UNIVERSO</span></a>
+            <a href="https://discord.gg/G2K2kdua3p" target="_blank" class="nav-bridge-item"><span>DISCORD</span></a>
+        `;
+    } else if (isWargame) {
+        linksHTML = `
+            <a data-nav="INDEX.md" class="nav-bridge-item"><span>HOME</span></a>
+            <a data-nav="Wargame/Core Rules.md" class="nav-bridge-item"><span>RULES</span></a>
+            <a data-nav="Wargame/Models.md" class="nav-bridge-item"><span>MODELS</span></a>
+            <a data-nav="Wargame/Factions.md" class="nav-bridge-item"><span>FACTIONS</span></a>
+        `;
+    } else {
+        linksHTML = `
+            <a data-nav="INDEX.md" class="nav-bridge-item"><span>HOME</span></a>
+            <a data-nav="Worldbuilding/Lore Geral.md" class="nav-bridge-item"><span>LORE</span></a>
+            <a data-nav="Worldbuilding/Contos.md" class="nav-bridge-item"><span>CONTOS</span></a>
+            <a data-nav="Worldbuilding/Pessoas.md" class="nav-bridge-item"><span>PERSONAGENS</span></a>
+        `;
+    }
+
+    nav.innerHTML = `
+        <img src="${relPath}Logotipo Noosphere.svg" data-nav="INDEX.md" class="nav-bridge-logo-img" alt="Noosphera Logo">
+        <div class="nav-bridge-links">
+            ${linksHTML}
+        </div>
+    `;
+
+    document.body.prepend(nav);
+    
+    const footer = document.createElement('div');
+    footer.className = 'noosphera-footer';
+    footer.innerHTML = `<div class="footer-status">// NOOSPHERA_OS // STATUS: ESTÁVEL</div>`;
+    document.body.appendChild(footer);
+
+    if (path.includes('/pessoas/')) document.body.classList.add('show-tags');
+})();
+</script>

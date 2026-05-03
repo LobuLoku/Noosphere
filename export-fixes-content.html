@@ -1,0 +1,122 @@
+<script>
+(function() {
+    // 1 & 2: Event Delegation for Ghost Cards and Tabs
+    document.addEventListener("click", function(e) {
+        // 1. Ghost Cards Navigation
+        let ghostLink = e.target.closest('.ghost-card a');
+        if (ghostLink) {
+            e.preventDefault();
+            e.stopPropagation();
+            let href = ghostLink.getAttribute('href');
+            if (href) {
+                // O Webpage HTML Export usa links relativos ou absolutos dependendo da página
+                window.location.href = href;
+            }
+            return;
+        }
+
+        // 2. Tabs Interaction
+        let tabLi = e.target.closest('.tab-container .tab');
+        if (tabLi) {
+            e.preventDefault();
+            let ul = tabLi.closest('.tab-container');
+            let allTabs = Array.from(ul.querySelectorAll('.tab'));
+            let index = allTabs.indexOf(tabLi);
+            
+            allTabs.forEach(t => t.classList.remove('selected'));
+            tabLi.classList.add('selected');
+            
+            let panelContainer = tabLi.closest('.tab-panel-container');
+            if (panelContainer) {
+                let contentContainer = panelContainer.querySelector('.content-container');
+                if (contentContainer) {
+                    let contentDivs = Array.from(contentContainer.children);
+                    contentDivs.forEach((div, i) => {
+                        if (i === index) {
+                            div.classList.add('selected');
+                            let header = div.querySelector('.pdf-tab-header');
+                            if (header) header.classList.add('selected');
+                        } else {
+                            div.classList.remove('selected');
+                            let header = div.querySelector('.pdf-tab-header');
+                            if (header) header.classList.remove('selected');
+                        }
+                    });
+                }
+            }
+        }
+    }, true);
+
+    // 3. PSI Monitor Animation
+    function initPsiMonitor() {
+        let tempo = 0;
+        const wPath = document.querySelector("#wave-p");
+        const pDisp = document.querySelector("#live-p");
+        const stabDisp = document.querySelector("#live-stab");
+
+        if (!wPath || !pDisp) return;
+
+        const psiBaseStr = pDisp.innerText.replace(/[^0-9]/g, '');
+        const psiBase = parseInt(psiBaseStr) || 50;
+
+        setInterval(() => {
+            let logSide = wPath.closest('div').parentElement;
+            const svgWidth = logSide && logSide.offsetWidth > 0 ? logSide.offsetWidth : 800;
+            const midY = 80; 
+            
+            tempo += 0.07; 
+
+            let dStr = `M 0 ${midY} `;
+            const baseAmp = Math.min(65, (psiBase/28) + 12); 
+            
+            for(let i = 0; i <= svgWidth; i += 10) {
+                let distortion = 0;
+                if (psiBase > 300) distortion = (Math.random() - 0.5) * (psiBase / 50);
+                if (psiBase > 900) distortion = (Math.random() - 0.5) * (psiBase / 18);
+
+                let yPos = midY + Math.sin(i * 0.015 - tempo) * baseAmp + distortion;
+                
+                yPos = Math.max(10, Math.min(150, yPos));
+                dStr += `L ${i} ${yPos} `;
+            }
+            
+            wPath.setAttribute("d", dStr);
+
+            let vLive = psiBase + Math.sin(tempo) * (psiBase > 500 ? 4 : 1);
+            pDisp.innerText = Math.max(0, Math.floor(vLive));
+            if (stabDisp) {
+                stabDisp.innerText = (100 - (vLive/20) + (Math.random() * 0.3)).toFixed(1) + "%";
+            }
+        }, 70);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPsiMonitor);
+    } else {
+        initPsiMonitor();
+    }
+})();
+</script>
+<style>
+/* Garante que o conteúdo não selecionado fique invisível no site estático */
+.tab-panel-container .content-container > div:not(.selected) {
+    display: none !important;
+}
+.tab-panel-container .content-container > div.selected {
+    display: block !important;
+}
+
+/* Corrige o layout espremido (ignora o limite do Readable Line Length) */
+body {
+    --line-width: 100% !important;
+    --line-width-adaptive: 100% !important;
+    --file-line-width: 100% !important;
+}
+.markdown-preview-sizer {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+.obsidian-document.is-readable-line-width .markdown-preview-sizer {
+    max-width: 100% !important;
+}
+</style>
