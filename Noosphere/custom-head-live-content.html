@@ -49,7 +49,7 @@ body{--line-width:100%!important;--line-width-adaptive:100%!important;--file-lin
 (function(){
 if(window.__nsRan)return;window.__nsRan=true;
 function debounce(f,ms){var id;return function(){clearTimeout(id);id=setTimeout(f,ms)};}
-function slugPart(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/\.md$/i,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");}
+function slugPart(s){return String(s||"").toLowerCase().replace(/\.md$/i,"").replace(/[^a-z0-9\u00C0-\u017F]+/gi,"-").replace(/^-+|-+$/g,"");}
 function folderDepth(){var m=document.querySelector('meta[name="pathname"]'),r=m?String(m.getAttribute("content")||"").trim():"";if(!r)return 0;var n=parseInt(r,10);if(String(n)===r&&!isNaN(n))return n;return Math.max(0,r.split("/").filter(Boolean).length-1);}
 function vpToHref(vp){var d=folderDepth(),parts=vp.replace(/\\/g,"/").split("/").filter(Boolean),f=parts.pop()||"",html=slugPart(f)+".html",dir=parts.map(slugPart).filter(Boolean).join("/"),tgt=dir?dir+"/"+html:html,pfx="";for(var i=0;i<d;i++)pfx+="../";return pfx+tgt;}
 window.noospheraVaultPathToHref=vpToHref;
