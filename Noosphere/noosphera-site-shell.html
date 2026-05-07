@@ -1,0 +1,172 @@
+<style id="ns-css">
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;600&family=Inter:wght@300;400;600&display=swap');
+:root{--ns-top-h:64px;--ns-purple:#be63ff;--ns-purple-dim:#d8b4fe;--ns-border:rgba(190,99,255,0.22)}
+#left-content,#right-content{display:none!important;width:0!important;min-width:0!important;flex:0 0 0!important;visibility:hidden!important;pointer-events:none!important}
+#center-content{padding-top:var(--ns-top-h)!important;box-sizing:border-box!important;max-width:none!important;width:100%!important;flex:1 1 auto!important}
+.sidebar-right,.sidebar-left,.side-nav,.side-nav-right,.outline-container,.graph-view-container,.sidebar-container{display:none!important;width:0!important}
+.document-container{margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}
+body{--line-width:100%!important;--line-width-adaptive:100%!important;--file-line-width:100%!important}
+.markdown-preview-sizer{max-width:100%!important;width:100%!important}
+#noosphera-site-shell-top{position:fixed;top:0;left:0;right:0;height:var(--ns-top-h);z-index:2147483000;display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-family:'Orbitron',sans-serif;background:linear-gradient(180deg,rgba(12,4,22,0.97),rgba(8,2,16,0.94));border-bottom:1px solid var(--ns-border);box-shadow:0 8px 32px rgba(0,0,0,0.45);backdrop-filter:blur(16px)}
+.ns-brand{display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none}
+.ns-brand img{height:36px;width:auto;filter:drop-shadow(0 0 8px rgba(190,99,255,0.3))}
+.ns-brand span{font-size:12px;letter-spacing:4px;color:var(--ns-purple-dim);opacity:0.9}
+.ns-tabs{display:flex;gap:10px}
+.ns-tab{appearance:none;border:1px solid rgba(190,99,255,0.3);background:rgba(30,10,50,0.4);color:var(--ns-purple-dim);font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:3px;padding:10px 24px;border-radius:999px;cursor:pointer;transition:.25s}
+.ns-tab:hover{border-color:rgba(190,99,255,0.6);color:#fff}
+.ns-tab.is-active{background:rgba(190,99,255,0.18);border-color:var(--ns-purple);color:#fff;box-shadow:0 0 20px rgba(190,99,255,0.25)}
+#ns-overlay{position:fixed;top:var(--ns-top-h);left:0;right:0;bottom:0;z-index:2147482800;background:rgba(0,0,0,0.4);display:none}
+#ns-overlay.is-open{display:block}
+
+/* SIDEBAR PANELS */
+#ns-aside{position:fixed;top:var(--ns-top-h);right:0;bottom:0;z-index:2147482900;display:flex;flex-direction:row-reverse;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+#ns-aside.is-open{transform:translateX(0)}
+.ns-col{width:280px;height:100%;overflow-y:auto;padding:20px 14px;font-family:'Inter',sans-serif;border-right:1px solid var(--ns-border);background:linear-gradient(165deg,rgba(18,6,32,0.97),rgba(10,2,18,0.99));backdrop-filter:blur(20px);box-shadow:4px 0 20px rgba(0,0,0,0.3)}
+.ns-col-sub{width:300px;display:none;border-right:1px solid var(--ns-border)}
+.ns-col-sub.is-visible{display:block}
+
+/* HIGHLIGHTED PAGES */
+.ns-highlight{display:block;width:100%;text-align:left;padding:14px 18px;margin-bottom:6px;border-radius:10px;border:1px solid rgba(190,99,255,0.3);background:rgba(190,99,255,0.08);color:#fff;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.5px;cursor:pointer;transition:.2s;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ns-highlight:hover{background:rgba(190,99,255,0.2);border-color:var(--ns-purple);box-shadow:0 0 16px rgba(190,99,255,0.15)}
+
+/* FOLDER BUTTONS */
+.ns-folder-btn{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;padding:12px 16px;margin-bottom:4px;border-radius:10px;border:1px solid transparent;background:rgba(25,8,45,0.3);color:#ccc4e8;font-family:'Inter',sans-serif;font-size:14px;cursor:pointer;transition:.2s}
+.ns-folder-btn:hover,.ns-folder-btn.is-active{border-color:rgba(190,99,255,0.35);background:rgba(190,99,255,0.1);color:#fff}
+.ns-folder-btn::after{content:'›';font-size:18px;color:var(--ns-purple);opacity:0.6;transition:.2s}
+.ns-folder-btn:hover::after,.ns-folder-btn.is-active::after{opacity:1}
+
+/* SUB ITEMS */
+.ns-sub-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ns-purple);opacity:0.85;margin-bottom:12px;padding:8px 0;border-bottom:1px solid rgba(190,99,255,0.15);font-weight:600}
+.ns-sub-link{display:block;width:100%;text-align:left;padding:12px 16px;margin-bottom:3px;border-radius:10px;border:1px solid transparent;background:rgba(25,8,45,0.25);color:#eae4ff;font-family:'Inter',sans-serif;font-size:14px;cursor:pointer;transition:.2s;line-height:1.4}
+.ns-sub-link:hover{border-color:rgba(190,99,255,0.35);background:rgba(190,99,255,0.12)}
+.ns-sep{height:1px;background:rgba(190,99,255,0.1);margin:14px 0}
+
+.tab-panel-container .content-container>div:not(.selected){display:none!important}
+.tab-panel-container .content-container>div.selected{display:block!important}
+@media(max-width:720px){.ns-col{width:240px}.ns-col-sub{width:260px}.ns-brand span{display:none}}
+</style>
+<script>
+(function(){
+if(window.__nsRan)return;window.__nsRan=true;
+function debounce(f,ms){var id;return function(){clearTimeout(id);id=setTimeout(f,ms)};}
+function slugPart(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/\.md$/i,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");}
+function folderDepth(){var m=document.querySelector('meta[name="pathname"]'),r=m?String(m.getAttribute("content")||"").trim():"";if(!r)return 0;var n=parseInt(r,10);if(String(n)===r&&!isNaN(n))return n;return Math.max(0,r.split("/").filter(Boolean).length-1);}
+function vpToHref(vp){var d=folderDepth(),parts=vp.replace(/\\/g,"/").split("/").filter(Boolean),f=parts.pop()||"",html=slugPart(f)+".html",dir=parts.map(slugPart).filter(Boolean).join("/"),tgt=dir?dir+"/"+html:html,pfx="";for(var i=0;i<d;i++)pfx+="../";return pfx+tgt;}
+window.noospheraVaultPathToHref=vpToHref;
+function spaNav(vp){var raw=vp.replace(/\\/g,"/").trim();if(!raw)return false;var norm=raw.toLowerCase(),leaf=norm.split("/").pop().replace(/\.md$/i,""),cs=document.querySelectorAll("a[data-link-path]");for(var i=0;i<cs.length;i++){var a=cs[i].getAttribute("data-link-path")||"";if(a.toLowerCase()===norm||a===raw){cs[i].click();return true;}}for(var j=0;j<cs.length;j++){var p=(cs[j].getAttribute("data-link-path")||"").toLowerCase().split("/").pop().replace(/\.md$/i,"");if(p===leaf){cs[j].click();return true;}}var h=vpToHref(raw);if(h){window.location.href=h;return true;}return false;}
+window.noospheraSpaNavigate=spaNav;
+
+/* NAV DATA: highlights = standalone pages, folders = expandable */
+var WARGAME={highlights:[
+{l:"⚔ Buscador de Modelos",p:"Wargame/Buscador de Modelos.md"},
+{l:"🏰 Buscador de Facções",p:"Wargame/Factions.md"},
+{l:"🛠 Squad Builder",p:"Wargame/Squad Builder.md"}
+],folders:[
+{name:"Regras Core",items:[{l:"Core Rules",p:"Wargame/01 Regras Core/Core Rules.md"},{l:"Missões e Gambles",p:"Wargame/01 Regras Core/Missões e Gambles.md"}]},
+{name:"Facções",items:[{l:"Casacas",p:"Wargame/03 Facções/Casacas.md"},{l:"Casas Linearcas",p:"Wargame/03 Facções/Casas Linearcas.md"},{l:"Chloriders",p:"Wargame/03 Facções/Chloriders.md"},{l:"Technokratas",p:"Wargame/03 Facções/Technokratas.md"},{l:"Undermovement",p:"Wargame/03 Facções/Undermovement.md"}]},
+{name:"Glossários",items:[{l:"Ações",p:"Wargame/05 Glossários/Glossário - Ações.md"},{l:"Passivas",p:"Wargame/05 Glossários/Glossário - Passivas.md"},{l:"Status",p:"Wargame/05 Glossários/Glossário - Status.md"}]}
+]};
+var UNIVERSO={highlights:[
+{l:"📚 Buscador de Lore",p:"Worldbuilding/Buscador de Lore.md"},
+{l:"👤 Buscador de Pessoas",p:"Worldbuilding/Buscador de Pessoas.md"},
+{l:"🗺 Buscador de Locais",p:"Worldbuilding/Buscador de Locais.md"},
+{l:"📜 Buscador de Contos",p:"Worldbuilding/Buscador de Contos.md"},
+{l:"🔮 Esferas",p:"Worldbuilding/Esferas.md"}
+],folders:[
+{name:"Osmirate / Personagens",items:[{l:"Alexandra",p:"Worldbuilding/Osmirate/Personagens/Alexandra.md"},{l:"Aylin Karzeth",p:"Worldbuilding/Osmirate/Personagens/Aylin Karzeth.md"},{l:"Ellara",p:"Worldbuilding/Osmirate/Personagens/Ellara.md"},{l:"Havva",p:"Worldbuilding/Osmirate/Personagens/Havva.md"},{l:"Hulya Gezer",p:"Worldbuilding/Osmirate/Personagens/Hulya Gezer.md"},{l:"Iris Markellos",p:"Worldbuilding/Osmirate/Personagens/Iris Markellos.md"},{l:"Jesslyn",p:"Worldbuilding/Osmirate/Personagens/Jesslyn.md"},{l:"Katerina",p:"Worldbuilding/Osmirate/Personagens/Katerina.md"},{l:"Kesi",p:"Worldbuilding/Osmirate/Personagens/Kesi.md"},{l:"Mihaela",p:"Worldbuilding/Osmirate/Personagens/Mihaela.md"},{l:"Mihri",p:"Worldbuilding/Osmirate/Personagens/Mihri.md"},{l:"Onur Dogan",p:"Worldbuilding/Osmirate/Personagens/Onur Dogan.md"},{l:"The Medusa",p:"Worldbuilding/Osmirate/Personagens/The Medusa.md"},{l:"Toll Kumru",p:"Worldbuilding/Osmirate/Personagens/Toll Kumru.md"},{l:"Volkan Arslan",p:"Worldbuilding/Osmirate/Personagens/Volkan Arslan.md"},{l:"Yasmin Grahas",p:"Worldbuilding/Osmirate/Personagens/Yasmin Grahas.md"},{l:"Zaya",p:"Worldbuilding/Osmirate/Personagens/Zaya.md"}]},
+{name:"Osmirate / Lugares",items:[{l:"Karvash",p:"Worldbuilding/Osmirate/Lugares/Karvash.md"},{l:"Khariz Vela",p:"Worldbuilding/Osmirate/Lugares/Khariz Vela.md"},{l:"Synod",p:"Worldbuilding/Osmirate/Lugares/Synod.md"},{l:"Vehren",p:"Worldbuilding/Osmirate/Lugares/Vehren.md"},{l:"Velisar",p:"Worldbuilding/Osmirate/Lugares/Velisar.md"}]},
+{name:"Osmirate / Facções",items:[{l:"Comerciantes de Deriva",p:"Worldbuilding/Osmirate/Facções e Organizações/Comerciantes de Deriva (Drift Traders).md"},{l:"Eidolons",p:"Worldbuilding/Osmirate/Facções e Organizações/Eidolons.md"},{l:"Mercadores",p:"Worldbuilding/Osmirate/Facções e Organizações/Mercadores.md"},{l:"Sucateiros",p:"Worldbuilding/Osmirate/Facções e Organizações/Sucateiros (Scavengers).md"},{l:"Teologia do Sinal",p:"Worldbuilding/Osmirate/Facções e Organizações/Teologia do Sinal.md"}]},
+{name:"Osmirate / Sistemas",items:[{l:"Arcanos",p:"Worldbuilding/Osmirate/Sistemas e História/Arcanos.md"},{l:"Archotech",p:"Worldbuilding/Osmirate/Sistemas e História/Archotech.md"},{l:"Ciência Sem Nome",p:"Worldbuilding/Osmirate/Sistemas e História/Ciência Sem Nome.md"},{l:"Combustível e Energia",p:"Worldbuilding/Osmirate/Sistemas e História/Combustível e Energia.md"},{l:"Linearchs e o Colapso",p:"Worldbuilding/Osmirate/Sistemas e História/Linearchs e o Colapso Genômico.md"}]},
+{name:"Osmirate / Cultura",items:[{l:"Bens de Prestígio",p:"Worldbuilding/Osmirate/Cultura/Bens de Prestígio.md"},{l:"Os Grandes Jogos",p:"Worldbuilding/Osmirate/Cultura/Os Grandes Jogos.md"}]},
+{name:"Ryke / Personagens",items:[{l:"Charlotte Vayne",p:"Worldbuilding/Ryke/Personagens/Charlotte Vayne.md"},{l:"Delilah",p:"Worldbuilding/Ryke/Personagens/Delilah.md"},{l:"Hans, o Indelével",p:"Worldbuilding/Ryke/Personagens/Hans, o Indelével.md"},{l:"Helena Callahan",p:"Worldbuilding/Ryke/Personagens/Helena Callahan.md"},{l:"Kess Olmann",p:"Worldbuilding/Ryke/Personagens/Kess Olmann.md"},{l:"Lilliane Firnoff",p:"Worldbuilding/Ryke/Personagens/Lilliane Firnoff.md"},{l:"Violetta Firnof",p:"Worldbuilding/Ryke/Personagens/Violetta Firnof.md"}]},
+{name:"Ryke / Organizações",items:[{l:"O Soberano",p:"Worldbuilding/Ryke/Organizações/O Soberano.md"},{l:"Os Casacos",p:"Worldbuilding/Ryke/Organizações/Os Casacos.md"},{l:"Os Clorídios",p:"Worldbuilding/Ryke/Organizações/Os Clorídios.md"}]},
+{name:"Ryke / Sistemas",items:[{l:"ASPCs",p:"Worldbuilding/Ryke/Sistemas/Sociedade/ASPCs.md"},{l:"Doutrina Corporal",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Doutrina Corporal.md"},{l:"Hub de Sistemas",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Hub de Sistemas.md"},{l:"Malha Cognitiva",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Malha Cognitiva.md"},{l:"PSI",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Índice de Dissonância Quântica (PSI).md"}]}
+]};
+
+/* HYDRATION */
+var _hy=false;
+function hydrate(){if(_hy)return;_hy=true;var cc=document.querySelector("#center-content");if(!cc){_hy=false;return;}var ls=Array.prototype.slice.call(cc.querySelectorAll("script:not([data-nh])"));ls.forEach(function(o){if(!(o instanceof HTMLScriptElement)||o.closest("head"))return;var s=o.getAttribute("src")||"";if(/webpage\.js/i.test(s)||/site-lib/i.test(s))return;o.setAttribute("data-nh","1");var n=document.createElement("script");Array.prototype.forEach.call(o.attributes,function(a){if(a.name!=="data-nh")n.setAttribute(a.name,a.value);});n.textContent=o.textContent;n.async=false;if(o.parentNode)o.parentNode.replaceChild(n,o);});_hy=false;}
+function decodeSb(s){if(!s)return"";return String(s).replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&apos;/g,"'").replace(/&#x27;/gi,"'").replace(/&#(\d+);/g,function(_,n){return String.fromCharCode(parseInt(n,10));}).replace(/&#x([0-9a-f]+);/gi,function(_,h){return String.fromCharCode(parseInt(h,16));}).replace(/&amp;/g,"&");}
+function initSB(r){var s=r||document,apps=s.querySelectorAll?s.querySelectorAll(".js-squad-builder-app"):[];Array.prototype.forEach.call(apps,function(a){if(!a||a.getAttribute("data-sb-engine-ready")==="1"||a._sbInit===true||a.__nsLock)return;var t=a.querySelector(".js-sb-engine-script");if(!t||!t.value)return;a.__nsLock=true;try{(new Function(decodeSb(t.value)))();}catch(e){console.error("SB:",e);a._sbInit=false;a.__nsLock=false;}});}
+window.tryInitNoospheraSquadBuilder=initSB;
+var _pt=null;function initPsi(){if(_pt){clearInterval(_pt);_pt=null;}var w=document.querySelector("#wave-p"),p=document.querySelector("#live-p"),s=document.querySelector("#live-stab");if(!w||!p)return;var b=parseInt(p.innerText.replace(/[^0-9]/g,""),10)||50,t=0;_pt=setInterval(function(){var mY=80;t+=.07;var d="M 0 "+mY+" ";for(var i=0;i<=800;i+=10){var dt=0;if(b>300)dt=(Math.random()-.5)*(b/50);d+="L "+i+" "+Math.max(10,Math.min(150,mY+Math.sin(i*.015-t)*Math.min(65,b/28+12)+dt))+" ";}w.setAttribute("d",d);var v=b+Math.sin(t)*(b>500?4:1);p.innerText=String(Math.max(0,Math.floor(v)));if(s)s.innerText=(100-v/20+Math.random()*.3).toFixed(1)+"%";},70);}
+
+/* EVENTS */
+document.addEventListener("click",function(e){
+var hub=e.target.closest&&e.target.closest(".js-hub-card");if(hub){e.preventDefault();var tk=hub.getAttribute("data-target");if(tk){var ov=document.getElementById("nexus-overlay-"+tk);if(ov)ov.classList.add("active");}return;}
+var cl=e.target.closest&&e.target.closest(".js-close-overlay");if(cl){e.preventDefault();e.stopPropagation();var ox=cl.closest(".nexus-overlay");if(ox)ox.classList.remove("active");return;}
+var ni=e.target.closest&&e.target.closest(".nav-item[data-nav]");if(ni){e.preventDefault();e.stopPropagation();spaNav(ni.getAttribute("data-nav"));document.querySelectorAll(".nexus-overlay").forEach(function(o){o.classList.remove("active");});return;}
+var dn=e.target.closest&&e.target.closest("[data-nav]");if(dn){var np=dn.getAttribute("data-nav");if(np&&np!=="#"){e.preventDefault();spaNav(np);}return;}
+var gl=e.target.closest&&e.target.closest(".ghost-card a");if(gl){e.preventDefault();e.stopPropagation();if(gl.getAttribute("href"))window.location.href=gl.getAttribute("href");return;}
+var tl=e.target.closest&&e.target.closest(".tab-container .tab");if(tl){e.preventDefault();var ul=tl.closest(".tab-container"),at=Array.from(ul.querySelectorAll(".tab")),ix=at.indexOf(tl);at.forEach(function(t){t.classList.remove("selected");});tl.classList.add("selected");var pc=tl.closest(".tab-panel-container");if(pc){var cc=pc.querySelector(".content-container");if(cc)Array.from(cc.children).forEach(function(d,i){d.classList.toggle("selected",i===ix);});}}
+},true);
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){document.querySelectorAll(".nexus-overlay").forEach(function(o){o.classList.remove("active");});closeSB();}});
+
+function runPatch(){hydrate();initSB(document);initPsi();}
+window.noospheraRunExportPatchCycle=runPatch;
+
+/* SIDEBAR */
+var _open=false;
+function openSB(){var a=document.getElementById("ns-aside"),o=document.getElementById("ns-overlay");if(a)a.classList.add("is-open");if(o)o.classList.add("is-open");_open=true;}
+function closeSB(){var a=document.getElementById("ns-aside"),o=document.getElementById("ns-overlay");if(a)a.classList.remove("is-open");if(o)o.classList.remove("is-open");_open=false;document.querySelectorAll(".ns-tab").forEach(function(b){b.classList.remove("is-active");});}
+
+function renderSB(data){
+  var aside=document.getElementById("ns-aside");if(!aside)return;aside.innerHTML="";
+  var col1=document.createElement("div");col1.className="ns-col";
+  var col2=document.createElement("div");col2.className="ns-col ns-col-sub";
+  /* Highlights */
+  data.highlights.forEach(function(h){
+    var btn=document.createElement("button");btn.type="button";btn.className="ns-highlight";btn.textContent=h.l;
+    btn.addEventListener("click",function(){spaNav(h.p);closeSB();});
+    col1.appendChild(btn);
+  });
+  if(data.folders.length){var sep=document.createElement("div");sep.className="ns-sep";col1.appendChild(sep);}
+  /* Folders */
+  var folderBtns=[];
+  data.folders.forEach(function(f,idx){
+    var btn=document.createElement("button");btn.type="button";btn.className="ns-folder-btn";
+    btn.textContent=f.name;
+    folderBtns.push(btn);
+    function showSub(){
+      folderBtns.forEach(function(b){b.classList.remove("is-active");});
+      btn.classList.add("is-active");
+      col2.innerHTML="";
+      var title=document.createElement("div");title.className="ns-sub-title";title.textContent=f.name;
+      col2.appendChild(title);
+      f.items.forEach(function(it){
+        var link=document.createElement("button");link.type="button";link.className="ns-sub-link";link.textContent=it.l;
+        link.addEventListener("click",function(){spaNav(it.p);closeSB();});
+        col2.appendChild(link);
+      });
+      col2.classList.add("is-visible");
+    }
+    btn.addEventListener("mouseenter",showSub);
+    btn.addEventListener("click",showSub);
+    col1.appendChild(btn);
+  });
+  aside.appendChild(col1);aside.appendChild(col2);
+}
+
+function mount(){
+  if(document.getElementById("noosphera-site-shell-top"))return;
+  var top=document.createElement("header");top.id="noosphera-site-shell-top";
+  var brand=document.createElement("a");brand.className="ns-brand";brand.href="#";
+  brand.addEventListener("click",function(e){e.preventDefault();spaNav("INDEX.md");closeSB();});
+  var logoImg=document.createElement("img");
+  var dp=folderDepth(),pfx="";for(var i=0;i<dp;i++)pfx+="../";
+  logoImg.src=pfx+"recursos/main-logo/favicon-white.png";logoImg.alt="N";
+  var brandTxt=document.createElement("span");brandTxt.textContent="NOOSPHERA";
+  brand.appendChild(logoImg);brand.appendChild(brandTxt);
+  var tabs=document.createElement("div");tabs.className="ns-tabs";
+  function mkTab(label,data){var b=document.createElement("button");b.type="button";b.className="ns-tab";b.textContent=label;b.addEventListener("click",function(){if(_open&&b.classList.contains("is-active")){closeSB();return;}tabs.querySelectorAll(".ns-tab").forEach(function(x){x.classList.remove("is-active");});b.classList.add("is-active");renderSB(data);openSB();});return b;}
+  tabs.appendChild(mkTab("UNIVERSO",UNIVERSO));tabs.appendChild(mkTab("WARGAME",WARGAME));
+  top.appendChild(brand);top.appendChild(tabs);
+  var aside=document.createElement("aside");aside.id="ns-aside";
+  var overlay=document.createElement("div");overlay.id="ns-overlay";overlay.addEventListener("click",closeSB);
+  document.body.appendChild(top);document.body.appendChild(overlay);document.body.appendChild(aside);
+}
+
+function boot(){function go(){mount();runPatch();var sch=debounce(function(){if(!_hy)runPatch();},500);var mo=new MutationObserver(function(muts){var dominated=false;for(var i=0;i<muts.length;i++){var m=muts[i];if(m.type!=="childList"||!m.addedNodes.length)continue;for(var j=0;j<m.addedNodes.length;j++){var n=m.addedNodes[j];if(n.nodeType===1&&!n.closest("#ns-aside")&&!n.closest("#noosphera-site-shell-top")&&!n.closest("#ns-overlay")&&n.id!=="ns-aside"&&n.id!=="noosphera-site-shell-top"&&n.id!=="ns-overlay"){dominated=true;break;}}if(dominated)break;}if(dominated)sch();});if(document.body)mo.observe(document.body,{childList:true,subtree:true});}if(document.body){go();window.addEventListener("load",function(){setTimeout(go,150);});}else document.addEventListener("DOMContentLoaded",go);}
+boot();
+})();
+</script>
