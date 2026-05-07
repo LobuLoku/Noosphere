@@ -1,0 +1,596 @@
+<!DOCTYPE html> <html lang="pt-br"><head>
+<title>Buscador de Pessoas</title>
+<base href="..">
+<meta name="pathname" content="worldbuilding/buscador-de-pessoas.html">
+<meta name="description" content="Noosphera - Buscador de Pessoas">
+<meta property="og:title" content="Buscador de Pessoas">
+<meta property="og:description" content="Noosphera - Buscador de Pessoas">
+<meta property="og:type" content="website">
+<meta property="og:url" content="worldbuilding/buscador-de-pessoas.html">
+<meta property="og:image" content="recursos/imagens/icons/aa.png">
+<meta charset="UTF-8"><meta property="og:site_name" content="Noosphera"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0"><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="site-lib/rss.xml"><script async="" id="webpage-script" src="site-lib/scripts/webpage.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><link rel="icon" href="site-lib/media/favicon.png"><link rel="preload" href="site-lib/styles/snippets.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/snippets.css"></noscript><link rel="stylesheet" href="site-lib/styles/obsidian.css"><link rel="preload" href="site-lib/styles/other-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/other-plugins.css"></noscript><link rel="stylesheet" href="site-lib/styles/theme.css"><link rel="preload" href="site-lib/styles/global-variable-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/global-variable-styles.css"></noscript><link rel="preload" href="site-lib/styles/supported-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/supported-plugins.css"></noscript><link rel="preload" href="site-lib/styles/main-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/main-styles.css"></noscript><style>body{--line-width:40em;--line-width-adaptive:40em;--file-line-width:40em;--sidebar-width:min(20em, 80vw);--collapse-arrow-size:11px;--tree-vertical-spacing:1.3em;--sidebar-margin:12px}:root{background-color:#202124}.sidebar{height:100%;font-size:14px;z-index:10;min-width:calc(var(--sidebar-width) + var(--divider-width-hover));max-width:calc(var(--sidebar-width) + var(--divider-width-hover));position:relative;overflow:hidden;overflow:clip;transition:min-width ease-in-out,max-width ease-in-out;transition-duration:.2s;contain:size}#left-sidebar{left:0}#right-sidebar{right:0}.sidebar.is-collapsed{min-width:0;max-width:0}.sidebar.floating{position:absolute}.sidebar .leaf-content{height:100%;min-width:calc(var(--sidebar-width) - var(--divider-width-hover));top:0;padding:var(--sidebar-margin);padding-top:4em;line-height:var(--line-height-tight);background-color:var(--background-secondary);transition:background-color,border-right,border-left,box-shadow;transition-duration:var(--color-fade-speed);transition-timing-function:ease-in-out;position:absolute;display:flex;flex-direction:column}.sidebar:not(.is-collapsed) .leaf-content{min-width:calc(max(100%,var(--sidebar-width)) - 3px);max-width:calc(max(100%,var(--sidebar-width)) - 3px)}#left-sidebar-content{left:0;border-top-right-radius:var(--radius-l);border-bottom-right-radius:var(--radius-l)}#right-sidebar-content{right:0;border-top-left-radius:var(--radius-l);border-bottom-left-radius:var(--radius-l)}.sidebar #left-sidebar-content,.sidebar #right-sidebar-content{contain:none!important;container-type:normal!important;animation:none!important}.sidebar:has(.leaf-content:empty):has(.topbar-content:empty){display:none}.sidebar-topbar{height:calc(2.3em + 2 * var(--sidebar-margin));width:var(--sidebar-width);padding:var(--sidebar-margin);z-index:1;position:fixed;display:flex;align-items:center;transition:width ease-in-out;transition-duration:inherit}.sidebar.is-collapsed .sidebar-topbar{width:calc(2.3em + var(--sidebar-margin) * 2)}.sidebar .sidebar-topbar.is-collapsed{width:0}#left-sidebar .sidebar-topbar{left:0;flex-direction:row;border-top-right-radius:var(--radius-l)}#right-sidebar .sidebar-topbar{right:0;flex-direction:row-reverse;border-top-left-radius:var(--radius-l)}#left-sidebar .topbar-content{margin-right:calc(2.3em + var(--sidebar-margin));flex-direction:row}#right-sidebar .topbar-content{margin-left:calc(2.3em + var(--sidebar-margin));flex-direction:row-reverse}.topbar-content{overflow:hidden visible;overflow:clip visible;width:100%;height:100%;display:flex;align-items:center;transition:inherit}.sidebar.is-collapsed .topbar-content{width:0;transition:inherit}.clickable-icon.sidebar-collapse-icon{background-color:transparent;color:var(--icon-color-focused);padding:2px!important;margin:0!important;height:100%!important;width:2.3em!important;margin-inline:0.14em!important;position:absolute}#left-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);right:var(--sidebar-margin)}#right-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);left:var(--sidebar-margin)}.clickable-icon.sidebar-collapse-icon svg.svg-icon{width:100%;height:100%}.feature-title{margin-left:1px;text-transform:uppercase;letter-spacing:.06em;margin-top:.75em;margin-bottom:.75em}.feature-header{display:flex;align-items:center;padding-top:0;font-size:1em;padding-left:0}body.floating-sidebars .sidebar{position:absolute}body{transition:background-color var(--color-fade-speed) ease-in-out}#navbar:not(:empty){display:flex;align-items:center;justify-content:space-between;padding:.5em 1em;width:100%}#main{display:flex;flex-direction:column;height:100%;width:100%;align-items:stretch;justify-content:center}#main-horizontal{display:flex;flex-direction:row;flex-grow:1;width:100%;align-items:stretch;justify-content:center}#center-content{flex-basis:100%;max-width:100%;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;transition:opacity .2s ease-in-out;contain:inline-size}.hide{opacity:0!important;transition:opacity .2s ease-in-out;pointer-events:none}#center-content>.obsidian-document{padding-left:2em;padding-right:1em;margin-bottom:0;width:100%;width:-webkit-fill-available;width:-moz-available;width:fill-available;transition:background-color var(--color-fade-speed) ease-in-out;border-top-right-radius:var(--window-radius,var(--radius-m));border-top-left-radius:var(--window-radius,var(--radius-m));overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;contain:inline-size}body #center-content>.obsidian-document>.markdown-preview-sizer{padding-bottom:80vh;width:100%;max-width:var(--line-width);flex-basis:var(--line-width);transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document>div{width:100%!important;transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document:not([data-type=markdown]).embed{display:flex;padding:1em;height:100%;width:100%;align-items:center;justify-content:center}#center-content>.obsidian-document:not([data-type=markdown]).embed>*{max-width:100%;max-height:100%;object-fit:contain}:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math,table)){overflow-x:auto!important}#center-content>.obsidian-document:not([data-type=markdown]){overflow-x:auto;contain:content;padding:0;margin:0;height:100%}.obsidian-document[data-type=attachment]{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}.obsidian-document[data-type=attachment]>*{outline:0;border:none;box-shadow:none}.obsidian-document[data-type=attachment] :is(img){max-width:90%;max-height:90%;object-fit:contain}.obsidian-document[data-type=attachment]>:is(audio){width:100%;max-width:min(90%,var(--line-width))}.obsidian-document[data-type=attachment]>:is(embed,iframe,video){width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.canvas-wrapper>:is(.header,.footer){z-index:100;position:absolute;display:flex;justify-content:center;flex-direction:column;width:100%;align-items:center}.scroll-highlight{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1000;background-color:hsla(var(--color-accent-hsl),.25);opacity:0;padding:1em;inset:50%;translate:-50% -50%;border-radius:var(--radius-s)}</style><script defer="">async function loadIncludes(){let e=document.querySelectorAll("link[itemprop='include']");for(const t of e){let e=t.getAttribute("href");try{let o="";if(e.startsWith("https:")||e.startsWith("http:")||"file:"!=window.location.protocol){const n=await fetch(e);if(!n.ok){console.log("Could not include file: "+e),t?.remove();continue}o=await n.text()}else{const t=document.getElementById(btoa(encodeURI(e)));if(t){const e=JSON.parse(decodeURI(atob(t.getAttribute("value")??"")));o=e?.data??""}}let n=document.createRange().createContextualFragment(o);t.before(n),t.remove(),console.log("Included text: "+o),console.log("Included file: "+e)}catch(o){t?.remove(),console.log("Could not include file: "+e,o);continue}}}document.addEventListener("DOMContentLoaded",(()=>{loadIncludes()}));let isFileProtocol="file:"==location.protocol;function waitLoadScripts(e,t){let o=e.map((e=>document.getElementById(e+"-script")));!function e(n){let l=o[n],c=n+1;l?(l&&"true"!=l.getAttribute("loaded")||n<o.length&&e(c),n<o.length&&l.addEventListener("load",(()=>e(c)))):n<o.length?e(c):t()}(0)}</script></head><body class="publish css-settings-manager is-frameless is-hidden-frameless styled-scrollbars show-inline-title show-ribbon outliner-plugin-dnd highlightr-realistic pp-pill-padding-all base-tags-style ctp-latte ctp-mocha ctp-accent-maroon anuppuccin-accent-toggle anp-current-line anp-latex-inline-text anp-latex-block-text anp-hide-external-link-icon anp-h1-red anp-h2-peach anp-h3-green anp-h4-teal anp-h5-lavender anp-h6-mauve anp-bold-red anp-italic-green anp-highlight-yellow anp-default-tab"><script defer="">let theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");"dark"==theme?(document.body.classList.add("theme-dark"),document.body.classList.remove("theme-light")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark")),window.innerWidth<480?document.body.classList.add("is-phone"):window.innerWidth<768?document.body.classList.add("is-tablet"):window.innerWidth<1024?document.body.classList.add("is-small-screen"):document.body.classList.add("is-large-screen")</script><div class="parsed-feature-container" style="display: contents;"><link itemprop="include" href="site-lib/html/custom-head-content-content.html"></div><div id="main"><div id="navbar"></div><div id="main-horizontal"><div id="left-content" class="leaf" style="--sidebar-width: var(--sidebar-width-left);"></div><div id="center-content" class="leaf"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event allow-fold-headings allow-fold-lists show-indentation-guide is-readable-line-width" data-type="markdown"><style id="MJX-CHTML-styles"></style><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="Buscador_de_Pessoas_0">Buscador de Pessoas</h1><div class="data-bar"></div></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-h2"><h2 data-heading="Atualizados por último" dir="auto" class="heading" id="Atualizados_por_último_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Atualizados por último</h2></div><div class="el-pre"><div class="block-language-dataviewjs node-insert-event" style="overflow-x: auto;"><div>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700&family=Inter:wght@200;300;400&display=swap');
+
+        .ryke-slider-viewport { 
+            position: relative; width: 100%; height: 680px; 
+            background: #030007; overflow: hidden; margin: 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 50px rgba(190, 99, 255, 0.1);
+        }
+        .ryke-slider-track { 
+            display: flex; height: 100%; 
+            transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .ryke-slide { 
+            display: block; flex: 0 0 25%; min-width: 25%; 
+            height: 100%; position: relative; cursor: pointer;
+            padding: 8px; box-sizing: border-box; text-decoration: none !important;
+        }
+        .slide-img { 
+            width: 100%; height: 100%; border-radius: 12px;
+            border: 1px solid rgba(190, 99, 255, 0.15);
+            transition: 0.5s; overflow: hidden;
+            position: relative;
+        }
+        .slide-img img {
+            width: 100%; height: 100%; object-fit: cover; object-position: center top;
+            display: block; transition: 0.8s ease;
+        }
+        .ryke-slide:hover .slide-img { border-color: rgba(190, 99, 255, 0.4); box-shadow: 0 0 20px rgba(190, 99, 255, 0.2); }
+        .ryke-slide:hover .slide-img img { transform: scale(1.05); }
+        .slide-overlay {
+            position: absolute; bottom: 8px; left: 8px; right: 8px; border-radius: 0 0 12px 12px;
+            background: linear-gradient(to top, rgba(10,0,20,0.95) 10%, rgba(18,5,30,0.8) 50%, transparent);
+            padding: 50px 20px 20px 20px; pointer-events: none;
+            display: flex; flex-direction: column; justify-content: flex-end;
+        }
+        .slide-subtitle { 
+            color: #d8b4fe; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 300; 
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;
+        }
+        .slide-title { 
+            color: #f5f0ff; font-family: 'Orbitron', sans-serif; font-weight: 300;
+            font-size: 1.1rem; margin: 0; text-transform: uppercase; 
+            line-height: 1.3; white-space: normal; letter-spacing: 1px;
+            display: -webkit-box; -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical; overflow: hidden; text-shadow: 0 0 10px rgba(190,99,255,0.3);
+        }
+        .slider-nav { position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; align-items: center; z-index: 100; background: rgba(5,0,10,0.6); padding: 5px 15px; border-radius: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(190,99,255,0.1); }
+        .btn-slider { background: transparent; border: none; color: #d8b4fe; padding: 4px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: bold; transition: 0.3s;}
+        .btn-slider:hover { color: #fff; text-shadow: 0 0 10px rgba(190,99,255,0.8); }
+    </style>
+    <div id="carousel-81086" class="ryke-slider-viewport">
+        <div class="ryke-slider-track">
+            
+                <a href="#" class="ryke-slide js-carousel-slide" data-nav="Worldbuilding/Osmirate/Personagens/Onur Dogan.md" title="Atualizado em: 06/05/2026" target="_self">
+                    <div class="slide-img">
+                        
+                    </div>
+                    <div class="slide-overlay">
+                        <div class="slide-subtitle">Dyrrachon</div>
+                        <h2 class="slide-title heading" dir="auto" id="Onur_Dogan_0">Onur Dogan</h2>
+                    </div>
+                </a>
+                <a href="#" class="ryke-slide js-carousel-slide" data-nav="Worldbuilding/Osmirate/Personagens/Serdar Koçalk.md" title="Atualizado em: 06/05/2026" target="_self">
+                    <div class="slide-img">
+                        
+                    </div>
+                    <div class="slide-overlay">
+                        <div class="slide-subtitle">Dyrrachon</div>
+                        <h2 class="slide-title heading" dir="auto" id="Serdar_Koçalk_0">Serdar Koçalk</h2>
+                    </div>
+                </a>
+                <a href="#" class="ryke-slide js-carousel-slide" data-nav="Worldbuilding/Osmirate/Personagens/Songula P. Demirel.md" title="Atualizado em: 06/05/2026" target="_self">
+                    <div class="slide-img">
+                        
+                    </div>
+                    <div class="slide-overlay">
+                        <div class="slide-subtitle">Dyrrachon</div>
+                        <h2 class="slide-title heading" dir="auto" id="Songula_P._Demirel_0">Songula P. Demirel</h2>
+                    </div>
+                </a>
+                <a href="#" class="ryke-slide js-carousel-slide" data-nav="Worldbuilding/Osmirate/Personagens/Volkan Arslan.md" title="Atualizado em: 06/05/2026" target="_self">
+                    <div class="slide-img">
+                        
+                    </div>
+                    <div class="slide-overlay">
+                        <div class="slide-subtitle">Dyrrachon</div>
+                        <h2 class="slide-title heading" dir="auto" id="Volkan_Arslan_0">Volkan Arslan</h2>
+                    </div>
+                </a>
+                <a href="#" class="ryke-slide js-carousel-slide" data-nav="Worldbuilding/Osmirate/Personagens/Zubes Uçar.md" title="Atualizado em: 06/05/2026" target="_self">
+                    <div class="slide-img">
+                        
+                    </div>
+                    <div class="slide-overlay">
+                        <div class="slide-subtitle">Dyrrachon</div>
+                        <h2 class="slide-title heading" dir="auto" id="Zubes_Uçar_0">Zubes Uçar</h2>
+                    </div>
+                </a>
+                <a href="#" class="ryke-slide js-carousel-slide" data-nav="Worldbuilding/Ryke/Personagens/Charlotte Vayne.md" title="Atualizado em: 06/05/2026" target="_self">
+                    <div class="slide-img">
+                        <img src="recursos/imagens/icons/aa.png" data-export-src="Recursos/Imagens/Icons/aa.png" referrerpolicy="no-referrer" target="_self">
+                    </div>
+                    <div class="slide-overlay">
+                        <div class="slide-subtitle">Ryke</div>
+                        <h2 class="slide-title heading" dir="auto" id="Charlotte_Vayne_0">Charlotte Vayne</h2>
+                    </div>
+                </a>
+                <a href="#" class="ryke-slide js-carousel-slide" data-nav="Worldbuilding/Ryke/Personagens/Delilah.md" title="Atualizado em: 06/05/2026" target="_self">
+                    <div class="slide-img">
+                        <img src="recursos/imagens/icons/aa.png" data-export-src="Recursos/Imagens/Icons/aa.png" referrerpolicy="no-referrer" target="_self">
+                    </div>
+                    <div class="slide-overlay">
+                        <div class="slide-subtitle">Ryke</div>
+                        <h2 class="slide-title heading" dir="auto" id="Delilah_0">Delilah</h2>
+                    </div>
+                </a>
+                <a href="#" class="ryke-slide js-carousel-slide" data-nav="Worldbuilding/Ryke/Personagens/Hans, o Indelével.md" title="Atualizado em: 06/05/2026" target="_self">
+                    <div class="slide-img">
+                        <img src="recursos/imagens/icons/aa.png" data-export-src="Recursos/Imagens/Icons/aa.png" referrerpolicy="no-referrer" target="_self">
+                    </div>
+                    <div class="slide-overlay">
+                        <div class="slide-subtitle">Ryke</div>
+                        <h2 class="slide-title heading" dir="auto" id="Hans,_o_Indelével_0">Hans, o Indelével</h2>
+                    </div>
+                </a>
+        </div>
+        <div class="slider-nav">
+            <button class="btn-slider btn-prev">&lt;</button>
+            <span class="slider-count" style="color:#a99bbd; font-family:'Inter', sans-serif; font-weight:300; font-size:11px; letter-spacing:2px;"></span>
+            <button class="btn-slider btn-next">&gt;</button>
+        </div>
+    </div><script>
+    (function() {
+        const root = document.getElementById("carousel-81086");
+        if(!root) return;
+        let currentPage = 1;
+        const totalPages = 2;
+        const track = root.querySelector('.ryke-slider-track');
+        const prevBtn = root.querySelector('.btn-prev');
+        const nextBtn = root.querySelector('.btn-next');
+        const countDisplay = root.querySelector('.slider-count');
+
+        const update = () => {
+            track.style.transform = 'translateX(-' + ((currentPage - 1) * 100) + '%)';
+            countDisplay.innerText = '0' + currentPage + ' / 0' + totalPages;
+        };
+
+        if(prevBtn) prevBtn.addEventListener('click', () => { if(currentPage > 1) { currentPage--; update(); } });
+        if(nextBtn) nextBtn.addEventListener('click', () => { if(currentPage < totalPages) { currentPage++; update(); } });
+        // Global Navigation Bridge handles clicks on [data-nav]
+    })();
+    </script></div></div></div><div class="el-pre"><div class="block-language-dataviewjs node-insert-event" style="overflow-x: auto;"><div>
+<style>
+    .galeria-wrapper { width: 100% !important; display: block; font-family: 'Inter', sans-serif !important;}
+    
+    /* Filtros Elegantes & Orgânicos */
+    .filter-bar-pessoas { 
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        gap: 25px; margin-bottom: 50px; padding: 45px; 
+        background: radial-gradient(circle at top left, rgba(30, 10, 50, 0.4), rgba(18, 5, 30, 0.6)) !important; 
+        border-radius: 30px;
+        border: 1px solid rgba(190, 99, 255, 0.2) !important; 
+        backdrop-filter: blur(25px) !important;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 30px rgba(190, 99, 255, 0.05);
+    }
+    .filter-group { display: flex; flex-direction: column; gap: 12px; }
+    .filter-group label { font-size: 11px !important; color: #d8b4fe !important; text-transform: uppercase !important; font-weight: 300 !important; letter-spacing: 3px !important; font-family: 'Inter', sans-serif !important; opacity: 0.8;}
+    
+    .filter-input, .filter-select { 
+        box-sizing: border-box !important;
+        background: rgba(10, 0, 20, 0.7) !important; 
+        border: 1px solid rgba(190, 99, 255, 0.25) !important; 
+        color: #f5f0ff !important; 
+        padding: 20px 28px !important; 
+        font-family: 'Orbitron', sans-serif !important; 
+        font-size: 15px !important; 
+        font-weight: 300 !important; 
+        outline: none !important; 
+        transition: all 0.4s ease !important;
+        width: 100% !important; 
+        border-radius: 40px !important; 
+        letter-spacing: 1.5px !important;
+        cursor: pointer;
+    }
+    .filter-input::placeholder { color: rgba(169, 155, 189, 0.5) !important; }
+    .filter-input:focus, .filter-select:focus { 
+        border-color: rgba(190, 99, 255, 0.8) !important; 
+        box-shadow: 0 0 25px rgba(190, 99, 255, 0.3) !important; 
+        background: rgba(25, 10, 45, 0.9) !important;
+    }
+
+    /* Custom Arrow */
+    .filter-select {
+        appearance: none !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23be63ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 20px center !important;
+        background-size: 16px !important;
+    }
+
+    .grid-pessoas { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+        gap: 35px; 
+        padding: 20px 0;
+    }
+    .custom-card-link { 
+        text-decoration: none !important; 
+        color: inherit !important; display: flex; flex-direction: column;
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important; cursor: pointer;
+        border: 1px solid rgba(190, 99, 255, 0.12) !important; 
+        border-radius: 24px;
+        background: rgba(15, 5, 25, 0.6); overflow: hidden;
+        position: relative;
+    }
+    .custom-card-link::after {
+        content: ''; position: absolute; inset: 0; 
+        border-radius: 24px; pointer-events: none;
+        box-shadow: inset 0 0 40px rgba(190, 99, 255, 0);
+        transition: 0.6s;
+    }
+    .custom-card-link:hover { 
+        transform: translateY(-12px) scale(1.02) !important; 
+        border-color: rgba(190, 99, 255, 0.5) !important; 
+        box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 30px rgba(190, 99, 255, 0.2) !important; 
+    }
+    .custom-card-link:hover::after { box-shadow: inset 0 0 40px rgba(190, 99, 255, 0.1); }
+    
+    .img-container { width: 100%; aspect-ratio: 2 / 3; overflow: hidden; background: #05020a; }
+    .img-container img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.4) brightness(0.7); transition: 0.8s ease; }
+    .custom-card-link:hover .img-container img { filter: grayscale(0) brightness(1.1); transform: scale(1.1); }
+    
+    .side-bar { padding: 30px 25px; background: linear-gradient(to bottom, rgba(10,0,20,0.85), rgba(15,5,25,0.98)); flex-grow: 1; display: flex; flex-direction: column; justify-content: center;}
+    .nome-txt { color: #f5f0ff !important; font-weight: 400 !important; font-family: 'Orbitron', sans-serif !important; font-size: 1.25rem !important; text-transform: uppercase !important; margin-bottom: 8px !important; letter-spacing: 2.5px !important; text-shadow: 0 0 15px rgba(190,99,255,0.4) !important;}
+    .region-txt { font-family: 'Inter', sans-serif !important; font-size: 0.75rem !important; font-weight: 300 !important; color: #a99bbd !important; text-transform: uppercase !important; letter-spacing: 3px !important; opacity: 0.7;}
+</style>
+
+<div id="gallery-30257" class="galeria-wrapper">
+    <div style="font-family:'Orbitron', sans-serif; font-weight:300; color:#d8b4fe; font-size:12px; margin-bottom:30px; letter-spacing:4px; opacity:0.9; text-transform:uppercase; border-left: 3px solid #be63ff; padding-left: 15px;">
+        Acervo de Bio-Assinaturas — 29 Registros Identificados
+    </div>
+    
+    <div class="filter-bar-pessoas">
+        <div class="filter-group">
+            <label>Identificação</label>
+            <input type="text" class="js-filter-text filter-input" placeholder="NOME DO SUJEITO..." value="">
+        </div>
+        <div class="filter-group">
+            <label>Facção</label>
+            <select class="js-filter-select filter-select" data-type="faction">
+                <option value="">TODAS AS FACÇÕES</option>
+                <option value="chloriders">Chloriders</option><option value="coats">Coats</option><option value="câmara diretiva">Câmara Diretiva</option><option value="os clorídios">Os Clorídios</option><option value="undermovement">Undermovement</option><option value="aa">aa</option><option value="faction bandidos">faction bandidos</option><option value="faction basileu">faction basileu</option><option value="faction house drazel">faction house drazel</option><option value="faction house karzeth">faction house karzeth</option><option value="faction independente">faction independente</option><option value="faction kara thulgar">faction kara thulgar</option><option value="faction mercadores">faction mercadores</option><option value="faction mercenarios">faction mercenarios</option><option value="faction vehren">faction vehren</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Biotipo</label>
+            <select class="js-filter-select filter-select" data-type="biotipo">
+                <option value="">TODOS OS BIOTIPOS</option>
+                <option value="hound (ryke)">Hound (Ryke)</option><option value="human (ryke)">Human (Ryke)</option><option value="aa">aa</option><option value="biotype archodoll">biotype archodoll</option><option value="biotype bori">biotype bori</option><option value="biotype eidolon">biotype eidolon</option><option value="biotype human">biotype human</option><option value="biotype odalisque">biotype odalisque</option><option value="biotype soubashi">biotype soubashi</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Ordenar Por</label>
+            <select class="js-sort-select filter-select">
+                <option value="name_asc">NOME (A-Z)</option>
+                <option value="name_desc">NOME (Z-A)</option>
+                <option value="date_desc">RECENTES (ATUALIZAÇÃO)</option>
+                <option value="created_desc">RECENTES (ADIÇÃO)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="grid-pessoas js-grid">
+        <a href="#" class="custom-card-link js-card" data-name="template pessoa - dyrrachon" data-faction="aa" data-biotipo="aa" data-cultura="aa" data-date="1777690800000" data-created="1776999600000" data-nav="Recursos/Templates/Template Pessoa - Dyrrachon.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Template Pessoa - Dyrrachon" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Template Pessoa - Dyrrachon</div>
+                <div class="region-txt">LOCAL_DESCONHECIDO</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="template pessoa - ryke" data-faction="aa" data-biotipo="aa" data-cultura="aa" data-date="1777690800000" data-created="1776999600000" data-nav="Recursos/Templates/Template Pessoa - Ryke.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Template Pessoa - Ryke" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Template Pessoa - Ryke</div>
+                <div class="region-txt">Ryke</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="alexandra" data-faction="faction basileu" data-biotipo="biotype soubashi" data-cultura="" data-date="1777345200000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Alexandra.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Alexandra" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Alexandra</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="aylin karzeth" data-faction="faction house drazel" data-biotipo="biotype soubashi" data-cultura="" data-date="1777345200000" data-created="1777258800000" data-nav="Worldbuilding/Osmirate/Personagens/Aylin Karzeth.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Aylin Karzeth" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Aylin Karzeth</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="ellara" data-faction="faction vehren" data-biotipo="biotype odalisque" data-cultura="" data-date="1777345200000" data-created="1777258800000" data-nav="Worldbuilding/Osmirate/Personagens/Ellara.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Ellara" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Ellara</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="havva" data-faction="faction independente" data-biotipo="biotype eidolon" data-cultura="" data-date="1777345200000" data-created="1777258800000" data-nav="Worldbuilding/Osmirate/Personagens/Havva.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Havva" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Havva</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="hulya gezer" data-faction="faction mercenarios" data-biotipo="biotype human" data-cultura="" data-date="1777345200000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Hulya Gezer.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Hulya Gezer" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Hulya Gezer</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="iris markellos" data-faction="faction independente" data-biotipo="biotype human" data-cultura="" data-date="1777345200000" data-created="1777258800000" data-nav="Worldbuilding/Osmirate/Personagens/Iris Markellos.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Iris Markellos" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Iris Markellos</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="jesslyn" data-faction="faction mercadores" data-biotipo="biotype human" data-cultura="" data-date="1777345200000" data-created="1777258800000" data-nav="Worldbuilding/Osmirate/Personagens/Jesslyn.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Jesslyn" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Jesslyn</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="katerina" data-faction="faction independente" data-biotipo="biotype human" data-cultura="" data-date="1777345200000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Katerina.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Katerina" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Katerina</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="kesi" data-faction="faction independente" data-biotipo="biotype human" data-cultura="" data-date="1777345200000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Kesi.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Kesi" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Kesi</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="mihri" data-faction="faction mercenarios" data-biotipo="biotype bori" data-cultura="" data-date="1777345200000" data-created="1777258800000" data-nav="Worldbuilding/Osmirate/Personagens/Mihri.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Mihri" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Mihri</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="mihaela" data-faction="faction independente" data-biotipo="biotype odalisque" data-cultura="" data-date="1777345200000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Mihaela.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Mihaela" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Mihaela</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="onur dogan" data-faction="faction mercenarios" data-biotipo="biotype human" data-cultura="" data-date="1778036400000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Onur Dogan.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Onur Dogan" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Onur Dogan</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="serdar koçalk" data-faction="faction mercenarios" data-biotipo="biotype eidolon" data-cultura="" data-date="1778036400000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Serdar Koçalk.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Serdar Koçalk" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Serdar Koçalk</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="songula p. demirel" data-faction="faction mercenarios" data-biotipo="biotype human" data-cultura="" data-date="1778036400000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Songula P. Demirel.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Songula P. Demirel" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Songula P. Demirel</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="the medusa" data-faction="faction independente" data-biotipo="biotype archodoll" data-cultura="" data-date="1777345200000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/The Medusa.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="The Medusa" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">The Medusa</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="toll kumru" data-faction="faction bandidos" data-biotipo="biotype archodoll" data-cultura="" data-date="1777345200000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Toll Kumru.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Toll Kumru" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Toll Kumru</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="volkan arslan" data-faction="faction mercenarios" data-biotipo="biotype human" data-cultura="" data-date="1778036400000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Volkan Arslan.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Volkan Arslan" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Volkan Arslan</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="yasmin grahas" data-faction="faction basileu" data-biotipo="biotype archodoll" data-cultura="" data-date="1777345200000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Yasmin Grahas.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Yasmin Grahas" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Yasmin Grahas</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="zaya" data-faction="faction kara thulgar" data-biotipo="biotype human" data-cultura="" data-date="1777345200000" data-created="1777258800000" data-nav="Worldbuilding/Osmirate/Personagens/Zaya.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Zaya" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Zaya</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="zubes uçar" data-faction="faction house karzeth" data-biotipo="biotype archodoll" data-cultura="" data-date="1778036400000" data-created="1777345200000" data-nav="Worldbuilding/Osmirate/Personagens/Zubes Uçar.md" target="_self">
+            <div class="img-container">
+                <img src="" data-export-src="" alt="Zubes Uçar" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Zubes Uçar</div>
+                <div class="region-txt">Dyrrachon</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="charlotte vayne" data-faction="undermovement" data-biotipo="human (ryke)" data-cultura="" data-date="1778036400000" data-created="1776999600000" data-nav="Worldbuilding/Ryke/Personagens/Charlotte Vayne.md" target="_self">
+            <div class="img-container">
+                <img src="recursos/imagens/icons/aa.png" data-export-src="Recursos/Imagens/Icons/aa.png" alt="Charlotte Vayne" referrerpolicy="no-referrer" target="_self">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Charlotte Vayne</div>
+                <div class="region-txt">Ryke</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="delilah" data-faction="undermovement" data-biotipo="human (ryke)" data-cultura="imigrantes das bordas" data-date="1778036400000" data-created="1776999600000" data-nav="Worldbuilding/Ryke/Personagens/Delilah.md" target="_self">
+            <div class="img-container">
+                <img src="recursos/imagens/icons/aa.png" data-export-src="Recursos/Imagens/Icons/aa.png" alt="Delilah" referrerpolicy="no-referrer" target="_self">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Delilah</div>
+                <div class="region-txt">Ryke</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="hans, o indelével" data-faction="os clorídios" data-biotipo="human (ryke)" data-cultura="" data-date="1778036400000" data-created="1776999600000" data-nav="Worldbuilding/Ryke/Personagens/Hans, o Indelével.md" target="_self">
+            <div class="img-container">
+                <img src="recursos/imagens/icons/aa.png" data-export-src="Recursos/Imagens/Icons/aa.png" alt="Hans, o Indelével" referrerpolicy="no-referrer" target="_self">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Hans, o Indelével</div>
+                <div class="region-txt">Ryke</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="helena callahan" data-faction="undermovement" data-biotipo="hound (ryke)" data-cultura="" data-date="1778036400000" data-created="1776999600000" data-nav="Worldbuilding/Ryke/Personagens/Helena Callahan.md" target="_self">
+            <div class="img-container">
+                <img src="recursos/imagens/icons/aa.png" data-export-src="Recursos/Imagens/Icons/aa.png" alt="Helena Callahan" referrerpolicy="no-referrer" target="_self">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Helena Callahan</div>
+                <div class="region-txt">Ryke</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="kess olmann" data-faction="câmara diretiva" data-biotipo="human (ryke)" data-cultura="" data-date="1777690800000" data-created="1776999600000" data-nav="Worldbuilding/Ryke/Personagens/Kess Olmann.md" target="_self">
+            <div class="img-container">
+                <img src="recursos/imagens/icons/aa.png" data-export-src="Recursos/Imagens/Icons/aa.png" alt="Kess Olmann" referrerpolicy="no-referrer" target="_self">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Kess Olmann</div>
+                <div class="region-txt">Ryke</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="lilliane firnoff" data-faction="coats" data-biotipo="human (ryke)" data-cultura="kovash" data-date="1777690800000" data-created="1776999600000" data-nav="Worldbuilding/Ryke/Personagens/Lilliane Firnoff.md" target="_self">
+            <div class="img-container">
+                <img src="recursos/imagens/dataview-sheet/lillianecolor.png" data-export-src="Recursos/Imagens/Dataview Sheet/LillianeColor.png" alt="Lilliane Firnoff" referrerpolicy="no-referrer" target="_self">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Lilliane Firnoff</div>
+                <div class="region-txt">Ryke</div>
+            </div>
+        </a>
+        <a href="#" class="custom-card-link js-card" data-name="violetta firnoff" data-faction="chloriders" data-biotipo="human (ryke)" data-cultura="kovash" data-date="1778036400000" data-created="1776999600000" data-nav="Worldbuilding/Ryke/Personagens/Violetta Firnof.md" target="_self">
+            <div class="img-container">
+                <img src="recursos/imagens/dataview-sheet/violettacolor.png" data-export-src="Recursos/Imagens/Dataview Sheet/ViolettaColor.png" alt="Violetta Firnoff" referrerpolicy="no-referrer" target="_self">
+            </div>
+            <div class="side-bar">
+                <div class="nome-txt">Violetta Firnoff</div>
+                <div class="region-txt">Ryke</div>
+            </div>
+        </a>
+    </div>
+</div><script>
+(function() {
+    const root = document.getElementById("gallery-30257");
+    if(!root) return;
+
+    const fText = root.querySelector('.js-filter-text');
+    const fSelects = root.querySelectorAll('.js-filter-select');
+    const sortSelect = root.querySelector('.js-sort-select');
+    const grid = root.querySelector('.js-grid');
+    const cards = Array.from(root.querySelectorAll('.js-card'));
+
+    const updateUI = () => {
+        const nameVal = fText.value.toLowerCase();
+        const factVal = root.querySelector('[data-type="faction"]').value;
+        const biotVal = root.querySelector('[data-type="biotipo"]').value;
+        const sortVal = sortSelect.value;
+
+        // 1. Filtro
+        cards.forEach(card => {
+            const mName = card.getAttribute('data-name').includes(nameVal);
+            const mFact = factVal === "" || card.getAttribute('data-faction') === factVal;
+            const mBiot = biotVal === "" || card.getAttribute('data-biotipo') === biotVal;
+            card.style.display = (mName && mFact && mBiot) ? "block" : "none";
+        });
+
+        // 2. Ordenação
+        const sortedCards = cards.sort((a, b) => {
+            const getVal = (el, attr) => {
+                const v = el.getAttribute(attr);
+                return isNaN(v) ? v : parseFloat(v);
+            };
+
+            switch(sortVal) {
+                case 'name_asc': return getVal(a, 'data-name').localeCompare(getVal(b, 'data-name'));
+                case 'name_desc': return getVal(b, 'data-name').localeCompare(getVal(a, 'data-name'));
+                case 'date_desc': return getVal(b, 'data-date') - getVal(a, 'data-date');
+                case 'created_desc': return getVal(b, 'data-created') - getVal(a, 'data-created');
+                default: return 0;
+            }
+        });
+
+        sortedCards.forEach(card => grid.appendChild(card));
+    };
+
+    fText.addEventListener('input', updateUI);
+    fSelects.forEach(sel => sel.addEventListener('change', updateUI));
+    sortSelect.addEventListener('change', updateUI);
+})();
+</script></div></div></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div id="right-content" class="leaf" style="--sidebar-width: var(--sidebar-width-right);"></div></div></div></body></html>

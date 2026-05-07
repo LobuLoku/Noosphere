@@ -1,0 +1,2113 @@
+<!DOCTYPE html> <html lang="pt-br"><head>
+<title>Squad Builder</title>
+<base href="..">
+<meta name="pathname" content="wargame/squad-builder.html">
+<meta name="description" content="Noosphera - Squad Builder">
+<meta property="og:title" content="Squad Builder">
+<meta property="og:description" content="Noosphera - Squad Builder">
+<meta property="og:type" content="website">
+<meta property="og:url" content="wargame/squad-builder.html">
+<meta property="og:image" content="recursos/imagens/renders/casaca/golden-coat.png">
+<meta charset="UTF-8"><meta property="og:site_name" content="Noosphera"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0"><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="site-lib/rss.xml"><script async="" id="webpage-script" src="site-lib/scripts/webpage.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><link rel="icon" href="site-lib/media/favicon.png"><link rel="preload" href="site-lib/styles/snippets.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/snippets.css"></noscript><link rel="stylesheet" href="site-lib/styles/obsidian.css"><link rel="preload" href="site-lib/styles/other-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/other-plugins.css"></noscript><link rel="stylesheet" href="site-lib/styles/theme.css"><link rel="preload" href="site-lib/styles/global-variable-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/global-variable-styles.css"></noscript><link rel="preload" href="site-lib/styles/supported-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/supported-plugins.css"></noscript><link rel="preload" href="site-lib/styles/main-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/main-styles.css"></noscript><style>body{--line-width:40em;--line-width-adaptive:40em;--file-line-width:40em;--sidebar-width:min(20em, 80vw);--collapse-arrow-size:11px;--tree-vertical-spacing:1.3em;--sidebar-margin:12px}:root{background-color:#202124}.sidebar{height:100%;font-size:14px;z-index:10;min-width:calc(var(--sidebar-width) + var(--divider-width-hover));max-width:calc(var(--sidebar-width) + var(--divider-width-hover));position:relative;overflow:hidden;overflow:clip;transition:min-width ease-in-out,max-width ease-in-out;transition-duration:.2s;contain:size}#left-sidebar{left:0}#right-sidebar{right:0}.sidebar.is-collapsed{min-width:0;max-width:0}.sidebar.floating{position:absolute}.sidebar .leaf-content{height:100%;min-width:calc(var(--sidebar-width) - var(--divider-width-hover));top:0;padding:var(--sidebar-margin);padding-top:4em;line-height:var(--line-height-tight);background-color:var(--background-secondary);transition:background-color,border-right,border-left,box-shadow;transition-duration:var(--color-fade-speed);transition-timing-function:ease-in-out;position:absolute;display:flex;flex-direction:column}.sidebar:not(.is-collapsed) .leaf-content{min-width:calc(max(100%,var(--sidebar-width)) - 3px);max-width:calc(max(100%,var(--sidebar-width)) - 3px)}#left-sidebar-content{left:0;border-top-right-radius:var(--radius-l);border-bottom-right-radius:var(--radius-l)}#right-sidebar-content{right:0;border-top-left-radius:var(--radius-l);border-bottom-left-radius:var(--radius-l)}.sidebar #left-sidebar-content,.sidebar #right-sidebar-content{contain:none!important;container-type:normal!important;animation:none!important}.sidebar:has(.leaf-content:empty):has(.topbar-content:empty){display:none}.sidebar-topbar{height:calc(2.3em + 2 * var(--sidebar-margin));width:var(--sidebar-width);padding:var(--sidebar-margin);z-index:1;position:fixed;display:flex;align-items:center;transition:width ease-in-out;transition-duration:inherit}.sidebar.is-collapsed .sidebar-topbar{width:calc(2.3em + var(--sidebar-margin) * 2)}.sidebar .sidebar-topbar.is-collapsed{width:0}#left-sidebar .sidebar-topbar{left:0;flex-direction:row;border-top-right-radius:var(--radius-l)}#right-sidebar .sidebar-topbar{right:0;flex-direction:row-reverse;border-top-left-radius:var(--radius-l)}#left-sidebar .topbar-content{margin-right:calc(2.3em + var(--sidebar-margin));flex-direction:row}#right-sidebar .topbar-content{margin-left:calc(2.3em + var(--sidebar-margin));flex-direction:row-reverse}.topbar-content{overflow:hidden visible;overflow:clip visible;width:100%;height:100%;display:flex;align-items:center;transition:inherit}.sidebar.is-collapsed .topbar-content{width:0;transition:inherit}.clickable-icon.sidebar-collapse-icon{background-color:transparent;color:var(--icon-color-focused);padding:2px!important;margin:0!important;height:100%!important;width:2.3em!important;margin-inline:0.14em!important;position:absolute}#left-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);right:var(--sidebar-margin)}#right-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);left:var(--sidebar-margin)}.clickable-icon.sidebar-collapse-icon svg.svg-icon{width:100%;height:100%}.feature-title{margin-left:1px;text-transform:uppercase;letter-spacing:.06em;margin-top:.75em;margin-bottom:.75em}.feature-header{display:flex;align-items:center;padding-top:0;font-size:1em;padding-left:0}body.floating-sidebars .sidebar{position:absolute}body{transition:background-color var(--color-fade-speed) ease-in-out}#navbar:not(:empty){display:flex;align-items:center;justify-content:space-between;padding:.5em 1em;width:100%}#main{display:flex;flex-direction:column;height:100%;width:100%;align-items:stretch;justify-content:center}#main-horizontal{display:flex;flex-direction:row;flex-grow:1;width:100%;align-items:stretch;justify-content:center}#center-content{flex-basis:100%;max-width:100%;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;transition:opacity .2s ease-in-out;contain:inline-size}.hide{opacity:0!important;transition:opacity .2s ease-in-out;pointer-events:none}#center-content>.obsidian-document{padding-left:2em;padding-right:1em;margin-bottom:0;width:100%;width:-webkit-fill-available;width:-moz-available;width:fill-available;transition:background-color var(--color-fade-speed) ease-in-out;border-top-right-radius:var(--window-radius,var(--radius-m));border-top-left-radius:var(--window-radius,var(--radius-m));overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;contain:inline-size}body #center-content>.obsidian-document>.markdown-preview-sizer{padding-bottom:80vh;width:100%;max-width:var(--line-width);flex-basis:var(--line-width);transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document>div{width:100%!important;transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document:not([data-type=markdown]).embed{display:flex;padding:1em;height:100%;width:100%;align-items:center;justify-content:center}#center-content>.obsidian-document:not([data-type=markdown]).embed>*{max-width:100%;max-height:100%;object-fit:contain}:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math,table)){overflow-x:auto!important}#center-content>.obsidian-document:not([data-type=markdown]){overflow-x:auto;contain:content;padding:0;margin:0;height:100%}.obsidian-document[data-type=attachment]{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}.obsidian-document[data-type=attachment]>*{outline:0;border:none;box-shadow:none}.obsidian-document[data-type=attachment] :is(img){max-width:90%;max-height:90%;object-fit:contain}.obsidian-document[data-type=attachment]>:is(audio){width:100%;max-width:min(90%,var(--line-width))}.obsidian-document[data-type=attachment]>:is(embed,iframe,video){width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.canvas-wrapper>:is(.header,.footer){z-index:100;position:absolute;display:flex;justify-content:center;flex-direction:column;width:100%;align-items:center}.scroll-highlight{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1000;background-color:hsla(var(--color-accent-hsl),.25);opacity:0;padding:1em;inset:50%;translate:-50% -50%;border-radius:var(--radius-s)}</style><script defer="">async function loadIncludes(){let e=document.querySelectorAll("link[itemprop='include']");for(const t of e){let e=t.getAttribute("href");try{let o="";if(e.startsWith("https:")||e.startsWith("http:")||"file:"!=window.location.protocol){const n=await fetch(e);if(!n.ok){console.log("Could not include file: "+e),t?.remove();continue}o=await n.text()}else{const t=document.getElementById(btoa(encodeURI(e)));if(t){const e=JSON.parse(decodeURI(atob(t.getAttribute("value")??"")));o=e?.data??""}}let n=document.createRange().createContextualFragment(o);t.before(n),t.remove(),console.log("Included text: "+o),console.log("Included file: "+e)}catch(o){t?.remove(),console.log("Could not include file: "+e,o);continue}}}document.addEventListener("DOMContentLoaded",(()=>{loadIncludes()}));let isFileProtocol="file:"==location.protocol;function waitLoadScripts(e,t){let o=e.map((e=>document.getElementById(e+"-script")));!function e(n){let l=o[n],c=n+1;l?(l&&"true"!=l.getAttribute("loaded")||n<o.length&&e(c),n<o.length&&l.addEventListener("load",(()=>e(c)))):n<o.length?e(c):t()}(0)}</script></head><body class="publish css-settings-manager is-frameless is-hidden-frameless styled-scrollbars show-inline-title show-ribbon outliner-plugin-dnd highlightr-realistic pp-pill-padding-all base-tags-style ctp-latte ctp-mocha ctp-accent-maroon anuppuccin-accent-toggle anp-current-line anp-latex-inline-text anp-latex-block-text anp-hide-external-link-icon anp-h1-red anp-h2-peach anp-h3-green anp-h4-teal anp-h5-lavender anp-h6-mauve anp-bold-red anp-italic-green anp-highlight-yellow anp-default-tab"><script defer="">let theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");"dark"==theme?(document.body.classList.add("theme-dark"),document.body.classList.remove("theme-light")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark")),window.innerWidth<480?document.body.classList.add("is-phone"):window.innerWidth<768?document.body.classList.add("is-tablet"):window.innerWidth<1024?document.body.classList.add("is-small-screen"):document.body.classList.add("is-large-screen")</script><div class="parsed-feature-container" style="display: contents;"><link itemprop="include" href="site-lib/html/custom-head-content-content.html"></div><div id="main"><div id="navbar"></div><div id="main-horizontal"><div id="left-content" class="leaf" style="--sidebar-width: var(--sidebar-width-left);"></div><div id="center-content" class="leaf"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event allow-fold-headings allow-fold-lists show-indentation-guide is-readable-line-width" data-type="markdown"><style id="MJX-CHTML-styles"></style><pre class="frontmatter language-yaml" style="display: none;"><code class="language-yaml is-loaded"><span class="token key atrule">tipo</span><span class="token punctuation">:</span> page</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="Squad_Builder_0">Squad Builder</h1><div class="data-bar"></div></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-pre"><div class="block-language-dataviewjs node-insert-event" style="overflow-x: auto;"><div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700;900&family=Inter:wght@200;300;400;600&display=swap');
+#sb_m90qqv5q * { box-sizing: border-box; }
+#sb_m90qqv5q { font-family: 'Inter', sans-serif; color: #e0d8f0; width: 100%; position: relative; z-index: 5; isolation: isolate; }
+#sb_m90qqv5q input, #sb_m90qqv5q select, #sb_m90qqv5q button, #sb_m90qqv5q .sb-add-btn { pointer-events: auto; touch-action: manipulation; }
+/* Some static exports can drop inline styles; keep this engine payload hidden. */
+.js-sb-engine-script{ display:none !important; }
+
+/* LAYOUT */
+.sb-layout { display: grid; grid-template-columns: 360px 1fr; gap: 30px; align-items: start; }
+@media(max-width:900px){ .sb-layout { grid-template-columns: 1fr; } }
+
+/* BROWSER PANEL */
+.sb-browser { background: rgba(15,5,25,.7); border: 1px solid rgba(190,99,255,.2); border-radius: 20px; padding: 20px; }
+.sb-browser-title { font-family:'Orbitron',sans-serif; font-size:.75rem; letter-spacing:3px; color:#d8b4fe; text-transform:uppercase; margin-bottom:15px; }
+.sb-search, .sb-sel { width:100%; background:rgba(10,0,20,.7); border:1px solid rgba(190,99,255,.25); color:#fff; padding:12px 18px; font-family:'Orbitron',sans-serif; font-size:.8rem; border-radius:30px; outline:none; margin-bottom:10px; height:auto; line-height:1.4; display:block; }
+.sb-sel { cursor:pointer; -webkit-appearance:none; appearance:none; }
+.sb-model-list { display:flex; flex-direction:column; gap:8px; max-height:600px; overflow-y:auto; scrollbar-width:thin; scrollbar-color:#be63ff rgba(0,0,0,.2); }
+.sb-model-list::-webkit-scrollbar { width:3px; }
+.sb-model-list::-webkit-scrollbar-thumb { background:#be63ff; border-radius:10px; }
+.sb-mcard { display:flex; align-items:center; gap:10px; background:rgba(5,0,15,.6); border:1px solid rgba(190,99,255,.1); border-radius:12px; padding:10px; cursor:pointer; transition:.3s; }
+.sb-mcard:hover { border-color:rgba(190,99,255,.5); background:rgba(20,5,40,.8); }
+.sb-mcard.hidden { display:none; }
+.sb-mcard-img { width:45px; height:45px; border-radius:8px; object-fit:cover; object-position:top; flex-shrink:0; background:#0a0014; }
+.sb-mcard-info { flex-grow:1; min-width:0; }
+.sb-mcard-name { font-family:'Orbitron',sans-serif; font-size:.65rem; letter-spacing:2px; text-transform:uppercase; color:#f0eaff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.sb-mcard-sub { font-size:.6rem; color:#a99bbd; margin-top:2px; }
+.sb-mcard-pts { font-family:'Orbitron',sans-serif; font-size:.7rem; color:#00ff88; white-space:nowrap; }
+.sb-add-btn { background:rgba(190,99,255,.15); border:1px solid rgba(190,99,255,.4); color:#d8b4fe; padding:6px 12px; border-radius:20px; font-size:.65rem; font-family:'Orbitron',sans-serif; cursor:pointer; transition:.2s; white-space:nowrap; }
+.sb-add-btn:hover { background:rgba(190,99,255,.4); color:#fff; }
+
+/* SQUAD PANEL */
+.sb-squad { display:flex; flex-direction:column; gap:20px; }
+.sb-squad-header { background:rgba(15,5,25,.8); border:1px solid rgba(0,255,136,.2); border-radius:16px; padding:20px 25px; display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+.sb-pts-total { font-family:'Orbitron',sans-serif; }
+.sb-pts-total small { font-size:.6rem; letter-spacing:3px; text-transform:uppercase; color:#a99bbd; display:block; }
+.sb-pts-total .sb-pts-num { font-size:2.5rem; font-weight:900; color:#00ff88; text-shadow:0 0 20px rgba(0,255,136,.4); line-height:1; }
+.sb-invalid-banner { display:none; font-size:.72rem; font-weight:900; color:#ff3366; letter-spacing:.5px; margin-left:4px; vertical-align:middle; max-width:280px; }
+.sb-unique-banner { display:none; font-size:.72rem; font-weight:900; color:#ffaa00; letter-spacing:.5px; margin-left:4px; vertical-align:middle; max-width:340px; }
+.sb-points-banner { display:none; font-size:.72rem; font-weight:900; color:#ff6644; letter-spacing:.5px; margin-left:4px; vertical-align:middle; max-width:380px; }
+.sb-global-tactics { display:flex; gap:14px; align-items:flex-end; flex-wrap:wrap; flex:1; min-width:280px; }
+.sb-global-tactics label { display:block; font-size:.58rem; letter-spacing:2px; text-transform:uppercase; color:#a99bbd; margin-bottom:4px; font-family:'Orbitron',sans-serif; font-weight:700; }
+.sb-export-btns { display:flex; gap:10px; flex-wrap:wrap; }
+.sb-btn { background:rgba(190,99,255,.15); border:1px solid rgba(190,99,255,.4); color:#d8b4fe; padding:10px 20px; border-radius:30px; font-size:.7rem; font-family:'Orbitron',sans-serif; cursor:pointer; transition:.3s; letter-spacing:1px; }
+.sb-btn:hover { background:rgba(190,99,255,.4); color:#fff; box-shadow:0 0 20px rgba(190,99,255,.3); }
+.sb-empty { text-align:center; padding:60px 20px; color:#555; font-family:'Orbitron',sans-serif; font-size:.8rem; letter-spacing:2px; border:1px dashed rgba(190,99,255,.15); border-radius:16px; }
+.sb-unit-wrap { position:relative; display:grid; grid-template-columns: 1fr minmax(260px, 300px); gap:18px; align-items:start; margin-bottom:28px; }
+@media(max-width:1100px){ .sb-unit-wrap { grid-template-columns:1fr; } }
+.sb-unit-wrap > .hud-outer-v13 { margin:0 !important; }
+.sb-side-panel { background:rgba(15,5,25,.7); border:1px solid rgba(190,99,255,.2); border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:14px; }
+.sb-remove-btn { background:rgba(255,51,102,.18); border:1px solid rgba(255,51,102,.5); color:#ff3366; padding:9px 14px; border-radius:22px; font-size:.65rem; letter-spacing:1.5px; font-family:'Orbitron',sans-serif; font-weight:700; cursor:pointer; transition:.2s; width:100%; }
+.sb-remove-btn:hover { background:rgba(255,51,102,.5); color:#fff; }
+.sb-upgrades-title { font-family:'Orbitron',sans-serif; font-size:.62rem; letter-spacing:3px; color:#d8b4fe; text-transform:uppercase; padding:6px 0 8px; border-bottom:1px solid rgba(190,99,255,.18); }
+.sb-upgrades-list { display:flex; flex-direction:column; gap:8px; }
+.sb-upgrade-row { background:rgba(5,0,15,.55); border:1px solid rgba(190,99,255,.16); border-radius:10px; padding:10px 12px; cursor:pointer; transition:.15s; user-select:none; }
+.sb-upgrade-row:hover { border-color:rgba(190,99,255,.5); background:rgba(20,5,40,.7); }
+.sb-upgrade-row.is-active { background:rgba(0,255,136,.10); border-color:rgba(0,255,136,.55); box-shadow:0 0 14px rgba(0,255,136,.12); }
+.sb-upgrade-row.is-active .sb-upgrade-name { color:#00ff88; }
+.sb-upgrade-name { font-family:'Orbitron',sans-serif; font-size:.66rem; letter-spacing:1.2px; text-transform:uppercase; color:#f0eaff; display:flex; justify-content:space-between; align-items:center; gap:8px; font-weight:700; }
+.sb-upgrade-cost { color:#00ff88; font-size:.7rem; white-space:nowrap; font-family:'Orbitron',sans-serif; }
+.sb-upgrade-row.is-active .sb-upgrade-cost { color:#aaffcc; }
+.sb-upgrade-desc { font-size:.72rem; line-height:1.4; color:#a99bbd; margin-top:6px; }
+.sb-upgrade-empty { font-size:.72rem; color:#555; text-align:center; padding:14px 0; font-style:italic; }
+.sb-upgrade-noticestrip { font-size:.62rem; color:#a99bbd; text-align:center; }
+
+/* Header info da facção e tática */
+.sb-faction-info { display:none; flex-basis:100%; margin-top:10px; padding:14px 18px; background:rgba(5,0,15,.6); border:1px solid rgba(190,99,255,.22); border-radius:14px; }
+.sb-faction-info.is-active { display:block; }
+.sb-fi-block { margin-bottom:14px; }
+.sb-fi-block:last-child { margin-bottom:0; }
+.sb-fi-label { font-family:'Orbitron',sans-serif; font-size:.55rem; letter-spacing:3px; color:#a99bbd; text-transform:uppercase; margin-bottom:4px; }
+.sb-fi-name { font-family:'Orbitron',sans-serif; font-size:.95rem; font-weight:700; color:#d8b4fe; letter-spacing:1.5px; text-transform:uppercase; }
+.sb-fi-name.tatica { color:#ffcc00; }
+.sb-fi-sub { font-size:.78rem; color:#00ff88; margin-top:2px; font-style:italic; letter-spacing:.5px; }
+.sb-fi-desc { font-size:.85rem; color:#cfc4e3; margin-top:8px; line-height:1.55; }
+.sb-fi-req { font-size:.72rem; color:#ffaa00; margin-top:8px; background:rgba(255,170,0,.07); border-left:3px solid #ffaa00; padding:6px 12px; border-radius:0 6px 6px 0; }
+.sb-fi-effects { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.sb-fi-effect { font-family:'Orbitron',sans-serif; font-size:.62rem; letter-spacing:1px; padding:3px 9px; border-radius:14px; background:rgba(255,204,0,.08); border:1px solid rgba(255,204,0,.4); color:#ffcc00; text-transform:uppercase; }
+#sb_m90qqv5q .sb-active-upgrades-summary { display:none; margin-bottom:14px; padding:10px 12px; background:rgba(5,0,15,.55); border:1px solid rgba(190,99,255,.25); border-radius:8px; border-left:3px solid #ffcc00; box-sizing:border-box; }
+#sb_m90qqv5q .sb-active-upgrades-summary[data-active="1"] { display:block; }
+#sb_m90qqv5q .sb-aus-head { font-family:'Orbitron',sans-serif; font-size:.55rem; letter-spacing:2px; color:#ffcc00; text-transform:uppercase; margin-bottom:8px; }
+#sb_m90qqv5q .sb-aus-line { display:flex; justify-content:space-between; align-items:baseline; gap:10px; font-size:.74rem; color:#e0d8f0; padding:5px 0; border-bottom:1px solid rgba(255,255,255,.08); }
+#sb_m90qqv5q .sb-aus-line:last-child { border-bottom:none; }
+#sb_m90qqv5q .sb-aus-name { font-family:'Orbitron',sans-serif; letter-spacing:.5px; text-transform:uppercase; flex:1; min-width:0; }
+#sb_m90qqv5q .sb-aus-pts { color:#00ff88; font-weight:700; white-space:nowrap; font-family:'Orbitron',sans-serif; font-size:.68rem; }
+
+/* Ficha do cartão — espelha Template - Unit.md */
+/* Ficha do cartão — espelha Template - Unit.md (1654x869) */
+.hud-outer-v13{position:relative;width:100%;aspect-ratio:1654/869;max-width:1654px;max-height:869px;margin:0 auto 28px;background:#080808;border:1px solid #3a3a3a;font-family:'Orbitron',sans-serif;color:#fff;display:flex;flex-direction:column;box-sizing:border-box;box-shadow:0 10px 40px rgba(0,0,0,.9);overflow:hidden;}
+.ryke-scrollbox::-webkit-scrollbar{width:3px;} .ryke-scrollbox::-webkit-scrollbar-thumb{background:#be63ff;border-radius:10px;} .ryke-scrollbox{overflow-y:auto!important;scrollbar-width:thin;scrollbar-color:#be63ff #111;}
+.top-bar{position:relative;width:100%;overflow:hidden;background:linear-gradient(135deg,#0e0e0e 0%,#141414 100%);border-bottom:2px solid #be63ff;}
+.top-bar::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to right,#0e0e0e 38%,rgba(14,14,14,.85) 58%,rgba(14,14,14,.2) 80%,transparent 100%);pointer-events:none;}
+.top-hero-img{position:absolute;right:0;top:0;height:100%;width:50%;background-size:auto 120%;background-position:top center;background-repeat:no-repeat;z-index:0;display:block;pointer-events:none;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 30%);mask-image:linear-gradient(to right,transparent 0%,black 30%);}
+.top-content{position:relative;z-index:2;padding:16px 24px;max-width:62%;display:flex;flex-direction:column;gap:6px;}
+.badge-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.favicon-logo{width:36px;height:36px;object-fit:contain;opacity:.9;}
+.pts-badge-new{background:#00ff88;color:#000;padding:2px 10px;font-weight:900;font-size:.78rem;display:inline-block;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);}
+.unique-badge{background:#ff3366;color:#fff;padding:2px 10px;font-weight:900;font-size:.78rem;display:inline-block;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);}
+.sb-noos-warn{display:none;background:#aa0022;color:#fff;padding:2px 8px;font-size:.62rem;font-weight:900;border-radius:2px;letter-spacing:1px;}
+.hud-main-name{font-size:1.85rem!important;font-weight:900;text-transform:uppercase;line-height:1;letter-spacing:-1px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.9);margin:2px 0;}
+.kw-row{display:flex;flex-wrap:wrap;gap:4px;}
+.model-kw{font-size:.58rem;background:rgba(255,255,255,.08);color:#ccc;border:1px solid rgba(255,255,255,.25);padding:2px 6px;text-transform:uppercase;font-weight:bold;border-radius:2px;}
+.all-stats-row{display:flex;gap:5px;flex-wrap:wrap;align-items:flex-start;margin-top:2px;}
+.stat-box{display:flex;flex-direction:column;align-items:center;background:rgba(0,0,0,.65);border:1px solid rgba(0,255,255,.3);padding:3px 9px;border-radius:2px;cursor:help;min-width:48px;}
+.stat-box.def{border-color:rgba(190,99,255,.4);}
+.stat-box.vida{border-color:rgba(255,50,100,.5);}
+.stat-lbl{font-size:.5rem;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:#00ffff;line-height:1.2;}
+.stat-box.def .stat-lbl{color:#be63ff;}
+.stat-box.vida .stat-lbl{color:#ff6688;}
+.stat-val{font-size:1.05rem;font-weight:900;color:#fff;line-height:1.1;margin-top:1px;}
+.stat-div{width:1px;background:rgba(190,99,255,.3);align-self:stretch;margin:0 3px;}
+.date-line{font-size:.55rem;color:#555;font-family:monospace;margin-top:4px;}
+.hud-body-grid{display:grid;grid-template-columns:1fr minmax(252px,300px);background:#0d0d0d;flex-grow:1;border-top:0;}
+.col-abilities{padding:18px 20px;border-right:1px solid #242424;display:flex;flex-direction:column;gap:8px;min-height:0;}
+.col-equipment{padding:12px 12px 44px 12px;min-height:0;}
+.col-equipment .weapon-art{display:none;width:auto;max-width:100%;height:auto;max-height:120px;object-fit:contain;object-position:top center;margin:0 auto 6px;box-sizing:border-box;}
+.col-equipment .weapon-art.is-visible{display:block;}
+.weapon-selector-wrapper{position:relative;width:100%;height:32px;background:rgba(0,255,255,.04);border:1px solid rgba(0,255,255,.4);border-radius:3px;margin-bottom:10px;}
+.weapon-selector-wrapper:hover{background:rgba(0,255,255,.1);border-color:#00ffff;}
+.weapon-selector-display{position:absolute;inset:0;display:flex;align-items:center;padding-left:12px;color:#00ffff;font-weight:900;font-size:.78rem;text-transform:uppercase;pointer-events:none;z-index:1;}
+.weapon-selector-wrapper::after{content:'';position:absolute;right:12px;top:50%;transform:translateY(-50%);width:12px;height:12px;background:url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22292%22 height%3D%22292%22%3E%3Cpath fill%3D%22%2300ffff%22 d%3D%22M287%2069a18%2018%200%200%200-13-5H18a18%2018%200%200%200-13%2018c0%205%202%209%205%2013l128%20128c4%204%208%205%2013%205s9-1%2013-5l128-128c4-4%205-8%205-13%200-5-2-9-5-13z%22%2F%3E%3C%2Fsvg%3E') center/contain no-repeat;pointer-events:none;}
+.weapon-selector{position:absolute;inset:0;opacity:.01;cursor:pointer;z-index:2;}
+.col-equipment .w-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px;align-items:stretch;}
+.col-equipment .w-stats-grid .w-stat-item{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.65);border:1px solid rgba(0,255,255,.3);padding:3px 6px;border-radius:2px;box-sizing:border-box;min-height:46px;max-height:46px;min-width:0;width:100%;}
+.col-equipment .w-stats-grid .w-stat-val{font-size:1.05rem;font-weight:900;color:#fff;line-height:1.1;margin-top:1px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;}
+.col-equipment .w-stats-grid .w-stat-lbl{font-size:.5rem;font-weight:900;color:#00ffff;letter-spacing:.5px;text-transform:uppercase;line-height:1.2;}
+.col-equipment .w-peso-inline{display:flex;align-items:center;gap:3px;border-color:rgba(0,255,255,.35)!important;background:rgba(0,255,255,.07)!important;padding:2px 6px!important;border-radius:2px;flex-direction:row!important;min-height:auto!important;max-height:none!important;}
+.col-equipment .w-peso-inline .w-stat-val{font-size:.82rem!important;font-weight:900;color:#00ffff!important;line-height:1!important;margin:0!important;}
+.col-equipment .w-peso-inline .w-stat-lbl{font-size:.48rem!important;font-weight:900;color:#00ffff!important;letter-spacing:.4px;opacity:.9!important;margin:0!important;}
+.model-tag{font-size:.68rem;background:rgba(0,0,0,.7);color:#fff;border:1px solid rgba(0,191,255,.45);padding:3px 7px;text-transform:uppercase;font-weight:bold;border-radius:2px;display:inline-block;cursor:help;}
+.weapon-tag{font-size:.68rem;background:rgba(0,0,0,.7);color:#fff;border:1px solid rgba(0,255,255,.45);padding:3px 7px;text-transform:uppercase;font-weight:bold;border-radius:2px;display:inline-block;cursor:help;}
+.tc-tooltip{position:relative;cursor:help;}
+.tc-tooltip:hover::after{content:attr(data-desc);position:absolute;bottom:120%;left:0;width:max-content;max-width:240px;background:#000;color:#ddd;border:1px solid #444;border-left:3px solid #be63ff;padding:10px;font-family:sans-serif;font-size:.85rem;line-height:1.4;font-weight:normal;white-space:normal;text-transform:none;z-index:9999;pointer-events:none;}
+@media(max-width:900px){
+  .sb-layout{grid-template-columns:1fr;}
+  .sb-squad-header{flex-direction:column;}
+  .hud-outer-v13{min-width:unset;}
+  .top-content{max-width:100%!important;}
+  .top-hero-img{display:none;}
+  .top-bar::after{display:none;}
+  .hud-body-grid{grid-template-columns:1fr!important;}
+  .col-abilities{border-right:none!important;border-bottom:1px solid #222!important;}
+  .hud-main-name{font-size:1.45rem!important;}
+}
+</style>
+<div class="js-squad-builder-app" id="sb_m90qqv5q" data-sb-bid="sb_m90qqv5q">
+<textarea class="js-sb-data-models" style="display:none;">[{"path":"Wargame/02 Models/Casacos/Agente Fiscal Casaca Dourado.md","name":"Agente Fiscal Casaca Dourado","pontos":90,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Casaca Dourado","Casaca Pálido"],"vida":"3","movimento":"6","decoerencia":"2","ap":4,"armadura_melee":"3","armadura_ranged":"3","armadura_special":"1","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Golden%20coat.png?1777910752235","raw":"Recursos/Imagens/Renders/Casaca/Golden coat.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Arkwright.md","name":"Arkwright","pontos":135,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Unique","Casaca Pálido"],"vida":"4","movimento":"6","decoerencia":"3","ap":4,"armadura_melee":"3","armadura_ranged":"3","armadura_special":"2","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Arkwright.png?1777910998128","raw":"Recursos/Imagens/Renders/Casaca/Arkwright.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Casaca Artilharia.md","name":"Casaca Artilharia","pontos":120,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Casaca Pálido"],"vida":"3","movimento":"4","decoerencia":"2","ap":4,"armadura_melee":"2","armadura_ranged":"4","armadura_special":"2","loadout_max":"10","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":["Anti-Riot"],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20Artillary.png?1777910977400","raw":"Recursos/Imagens/Renders/Casaca/Coat Artillary.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Casaca Escuro.md","name":"Casaca Escuro","pontos":120,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":["Elite","Commander 8"],"keywords":["Casaca Escuro"],"vida":"4","movimento":"6","decoerencia":"3","ap":4,"armadura_melee":"3","armadura_ranged":"2","armadura_special":"3","loadout_max":"10","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Black%20coat.png?1777910991447","raw":"Recursos/Imagens/Renders/Casaca/Black coat.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Casaca Investigador.md","name":"Casaca Investigador","pontos":90,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Casaca Pálido"],"vida":"3","movimento":"6","decoerencia":"2","ap":4,"armadura_melee":"3","armadura_ranged":"2","armadura_special":"1","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20Investigator.png?1777910902100","raw":"Recursos/Imagens/Renders/Casaca/Coat Investigator.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Casaca Perseguidor.md","name":"Casaca Perseguidor","pontos":110,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Veículo","Casaca Pálido"],"vida":"3","movimento":"16","decoerencia":"2","ap":3,"armadura_melee":"3","armadura_ranged":"2","armadura_special":"0","loadout_max":"10","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20Pursuer.png?1777910895786","raw":"Recursos/Imagens/Renders/Casaca/Coat Pursuer.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Casaca Pesado.md","name":"Casaca Pesado","pontos":105,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Casaca Pálido"],"vida":"5","movimento":"5","decoerencia":"3","ap":3,"armadura_melee":"4","armadura_ranged":"3","armadura_special":"0","loadout_max":"10","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Heavy%20Coat.png?1777909724644","raw":"Recursos/Imagens/Renders/Casaca/Heavy Coat.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Casaca Pistoleiro.md","name":"Casaca Pistoleiro","pontos":80,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Casaca Pálido"],"vida":"3","movimento":"8","decoerencia":"2","ap":4,"armadura_melee":"1","armadura_ranged":"4","armadura_special":"1","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20Gunslinger.png?1777910940027","raw":"Recursos/Imagens/Renders/Casaca/Coat Gunslinger.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Casaca Übermensh.md","name":"Casaca Übermensh","pontos":120,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Casaca Pálido"],"vida":"8","movimento":"7","decoerencia":"3","ap":4,"armadura_melee":"3","armadura_ranged":"2","armadura_special":"1","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20Ubermansh.png?1777910760796","raw":"Recursos/Imagens/Renders/Casaca/Coat Ubermansh.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Cientista Casaca.md","name":"Cientista Casaca","pontos":120,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":["Elite"],"keywords":["Unique","Casaca Pálido"],"vida":"3","movimento":"6","decoerencia":"2","ap":5,"armadura_melee":"0","armadura_ranged":"3","armadura_special":"5","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20Scientist.png?1777910770277","raw":"Recursos/Imagens/Renders/Casaca/Coat Scientist.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Comandante Casaca.md","name":"Comandante Casaca","pontos":110,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":["Elite","Commander 8"],"keywords":["Unique","Casaca Pálido"],"vida":"4","movimento":"6","decoerencia":"3","ap":5,"armadura_melee":"3","armadura_ranged":"3","armadura_special":"2","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20commander.png?1777910969532","raw":"Recursos/Imagens/Renders/Casaca/Coat commander.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Drone Casaca Cão.md","name":"Drone Casaca Cão","pontos":70,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Artificial","Casaca Pálido"],"vida":"2","movimento":"8","decoerencia":"1","ap":3,"armadura_melee":"2","armadura_ranged":"1","armadura_special":"2","loadout_max":"6","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":["Artificial"],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20Drone%20Dog.png?1777910963275","raw":"Recursos/Imagens/Renders/Casaca/Coat Drone Dog.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Drone Casaca.md","name":"Drone Casaca","pontos":55,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Artificial","Casaca Pálido"],"vida":"2","movimento":"7","decoerencia":"1","ap":3,"armadura_melee":"1","armadura_ranged":"2","armadura_special":"2","loadout_max":"6","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":["Artificial"],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20Drone.png?1777910946964","raw":"Recursos/Imagens/Renders/Casaca/Coat Drone.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Drone Casaca Monstro.md","name":"Drone Casaca Monstro","pontos":85,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Artificial","Casaca Pálido"],"vida":"4","movimento":"6","decoerencia":"2","ap":3,"armadura_melee":"3","armadura_ranged":"2","armadura_special":"0","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":["Artificial"],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20Drone%20Monster.png?1777910954297","raw":"Recursos/Imagens/Renders/Casaca/Coat Drone Monster.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Escolta de Honra Casaca Azul.md","name":"Escolta de Honra Casaca Azul","pontos":100,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Casaca Azul","Casaca Pálido"],"vida":"5","movimento":"6","decoerencia":"4","ap":4,"armadura_melee":"4","armadura_ranged":"2","armadura_special":"0","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Blue%20coat.png?1777910984857","raw":"Recursos/Imagens/Renders/Casaca/Blue coat.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Explorador Casaca Púrpura.md","name":"Explorador Casaca Púrpura","pontos":85,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Casaca Púrpura","Casaca Pálido"],"vida":"3","movimento":"9","decoerencia":"2","ap":4,"armadura_melee":"2","armadura_ranged":"2","armadura_special":"1","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Purple%20coat.png?1777909694076","raw":"Recursos/Imagens/Renders/Casaca/Purple coat.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Guarda Anti-motim Casaca.md","name":"Guarda Anti-motim Casaca","pontos":100,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Casaca Pálido"],"vida":"4","movimento":"5","decoerencia":"3","ap":4,"armadura_melee":"4","armadura_ranged":"3","armadura_special":"1","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":["Anti-Riot"],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20Riot%20Guard.png?1777910868469","raw":"Recursos/Imagens/Renders/Casaca/Coat Riot Guard.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Infiltrador Casaca.md","name":"Infiltrador Casaca","pontos":85,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":["Elite"],"keywords":["Unique","Casaca Pálido"],"vida":"3","movimento":"10","decoerencia":"2","ap":4,"armadura_melee":"2","armadura_ranged":"3","armadura_special":"1","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Coat%20infiltrator.png?1777947001461","raw":"Recursos/Imagens/Renders/Casaca/Coat infiltrator.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"},{"path":"Wargame/02 Models/Casacos/Lilliane Firnoff.md","name":"Lilliane Firnoff","pontos":115,"faccao":["Casacas"],"noosphera":"Ryke","caracteristicas":[],"keywords":["Unique","Casaca Pálido"],"vida":"3","movimento":"10","decoerencia":"2","ap":4,"armadura_melee":"2","armadura_ranged":"3","armadura_special":"3","loadout_max":"8","habilidades_ativas":["Sobrecarga"],"habilidades_passivas":[],"habilidades_padrao":["Mover","Combater","Comandar"],"imgObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Renders/Casaca/Lilliane%20Firnoff.png?1777909703417","raw":"Recursos/Imagens/Renders/Casaca/Lilliane Firnoff.png"},"weapons":[{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]},{"name":"Utility Template","tipo":"Utility","image":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","imageObj":{"src":"app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Imagens/Utility%20image/Ryke/Tactic%20Radio.png?1777772415270","raw":"Recursos/Imagens/Utility image/Ryke/Tactic Radio.png"},"ataques":"3","mira":"+1","distancia":null,"dano":null,"peso":"2","point_mod":"-10","equipamento_ataques":"3","equipamento_mira":"+1","equipamento_loadout":"2","keywords":[],"caracteristicas":["Silent"],"passivas_de_utility":["Reflexos Aprimorados"]}],"updatedStr":"07/05/2026"}]</textarea>
+<textarea class="js-sb-data-factions" style="display:none;">[{"name":"Casacas","noosphera":"Ryke","passiva":{"nome":"Polícia Ideológica","descricao":"Todos os seus modelos ganham a ação Takedown, e para cada modelo capturado pelo seu Squad, você ganha +1 Resonance no começo da sua rodada.","efeitos":{"ativa":"Takedown"}},"taticas":[{"nome":"Operation Dead Margin","sub":"Arsenal Pesado","descricao":"Todos os modelos do seu squad perdem 2\" de movimento, mas ganham +2 de loadout máximo e suas armas ganham Pesado.","requisito":"1+ Unidade com Keyword: Casaca Escuro","efeitos":{"movimento":-2,"loadout_max":2,"passiva":"Pesado (Armas)"},"upgrades":[{"nome":"Exoesqueleto de Batalha","pontos":5,"descricao":"+2\" de movimento.","efeitos":{"movimento":2}},{"nome":"Revestimento Balístico","pontos":10,"descricao":"+1 de Defesa Ranged.","efeitos":{"defesa_ranged":1}},{"nome":"Mochilas Pesadas","pontos":15,"descricao":"+2 de Loadout.","efeitos":{"loadout_max":2}}]},{"nome":"Operation Razor Blade","sub":"Breaching Takedown","descricao":"Enquanto a unidade inimiga alvo estiver Surpresa, a ação Takedown pode ser rolada com GRIT 2+ ao invés de 3+. Todos os seus modelos ganham Cover Emergencial.","requisito":"","efeitos":{"passiva":"Cover Emergencial"},"upgrades":[{"nome":"Exoesqueleto de Batalha","pontos":5,"descricao":"+2\" de movimento.","efeitos":{"movimento":2}},{"nome":"Técnicas de Invasão","pontos":15,"descricao":"Ganha Infiltrator.","efeitos":{"caracteristica":"Infiltrator"}},{"nome":"Shadow Protocol","pontos":20,"descricao":"Ganha Stealth.","efeitos":{"caracteristica":"Stealth"}}]},{"nome":"OPERATION FACE OFF","sub":"Gestão de Recursos","descricao":"Sempre que gastar Resonance, teste GRIT+4. Em caso de sucesso, você não consome seu valor de Resonance.","requisito":"1+ Unidade com Keyword: Casaca Dourado","efeitos":{},"upgrades":[{"nome":"Propina Motivacional","pontos":10,"descricao":"Ganhe +1 AP.","efeitos":{"ap":1}},{"nome":"Orçamento Aumentado","pontos":30,"descricao":"Remove o custo de pontos da Arma/Utilidade inicial do modelo.","efeitos":{"remove_initial_weapon_cost":true}},{"nome":"Mochilas Pesadas","pontos":15,"descricao":"+2 de Loadout.","efeitos":{"loadout_max":2}}]},{"nome":"OPERATION QUIET HORIZON","sub":"Zonas de Insanidade","descricao":"Sempre que um modelo seu morrer, faça um EDGE 5+. Em caso de sucesso, seu oponente ganha +2 de Decoerência.","requisito":"1+ Unidade com Keyword: Casaca Púrpura","efeitos":{},"upgrades":[{"nome":"Ombreira Protetora","pontos":10,"descricao":"+1 de Defesa Melee.","efeitos":{"defesa_melee":1}},{"nome":"Técnicas de Invasão","pontos":15,"descricao":"Ganha Infiltrator.","efeitos":{"caracteristica":"Infiltrator"}},{"nome":"Mochilas Pesadas","pontos":15,"descricao":"+2 de Loadout.","efeitos":{"loadout_max":2}}]},{"nome":"OPERATION LAST SHEPARD","sub":"Defensores do Consensus","descricao":"Quando um modelo seu morrer, faça um teste GRIT 2+. Em caso de sucesso, reduza o valor ganho de Decoerência em -1.","requisito":"1+ Unidade com Keyword: Casaca Azul","efeitos":{},"upgrades":[{"nome":"Aço Ceremonial","pontos":5,"descricao":"Em armas corpo a corpo: +1 ATK.","efeitos":{}},{"nome":"Orçamento Aumentado","pontos":30,"descricao":"Remove o custo de pontos da Arma/Utilidade inicial do modelo.","efeitos":{"remove_initial_weapon_cost":true}},{"nome":"Proteção de Elite","pontos":20,"descricao":"+1 em todas as Armaduras.","efeitos":{"defesa_melee":1,"defesa_ranged":1,"defesa_special":1}}]},{"nome":"OPERATION HOLLOW MARCH","sub":"Linha de Produção","descricao":"Quando um modelo com a keyword Artificial morrer, faça um teste de GRIT com o valor de Decoerência dele como dificuldade. Em caso de sucesso, traga o modelo de volta para a partida como reforço por uma das bordas do mapa.","requisito":"1+ Unidade com Keyword: Artificial","efeitos":{},"upgrades":[{"nome":"Propina Motivacional","pontos":10,"descricao":"Ganhe +1 AP.","efeitos":{"ap":1}},{"nome":"Orçamento Aumentado","pontos":30,"descricao":"Remove o custo de pontos da Arma/Utilidade inicial do modelo.","efeitos":{"remove_initial_weapon_cost":true}},{"nome":"Compressão de Consenso","pontos":20,"descricao":"-1 de Decoerência.","efeitos":{"decoerencia":-1}}]}]},{"name":"Casas Linearcas","noosphera":"Osmirate","passiva":null,"taticas":[{"nome":"Guarda Reforçada","sub":"","descricao":"","requisito":"","efeitos":{"vida":1},"upgrades":[]},{"nome":"Operações Sombrias","sub":"","descricao":"","requisito":"","efeitos":{"caracteristica":"Stealth"},"upgrades":[]},{"nome":"Ira do Desespero","sub":"","descricao":"","requisito":"","efeitos":{"defesa_melee":-1,"defesa_ranged":-1,"defesa_special":-1,"ativa":"Investida Feroz"},"upgrades":[]}]},{"name":"Chloriders","noosphera":"Ryke","passiva":null,"taticas":[{"nome":"Operation Dead Margin","sub":"","descricao":"","requisito":"","efeitos":{"movimento":-2,"loadout_max":2},"upgrades":[]},{"nome":"Operation Razor Blade","sub":"","descricao":"","requisito":"","efeitos":{"ap":1,"caracteristica":"Breaching"},"upgrades":[]},{"nome":"OPERATION FACE OFF","sub":"","descricao":"","requisito":"","efeitos":{"vida":1,"defesa_melee":1},"upgrades":[]},{"nome":"OPERATION QUIET HORIZON","sub":"","descricao":"","requisito":"","efeitos":{"decoerencia":1,"movimento":1},"upgrades":[]},{"nome":"OPERATION LAST SHEPARD","sub":"","descricao":"","requisito":"","efeitos":{"defesa_ranged":1,"caracteristica":"Stealth"},"upgrades":[]},{"nome":"OPERATION HOLLOW MARCH","sub":"","descricao":"","requisito":"","efeitos":{"defesa_melee":1,"defesa_special":1,"vida":1},"upgrades":[]}]},{"name":"Technokratas","noosphera":"Ryke","passiva":null,"taticas":[{"nome":"Guarda Reforçada","sub":"","descricao":"","requisito":"","efeitos":{"vida":1},"upgrades":[]},{"nome":"Operações Sombrias","sub":"","descricao":"","requisito":"","efeitos":{"caracteristica":"Stealth"},"upgrades":[]},{"nome":"Ira do Desespero","sub":"","descricao":"","requisito":"","efeitos":{"defesa_melee":-1,"defesa_ranged":-1,"defesa_special":-1,"ativa":"Investida Feroz"},"upgrades":[]}]},{"name":"Undermovement","noosphera":"Ryke","passiva":null,"taticas":[{"nome":"Guarda Reforçada","sub":"","descricao":"","requisito":"","efeitos":{"vida":1},"upgrades":[]},{"nome":"Operações Sombrias","sub":"","descricao":"","requisito":"","efeitos":{"caracteristica":"Stealth"},"upgrades":[]},{"nome":"Ira do Desespero","sub":"","descricao":"","requisito":"","efeitos":{"defesa_melee":-1,"defesa_ranged":-1,"defesa_special":-1,"ativa":"Investida Feroz"},"upgrades":[]}]}]</textarea>
+<textarea class="js-sb-data-maps" style="display:none;">{"active":{"correr":"[🔴🔁] Mova esse modelo seu valor de movimento. Repetível.","mover":"[🔴] Mova esse modelo seu valor de movimento.","combater":"[🔴] Selecione uma arma, se estiver na distância correta, faça um _Ataque tradicional_.","comandar":"[🔴] Escolhe outro modelo do seu Squad visível em 10”, ele ganha +1 AP quando for seu turno.","curar 2":"[🔴] Escolhe outro modelo do seu Squad visível em 4\" , role 2 dado","curar 3":"[🔴] Escolhe outro modelo do seu Squad visível em 4\", role 2 dado","curar 4":"[🔴] Escolhe outro modelo do seu Squad visível em 4\", role 1 dado","análise":"[🔴] Escolha um modelo inimigo visível em 10”, diminua a desvantagem de rolagem contra ele em -1, até um máximo de 2+.","takedown":"[🔴] *Só pode ser usado se um modelo inimigo dentro de 3” de distância que já tiver sido ferido.* Faça um teste de GRIT 3+, caso seja um sucesso você prende aquele modelo, tornando-o *Atrelado* ao seu e *Incapaz*. Toda rodada o modelo preso pode fazer um teste de GRIT+1 para tentar se soltar, enquanto falha ele conta como *Capturado*.","sobrecarga":"[🔴] Ganha +1 dado de ataque, mas sofre 1 de dano no processo.","investida feroz":"[🔴] Mova metade do seu valor de movimento, e se estiver no alcance","euphoria":"[🔴] _Descarte uma carta._ Escolha uma ação que custa 1🔴 e não é repetível, repita ela sem custo."},"passive":{"elite":"Uma vez por turno, esta unidade pode re-rolar um dado de ataque falho.","artificial":"Imune á Gás e Veneno.","commander 6":"Dá +1 ataque para todos os models aliados a menos de 6\"de distância.","commander 8":"Dá +1 ataque para todos os models aliados a menos de 8\" de distância.","commander 10":"Dá +1 ataque para todos os models aliados a menos de 10\" de distância.","commander 12":"Dá +1 ataque para todos os models aliados a menos de 12\" de distância.","tough 2":"Quando essa unidade iria morrer, role um teste GRIT 2+, se tiver sucesso seu modelo ignora o último dano causado.","tough 3":"Quando essa unidade iria morrer, role um teste GRIT 3+, se tiver sucesso seu modelo ignora o último dano causado.","tough 4":"Quando essa unidade iria morrer, role um teste GRIT 4+, se tiver sucesso seu modelo ignora o último dano causado.","stealth":"Esse model exige +1 para acertar em Hit Rolls.","agile":"Uma vez por rodada, você pode fazer um movimento gratuito com metade da distância normal.","infiltrator":"Pode ser posicionada em pontos de entrada não convencionais durante a fase de breach.","preparado":"Se esse model entrar no jogo como reforço, tem +1 ATK.","crush":"No caso de um acerto crítico, o alvo perde 1 de armadura extra.","pesado":"Você tem +1 ATK se você ainda não se moveu esse turno.","supressão":"Até o final da rodada, o alvo do ataque tem *desvantagem* em rolagens de ataque.","thrust":"Recebe +1 de ATK se a unidade tiver movido mais do que 6\" para atacar.","silent":"Ações usando essa arma não podem ser alvos de REAÇÕES.","spray":"Acerta até 3 inimigos se estiverem na distância.","overheat":"Depois de atacar, faça um EDGE +4, se for um fracasso, você recebe 1 de dano Especial (Fogo.)","point blank":"Dentro da metade da distância, ganha +2 ATK.","marksman":"Ignora Stealth.","penetração":"Ignora 1 ponto de armadura do tipo correspondente.","blast":"Causa dano em área a todas as unidades adjacentes ao alvo principal.","perfurante":"Você pode atirar através de paredes, mas você conta como se o modelo tivesse +1 da armadura.","cover emergencial":"(Reação) Depois de ser atingido por um ataque á distância, ele pode se mover metade do seu movimento normal.","anti-riot":"+1 de armadura de todos os tipos, apenas contra modelos que não possuem a keyword Elite.","reflexos aprimorados":"Inimigos recebem -1 em ataques ranged contra esta unidade.","corrida silenciosa":"Se esse modelo fizer 2 ou mais movimentos na mesma rodada, ele ganha a característica Stealth (ver **Passivas padrão**) até o fim da rodada"},"weapon":{"elite":"Uma vez por turno, esta unidade pode re-rolar um dado de ataque falho.","artificial":"Imune á Gás e Veneno.","commander 6":"Dá +1 ataque para todos os models aliados a menos de 6\"de distância.","commander 8":"Dá +1 ataque para todos os models aliados a menos de 8\" de distância.","commander 10":"Dá +1 ataque para todos os models aliados a menos de 10\" de distância.","commander 12":"Dá +1 ataque para todos os models aliados a menos de 12\" de distância.","tough 2":"Quando essa unidade iria morrer, role um teste GRIT 2+, se tiver sucesso seu modelo ignora o último dano causado.","tough 3":"Quando essa unidade iria morrer, role um teste GRIT 3+, se tiver sucesso seu modelo ignora o último dano causado.","tough 4":"Quando essa unidade iria morrer, role um teste GRIT 4+, se tiver sucesso seu modelo ignora o último dano causado.","stealth":"Esse model exige +1 para acertar em Hit Rolls.","agile":"Uma vez por rodada, você pode fazer um movimento gratuito com metade da distância normal.","infiltrator":"Pode ser posicionada em pontos de entrada não convencionais durante a fase de breach.","preparado":"Se esse model entrar no jogo como reforço, tem +1 ATK.","crush":"No caso de um acerto crítico, o alvo perde 1 de armadura extra.","pesado":"Você tem +1 ATK se você ainda não se moveu esse turno.","supressão":"Até o final da rodada, o alvo do ataque tem *desvantagem* em rolagens de ataque.","thrust":"Recebe +1 de ATK se a unidade tiver movido mais do que 6\" para atacar.","silent":"Ações usando essa arma não podem ser alvos de REAÇÕES.","spray":"Acerta até 3 inimigos se estiverem na distância.","overheat":"Depois de atacar, faça um EDGE +4, se for um fracasso, você recebe 1 de dano Especial (Fogo.)","point blank":"Dentro da metade da distância, ganha +2 ATK.","marksman":"Ignora Stealth.","penetração":"Ignora 1 ponto de armadura do tipo correspondente.","blast":"Causa dano em área a todas as unidades adjacentes ao alvo principal.","perfurante":"Você pode atirar através de paredes, mas você conta como se o modelo tivesse +1 da armadura.","cover emergencial":"(Reação) Depois de ser atingido por um ataque á distância, ele pode se mover metade do seu movimento normal.","anti-riot":"+1 de armadura de todos os tipos, apenas contra modelos que não possuem a keyword Elite.","reflexos aprimorados":"Inimigos recebem -1 em ataques ranged contra esta unidade.","corrida silenciosa":"Se esse modelo fizer 2 ou mais movimentos na mesma rodada, ele ganha a característica Stealth (ver **Passivas padrão**) até o fim da rodada"},"utilpass":{"elite":"Uma vez por turno, esta unidade pode re-rolar um dado de ataque falho.","artificial":"Imune á Gás e Veneno.","commander 6":"Dá +1 ataque para todos os models aliados a menos de 6\"de distância.","commander 8":"Dá +1 ataque para todos os models aliados a menos de 8\" de distância.","commander 10":"Dá +1 ataque para todos os models aliados a menos de 10\" de distância.","commander 12":"Dá +1 ataque para todos os models aliados a menos de 12\" de distância.","tough 2":"Quando essa unidade iria morrer, role um teste GRIT 2+, se tiver sucesso seu modelo ignora o último dano causado.","tough 3":"Quando essa unidade iria morrer, role um teste GRIT 3+, se tiver sucesso seu modelo ignora o último dano causado.","tough 4":"Quando essa unidade iria morrer, role um teste GRIT 4+, se tiver sucesso seu modelo ignora o último dano causado.","stealth":"Esse model exige +1 para acertar em Hit Rolls.","agile":"Uma vez por rodada, você pode fazer um movimento gratuito com metade da distância normal.","infiltrator":"Pode ser posicionada em pontos de entrada não convencionais durante a fase de breach.","preparado":"Se esse model entrar no jogo como reforço, tem +1 ATK.","crush":"No caso de um acerto crítico, o alvo perde 1 de armadura extra.","pesado":"Você tem +1 ATK se você ainda não se moveu esse turno.","supressão":"Até o final da rodada, o alvo do ataque tem *desvantagem* em rolagens de ataque.","thrust":"Recebe +1 de ATK se a unidade tiver movido mais do que 6\" para atacar.","silent":"Ações usando essa arma não podem ser alvos de REAÇÕES.","spray":"Acerta até 3 inimigos se estiverem na distância.","overheat":"Depois de atacar, faça um EDGE +4, se for um fracasso, você recebe 1 de dano Especial (Fogo.)","point blank":"Dentro da metade da distância, ganha +2 ATK.","marksman":"Ignora Stealth.","penetração":"Ignora 1 ponto de armadura do tipo correspondente.","blast":"Causa dano em área a todas as unidades adjacentes ao alvo principal.","perfurante":"Você pode atirar através de paredes, mas você conta como se o modelo tivesse +1 da armadura.","cover emergencial":"(Reação) Depois de ser atingido por um ataque á distância, ele pode se mover metade do seu movimento normal.","anti-riot":"+1 de armadura de todos os tipos, apenas contra modelos que não possuem a keyword Elite.","reflexos aprimorados":"Inimigos recebem -1 em ataques ranged contra esta unidade.","corrida silenciosa":"Se esse modelo fizer 2 ou mais movimentos na mesma rodada, ele ganha a característica Stealth (ver **Passivas padrão**) até o fim da rodada"},"utilityPassive":{"elite":"Uma vez por turno, esta unidade pode re-rolar um dado de ataque falho.","artificial":"Imune á Gás e Veneno.","commander 6":"Dá +1 ataque para todos os models aliados a menos de 6\"de distância.","commander 8":"Dá +1 ataque para todos os models aliados a menos de 8\" de distância.","commander 10":"Dá +1 ataque para todos os models aliados a menos de 10\" de distância.","commander 12":"Dá +1 ataque para todos os models aliados a menos de 12\" de distância.","tough 2":"Quando essa unidade iria morrer, role um teste GRIT 2+, se tiver sucesso seu modelo ignora o último dano causado.","tough 3":"Quando essa unidade iria morrer, role um teste GRIT 3+, se tiver sucesso seu modelo ignora o último dano causado.","tough 4":"Quando essa unidade iria morrer, role um teste GRIT 4+, se tiver sucesso seu modelo ignora o último dano causado.","stealth":"Esse model exige +1 para acertar em Hit Rolls.","agile":"Uma vez por rodada, você pode fazer um movimento gratuito com metade da distância normal.","infiltrator":"Pode ser posicionada em pontos de entrada não convencionais durante a fase de breach.","preparado":"Se esse model entrar no jogo como reforço, tem +1 ATK.","crush":"No caso de um acerto crítico, o alvo perde 1 de armadura extra.","pesado":"Você tem +1 ATK se você ainda não se moveu esse turno.","supressão":"Até o final da rodada, o alvo do ataque tem *desvantagem* em rolagens de ataque.","thrust":"Recebe +1 de ATK se a unidade tiver movido mais do que 6\" para atacar.","silent":"Ações usando essa arma não podem ser alvos de REAÇÕES.","spray":"Acerta até 3 inimigos se estiverem na distância.","overheat":"Depois de atacar, faça um EDGE +4, se for um fracasso, você recebe 1 de dano Especial (Fogo.)","point blank":"Dentro da metade da distância, ganha +2 ATK.","marksman":"Ignora Stealth.","penetração":"Ignora 1 ponto de armadura do tipo correspondente.","blast":"Causa dano em área a todas as unidades adjacentes ao alvo principal.","perfurante":"Você pode atirar através de paredes, mas você conta como se o modelo tivesse +1 da armadura.","cover emergencial":"(Reação) Depois de ser atingido por um ataque á distância, ele pode se mover metade do seu movimento normal.","anti-riot":"+1 de armadura de todos os tipos, apenas contra modelos que não possuem a keyword Elite.","reflexos aprimorados":"Inimigos recebem -1 em ataques ranged contra esta unidade.","corrida silenciosa":"Se esse modelo fizer 2 ou mais movimentos na mesma rodada, ele ganha a característica Stealth (ver **Passivas padrão**) até o fim da rodada"}}</textarea>
+<textarea class="js-sb-engine-script" style="display:none;">(function(){
+try {
+const BID="sb_m90qqv5q";
+const FAV="app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Main%20Logo/Favicon%20fill%20White.png?1777766284727";
+var root=document.getElementById(BID);
+if(!root) root=document.querySelector(".js-squad-builder-app");
+if(!root) return;
+if(root._sbInit === true) return;
+if(root._sbInit === "loading") return;
+root._sbInit = "loading";
+if(root.id!==BID &amp;&amp; !root.getAttribute("data-sb-bid")) root.setAttribute("data-sb-bid",BID);
+
+function parseSbDataJson(el){var raw=(el&amp;&amp;el.value)?String(el.value).trim():"";if(!raw)return null;try{return JSON.parse(raw);}catch(e1){try{return JSON.parse(raw.replace(/&lt;/g,"&lt;").replace(/&gt;/g,"&gt;"));}catch(e2){throw e2;}}}
+const ALL_MODELS=parseSbDataJson(root.querySelector(".js-sb-data-models"));
+const ALL_FACTIONS=parseSbDataJson(root.querySelector(".js-sb-data-factions"));
+const MAPS=parseSbDataJson(root.querySelector(".js-sb-data-maps"));
+if(!ALL_MODELS||!ALL_FACTIONS||!MAPS)throw new Error("Squad Builder: JSON de dados vazio ou inválido.");
+;(function rykeWeaponAbilityBootstrap(){if(window.__rykeWeaponAbilBlocks)return;window.__rykeWeaponAbilBlocks=true;function paintWeaponBlocks(root,weaponName){var uid=root.id;if(!uid)return;var maps={};try{maps=JSON.parse(decodeURIComponent(root.getAttribute("data-maps")||"%7B%7D"));}catch(e){maps={};}var wMap=maps.weapon||maps.passive||{};var uMap=maps.utilityPassive||maps.passive||{};var weapons=[];var jel=root.querySelector(".js-weapons-json");if(jel&amp;&amp;jel.textContent){try{weapons=JSON.parse(jel.textContent);}catch(e2){weapons=[];}}if(!weapons.length){try{weapons=JSON.parse(decodeURIComponent(root.getAttribute("data-weapons")||"%5B%5D"));}catch(e3){weapons=[];}}var w=null;var want=weaponName!=null&amp;&amp;weaponName!==""?String(weaponName):"";for(var i=0;i&lt;weapons.length;i++){if(weapons[i]&amp;&amp;String(weapons[i].name)===want){w=weapons[i];break;}}var tagsEl=document.getElementById("w-tags-"+uid);var pasEl=document.getElementById("w-passives-"+uid);function blocks(list,map,color){if(!list||!list.length)return "";var html="";for(var j=0;j&lt;list.length;j++){var item=String(list[j]||"").trim();if(!item)continue;var k=item.toLowerCase();var desc=(map&amp;&amp;map[k])||"Descrição não encontrada no glossário.";var apCost="";var cleanDesc=desc;var apMatch=cleanDesc.match(/^\[([🔴]+)\]\s*/);if(apMatch){apCost='&lt;span style="margin-left:5px;font-size:0.78rem;letter-spacing:1px;"&gt;'+apMatch[1]+"&lt;/span&gt;";cleanDesc=cleanDesc.substring(apMatch[0].length);}html+='&lt;div style="margin-bottom:5px;font-family:sans-serif;font-size:0.82rem;line-height:1.35;padding:2px 8px;border-left:3px solid '+color+';break-inside:avoid;page-break-inside:avoid"&gt;';html+='&lt;strong style="color:'+color+';text-transform:uppercase;font-size:0.88rem;"&gt;'+item+apCost+":&lt;/strong&gt; ";html+='&lt;span style="color:#ccc;"&gt;'+cleanDesc+"&lt;/span&gt;&lt;/div&gt;";}return html;}if(tagsEl)tagsEl.innerHTML=w&amp;&amp;w.caracteristicas?blocks(w.caracteristicas,wMap,"#00ffff"):"";if(pasEl)pasEl.innerHTML=w&amp;&amp;w.passivas_de_utility?blocks(w.passivas_de_utility,uMap,"#00bfff"):"";}window.__rykePaintWeaponAbilityBlocks=paintWeaponBlocks;var prevInit=window.initUnitDashboard;window.initUnitDashboard=function(root){if(typeof prevInit==="function")prevInit(root);var sel=root.querySelector(".js-weapon-sel");var uw=root._updateWeapon;if(typeof uw==="function"&amp;&amp;!root._rykeUwPatched){root._rykeUwPatched=true;root._updateWeapon=function(nm){uw.apply(this,arguments);var s=root.querySelector(".js-weapon-sel");paintWeaponBlocks(root,nm!==undefined&amp;&amp;nm!==null?nm:(s?s.value:""));};}paintWeaponBlocks(root,sel?sel.value:"");};document.addEventListener("change",function(ev){var t=ev.target;if(!t||!t.classList.contains("js-weapon-sel"))return;var r=t.closest(".js-unit-dashboard");if(r)paintWeaponBlocks(r,t.value);},true);})();
+
+const CORE_RULES={
+  mov:"MOVIMENTO: Distância máxima em polegadas que o modelo pode se deslocar com uma ação de movimento, medida no terreno.",
+  dec:"DECOERÊNCIA: Quanto o esquadrão é afetado quando esta unidade morre — representa a coesão do grupo. Decoerência acumulada demais passa a gerar problemas ou penalidades ao squad.",
+  ap:"AP: Quantidade de ações que o modelo pode gastar por ativação (habilidades, manobras, etc.).",
+  peso:"PESO MÁX: O limite de peso total que este modelo pode carregar em utilitários e armas.",
+  vida:"VIDA: Quantidade de dano que o modelo pode sofrer antes de ser destruído.",
+  melee:"DEFESA CORPO A CORPO: Quanto de dano corpo a corpo o modelo absorve antes que o excesso cause dano à vida.",
+  ranged:"DEFESA À DISTÂNCIA: Quanto de dano à distância o modelo absorve antes que o excesso cause dano à vida.",
+  special:"DEFESA ESPECIAL: Quanto de dano especial o modelo absorve antes que o excesso cause dano à vida."
+};
+
+const squad=[];
+const totalEl=document.getElementById(BID+"-total");
+const cardsWrap=document.getElementById(BID+"-cards-wrap");
+const emptyEl=document.getElementById(BID+"-squad-empty");
+
+function normStr(s){ return String(s||"").trim().toLowerCase(); }
+function escHtml(s){ return String(s||"").replace(/&amp;/g,"&amp;").replace(/&lt;/g,"&lt;").replace(/&gt;/g,"&gt;"); }
+function escAttr(s){ return String(s||"").replace(/&amp;/g,"&amp;").replace(/"/g,"""); }
+function modelIsUnique(m){
+  if(!m)return false;
+  var kw=(m.keywords||[]).some(function(k){ return String(k).toLowerCase()==="unique"; });
+  var ch=(m.caracteristicas||[]).some(function(c){ return String(c).toLowerCase().indexOf("unique")&gt;=0; });
+  return kw||ch;
+}
+function hasDuplicateUniqueModels(){
+  var counts={};
+  squad.forEach(function(slot){
+    if(!modelIsUnique(slot.model))return;
+    var key=slot.model.path||slot.mpath||slot.model.name||"";
+    counts[key]=(counts[key]||0)+1;
+  });
+  for(var k in counts){ if(counts[k]&gt;1)return true; }
+  return false;
+}
+
+function getCurrentTactic(){
+  var fSel=getGlobalFacSel(), tSel=getGlobalTatSel();
+  var fn=fSel&amp;&amp;fSel.value||"", tn=tSel&amp;&amp;tSel.value||"";
+  if(!fn||!tn) return null;
+  var fac=ALL_FACTIONS.find(function(f){ return f.name===fn; }); if(!fac) return null;
+  var tat=(fac.taticas||[]).find(function(t){ return normStr(t.nome)===normStr(tn); });
+  return tat||null;
+}
+function slotUpgradesPts(slot){
+  if(!slot||!slot.upgrades||!slot.upgrades.length) return 0;
+  var tat=getCurrentTactic(); if(!tat||!tat.upgrades||!tat.upgrades.length) return 0;
+  var s=0;
+  slot.upgrades.forEach(function(idx){
+    var u=tat.upgrades[idx]; if(u) s+=Number(u.pontos)||0;
+  });
+  return s;
+}
+
+function recalcTotal(){
+  // O badge "t-pts-&lt;uid&gt;" já inclui basePts + facDelta + custo da arma + custo dos upgrades
+  // (graças ao applyWeaponPointsDisplay no export-fixes); então só somamos slot.currentPts.
+  var t=0;
+  squad.forEach(function(u){ t+=(parseInt(u.currentPts,10)||0); });
+  if(totalEl) totalEl.textContent=t;
+  updateInvalidBanner();
+}
+
+function renderAbil(list,map,color){
+  if(!list||!list.length)return"";
+  return list.map(function(item){
+    var k=String(item).toLowerCase();
+    var desc=(map&amp;&amp;map[k])||"Descrição não encontrada.";
+    var ap=""; var m=desc.match(/^\[([🔴]+)\]\s*/);
+    if(m){ap='&lt;span style="margin-left:6px;font-size:.9rem;"&gt;'+m[1]+'&lt;/span&gt;';desc=desc.substring(m[0].length);}
+    return '&lt;div style="margin-bottom:5px;font-family:sans-serif;font-size:1rem;line-height:1.4;padding:2px 8px;border-left:3px solid '+color+'"&gt;&lt;strong style="color:'+color+';text-transform:uppercase;"&gt;'+item+ap+':&lt;/strong&gt; &lt;span style="color:#ccc"&gt;'+desc+'&lt;/span&gt;&lt;/div&gt;';
+  }).join("");
+}
+function renderCaracteristicas(list,map,color){
+  if(!list||!list.length)return"";
+  return list.map(function(item){
+    var k=String(item).toLowerCase();
+    var desc=(map&amp;&amp;map[k])||"Descrição não encontrada no glossário.";
+    var ap=""; var am=desc.match(/^\[([🔴]+)\]\s*/);
+    if(am){ap='&lt;span style="margin-left:5px;font-size:.78rem;letter-spacing:1px;"&gt;'+am[1]+'&lt;/span&gt;';desc=desc.substring(am[0].length);}
+    return '&lt;div class="model-char-row" data-char-key="'+escAttr(k)+'" style="margin-bottom:5px;font-family:sans-serif;font-size:1rem;line-height:1.4;padding:2px 8px;border-left:3px solid '+color+';break-inside:avoid;page-break-inside:avoid"&gt;&lt;strong style="color:'+color+';text-transform:uppercase;"&gt;'+item+ap+':&lt;/strong&gt; &lt;span style="color:#ccc"&gt;'+desc+'&lt;/span&gt;&lt;/div&gt;';
+  }).join("");
+}
+function renderCarRowFromUpgrade(item,map,color,suffix){
+  var k=String(item).toLowerCase();
+  var desc=(map&amp;&amp;map[k])||"Descrição não encontrada no glossário.";
+  var ap=""; var am=desc.match(/^\[([🔴]+)\]\s*/);
+  if(am){ap='&lt;span style="margin-left:5px;font-size:.78rem;letter-spacing:1px;"&gt;'+am[1]+'&lt;/span&gt;';desc=desc.substring(am[0].length);}
+  var suf=suffix||"";
+  return '&lt;div class="model-char-row" data-char-key="'+escAttr(k)+'" data-char-source="upgrade" style="margin-bottom:5px;font-family:sans-serif;font-size:1rem;line-height:1.4;padding:2px 8px;border-left:3px solid '+color+';break-inside:avoid;page-break-inside:avoid"&gt;&lt;strong style="color:'+color+';text-transform:uppercase;"&gt;'+item+ap+suf+':&lt;/strong&gt; &lt;span style="color:#ccc"&gt;'+desc+'&lt;/span&gt;&lt;/div&gt;';
+}
+function charRowExistsInMTags(mTags,keyNorm){
+  if(!mTags)return false;
+  var rows=mTags.querySelectorAll(".model-char-row[data-char-key]");
+  for(var i=0;i&lt;rows.length;i++){
+    if(normStr(rows[i].getAttribute("data-char-key"))===keyNorm)return true;
+  }
+  return false;
+}
+
+function kwTagsHtml(m){
+  var kwList=[];
+  if(m.noosphera) kwList.push(m.noosphera);
+  (m.faccao||[]).forEach(function(f){ kwList.push(f); });
+  (m.keywords||[]).forEach(function(k){ if(kwList.indexOf(k)&lt;0) kwList.push(k); });
+  return kwList.map(function(k){ return '&lt;span class="model-kw"&gt;'+escHtml(k)+'&lt;/span&gt;'; }).join("");
+}
+
+function getGlobalFacSel(){ return root.querySelector(".js-sb-fac-global"); }
+function getGlobalTatSel(){ return root.querySelector(".js-sb-tat-global"); }
+
+function populateGlobalTactics(facName){
+  var sel=getGlobalTatSel(); if(!sel)return;
+  var prev=sel.value;
+  sel.innerHTML='&lt;option value=""&gt;— Escolha —&lt;/option&gt;';
+  if(!facName){ sel.disabled=true; sel.value=""; return; }
+  var fac=ALL_FACTIONS.find(function(f){ return f.name===facName; });
+  if(!fac||!fac.taticas||!fac.taticas.length){ sel.disabled=true; return; }
+  fac.taticas.forEach(function(t){
+    var nm=(t&amp;&amp;t.nome)||"";
+    sel.innerHTML+='&lt;option value="'+nm.replace(/"/g,""")+'"&gt;'+nm+'&lt;/option&gt;';
+  });
+  sel.disabled=false;
+  if(prev){ var ok=false; fac.taticas.forEach(function(x){ if(x.nome===prev) ok=true; }); if(ok) sel.value=prev; }
+}
+
+function syncSlotPtsFromBadges(){
+  squad.forEach(function(slot){
+    var el=document.getElementById("t-pts-"+slot.uid);
+    if(!el)return;
+    var mm=el.textContent.match(/(\d+)/);
+    if(mm) slot.currentPts=parseInt(mm[1],10);
+  });
+}
+
+var lastTacticKey = null;
+
+function activeUpgradesFor(slot){
+  var tat=getCurrentTactic();
+  if(!tat || !tat.upgrades || !Array.isArray(slot.upgrades)) return [];
+  return slot.upgrades.map(function(i){ return tat.upgrades[i]; }).filter(Boolean);
+}
+
+/** Garante efeitos mecânicos dos upgrades na ficha (tags, passivas, ações) mesmo se o export-fixes não mesclar o vetor de upgrades. */
+function collectCharsFromUpgradeEfeitos(ef){
+  var out=[];
+  if(!ef||typeof ef!=="object") return out;
+  var a=ef.caracteristica;
+  if(a){
+    if(Array.isArray(a)) a.forEach(function(x){ x=String(x||"").trim(); if(x) out.push(x); });
+    else String(a).split(",").forEach(function(x){ x=x.trim(); if(x) out.push(x); });
+  }
+  var pl=ef.caracteristicas;
+  if(pl){
+    if(Array.isArray(pl)) pl.forEach(function(x){ x=String(x||"").trim(); if(x) out.push(x); });
+    else String(pl).split(",").forEach(function(x){ x=x.trim(); if(x) out.push(x); });
+  }
+  return out.filter(function(v,i,ar){ return ar.indexOf(v)===i; });
+}
+function collectAbilFromUpgradeEfeitos(ef,key){
+  var out=[];
+  if(!ef||typeof ef!=="object") return out;
+  var a=ef[key];
+  if(!a) return out;
+  if(Array.isArray(a)) a.forEach(function(x){ x=String(x||"").trim(); if(x) out.push(x); });
+  else String(a).split(",").forEach(function(x){ x=x.trim(); if(x) out.push(x); });
+  return out.filter(function(v,i,ar){ return ar.indexOf(v)===i; });
+}
+function updateActiveUpgradesSummary(slot, ups){
+  var el=document.getElementById("t-sb-active-upgrades-"+slot.uid);
+  if(!el) return;
+  if(!ups||!ups.length){
+    el.innerHTML="";
+    el.removeAttribute("data-active");
+    return;
+  }
+  var html='&lt;div class="sb-aus-head"&gt;Upgrades ativos (esta ficha)&lt;/div&gt;';
+  ups.forEach(function(u){
+    if(!u) return;
+    var nm=escHtml(String(u.nome||"Upgrade").trim())||"Upgrade";
+    var pts=Number(u.pontos)||0;
+    html+='&lt;div class="sb-aus-line"&gt;&lt;span class="sb-aus-name"&gt;'+nm+'&lt;/span&gt;&lt;span class="sb-aus-pts"&gt;+'+pts+" pts&lt;/span&gt;&lt;/div&gt;";
+  });
+  el.innerHTML=html;
+  el.setAttribute("data-active","1");
+}
+
+function mergeUpgradeMechanicsIntoFicha(slot, ups){
+  var uid=slot.uid;
+  var chEl=document.getElementById("t-tat-chars-"+uid);
+  var mTags=chEl&amp;&amp;chEl.parentElement;
+  var glossPas=MAPS.passive||{};
+  if(chEl){
+    chEl.querySelectorAll(".model-char-row[data-char-source="upgrade"]").forEach(function(n){ n.remove(); });
+  }
+  var chars=[];
+  (ups||[]).forEach(function(u){ if(u&amp;&amp;u.efeitos) chars=chars.concat(collectCharsFromUpgradeEfeitos(u.efeitos)); });
+  chars=chars.filter(function(v,i,a){ return a.indexOf(v)===i; });
+  if(chEl&amp;&amp;chars.length){
+    chars.forEach(function(c){
+      var low=normStr(c);
+      if(charRowExistsInMTags(mTags,low)) return;
+      chEl.insertAdjacentHTML("beforeend",renderCarRowFromUpgrade(String(c).trim(),glossPas,"#ffcc00"," (UPGRADE)"));
+    });
+  }
+  var passUps=[]; var atvUps=[];
+  (ups||[]).forEach(function(u){ if(!u||!u.efeitos) return; passUps=passUps.concat(collectAbilFromUpgradeEfeitos(u.efeitos,"passiva")); atvUps=atvUps.concat(collectAbilFromUpgradeEfeitos(u.efeitos,"ativa")); });
+  passUps=passUps.filter(function(v,i,a){ return a.indexOf(v)===i; });
+  atvUps=atvUps.filter(function(v,i,a){ return a.indexOf(v)===i; });
+  var glossAct=MAPS.active||{};
+  function renderExtraAbil(list,map,color){
+    if(!list||!list.length) return "";
+    return list.map(function(item){
+      var k=String(item).toLowerCase();
+      var desc=(map&amp;&amp;map[k])||"Descrição não encontrada.";
+      return'&lt;div style="margin-bottom:5px;font-family:sans-serif;font-size:1rem;line-height:1.4;padding:2px 8px;border-left:3px solid '+color+'"&gt;&lt;strong style="color:'+color+';text-transform:uppercase;"&gt;'+escHtml(item)+':&lt;/strong&gt; &lt;span style="color:#ccc"&gt;'+escHtml(desc)+'&lt;/span&gt;&lt;/div&gt;';
+    }).join("");
+  }
+  if(passUps.length){
+    var pEl=document.getElementById("t-tat-passivas-"+uid);
+    if(pEl){
+      var ph=pEl.innerHTML;
+      if(ph.indexOf("PASSIVAS (UPGRADES OPCIONAIS)")&lt;0){
+        pEl.insertAdjacentHTML("beforeend",'&lt;div style="color:#33ddaa;font-size:0.72rem;font-weight:900;letter-spacing:1px;margin:10px 0 6px;"&gt;PASSIVAS (UPGRADES OPCIONAIS)&lt;/div&gt;'+renderExtraAbil(passUps,glossPas,"#33ddaa"));
+      } else {
+        passUps.forEach(function(name){
+          var low=normStr(name);
+          if(ph.toLowerCase().indexOf("&gt;"+low+"&lt;")&gt;=0||ph.toLowerCase().indexOf("&gt;"+low+":")&gt;=0) return;
+          pEl.insertAdjacentHTML("beforeend",renderExtraAbil([name],glossPas,"#33ddaa"));
+          ph=pEl.innerHTML;
+        });
+      }
+    }
+  }
+  if(atvUps.length){
+    var aEl=document.getElementById("t-tat-ativas-"+uid);
+    if(aEl){
+      var ah=aEl.innerHTML;
+      if(ah.indexOf("AÇÕES (UPGRADES OPCIONAIS)")&lt;0){
+        aEl.insertAdjacentHTML("beforeend",'&lt;div style="color:#ffcc00;font-size:0.72rem;font-weight:900;letter-spacing:1px;margin:10px 0 6px;"&gt;AÇÕES (UPGRADES OPCIONAIS)&lt;/div&gt;'+renderExtraAbil(atvUps,glossAct,"#ffcc00"));
+      } else {
+        atvUps.forEach(function(name){
+          var low=normStr(name);
+          if(ah.toLowerCase().indexOf("&gt;"+low+"&lt;")&gt;=0||ah.toLowerCase().indexOf("&gt;"+low+":")&gt;=0) return;
+          aEl.insertAdjacentHTML("beforeend",renderExtraAbil([name],glossAct,"#ffcc00"));
+          ah=aEl.innerHTML;
+        });
+      }
+    }
+  }
+}
+
+function applySlotEffects(slot){
+  var dash=document.getElementById(slot.uid); if(!dash) return;
+  if(!dash._initialized &amp;&amp; window.initUnitDashboard) window.initUnitDashboard(dash);
+  var fSel=getGlobalFacSel(), tSel=getGlobalTatSel();
+  var fn=fSel&amp;&amp;fSel.value||"", tn=tSel&amp;&amp;tSel.value||"";
+  var ups=activeUpgradesFor(slot);
+  if(dash._updateTatica) dash._updateTatica(fn, tn, ups);
+  try { mergeUpgradeMechanicsIntoFicha(slot, ups); } catch(e){ console.warn("SB mergeUpgradeMechanics", e); }
+  try { updateActiveUpgradesSummary(slot, ups); } catch(e2){ console.warn("SB updateActiveUpgradesSummary", e2); }
+}
+
+function applyGlobalTacticsToAll(){
+  var fSel=getGlobalFacSel(), tSel=getGlobalTatSel();
+  var fn=fSel&amp;&amp;fSel.value||"", tn=tSel&amp;&amp;tSel.value||"";
+  var key=fn+"::"+tn;
+  // Limpa upgrades só quando a tática realmente mudou (preserva ao adicionar/remover unidades, etc.)
+  if(lastTacticKey!==null &amp;&amp; lastTacticKey!==key){
+    squad.forEach(function(s){ s.upgrades=[]; });
+  }
+  lastTacticKey=key;
+  if(!cardsWrap) return;
+  squad.forEach(function(slot){ applySlotEffects(slot); });
+  syncSlotPtsFromBadges();
+  renderAllUpgrades();
+  renderFactionInfo();
+  recalcTotal();
+}
+
+function fmtEffectsList(ef){
+  if(!ef) return [];
+  var keysMap={vida:"+VIDA",defesa_melee:"+DEF MELEE",defesa_ranged:"+DEF RANGED",defesa_special:"+DEF SPECIAL",movimento:"+MOV",decoerencia:"+DEC",ap:"+AP",loadout_max:"+PESO MÁX"};
+  var out=[];
+  Object.keys(keysMap).forEach(function(k){
+    if(ef[k]==null||ef[k]==="")return;
+    var n=Number(ef[k]); if(isNaN(n))return;
+    var label=keysMap[k]; if(n&lt;0) label=label.replace("+","");
+    out.push((n&gt;0?"+":"")+n+" "+label.replace(/^[+-]/,"").trim());
+  });
+  if(ef.caracteristica){ out.push("Ganha "+ef.caracteristica); }
+  if(ef.passiva){ out.push("Passiva: "+(Array.isArray(ef.passiva)?ef.passiva.join(", "):ef.passiva)); }
+  if(ef.ativa){ out.push("Ação: "+(Array.isArray(ef.ativa)?ef.ativa.join(", "):ef.ativa)); }
+  return out;
+}
+
+function renderFactionInfo(){
+  var box=document.getElementById(BID+"-fac-info"); if(!box) return;
+  var fSel=getGlobalFacSel(), tSel=getGlobalTatSel();
+  var fn=fSel&amp;&amp;fSel.value||"", tn=tSel&amp;&amp;tSel.value||"";
+  if(!fn){ box.classList.remove("is-active"); box.innerHTML=""; return; }
+  var fac=ALL_FACTIONS.find(function(f){ return f.name===fn; });
+  if(!fac){ box.classList.remove("is-active"); box.innerHTML=""; return; }
+  var html="";
+  if(fac.passiva &amp;&amp; fac.passiva.nome){
+    html+='&lt;div class="sb-fi-block"&gt;'+
+      '&lt;div class="sb-fi-label"&gt;Passiva da Facção · '+escHtml(fac.name)+'&lt;/div&gt;'+
+      '&lt;div class="sb-fi-name"&gt;'+escHtml(fac.passiva.nome)+'&lt;/div&gt;'+
+      (fac.passiva.descricao?'&lt;div class="sb-fi-desc"&gt;'+escHtml(fac.passiva.descricao)+'&lt;/div&gt;':'')+
+    '&lt;/div&gt;';
+  }
+  if(tn){
+    var tat=(fac.taticas||[]).find(function(t){ return normStr(t.nome)===normStr(tn); });
+    if(tat){
+      var effects=fmtEffectsList(tat.efeitos).map(function(e){ return '&lt;span class="sb-fi-effect"&gt;'+escHtml(e)+'&lt;/span&gt;'; }).join("");
+      html+='&lt;div class="sb-fi-block"&gt;'+
+        '&lt;div class="sb-fi-label"&gt;Tática Selecionada&lt;/div&gt;'+
+        '&lt;div class="sb-fi-name tatica"&gt;⚡ '+escHtml(tat.nome)+'&lt;/div&gt;'+
+        (tat.sub?'&lt;div class="sb-fi-sub"&gt;'+escHtml(tat.sub)+'&lt;/div&gt;':'')+
+        (tat.descricao?'&lt;div class="sb-fi-desc"&gt;'+escHtml(tat.descricao)+'&lt;/div&gt;':'')+
+        (effects?'&lt;div class="sb-fi-effects"&gt;'+effects+'&lt;/div&gt;':'')+
+        (tat.requisito?'&lt;div class="sb-fi-req"&gt;⚠ '+escHtml(tat.requisito)+'&lt;/div&gt;':'')+
+      '&lt;/div&gt;';
+    }
+  }
+  box.innerHTML=html;
+  box.classList.toggle("is-active",!!html);
+}
+
+function renderUpgradesFor(slot){
+  var listEl=document.getElementById("upgrades-"+slot.uid); if(!listEl) return;
+  var tat=getCurrentTactic();
+  if(!tat){
+    listEl.innerHTML='&lt;div class="sb-upgrade-empty"&gt;Selecione uma tática global para ver os upgrades.&lt;/div&gt;';
+    return;
+  }
+  if(!tat.upgrades||!tat.upgrades.length){
+    listEl.innerHTML='&lt;div class="sb-upgrade-empty"&gt;Esta tática não tem upgrades opcionais.&lt;/div&gt;';
+    return;
+  }
+  if(!Array.isArray(slot.upgrades)) slot.upgrades=[];
+  var html=tat.upgrades.map(function(u,idx){
+    var active=slot.upgrades.indexOf(idx)&gt;=0;
+    return '&lt;div class="sb-upgrade-row'+(active?' is-active':'')+'" data-uid="'+slot.uid+'" data-upg-idx="'+idx+'"&gt;'+
+      '&lt;div class="sb-upgrade-name"&gt;&lt;span&gt;'+escHtml(u.nome)+'&lt;/span&gt;&lt;span class="sb-upgrade-cost"&gt;+'+(Number(u.pontos)||0)+' pts&lt;/span&gt;&lt;/div&gt;'+
+      (u.descricao?'&lt;div class="sb-upgrade-desc"&gt;'+escHtml(u.descricao)+'&lt;/div&gt;':'')+
+    '&lt;/div&gt;';
+  }).join("");
+  listEl.innerHTML=html;
+}
+
+function renderAllUpgrades(){ squad.forEach(renderUpgradesFor); }
+
+function toggleUpgrade(slotUid,idx){
+  var slot=squad.find(function(s){return s.uid===slotUid;}); if(!slot) return;
+  if(!Array.isArray(slot.upgrades)) slot.upgrades=[];
+  var pos=slot.upgrades.indexOf(idx);
+  if(pos&gt;=0) slot.upgrades.splice(pos,1); else slot.upgrades.push(idx);
+  renderUpgradesFor(slot);
+  // Reaplica efeitos da tática + upgrades ativos na ficha (badge de pontos, stats, características)
+  applySlotEffects(slot);
+  syncSlotPtsFromBadges();
+  recalcTotal();
+}
+
+function updateInvalidBanner(){
+  var inv=document.getElementById(BID+"-invalid");
+  var uniqBanner=document.getElementById(BID+"-unique-warn");
+  var ptsBanner=document.getElementById(BID+"-points-warn");
+  var gFacName=(getGlobalFacSel()&amp;&amp;getGlobalFacSel().value)||"";
+  var selectedFac=gFacName?ALL_FACTIONS.find(function(f){ return f.name===gFacName;}):null;
+  var badNoos=false;
+  if(!squad.length){
+    if(inv) inv.style.display="none";
+    if(uniqBanner) uniqBanner.style.display="none";
+    if(ptsBanner) ptsBanner.style.display="none";
+    root.querySelectorAll(".js-sb-noos-warn").forEach(function(x){ x.style.display="none"; });
+    return;
+  }
+  if(selectedFac){
+    var targetNoos=normStr(selectedFac.noosphera);
+    squad.forEach(function(slot){
+      var unitBad=normStr(slot.model.noosphera)!==targetNoos;
+      if(unitBad) badNoos=true;
+      var badge=document.querySelector("#wrap_"+slot.uid+" .js-sb-noos-warn");
+      if(badge) badge.style.display=unitBad?"inline-block":"none";
+    });
+  } else {
+    var ref=squad.length?normStr(squad[0].model.noosphera):"";
+    var uniq={};
+    squad.forEach(function(s){ uniq[normStr(s.model.noosphera)]=true; });
+    badNoos=Object.keys(uniq).length&gt;1;
+    squad.forEach(function(slot){
+      var unitBad=badNoos&amp;&amp;normStr(slot.model.noosphera)!==ref;
+      var badge=document.querySelector("#wrap_"+slot.uid+" .js-sb-noos-warn");
+      if(badge) badge.style.display=unitBad?"inline-block":"none";
+    });
+  }
+  if(inv) inv.style.display=badNoos?"inline":"none";
+  if(uniqBanner) uniqBanner.style.display=hasDuplicateUniqueModels()?"inline":"none";
+  var totPts=parseInt(totalEl?totalEl.textContent:"0",10)||0;
+  if(ptsBanner) ptsBanner.style.display=totPts&gt;1000?"inline":"none";
+}
+
+function buildCard(m){
+  var cid="sbu_"+Math.random().toString(36).substr(2,8);
+  var isUniq=(m.keywords||[]).some(function(k){return String(k).toLowerCase()==="unique"})||(m.caracteristicas||[]).some(function(c){ return String(c).toLowerCase().indexOf("unique")&gt;=0; });
+  var kwHtml=kwTagsHtml(m);
+  var charHtml=renderCaracteristicas(m.caracteristicas||[],MAPS.passive,"#d8b4fe");
+  var passH=renderAbil(m.habilidades_passivas,MAPS.passive,"#00bfff");
+  var actH=renderAbil(m.habilidades_ativas,MAPS.active,"#be63ff");
+  var padH=renderAbil(m.habilidades_padrao,MAPS.active,"#ffffff");
+  var wOptsHtml='&lt;option value=""&gt;— Escolha uma arma/utility —&lt;/option&gt;'+(m.weapons||[]).map(function(w){
+    var pmN=parseInt(w.point_mod,10);
+    var hasPm=w.point_mod!=null &amp;&amp; w.point_mod!=="" &amp;&amp; !isNaN(pmN);
+    var suffix=hasPm?' ('+(pmN&gt;0?'+':'')+pmN+' pts)':'';
+    return'&lt;option value="'+w.name.replace(/"/g,""")+'"&gt;'+w.name+suffix+'&lt;/option&gt;';
+  }).join("");
+  var _src=m.imgObj?m.imgObj.src:""; var _raw=m.imgObj?m.imgObj.raw:"";
+  var uniqueBadge=isUniq?'&lt;span class="unique-badge"&gt;UNIQUE&lt;/span&gt;':"";
+  var apNum=Number(m.ap!=null&amp;&amp;m.ap!==""?m.ap:m.AP)||0;
+  var favImg=FAV?'&lt;img class="favicon-logo" src="'+escAttr(FAV)+'" alt="" onerror="this.style.display=\'none\'"/&gt;':'';
+  var heroImg=_src?'&lt;div class="top-hero-img" style="background-image: url(\''+escAttr(_src)+'\');" data-export-src="'+escAttr(_raw)+'"&gt;&lt;/div&gt;':'';
+  var updated=m.updatedStr||"—";
+  return{uid:cid,html:
+'&lt;div class="sb-unit-wrap" id="wrap_'+cid+'"&gt;'+
+'&lt;div class="hud-outer-v13 js-unit-dashboard" id="'+cid+'"'+
+' data-weapons=\''+encodeURIComponent(JSON.stringify(m.weapons||[]))+'\''+
+' data-factions=\''+encodeURIComponent(JSON.stringify(ALL_FACTIONS))+'\''+
+' data-base-stats=\''+encodeURIComponent(JSON.stringify({vida:m.vida,armadura_melee:m.armadura_melee,armadura_ranged:m.armadura_ranged,armadura_special:m.armadura_special,movimento:m.movimento,decoerencia:m.decoerencia,ap:apNum}))+'\''+
+' data-maps=\''+encodeURIComponent(JSON.stringify(MAPS))+'\''+
+' data-unit-noos="'+escAttr(m.noosphera)+'"'+
+' data-unit-faccao="'+escAttr(m.faccao&amp;&amp;m.faccao[0]||"")+'"'+
+' data-base-pts="'+m.pontos+'"'+
+' data-max-peso="'+(m.loadout_max||0)+'"'+
+' data-unit-name="'+escAttr(m.name)+'"&gt;'+
+'&lt;div class="top-bar"&gt;'+
+heroImg+
+'&lt;div class="top-content"&gt;'+
+'&lt;div class="badge-row"&gt;'+
+favImg+
+'&lt;span class="pts-badge-new js-pts-badge" id="t-pts-badge-'+cid+'"&gt;&lt;span id="t-pts-'+cid+'"&gt;'+m.pontos+' PONTOS&lt;/span&gt;&lt;/span&gt;'+
+'&lt;span class="sb-noos-warn js-sb-noos-warn"&gt;NOOSPHERA&lt;/span&gt;'+
+uniqueBadge+
+'&lt;/div&gt;'+
+'&lt;div class="hud-main-name"&gt;'+escHtml(m.name)+'&lt;/div&gt;'+
+'&lt;div class="kw-row"&gt;'+kwHtml+'&lt;/div&gt;'+
+'&lt;div class="all-stats-row"&gt;'+
+'&lt;div class="stat-box tc-tooltip" data-desc="'+CORE_RULES.mov+'"&gt;&lt;span class="stat-lbl"&gt;MOV&lt;/span&gt;&lt;span class="stat-val" id="t-mov-'+cid+'"&gt;'+m.movimento+'&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div class="stat-box tc-tooltip" data-desc="'+CORE_RULES.dec+'"&gt;&lt;span class="stat-lbl"&gt;DEC&lt;/span&gt;&lt;span class="stat-val" id="t-dec-'+cid+'"&gt;'+m.decoerencia+'&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div class="stat-box tc-tooltip" data-desc="'+CORE_RULES.ap+'"&gt;&lt;span class="stat-lbl"&gt;AP&lt;/span&gt;&lt;span class="stat-val" id="t-ap-'+cid+'"&gt;'+apNum+' &lt;span style="font-size:0.75rem;color:#ff3366;"&gt;🔴&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div class="stat-box tc-tooltip" data-desc="'+CORE_RULES.peso+'"&gt;&lt;span class="stat-lbl"&gt;PESO&lt;/span&gt;&lt;span class="stat-val" id="peso-max-'+cid+'"&gt;0/'+(m.loadout_max||0)+'&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div class="stat-div"&gt;&lt;/div&gt;'+
+'&lt;div class="stat-box vida tc-tooltip" data-desc="'+CORE_RULES.vida+'"&gt;&lt;span class="stat-lbl"&gt;VIDA&lt;/span&gt;&lt;span class="stat-val" id="t-vida-'+cid+'"&gt;❤️ '+m.vida+'&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div class="stat-box def tc-tooltip" data-desc="'+CORE_RULES.melee+'"&gt;&lt;span class="stat-lbl"&gt;MELEE&lt;/span&gt;&lt;span class="stat-val" id="t-def-melee-'+cid+'"&gt;🛡️ ⚔️ '+m.armadura_melee+'&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div class="stat-box def tc-tooltip" data-desc="'+CORE_RULES.ranged+'"&gt;&lt;span class="stat-lbl"&gt;RANGED&lt;/span&gt;&lt;span class="stat-val" id="t-def-ranged-'+cid+'"&gt;🛡️ 🔫 '+m.armadura_ranged+'&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div class="stat-box def tc-tooltip" data-desc="'+CORE_RULES.special+'"&gt;&lt;span class="stat-lbl"&gt;SPECIAL&lt;/span&gt;&lt;span class="stat-val" id="t-def-special-'+cid+'"&gt;🛡️ ⚠️ '+m.armadura_special+'&lt;/span&gt;&lt;/div&gt;'+
+'&lt;/div&gt;'+
+'&lt;div class="date-line"&gt;ATUALIZADO EM: '+escHtml(updated)+'&lt;/div&gt;'+
+'&lt;/div&gt;'+
+'&lt;/div&gt;'+
+'&lt;div class="hud-body-grid"&gt;'+
+'&lt;div class="col-abilities ryke-scrollbox"&gt;'+
+passH+
+'&lt;div id="t-tat-desc-'+cid+'" style="margin-bottom:8px;"&gt;&lt;/div&gt;'+
+'&lt;div id="m-tags-'+cid+'" style="display:flex;flex-direction:column;gap:4px;margin-bottom:16px;"&gt;'+charHtml+'&lt;div id="t-tat-chars-'+cid+'"&gt;&lt;/div&gt;&lt;/div&gt;'+
+'&lt;div id="t-tat-passivas-'+cid+'" style="margin-bottom:12px;"&gt;&lt;/div&gt;'+
+'&lt;div id="t-sb-active-upgrades-'+cid+'" class="sb-active-upgrades-summary" aria-live="polite"&gt;&lt;/div&gt;'+
+'&lt;div style="flex-grow:1;"&gt;'+padH+actH+
+'&lt;div id="t-tat-ativas-'+cid+'"&gt;&lt;/div&gt;&lt;/div&gt;'+
+'&lt;/div&gt;'+
+'&lt;div class="col-equipment ryke-scrollbox"&gt;'+
+'&lt;div class="weapon-selector-wrapper"&gt;&lt;div id="w-sel-display-'+cid+'" class="weapon-selector-display"&gt;— ESCOLHA UMA ARMA/UTILITY —&lt;/div&gt;'+
+'&lt;select class="weapon-selector js-weapon-sel" data-uid="'+cid+'" id="w-sel-'+cid+'"&gt;'+wOptsHtml+'&lt;/select&gt;&lt;/div&gt;'+
+'&lt;img id="w-img-'+cid+'" class="weapon-art" src="" alt=""&gt;'+
+'&lt;div style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px;margin-bottom:8px;"&gt;'+
+'&lt;div id="w-kws-'+cid+'" style="display:flex;flex-wrap:wrap;gap:4px;flex:1;min-width:0;align-content:flex-start;"&gt;&lt;/div&gt;'+
+'&lt;div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0;max-width:min(104px,38%);"&gt;'+
+'&lt;div class="w-stat-item w-peso-inline"&gt;'+
+'&lt;span class="w-stat-val" id="w-peso-'+cid+'" style="margin:0;"&gt;0&lt;/span&gt;'+
+'&lt;span class="w-stat-lbl" style="margin:0;"&gt;PESO&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div id="w-pts-mod-'+cid+'" style="font-size:.45rem;font-weight:800;letter-spacing:.45px;color:#888;text-transform:uppercase;text-align:right;line-height:1.15;max-width:100%;display:none;"&gt;&lt;/div&gt;'+
+'&lt;/div&gt;&lt;/div&gt;'+
+'&lt;div class="w-stats-grid"&gt;'+
+'&lt;div class="w-stat-item" id="w-atk-box-'+cid+'"&gt;&lt;span class="w-stat-lbl"&gt;ATK&lt;/span&gt;&lt;span class="w-stat-val" id="w-atk-'+cid+'"&gt;0&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div class="w-stat-item" id="w-mira-box-'+cid+'"&gt;&lt;span class="w-stat-lbl"&gt;MIRA&lt;/span&gt;&lt;span class="w-stat-val" id="w-mira-'+cid+'"&gt;0&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div class="w-stat-item" id="w-dist-box-'+cid+'"&gt;&lt;span class="w-stat-lbl"&gt;DIST&lt;/span&gt;&lt;span class="w-stat-val" id="w-dist-'+cid+'"&gt;-&lt;/span&gt;&lt;/div&gt;'+
+'&lt;div class="w-stat-item" id="w-dmg-box-'+cid+'"&gt;&lt;span class="w-stat-lbl"&gt;DANO&lt;/span&gt;&lt;span class="w-stat-val" id="w-dmg-'+cid+'" style="font-size:0.9rem;"&gt;-&lt;/span&gt;&lt;/div&gt;'+
+'&lt;/div&gt;'+
+'&lt;div id="w-tags-'+cid+'" style="display:flex;flex-direction:column;gap:4px;margin-top:8px;"&gt;&lt;/div&gt;'+
+'&lt;div id="w-passives-'+cid+'" style="margin-top:12px;"&gt;&lt;/div&gt;'+
+'&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;'+
+'&lt;div class="sb-side-panel"&gt;'+
+'&lt;button type="button" class="sb-remove-btn js-remove-btn" data-uid="'+cid+'"&gt;🗑 REMOVER&lt;/button&gt;'+
+'&lt;div class="sb-upgrades-section"&gt;'+
+'&lt;div class="sb-upgrades-title"&gt;⚡ Upgrades Opcionais&lt;/div&gt;'+
+'&lt;div class="sb-upgrades-list js-upgrades-list" id="upgrades-'+cid+'" data-uid="'+cid+'"&gt;&lt;/div&gt;'+
+'&lt;/div&gt;'+
+'&lt;/div&gt;'+
+'&lt;/div&gt;'
+  };
+}
+
+function addUnit(mpath){
+  var m=ALL_MODELS.find(function(x){return x.path===mpath;}); if(!m)return;
+  // Sem arma inicial: o usuário escolhe explicitamente. slot.weaponName = "" → custo zero de arma.
+  var slot={uid:null,mpath:mpath,model:m,currentPts:m.pontos,weaponName:"",upgrades:[]};
+  var card=buildCard(m); slot.uid=card.uid;
+  squad.push(slot);
+  if(emptyEl) emptyEl.style.display="none";
+  var div=document.createElement("div"); div.innerHTML=card.html;
+  if(cardsWrap) cardsWrap.appendChild(div);
+  var dashEl=document.getElementById(card.uid);
+  if(dashEl&amp;&amp;window.initUnitDashboard) window.initUnitDashboard(dashEl);
+  // Reset do dashboard com arma vazia (atualiza UI, zera custo de arma)
+  if(dashEl&amp;&amp;dashEl._updateWeapon) dashEl._updateWeapon("");
+  // Garante que o select não vá pra primeira opção sozinho
+  var sel=document.getElementById("w-sel-"+card.uid); if(sel) sel.value="";
+  applySlotEffects(slot);
+  syncSlotPtsFromBadges();
+  renderUpgradesFor(slot);
+  renderFactionInfo();
+  recalcTotal();
+}
+
+function removeUnit(cardUid){
+  var idx=squad.findIndex(function(s){return s.uid===cardUid;}); if(idx&lt;0)return;
+  squad.splice(idx,1);
+  var w=document.getElementById("wrap_"+cardUid); if(w)w.remove();
+  if(!squad.length &amp;&amp; emptyEl) emptyEl.style.display="";
+  recalcTotal();
+}
+
+function applyFilters(){
+  var name=root.querySelector(".js-sb-search").value.toLowerCase();
+  var noos=root.querySelector(".js-sb-noos").value;
+  var fac=root.querySelector(".js-sb-fac").value;
+  root.querySelectorAll(".js-sbcard").forEach(function(c){
+    var ok=(!name||c.dataset.name.includes(name))&amp;&amp;(!noos||c.dataset.noos===noos)&amp;&amp;(!fac||c.dataset.fac.split("|").includes(fac));
+    c.classList.toggle("hidden",!ok);
+  });
+}
+
+var sbSearch = root.querySelector(".js-sb-search");
+if(sbSearch) sbSearch.addEventListener("input",applyFilters);
+var sbNoos = root.querySelector(".js-sb-noos");
+if(sbNoos) sbNoos.addEventListener("change",applyFilters);
+var sbFac = root.querySelector(".js-sb-fac");
+if(sbFac) sbFac.addEventListener("change",applyFilters);
+
+root.addEventListener("click",function(e){
+  var addBtn=e.target.closest(".js-add-btn");
+  if(addBtn){addUnit(addBtn.dataset.mpath);return;}
+  var remBtn=e.target.closest(".js-remove-btn");
+  if(remBtn){removeUnit(remBtn.dataset.uid);return;}
+  var upgRow=e.target.closest(".sb-upgrade-row");
+  if(upgRow){
+    var uid=upgRow.getAttribute("data-uid");
+    var idx=parseInt(upgRow.getAttribute("data-upg-idx"),10);
+    if(uid &amp;&amp; !isNaN(idx)) toggleUpgrade(uid,idx);
+    return;
+  }
+});
+
+root.addEventListener("change",function(e){
+  var t=e.target;
+  if(t.classList.contains("js-sb-fac-global")){
+    populateGlobalTactics(t.value);
+    var ts=getGlobalTatSel(); if(ts) ts.value="";
+    applyGlobalTacticsToAll();
+    return;
+  }
+  if(t.classList.contains("js-sb-tat-global")){
+    applyGlobalTacticsToAll();
+    return;
+  }
+  var root2=t.closest(".js-unit-dashboard");
+  if(!root2&amp;&amp;t.getAttribute("data-uid")) root2=document.getElementById(t.getAttribute("data-uid"));
+  if(!root2||!root2.classList.contains("js-unit-dashboard"))return;
+  var uid2=root2.id;
+  var slot=squad.find(function(s){return s.uid===uid2;}); if(!slot)return;
+  if(t.classList.contains("js-weapon-sel")){ slot.weaponName=t.value; }
+  setTimeout(function(){ syncSlotPtsFromBadges(); recalcTotal(); },50);
+});
+
+var btnZip = root.querySelector(".js-export-zip");
+if(btnZip) btnZip.addEventListener("click",function(){
+  var huds=cardsWrap?cardsWrap.querySelectorAll(".hud-outer-v13"):[];
+  if(!huds.length){alert("Adicione unidades ao esquadrão primeiro!");return;}
+  var btn=btnZip;
+  var origLabel=btn.textContent;
+  function setBusy(on, extra){
+    btn.disabled=!!on;
+    btn.textContent=on?("Exportando…"+(extra||"")):origLabel;
+  }
+  function loadLib(src, globalName, onload){
+    if(typeof window[globalName]!=="undefined"){ onload(); return; }
+    var s=document.createElement("script");
+    s.src=src;
+    s.async=true;
+    s.onload=function(){ onload(); };
+    s.onerror=function(){
+      setBusy(false);
+      alert("Não foi possível carregar "+globalName+" (rede bloqueada ou offline).");
+    };
+    document.head.appendChild(s);
+  }
+  function safeFileBase(name, fallback){
+    var n=String(name||fallback||"unit").replace(/[\/:*?"&lt;&gt;|]/g,"_");
+    n=n.replace(/\s+/g," ").trim();
+    if(!n.length) n=String(fallback||"unit");
+    return n;
+  }
+  setBusy(true," (preparar)");
+  loadLib("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js","html2canvas",function(){
+    loadLib("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js","JSZip",function(){
+      if(typeof html2canvas==="undefined"||typeof JSZip==="undefined"){
+        setBusy(false);
+        alert("Bibliotecas de exportação não carregaram.");
+        return;
+      }
+      var zip=new JSZip();
+      var idx=0;
+      var total=huds.length;
+      function afterAll(){
+        setBusy(true," (compactar)");
+        zip.generateAsync({type:"blob",compression:"DEFLATE",compressionOptions:{level:6}})
+          .then(function(blob){
+            var url=URL.createObjectURL(blob);
+            var a=document.createElement("a");
+            a.download="squad_noosphera.zip";
+            a.href=url;
+            a.rel="noopener";
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function(){
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+            },1500);
+            setBusy(false);
+          })
+          .catch(function(e){
+            console.error("JSZip",e);
+            setBusy(false);
+            alert("Erro ao gerar o ZIP: "+(e&amp;&amp;e.message?e.message:String(e)));
+          });
+      }
+      function runNext(){
+        if(idx&gt;=total){ afterAll(); return; }
+        var hud=huds[idx];
+        var nDone=idx+1;
+        idx++;
+        setBusy(true," ("+nDone+"/"+total+")");
+        var scale=1;
+        if(typeof window.matchMedia==="function" &amp;&amp; window.matchMedia("(min-width:1200px)").matches) scale=1.25;
+        html2canvas(hud,{
+          backgroundColor:"#050505",
+          scale:scale,
+          useCORS:true,
+          allowTaint:true,
+          logging:false
+        }).then(function(canvas){
+          var base=safeFileBase(hud.dataset&amp;&amp;hud.dataset.unitName,"unit_"+nDone);
+          canvas.toBlob(function(b){
+            if(!b){
+              console.warn("toBlob falhou para",base);
+            } else {
+              zip.file(base+".jpg",b);
+            }
+            setTimeout(runNext,40);
+          },"image/jpeg",0.82);
+        }).catch(function(err){
+          console.error("html2canvas",err);
+          alert("Falha ao capturar a ficha "+nDone+"/"+total+". Tente reduzir o zoom da página ou exportar uma unidade por vez.");
+          setTimeout(runNext,40);
+        });
+      }
+      runNext();
+    });
+  });
+});
+
+var btnDeckTts = root.querySelector(".js-export-deck-tts");
+if(btnDeckTts) btnDeckTts.addEventListener("click",function(){
+  var huds=cardsWrap?cardsWrap.querySelectorAll(".hud-outer-v13"):[];
+  if(!huds.length){alert("Adicione unidades ao esquadrão primeiro!");return;}
+  var btn=btnDeckTts;
+  var origLabel=btn.textContent;
+  function setBusy(on, extra){
+    btn.disabled=!!on;
+    btn.textContent=on?("Gerando folha…"+(extra||"")):origLabel;
+  }
+  function loadLib(src, globalName, onload){
+    if(typeof window[globalName]!=="undefined"){ onload(); return; }
+    var s=document.createElement("script");
+    s.src=src;
+    s.async=true;
+    s.onload=function(){ onload(); };
+    s.onerror=function(){
+      setBusy(false);
+      alert("Não foi possível carregar "+globalName+" (rede bloqueada ou offline).");
+    };
+    document.head.appendChild(s);
+  }
+  var n=huds.length;
+  var HUD_RATIO=1654/869;
+  /* Folha alta-res: TTS aceita texturas grandes; 512px/carta ficava ilegível ao encolher no tabuleiro. */
+  var MAX_SIDE=8192;
+  var IDEAL_CARD_W=1080;
+  var MIN_CARD_W=640;
+  var cols=Math.ceil(Math.sqrt(n));
+  var rows=Math.ceil(n/cols);
+  function deckCellDims(cardW){
+    var cardH=Math.round(cardW/HUD_RATIO);
+    return { cardW:cardW, cardH:cardH, sheetW:cols*cardW, sheetH:rows*cardH };
+  }
+  var CARD_W=IDEAL_CARD_W;
+  var d=deckCellDims(CARD_W);
+  var shrink=Math.min(MAX_SIDE/Math.max(d.sheetW,1), MAX_SIDE/Math.max(d.sheetH,1), 1);
+  if(shrink&lt;1){
+    CARD_W=Math.max(MIN_CARD_W, Math.floor(CARD_W*shrink));
+    d=deckCellDims(CARD_W);
+    if(d.sheetW&gt;MAX_SIDE||d.sheetH&gt;MAX_SIDE){
+      shrink=Math.min(MAX_SIDE/d.sheetW, MAX_SIDE/d.sheetH);
+      CARD_W=Math.max(MIN_CARD_W, Math.floor(CARD_W*shrink));
+      d=deckCellDims(CARD_W);
+    }
+  }
+  var CARD_H=d.cardH, sheetW=d.sheetW, sheetH=d.sheetH;
+  var gfs=getGlobalFacSel(), gts=getGlobalTatSel();
+  var gFac=gfs&amp;&amp;gfs.value||"", gTat=gts&amp;&gt;s.value||"";
+  var totPts=parseInt(totalEl?totalEl.textContent:"0",10)||0;
+
+  setBusy(true," (0/"+n+")");
+  loadLib("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js","html2canvas",function(){
+    loadLib("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js","JSZip",function(){
+      if(typeof html2canvas==="undefined"||typeof JSZip==="undefined"){
+        setBusy(false);
+        alert("Bibliotecas não carregaram.");
+        return;
+      }
+      var canvases=new Array(n);
+      var idx=0;
+      var dpr=(typeof window.devicePixelRatio==="number"&amp;&amp;window.devicePixelRatio&gt;1)?window.devicePixelRatio:1;
+      var scale=Math.min(2.75, Math.max(2, Math.round(dpr*1.35)));
+      function runCap(){
+        if(idx&gt;=n){
+          try{
+            var master=document.createElement("canvas");
+            master.width=sheetW;
+            master.height=sheetH;
+            var ctx=master.getContext("2d");
+            if(ctx.imageSmoothingEnabled!==undefined){ ctx.imageSmoothingEnabled=true; }
+            if(ctx.imageSmoothingQuality!==undefined){ ctx.imageSmoothingQuality="high"; }
+            ctx.fillStyle="#050505";
+            ctx.fillRect(0,0,sheetW,sheetH);
+            var pi;
+            for(pi=0;pi&lt;n;pi++){
+              var row=Math.floor(pi/cols);
+              var col=pi%cols;
+              var cv=canvases[pi];
+              ctx.drawImage(cv,0,0,cv.width,cv.height,col*CARD_W,row*CARD_H,CARD_W,CARD_H);
+            }
+            for(;pi&lt;cols*rows;pi++){
+              row=Math.floor(pi/cols);
+              col=pi%cols;
+              ctx.fillStyle="#121212";
+              ctx.fillRect(col*CARD_W,row*CARD_H,CARD_W,CARD_H);
+              ctx.strokeStyle="#333";
+              ctx.strokeRect(col*CARD_W+0.5,row*CARD_H+0.5,CARD_W-1,CARD_H-1);
+            }
+            var orderLines=[];
+            for(pi=0;pi&lt;n;pi++){
+              var nm=(huds[pi].dataset&amp;&amp;huds[pi].dataset.unitName)||("(unidade "+(pi+1)+")");
+              orderLines.push(String(pi+1)+". "+nm);
+            }
+            var readme=[
+              "Noosphera — Custom Deck (Tabletop Simulator)",
+              "https://kb.tabletopsimulator.com/custom-content/custom-deck/",
+              "",
+              "1) Descompacte este ZIP.",
+              "2) Aloje noosphera_deck_face.png num URL público (HTTPS), ou use ficheiro local.",
+              "3) No TTS: Objects → Components → Custom → Deck.",
+              "   Face: URL ou caminho da imagem da folha.",
+              "   Width  (cartas na horizontal da folha): "+cols,
+              "   Height (cartas na vertical da folha):   "+rows,
+              "   Number (quantidade de cartas no baralho): "+n,
+              "",
+              "Recomendado: Unique Backs = Não; carregue um verso único em Back.",
+              "Opcional: Back is Hidden = Sim → usa o verso normal quando a carta está na mão.",
+              "",
+              "Ordem das cartas no deck (fileiras da folha: esquerda→direita, topo→baixo):",
+              orderLines.join("\n"),
+              "",
+              "Resumo do builder: facção="+gFac+" | tática="+gTat+" | total "+totPts+" pts",
+              "",
+              "Dimensões da folha: "+sheetW+"×"+sheetH+" px ("+CARD_W+"×"+CARD_H+" px por célula).",
+              "",
+              "Legibilidade: esta folha usa resolução alta (até "+MAX_SIDE+" px de lado). Se o TTS ou o hosting recusarem o ficheiro, reduza unidades por deck ou comprima num editor."
+            ].join("\n");
+
+            master.toBlob(function(faceBlob){
+              if(!faceBlob){ setBusy(false); alert("Falha ao gerar PNG."); return; }
+              var zip=new JSZip();
+              zip.file("noosphera_deck_face.png", faceBlob);
+              zip.file("LEIA-ME_deck_TTS.txt", readme);
+              zip.generateAsync({type:"blob",compression:"DEFLATE",compressionOptions:{level:6}})
+                .then(function(blob){
+                  var url=URL.createObjectURL(blob);
+                  var a=document.createElement("a");
+                  a.download="noosphera_tts_deck.zip";
+                  a.href=url;
+                  a.rel="noopener";
+                  document.body.appendChild(a);
+                  a.click();
+                  setTimeout(function(){
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                  },1500);
+                  setBusy(false);
+                  alert("ZIP gerado. Width="+cols+", Height="+rows+", Number="+n+". \nUse LEIA-ME_deck_TTS.txt ao criar o Custom Deck no TTS.");
+                })
+                .catch(function(e){
+                  console.error(e);
+                  setBusy(false);
+                  alert("Erro ao compactar: "+(e&amp;&amp;e.message?e.message:String(e)));
+                });
+            },"image/png");
+          }catch(ex){
+            console.error(ex);
+            setBusy(false);
+            alert("Erro ao montar folha: "+(ex&amp;&amp;ex.message?ex.message:String(ex)));
+          }
+          return;
+        }
+        var hud=huds[idx];
+        var cur=idx+1;
+        idx++;
+        setBusy(true," ("+cur+"/"+n+")");
+        html2canvas(hud,{
+          backgroundColor:"#050505",
+          scale:scale,
+          useCORS:true,
+          allowTaint:true,
+          logging:false
+        }).then(function(cv){
+          canvases[cur-1]=cv;
+          setTimeout(runCap,40);
+        }).catch(function(err){
+          console.error("html2canvas deck",err);
+          alert("Falha ao capturar unidade "+cur+"/"+n+".");
+          setBusy(false);
+        });
+      }
+      runCap();
+    });
+  });
+});
+root._sbInit=true;
+root.setAttribute("data-sb-engine-ready","1");
+} catch (err) {
+  console.error("Squad Builder engine:", err);
+  var r=document.getElementById("sb_m90qqv5q")||document.querySelector(".js-squad-builder-app");
+  if(r) r._sbInit=false;
+}
+})();</textarea>
+<h1 style="font-family:'Orbitron',sans-serif;font-size:1.5rem;letter-spacing:4px;text-transform:uppercase;color:#d8b4fe;margin-bottom:25px;font-weight:300;" dir="auto" class="heading" id="⚔_SQUAD_BUILDER_0">⚔ SQUAD BUILDER</h1>
+<div class="sb-layout">
+
+<!-- BROWSER -->
+<div class="sb-browser">
+  <div class="sb-browser-title">📋 Roster de Modelos</div>
+  <input class="sb-search js-sb-search" type="text" placeholder="Buscar por nome..." value="">
+  <select class="sb-sel js-sb-noos"><option value="">Todas Noospheras</option><option value="ryke">Ryke</option></select>
+  <select class="sb-sel js-sb-fac"><option value="">Todas Facções</option><option value="casacas">Casacas</option></select>
+  <div class="sb-model-list"><div class="sb-mcard js-sbcard" data-name="agente fiscal casaca dourado" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/golden-coat.png" data-export-src="Recursos/Imagens/Renders/Casaca/Golden coat.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Agente Fiscal Casaca Dourado</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">90<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Agente Fiscal Casaca Dourado.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="arkwright" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/arkwright.png" data-export-src="Recursos/Imagens/Renders/Casaca/Arkwright.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Arkwright</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">135<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Arkwright.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="casaca artilharia" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-artillary.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat Artillary.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Casaca Artilharia</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">120<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Casaca Artilharia.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="casaca escuro" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/black-coat.png" data-export-src="Recursos/Imagens/Renders/Casaca/Black coat.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Casaca Escuro</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">120<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Casaca Escuro.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="casaca investigador" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-investigator.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat Investigator.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Casaca Investigador</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">90<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Casaca Investigador.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="casaca perseguidor" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-pursuer.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat Pursuer.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Casaca Perseguidor</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">110<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Casaca Perseguidor.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="casaca pesado" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/heavy-coat.png" data-export-src="Recursos/Imagens/Renders/Casaca/Heavy Coat.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Casaca Pesado</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">105<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Casaca Pesado.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="casaca pistoleiro" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-gunslinger.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat Gunslinger.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Casaca Pistoleiro</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">80<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Casaca Pistoleiro.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="casaca übermensh" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-ubermansh.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat Ubermansh.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Casaca Übermensh</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">120<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Casaca Übermensh.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="cientista casaca" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-scientist.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat Scientist.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Cientista Casaca</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">120<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Cientista Casaca.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="comandante casaca" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-commander.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat commander.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Comandante Casaca</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">110<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Comandante Casaca.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="drone casaca cão" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-drone-dog.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat Drone Dog.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Drone Casaca Cão</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">70<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Drone Casaca Cão.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="drone casaca" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-drone.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat Drone.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Drone Casaca</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">55<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Drone Casaca.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="drone casaca monstro" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-drone-monster.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat Drone Monster.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Drone Casaca Monstro</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">85<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Drone Casaca Monstro.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="escolta de honra casaca azul" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/blue-coat.png" data-export-src="Recursos/Imagens/Renders/Casaca/Blue coat.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Escolta de Honra Casaca Azul</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">100<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Escolta de Honra Casaca Azul.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="explorador casaca púrpura" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/purple-coat.png" data-export-src="Recursos/Imagens/Renders/Casaca/Purple coat.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Explorador Casaca Púrpura</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">85<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Explorador Casaca Púrpura.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="guarda anti-motim casaca" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-riot-guard.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat Riot Guard.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Guarda Anti-motim Casaca</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">100<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Guarda Anti-motim Casaca.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="infiltrador casaca" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/coat-infiltrator.png" data-export-src="Recursos/Imagens/Renders/Casaca/Coat infiltrator.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Infiltrador Casaca</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">85<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Infiltrador Casaca.md">➕ ADD</button>
+</div><div class="sb-mcard js-sbcard" data-name="lilliane firnoff" data-noos="ryke" data-fac="casacas">
+  <img class="sb-mcard-img" src="recursos/imagens/renders/casaca/lilliane-firnoff.png" data-export-src="Recursos/Imagens/Renders/Casaca/Lilliane Firnoff.png" referrerpolicy="no-referrer" target="_self">
+  <div class="sb-mcard-info">
+    <div class="sb-mcard-name">Lilliane Firnoff</div>
+    <div class="sb-mcard-sub">Casacas</div>
+  </div>
+  <div class="sb-mcard-pts">115<small>pts</small></div>
+  <button class="sb-add-btn js-add-btn" data-mpath="Wargame/02 Models/Casacos/Lilliane Firnoff.md">➕ ADD</button>
+</div></div>
+</div>
+
+<!-- SQUAD -->
+<div class="sb-squad">
+  <div class="sb-squad-header">
+    <div class="sb-pts-total"><small>Total do Esquadrão</small><div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;"><span class="sb-pts-num"><span id="sb_m90qqv5q-total">0</span></span> <span style="font-size:1rem;color:#a99bbd;font-weight:300;">PTS</span><span id="sb_m90qqv5q-invalid" class="sb-invalid-banner">⚠ Esquadrão inválido (noosphera)</span><span id="sb_m90qqv5q-unique-warn" class="sb-unique-banner">⚠ UNIQUE repetido (mesmo modelo mais de uma vez)</span><span id="sb_m90qqv5q-points-warn" class="sb-points-banner">⚠ Esquadrão acima de 1000 pontos</span></div></div>
+    <div class="sb-global-tactics">
+      <div><label>Facção do esquadrão</label><select class="sb-sel js-sb-fac-global"><option value="">— Nenhuma —</option><option value="Casacas">Casacas</option><option value="Casas Linearcas">Casas Linearcas</option><option value="Chloriders">Chloriders</option><option value="Technokratas">Technokratas</option><option value="Undermovement">Undermovement</option></select></div>
+      <div style="flex:1;min-width:160px;"><label>Tática global</label><select class="sb-sel js-sb-tat-global" disabled=""><option value="">— Escolha —</option></select></div>
+    </div>
+    <div class="sb-export-btns">
+      <button class="sb-btn js-export-zip">📦 Exportar ZIP</button>
+      <button class="sb-btn js-export-deck-tts" title="Uma folha PNG em grelha para Objects → Custom → Deck">🃏 Exportar deck TTS (folha PNG)</button>
+    </div>
+    <div id="sb_m90qqv5q-fac-info" class="sb-faction-info"></div>
+  </div>
+  <div id="sb_m90qqv5q-squad-empty" class="sb-empty">⬡ Nenhuma unidade no esquadrão.<br><small style="font-size:.65rem;margin-top:8px;display:block;">Use o painel esquerdo para adicionar modelos.</small></div>
+  <div id="sb_m90qqv5q-cards-wrap"></div>
+</div>
+
+</div><!-- .sb-layout -->
+</div><!-- #bid --><script class="js-sb-engine-inline" data-sb-bid="sb_m90qqv5q">(function(){
+try {
+const BID="sb_m90qqv5q";
+const FAV="app://14ced7504525a6b5856ff676641ca316c58d/C:/Noosphera/Recursos/Main%20Logo/Favicon%20fill%20White.png?1777766284727";
+var root=document.getElementById(BID);
+if(!root) root=document.querySelector(".js-squad-builder-app");
+if(!root) return;
+if(root._sbInit === true) return;
+if(root._sbInit === "loading") return;
+root._sbInit = "loading";
+if(root.id!==BID && !root.getAttribute("data-sb-bid")) root.setAttribute("data-sb-bid",BID);
+
+function parseSbDataJson(el){var raw=(el&&el.value)?String(el.value).trim():"";if(!raw)return null;try{return JSON.parse(raw);}catch(e1){try{return JSON.parse(raw.replace(/&lt;/g,"<").replace(/&gt;/g,">"));}catch(e2){throw e2;}}}
+const ALL_MODELS=parseSbDataJson(root.querySelector(".js-sb-data-models"));
+const ALL_FACTIONS=parseSbDataJson(root.querySelector(".js-sb-data-factions"));
+const MAPS=parseSbDataJson(root.querySelector(".js-sb-data-maps"));
+if(!ALL_MODELS||!ALL_FACTIONS||!MAPS)throw new Error("Squad Builder: JSON de dados vazio ou inválido.");
+;(function rykeWeaponAbilityBootstrap(){if(window.__rykeWeaponAbilBlocks)return;window.__rykeWeaponAbilBlocks=true;function paintWeaponBlocks(root,weaponName){var uid=root.id;if(!uid)return;var maps={};try{maps=JSON.parse(decodeURIComponent(root.getAttribute("data-maps")||"%7B%7D"));}catch(e){maps={};}var wMap=maps.weapon||maps.passive||{};var uMap=maps.utilityPassive||maps.passive||{};var weapons=[];var jel=root.querySelector(".js-weapons-json");if(jel&&jel.textContent){try{weapons=JSON.parse(jel.textContent);}catch(e2){weapons=[];}}if(!weapons.length){try{weapons=JSON.parse(decodeURIComponent(root.getAttribute("data-weapons")||"%5B%5D"));}catch(e3){weapons=[];}}var w=null;var want=weaponName!=null&&weaponName!==""?String(weaponName):"";for(var i=0;i<weapons.length;i++){if(weapons[i]&&String(weapons[i].name)===want){w=weapons[i];break;}}var tagsEl=document.getElementById("w-tags-"+uid);var pasEl=document.getElementById("w-passives-"+uid);function blocks(list,map,color){if(!list||!list.length)return "";var html="";for(var j=0;j<list.length;j++){var item=String(list[j]||"").trim();if(!item)continue;var k=item.toLowerCase();var desc=(map&&map[k])||"Descrição não encontrada no glossário.";var apCost="";var cleanDesc=desc;var apMatch=cleanDesc.match(/^\[([🔴]+)\]\s*/);if(apMatch){apCost='<span style="margin-left:5px;font-size:0.78rem;letter-spacing:1px;">'+apMatch[1]+"<\/span>";cleanDesc=cleanDesc.substring(apMatch[0].length);}html+='<div style="margin-bottom:5px;font-family:sans-serif;font-size:0.82rem;line-height:1.35;padding:2px 8px;border-left:3px solid '+color+';break-inside:avoid;page-break-inside:avoid">';html+='<strong style="color:'+color+';text-transform:uppercase;font-size:0.88rem;">'+item+apCost+":<\/strong> ";html+='<span style="color:#ccc;">'+cleanDesc+"<\/span><\/div>";}return html;}if(tagsEl)tagsEl.innerHTML=w&&w.caracteristicas?blocks(w.caracteristicas,wMap,"#00ffff"):"";if(pasEl)pasEl.innerHTML=w&&w.passivas_de_utility?blocks(w.passivas_de_utility,uMap,"#00bfff"):"";}window.__rykePaintWeaponAbilityBlocks=paintWeaponBlocks;var prevInit=window.initUnitDashboard;window.initUnitDashboard=function(root){if(typeof prevInit==="function")prevInit(root);var sel=root.querySelector(".js-weapon-sel");var uw=root._updateWeapon;if(typeof uw==="function"&&!root._rykeUwPatched){root._rykeUwPatched=true;root._updateWeapon=function(nm){uw.apply(this,arguments);var s=root.querySelector(".js-weapon-sel");paintWeaponBlocks(root,nm!==undefined&&nm!==null?nm:(s?s.value:""));};}paintWeaponBlocks(root,sel?sel.value:"");};document.addEventListener("change",function(ev){var t=ev.target;if(!t||!t.classList.contains("js-weapon-sel"))return;var r=t.closest(".js-unit-dashboard");if(r)paintWeaponBlocks(r,t.value);},true);})();
+
+const CORE_RULES={
+  mov:"MOVIMENTO: Distância máxima em polegadas que o modelo pode se deslocar com uma ação de movimento, medida no terreno.",
+  dec:"DECOERÊNCIA: Quanto o esquadrão é afetado quando esta unidade morre — representa a coesão do grupo. Decoerência acumulada demais passa a gerar problemas ou penalidades ao squad.",
+  ap:"AP: Quantidade de ações que o modelo pode gastar por ativação (habilidades, manobras, etc.).",
+  peso:"PESO MÁX: O limite de peso total que este modelo pode carregar em utilitários e armas.",
+  vida:"VIDA: Quantidade de dano que o modelo pode sofrer antes de ser destruído.",
+  melee:"DEFESA CORPO A CORPO: Quanto de dano corpo a corpo o modelo absorve antes que o excesso cause dano à vida.",
+  ranged:"DEFESA À DISTÂNCIA: Quanto de dano à distância o modelo absorve antes que o excesso cause dano à vida.",
+  special:"DEFESA ESPECIAL: Quanto de dano especial o modelo absorve antes que o excesso cause dano à vida."
+};
+
+const squad=[];
+const totalEl=document.getElementById(BID+"-total");
+const cardsWrap=document.getElementById(BID+"-cards-wrap");
+const emptyEl=document.getElementById(BID+"-squad-empty");
+
+function normStr(s){ return String(s||"").trim().toLowerCase(); }
+function escHtml(s){ return String(s||"").replace(/&/g,"&amp;").replace(/<\/g,"&lt;").replace(/>/g,"&gt;"); }
+function escAttr(s){ return String(s||"").replace(/&/g,"&amp;").replace(/"/g,"&quot;"); }
+function modelIsUnique(m){
+  if(!m)return false;
+  var kw=(m.keywords||[]).some(function(k){ return String(k).toLowerCase()==="unique"; });
+  var ch=(m.caracteristicas||[]).some(function(c){ return String(c).toLowerCase().indexOf("unique")>=0; });
+  return kw||ch;
+}
+function hasDuplicateUniqueModels(){
+  var counts={};
+  squad.forEach(function(slot){
+    if(!modelIsUnique(slot.model))return;
+    var key=slot.model.path||slot.mpath||slot.model.name||"";
+    counts[key]=(counts[key]||0)+1;
+  });
+  for(var k in counts){ if(counts[k]>1)return true; }
+  return false;
+}
+
+function getCurrentTactic(){
+  var fSel=getGlobalFacSel(), tSel=getGlobalTatSel();
+  var fn=fSel&&fSel.value||"", tn=tSel&&tSel.value||"";
+  if(!fn||!tn) return null;
+  var fac=ALL_FACTIONS.find(function(f){ return f.name===fn; }); if(!fac) return null;
+  var tat=(fac.taticas||[]).find(function(t){ return normStr(t.nome)===normStr(tn); });
+  return tat||null;
+}
+function slotUpgradesPts(slot){
+  if(!slot||!slot.upgrades||!slot.upgrades.length) return 0;
+  var tat=getCurrentTactic(); if(!tat||!tat.upgrades||!tat.upgrades.length) return 0;
+  var s=0;
+  slot.upgrades.forEach(function(idx){
+    var u=tat.upgrades[idx]; if(u) s+=Number(u.pontos)||0;
+  });
+  return s;
+}
+
+function recalcTotal(){
+  // O badge "t-pts-<uid>" já inclui basePts + facDelta + custo da arma + custo dos upgrades
+  // (graças ao applyWeaponPointsDisplay no export-fixes); então só somamos slot.currentPts.
+  var t=0;
+  squad.forEach(function(u){ t+=(parseInt(u.currentPts,10)||0); });
+  if(totalEl) totalEl.textContent=t;
+  updateInvalidBanner();
+}
+
+function renderAbil(list,map,color){
+  if(!list||!list.length)return"";
+  return list.map(function(item){
+    var k=String(item).toLowerCase();
+    var desc=(map&&map[k])||"Descrição não encontrada.";
+    var ap=""; var m=desc.match(/^\[([🔴]+)\]\s*/);
+    if(m){ap='<span style="margin-left:6px;font-size:.9rem;">'+m[1]+'<\/span>';desc=desc.substring(m[0].length);}
+    return '<div style="margin-bottom:5px;font-family:sans-serif;font-size:1rem;line-height:1.4;padding:2px 8px;border-left:3px solid '+color+'"><strong style="color:'+color+';text-transform:uppercase;">'+item+ap+':<\/strong> <span style="color:#ccc">'+desc+'<\/span><\/div>';
+  }).join("");
+}
+function renderCaracteristicas(list,map,color){
+  if(!list||!list.length)return"";
+  return list.map(function(item){
+    var k=String(item).toLowerCase();
+    var desc=(map&&map[k])||"Descrição não encontrada no glossário.";
+    var ap=""; var am=desc.match(/^\[([🔴]+)\]\s*/);
+    if(am){ap='<span style="margin-left:5px;font-size:.78rem;letter-spacing:1px;">'+am[1]+'<\/span>';desc=desc.substring(am[0].length);}
+    return '<div class="model-char-row" data-char-key="'+escAttr(k)+'" style="margin-bottom:5px;font-family:sans-serif;font-size:1rem;line-height:1.4;padding:2px 8px;border-left:3px solid '+color+';break-inside:avoid;page-break-inside:avoid"><strong style="color:'+color+';text-transform:uppercase;">'+item+ap+':<\/strong> <span style="color:#ccc">'+desc+'<\/span><\/div>';
+  }).join("");
+}
+function renderCarRowFromUpgrade(item,map,color,suffix){
+  var k=String(item).toLowerCase();
+  var desc=(map&&map[k])||"Descrição não encontrada no glossário.";
+  var ap=""; var am=desc.match(/^\[([🔴]+)\]\s*/);
+  if(am){ap='<span style="margin-left:5px;font-size:.78rem;letter-spacing:1px;">'+am[1]+'<\/span>';desc=desc.substring(am[0].length);}
+  var suf=suffix||"";
+  return '<div class="model-char-row" data-char-key="'+escAttr(k)+'" data-char-source="upgrade" style="margin-bottom:5px;font-family:sans-serif;font-size:1rem;line-height:1.4;padding:2px 8px;border-left:3px solid '+color+';break-inside:avoid;page-break-inside:avoid"><strong style="color:'+color+';text-transform:uppercase;">'+item+ap+suf+':<\/strong> <span style="color:#ccc">'+desc+'<\/span><\/div>';
+}
+function charRowExistsInMTags(mTags,keyNorm){
+  if(!mTags)return false;
+  var rows=mTags.querySelectorAll(".model-char-row[data-char-key]");
+  for(var i=0;i<rows.length;i++){
+    if(normStr(rows[i].getAttribute("data-char-key"))===keyNorm)return true;
+  }
+  return false;
+}
+
+function kwTagsHtml(m){
+  var kwList=[];
+  if(m.noosphera) kwList.push(m.noosphera);
+  (m.faccao||[]).forEach(function(f){ kwList.push(f); });
+  (m.keywords||[]).forEach(function(k){ if(kwList.indexOf(k)<0) kwList.push(k); });
+  return kwList.map(function(k){ return '<span class="model-kw">'+escHtml(k)+'<\/span>'; }).join("");
+}
+
+function getGlobalFacSel(){ return root.querySelector(".js-sb-fac-global"); }
+function getGlobalTatSel(){ return root.querySelector(".js-sb-tat-global"); }
+
+function populateGlobalTactics(facName){
+  var sel=getGlobalTatSel(); if(!sel)return;
+  var prev=sel.value;
+  sel.innerHTML='<option value="">— Escolha —<\/option>';
+  if(!facName){ sel.disabled=true; sel.value=""; return; }
+  var fac=ALL_FACTIONS.find(function(f){ return f.name===facName; });
+  if(!fac||!fac.taticas||!fac.taticas.length){ sel.disabled=true; return; }
+  fac.taticas.forEach(function(t){
+    var nm=(t&&t.nome)||"";
+    sel.innerHTML+='<option value="'+nm.replace(/"/g,"&quot;")+'">'+nm+'<\/option>';
+  });
+  sel.disabled=false;
+  if(prev){ var ok=false; fac.taticas.forEach(function(x){ if(x.nome===prev) ok=true; }); if(ok) sel.value=prev; }
+}
+
+function syncSlotPtsFromBadges(){
+  squad.forEach(function(slot){
+    var el=document.getElementById("t-pts-"+slot.uid);
+    if(!el)return;
+    var mm=el.textContent.match(/(\d+)/);
+    if(mm) slot.currentPts=parseInt(mm[1],10);
+  });
+}
+
+var lastTacticKey = null;
+
+function activeUpgradesFor(slot){
+  var tat=getCurrentTactic();
+  if(!tat || !tat.upgrades || !Array.isArray(slot.upgrades)) return [];
+  return slot.upgrades.map(function(i){ return tat.upgrades[i]; }).filter(Boolean);
+}
+
+/** Garante efeitos mecânicos dos upgrades na ficha (tags, passivas, ações) mesmo se o export-fixes não mesclar o vetor de upgrades. */
+function collectCharsFromUpgradeEfeitos(ef){
+  var out=[];
+  if(!ef||typeof ef!=="object") return out;
+  var a=ef.caracteristica;
+  if(a){
+    if(Array.isArray(a)) a.forEach(function(x){ x=String(x||"").trim(); if(x) out.push(x); });
+    else String(a).split(",").forEach(function(x){ x=x.trim(); if(x) out.push(x); });
+  }
+  var pl=ef.caracteristicas;
+  if(pl){
+    if(Array.isArray(pl)) pl.forEach(function(x){ x=String(x||"").trim(); if(x) out.push(x); });
+    else String(pl).split(",").forEach(function(x){ x=x.trim(); if(x) out.push(x); });
+  }
+  return out.filter(function(v,i,ar){ return ar.indexOf(v)===i; });
+}
+function collectAbilFromUpgradeEfeitos(ef,key){
+  var out=[];
+  if(!ef||typeof ef!=="object") return out;
+  var a=ef[key];
+  if(!a) return out;
+  if(Array.isArray(a)) a.forEach(function(x){ x=String(x||"").trim(); if(x) out.push(x); });
+  else String(a).split(",").forEach(function(x){ x=x.trim(); if(x) out.push(x); });
+  return out.filter(function(v,i,ar){ return ar.indexOf(v)===i; });
+}
+function updateActiveUpgradesSummary(slot, ups){
+  var el=document.getElementById("t-sb-active-upgrades-"+slot.uid);
+  if(!el) return;
+  if(!ups||!ups.length){
+    el.innerHTML="";
+    el.removeAttribute("data-active");
+    return;
+  }
+  var html='<div class="sb-aus-head">Upgrades ativos (esta ficha)<\/div>';
+  ups.forEach(function(u){
+    if(!u) return;
+    var nm=escHtml(String(u.nome||"Upgrade").trim())||"Upgrade";
+    var pts=Number(u.pontos)||0;
+    html+='<div class="sb-aus-line"><span class="sb-aus-name">'+nm+'<\/span><span class="sb-aus-pts">+'+pts+" pts<\/span><\/div>";
+  });
+  el.innerHTML=html;
+  el.setAttribute("data-active","1");
+}
+
+function mergeUpgradeMechanicsIntoFicha(slot, ups){
+  var uid=slot.uid;
+  var chEl=document.getElementById("t-tat-chars-"+uid);
+  var mTags=chEl&&chEl.parentElement;
+  var glossPas=MAPS.passive||{};
+  if(chEl){
+    chEl.querySelectorAll(".model-char-row[data-char-source="upgrade"]").forEach(function(n){ n.remove(); });
+  }
+  var chars=[];
+  (ups||[]).forEach(function(u){ if(u&&u.efeitos) chars=chars.concat(collectCharsFromUpgradeEfeitos(u.efeitos)); });
+  chars=chars.filter(function(v,i,a){ return a.indexOf(v)===i; });
+  if(chEl&&chars.length){
+    chars.forEach(function(c){
+      var low=normStr(c);
+      if(charRowExistsInMTags(mTags,low)) return;
+      chEl.insertAdjacentHTML("beforeend",renderCarRowFromUpgrade(String(c).trim(),glossPas,"#ffcc00"," (UPGRADE)"));
+    });
+  }
+  var passUps=[]; var atvUps=[];
+  (ups||[]).forEach(function(u){ if(!u||!u.efeitos) return; passUps=passUps.concat(collectAbilFromUpgradeEfeitos(u.efeitos,"passiva")); atvUps=atvUps.concat(collectAbilFromUpgradeEfeitos(u.efeitos,"ativa")); });
+  passUps=passUps.filter(function(v,i,a){ return a.indexOf(v)===i; });
+  atvUps=atvUps.filter(function(v,i,a){ return a.indexOf(v)===i; });
+  var glossAct=MAPS.active||{};
+  function renderExtraAbil(list,map,color){
+    if(!list||!list.length) return "";
+    return list.map(function(item){
+      var k=String(item).toLowerCase();
+      var desc=(map&&map[k])||"Descrição não encontrada.";
+      return'<div style="margin-bottom:5px;font-family:sans-serif;font-size:1rem;line-height:1.4;padding:2px 8px;border-left:3px solid '+color+'"><strong style="color:'+color+';text-transform:uppercase;">'+escHtml(item)+':<\/strong> <span style="color:#ccc">'+escHtml(desc)+'<\/span><\/div>';
+    }).join("");
+  }
+  if(passUps.length){
+    var pEl=document.getElementById("t-tat-passivas-"+uid);
+    if(pEl){
+      var ph=pEl.innerHTML;
+      if(ph.indexOf("PASSIVAS (UPGRADES OPCIONAIS)")<0){
+        pEl.insertAdjacentHTML("beforeend",'<div style="color:#33ddaa;font-size:0.72rem;font-weight:900;letter-spacing:1px;margin:10px 0 6px;">PASSIVAS (UPGRADES OPCIONAIS)<\/div>'+renderExtraAbil(passUps,glossPas,"#33ddaa"));
+      } else {
+        passUps.forEach(function(name){
+          var low=normStr(name);
+          if(ph.toLowerCase().indexOf(">"+low+"<")>=0||ph.toLowerCase().indexOf(">"+low+":")>=0) return;
+          pEl.insertAdjacentHTML("beforeend",renderExtraAbil([name],glossPas,"#33ddaa"));
+          ph=pEl.innerHTML;
+        });
+      }
+    }
+  }
+  if(atvUps.length){
+    var aEl=document.getElementById("t-tat-ativas-"+uid);
+    if(aEl){
+      var ah=aEl.innerHTML;
+      if(ah.indexOf("AÇÕES (UPGRADES OPCIONAIS)")<0){
+        aEl.insertAdjacentHTML("beforeend",'<div style="color:#ffcc00;font-size:0.72rem;font-weight:900;letter-spacing:1px;margin:10px 0 6px;">AÇÕES (UPGRADES OPCIONAIS)<\/div>'+renderExtraAbil(atvUps,glossAct,"#ffcc00"));
+      } else {
+        atvUps.forEach(function(name){
+          var low=normStr(name);
+          if(ah.toLowerCase().indexOf(">"+low+"<")>=0||ah.toLowerCase().indexOf(">"+low+":")>=0) return;
+          aEl.insertAdjacentHTML("beforeend",renderExtraAbil([name],glossAct,"#ffcc00"));
+          ah=aEl.innerHTML;
+        });
+      }
+    }
+  }
+}
+
+function applySlotEffects(slot){
+  var dash=document.getElementById(slot.uid); if(!dash) return;
+  if(!dash._initialized && window.initUnitDashboard) window.initUnitDashboard(dash);
+  var fSel=getGlobalFacSel(), tSel=getGlobalTatSel();
+  var fn=fSel&&fSel.value||"", tn=tSel&&tSel.value||"";
+  var ups=activeUpgradesFor(slot);
+  if(dash._updateTatica) dash._updateTatica(fn, tn, ups);
+  try { mergeUpgradeMechanicsIntoFicha(slot, ups); } catch(e){ console.warn("SB mergeUpgradeMechanics", e); }
+  try { updateActiveUpgradesSummary(slot, ups); } catch(e2){ console.warn("SB updateActiveUpgradesSummary", e2); }
+}
+
+function applyGlobalTacticsToAll(){
+  var fSel=getGlobalFacSel(), tSel=getGlobalTatSel();
+  var fn=fSel&&fSel.value||"", tn=tSel&&tSel.value||"";
+  var key=fn+"::"+tn;
+  // Limpa upgrades só quando a tática realmente mudou (preserva ao adicionar/remover unidades, etc.)
+  if(lastTacticKey!==null && lastTacticKey!==key){
+    squad.forEach(function(s){ s.upgrades=[]; });
+  }
+  lastTacticKey=key;
+  if(!cardsWrap) return;
+  squad.forEach(function(slot){ applySlotEffects(slot); });
+  syncSlotPtsFromBadges();
+  renderAllUpgrades();
+  renderFactionInfo();
+  recalcTotal();
+}
+
+function fmtEffectsList(ef){
+  if(!ef) return [];
+  var keysMap={vida:"+VIDA",defesa_melee:"+DEF MELEE",defesa_ranged:"+DEF RANGED",defesa_special:"+DEF SPECIAL",movimento:"+MOV",decoerencia:"+DEC",ap:"+AP",loadout_max:"+PESO MÁX"};
+  var out=[];
+  Object.keys(keysMap).forEach(function(k){
+    if(ef[k]==null||ef[k]==="")return;
+    var n=Number(ef[k]); if(isNaN(n))return;
+    var label=keysMap[k]; if(n<0) label=label.replace("+","");
+    out.push((n>0?"+":"")+n+" "+label.replace(/^[+-]/,"").trim());
+  });
+  if(ef.caracteristica){ out.push("Ganha "+ef.caracteristica); }
+  if(ef.passiva){ out.push("Passiva: "+(Array.isArray(ef.passiva)?ef.passiva.join(", "):ef.passiva)); }
+  if(ef.ativa){ out.push("Ação: "+(Array.isArray(ef.ativa)?ef.ativa.join(", "):ef.ativa)); }
+  return out;
+}
+
+function renderFactionInfo(){
+  var box=document.getElementById(BID+"-fac-info"); if(!box) return;
+  var fSel=getGlobalFacSel(), tSel=getGlobalTatSel();
+  var fn=fSel&&fSel.value||"", tn=tSel&&tSel.value||"";
+  if(!fn){ box.classList.remove("is-active"); box.innerHTML=""; return; }
+  var fac=ALL_FACTIONS.find(function(f){ return f.name===fn; });
+  if(!fac){ box.classList.remove("is-active"); box.innerHTML=""; return; }
+  var html="";
+  if(fac.passiva && fac.passiva.nome){
+    html+='<div class="sb-fi-block">'+
+      '<div class="sb-fi-label">Passiva da Facção · '+escHtml(fac.name)+'<\/div>'+
+      '<div class="sb-fi-name">'+escHtml(fac.passiva.nome)+'<\/div>'+
+      (fac.passiva.descricao?'<div class="sb-fi-desc">'+escHtml(fac.passiva.descricao)+'<\/div>':'')+
+    '<\/div>';
+  }
+  if(tn){
+    var tat=(fac.taticas||[]).find(function(t){ return normStr(t.nome)===normStr(tn); });
+    if(tat){
+      var effects=fmtEffectsList(tat.efeitos).map(function(e){ return '<span class="sb-fi-effect">'+escHtml(e)+'<\/span>'; }).join("");
+      html+='<div class="sb-fi-block">'+
+        '<div class="sb-fi-label">Tática Selecionada<\/div>'+
+        '<div class="sb-fi-name tatica">⚡ '+escHtml(tat.nome)+'<\/div>'+
+        (tat.sub?'<div class="sb-fi-sub">'+escHtml(tat.sub)+'<\/div>':'')+
+        (tat.descricao?'<div class="sb-fi-desc">'+escHtml(tat.descricao)+'<\/div>':'')+
+        (effects?'<div class="sb-fi-effects">'+effects+'<\/div>':'')+
+        (tat.requisito?'<div class="sb-fi-req">⚠ '+escHtml(tat.requisito)+'<\/div>':'')+
+      '<\/div>';
+    }
+  }
+  box.innerHTML=html;
+  box.classList.toggle("is-active",!!html);
+}
+
+function renderUpgradesFor(slot){
+  var listEl=document.getElementById("upgrades-"+slot.uid); if(!listEl) return;
+  var tat=getCurrentTactic();
+  if(!tat){
+    listEl.innerHTML='<div class="sb-upgrade-empty">Selecione uma tática global para ver os upgrades.<\/div>';
+    return;
+  }
+  if(!tat.upgrades||!tat.upgrades.length){
+    listEl.innerHTML='<div class="sb-upgrade-empty">Esta tática não tem upgrades opcionais.<\/div>';
+    return;
+  }
+  if(!Array.isArray(slot.upgrades)) slot.upgrades=[];
+  var html=tat.upgrades.map(function(u,idx){
+    var active=slot.upgrades.indexOf(idx)>=0;
+    return '<div class="sb-upgrade-row'+(active?' is-active':'')+'" data-uid="'+slot.uid+'" data-upg-idx="'+idx+'">'+
+      '<div class="sb-upgrade-name"><span>'+escHtml(u.nome)+'<\/span><span class="sb-upgrade-cost">+'+(Number(u.pontos)||0)+' pts<\/span><\/div>'+
+      (u.descricao?'<div class="sb-upgrade-desc">'+escHtml(u.descricao)+'<\/div>':'')+
+    '<\/div>';
+  }).join("");
+  listEl.innerHTML=html;
+}
+
+function renderAllUpgrades(){ squad.forEach(renderUpgradesFor); }
+
+function toggleUpgrade(slotUid,idx){
+  var slot=squad.find(function(s){return s.uid===slotUid;}); if(!slot) return;
+  if(!Array.isArray(slot.upgrades)) slot.upgrades=[];
+  var pos=slot.upgrades.indexOf(idx);
+  if(pos>=0) slot.upgrades.splice(pos,1); else slot.upgrades.push(idx);
+  renderUpgradesFor(slot);
+  // Reaplica efeitos da tática + upgrades ativos na ficha (badge de pontos, stats, características)
+  applySlotEffects(slot);
+  syncSlotPtsFromBadges();
+  recalcTotal();
+}
+
+function updateInvalidBanner(){
+  var inv=document.getElementById(BID+"-invalid");
+  var uniqBanner=document.getElementById(BID+"-unique-warn");
+  var ptsBanner=document.getElementById(BID+"-points-warn");
+  var gFacName=(getGlobalFacSel()&&getGlobalFacSel().value)||"";
+  var selectedFac=gFacName?ALL_FACTIONS.find(function(f){ return f.name===gFacName;}):null;
+  var badNoos=false;
+  if(!squad.length){
+    if(inv) inv.style.display="none";
+    if(uniqBanner) uniqBanner.style.display="none";
+    if(ptsBanner) ptsBanner.style.display="none";
+    root.querySelectorAll(".js-sb-noos-warn").forEach(function(x){ x.style.display="none"; });
+    return;
+  }
+  if(selectedFac){
+    var targetNoos=normStr(selectedFac.noosphera);
+    squad.forEach(function(slot){
+      var unitBad=normStr(slot.model.noosphera)!==targetNoos;
+      if(unitBad) badNoos=true;
+      var badge=document.querySelector("#wrap_"+slot.uid+" .js-sb-noos-warn");
+      if(badge) badge.style.display=unitBad?"inline-block":"none";
+    });
+  } else {
+    var ref=squad.length?normStr(squad[0].model.noosphera):"";
+    var uniq={};
+    squad.forEach(function(s){ uniq[normStr(s.model.noosphera)]=true; });
+    badNoos=Object.keys(uniq).length>1;
+    squad.forEach(function(slot){
+      var unitBad=badNoos&&normStr(slot.model.noosphera)!==ref;
+      var badge=document.querySelector("#wrap_"+slot.uid+" .js-sb-noos-warn");
+      if(badge) badge.style.display=unitBad?"inline-block":"none";
+    });
+  }
+  if(inv) inv.style.display=badNoos?"inline":"none";
+  if(uniqBanner) uniqBanner.style.display=hasDuplicateUniqueModels()?"inline":"none";
+  var totPts=parseInt(totalEl?totalEl.textContent:"0",10)||0;
+  if(ptsBanner) ptsBanner.style.display=totPts>1000?"inline":"none";
+}
+
+function buildCard(m){
+  var cid="sbu_"+Math.random().toString(36).substr(2,8);
+  var isUniq=(m.keywords||[]).some(function(k){return String(k).toLowerCase()==="unique"})||(m.caracteristicas||[]).some(function(c){ return String(c).toLowerCase().indexOf("unique")>=0; });
+  var kwHtml=kwTagsHtml(m);
+  var charHtml=renderCaracteristicas(m.caracteristicas||[],MAPS.passive,"#d8b4fe");
+  var passH=renderAbil(m.habilidades_passivas,MAPS.passive,"#00bfff");
+  var actH=renderAbil(m.habilidades_ativas,MAPS.active,"#be63ff");
+  var padH=renderAbil(m.habilidades_padrao,MAPS.active,"#ffffff");
+  var wOptsHtml='<option value="">— Escolha uma arma/utility —<\/option>'+(m.weapons||[]).map(function(w){
+    var pmN=parseInt(w.point_mod,10);
+    var hasPm=w.point_mod!=null && w.point_mod!=="" && !isNaN(pmN);
+    var suffix=hasPm?' ('+(pmN>0?'+':'')+pmN+' pts)':'';
+    return'<option value="'+w.name.replace(/"/g,"&quot;")+'">'+w.name+suffix+'<\/option>';
+  }).join("");
+  var _src=m.imgObj?m.imgObj.src:""; var _raw=m.imgObj?m.imgObj.raw:"";
+  var uniqueBadge=isUniq?'<span class="unique-badge">UNIQUE<\/span>':"";
+  var apNum=Number(m.ap!=null&&m.ap!==""?m.ap:m.AP)||0;
+  var favImg=FAV?'<img class="favicon-logo" src="'+escAttr(FAV)+'" alt="" onerror="this.style.display=\'none\'"/>':'';
+  var heroImg=_src?'<div class="top-hero-img" style="background-image: url(\''+escAttr(_src)+'\');" data-export-src="'+escAttr(_raw)+'"><\/div>':'';
+  var updated=m.updatedStr||"—";
+  return{uid:cid,html:
+'<div class="sb-unit-wrap" id="wrap_'+cid+'">'+
+'<div class="hud-outer-v13 js-unit-dashboard" id="'+cid+'"'+
+' data-weapons=\''+encodeURIComponent(JSON.stringify(m.weapons||[]))+'\''+
+' data-factions=\''+encodeURIComponent(JSON.stringify(ALL_FACTIONS))+'\''+
+' data-base-stats=\''+encodeURIComponent(JSON.stringify({vida:m.vida,armadura_melee:m.armadura_melee,armadura_ranged:m.armadura_ranged,armadura_special:m.armadura_special,movimento:m.movimento,decoerencia:m.decoerencia,ap:apNum}))+'\''+
+' data-maps=\''+encodeURIComponent(JSON.stringify(MAPS))+'\''+
+' data-unit-noos="'+escAttr(m.noosphera)+'"'+
+' data-unit-faccao="'+escAttr(m.faccao&&m.faccao[0]||"")+'"'+
+' data-base-pts="'+m.pontos+'"'+
+' data-max-peso="'+(m.loadout_max||0)+'"'+
+' data-unit-name="'+escAttr(m.name)+'">'+
+'<div class="top-bar">'+
+heroImg+
+'<div class="top-content">'+
+'<div class="badge-row">'+
+favImg+
+'<span class="pts-badge-new js-pts-badge" id="t-pts-badge-'+cid+'"><span id="t-pts-'+cid+'">'+m.pontos+' PONTOS<\/span><\/span>'+
+'<span class="sb-noos-warn js-sb-noos-warn">NOOSPHERA<\/span>'+
+uniqueBadge+
+'<\/div>'+
+'<div class="hud-main-name">'+escHtml(m.name)+'<\/div>'+
+'<div class="kw-row">'+kwHtml+'<\/div>'+
+'<div class="all-stats-row">'+
+'<div class="stat-box tc-tooltip" data-desc="'+CORE_RULES.mov+'"><span class="stat-lbl">MOV<\/span><span class="stat-val" id="t-mov-'+cid+'">'+m.movimento+'<\/span><\/div>'+
+'<div class="stat-box tc-tooltip" data-desc="'+CORE_RULES.dec+'"><span class="stat-lbl">DEC<\/span><span class="stat-val" id="t-dec-'+cid+'">'+m.decoerencia+'<\/span><\/div>'+
+'<div class="stat-box tc-tooltip" data-desc="'+CORE_RULES.ap+'"><span class="stat-lbl">AP<\/span><span class="stat-val" id="t-ap-'+cid+'">'+apNum+' <span style="font-size:0.75rem;color:#ff3366;">🔴<\/span><\/span><\/div>'+
+'<div class="stat-box tc-tooltip" data-desc="'+CORE_RULES.peso+'"><span class="stat-lbl">PESO<\/span><span class="stat-val" id="peso-max-'+cid+'">0/'+(m.loadout_max||0)+'<\/span><\/div>'+
+'<div class="stat-div"><\/div>'+
+'<div class="stat-box vida tc-tooltip" data-desc="'+CORE_RULES.vida+'"><span class="stat-lbl">VIDA<\/span><span class="stat-val" id="t-vida-'+cid+'">❤️ '+m.vida+'<\/span><\/div>'+
+'<div class="stat-box def tc-tooltip" data-desc="'+CORE_RULES.melee+'"><span class="stat-lbl">MELEE<\/span><span class="stat-val" id="t-def-melee-'+cid+'">🛡️ ⚔️ '+m.armadura_melee+'<\/span><\/div>'+
+'<div class="stat-box def tc-tooltip" data-desc="'+CORE_RULES.ranged+'"><span class="stat-lbl">RANGED<\/span><span class="stat-val" id="t-def-ranged-'+cid+'">🛡️ 🔫 '+m.armadura_ranged+'<\/span><\/div>'+
+'<div class="stat-box def tc-tooltip" data-desc="'+CORE_RULES.special+'"><span class="stat-lbl">SPECIAL<\/span><span class="stat-val" id="t-def-special-'+cid+'">🛡️ ⚠️ '+m.armadura_special+'<\/span><\/div>'+
+'<\/div>'+
+'<div class="date-line">ATUALIZADO EM: '+escHtml(updated)+'<\/div>'+
+'<\/div>'+
+'<\/div>'+
+'<div class="hud-body-grid">'+
+'<div class="col-abilities ryke-scrollbox">'+
+passH+
+'<div id="t-tat-desc-'+cid+'" style="margin-bottom:8px;"><\/div>'+
+'<div id="m-tags-'+cid+'" style="display:flex;flex-direction:column;gap:4px;margin-bottom:16px;">'+charHtml+'<div id="t-tat-chars-'+cid+'"><\/div><\/div>'+
+'<div id="t-tat-passivas-'+cid+'" style="margin-bottom:12px;"><\/div>'+
+'<div id="t-sb-active-upgrades-'+cid+'" class="sb-active-upgrades-summary" aria-live="polite"><\/div>'+
+'<div style="flex-grow:1;">'+padH+actH+
+'<div id="t-tat-ativas-'+cid+'"><\/div><\/div>'+
+'<\/div>'+
+'<div class="col-equipment ryke-scrollbox">'+
+'<div class="weapon-selector-wrapper"><div id="w-sel-display-'+cid+'" class="weapon-selector-display">— ESCOLHA UMA ARMA/UTILITY —<\/div>'+
+'<select class="weapon-selector js-weapon-sel" data-uid="'+cid+'" id="w-sel-'+cid+'">'+wOptsHtml+'<\/select><\/div>'+
+'<img id="w-img-'+cid+'" class="weapon-art" src="" alt="">'+
+'<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px;margin-bottom:8px;">'+
+'<div id="w-kws-'+cid+'" style="display:flex;flex-wrap:wrap;gap:4px;flex:1;min-width:0;align-content:flex-start;"><\/div>'+
+'<div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0;max-width:min(104px,38%);">'+
+'<div class="w-stat-item w-peso-inline">'+
+'<span class="w-stat-val" id="w-peso-'+cid+'" style="margin:0;">0<\/span>'+
+'<span class="w-stat-lbl" style="margin:0;">PESO<\/span><\/div>'+
+'<div id="w-pts-mod-'+cid+'" style="font-size:.45rem;font-weight:800;letter-spacing:.45px;color:#888;text-transform:uppercase;text-align:right;line-height:1.15;max-width:100%;display:none;"><\/div>'+
+'<\/div><\/div>'+
+'<div class="w-stats-grid">'+
+'<div class="w-stat-item" id="w-atk-box-'+cid+'"><span class="w-stat-lbl">ATK<\/span><span class="w-stat-val" id="w-atk-'+cid+'">0<\/span><\/div>'+
+'<div class="w-stat-item" id="w-mira-box-'+cid+'"><span class="w-stat-lbl">MIRA<\/span><span class="w-stat-val" id="w-mira-'+cid+'">0<\/span><\/div>'+
+'<div class="w-stat-item" id="w-dist-box-'+cid+'"><span class="w-stat-lbl">DIST<\/span><span class="w-stat-val" id="w-dist-'+cid+'">-<\/span><\/div>'+
+'<div class="w-stat-item" id="w-dmg-box-'+cid+'"><span class="w-stat-lbl">DANO<\/span><span class="w-stat-val" id="w-dmg-'+cid+'" style="font-size:0.9rem;">-<\/span><\/div>'+
+'<\/div>'+
+'<div id="w-tags-'+cid+'" style="display:flex;flex-direction:column;gap:4px;margin-top:8px;"><\/div>'+
+'<div id="w-passives-'+cid+'" style="margin-top:12px;"><\/div>'+
+'<\/div><\/div><\/div>'+
+'<div class="sb-side-panel">'+
+'<button type="button" class="sb-remove-btn js-remove-btn" data-uid="'+cid+'">🗑 REMOVER<\/button>'+
+'<div class="sb-upgrades-section">'+
+'<div class="sb-upgrades-title">⚡ Upgrades Opcionais<\/div>'+
+'<div class="sb-upgrades-list js-upgrades-list" id="upgrades-'+cid+'" data-uid="'+cid+'"><\/div>'+
+'<\/div>'+
+'<\/div>'+
+'<\/div>'
+  };
+}
+
+function addUnit(mpath){
+  var m=ALL_MODELS.find(function(x){return x.path===mpath;}); if(!m)return;
+  // Sem arma inicial: o usuário escolhe explicitamente. slot.weaponName = "" → custo zero de arma.
+  var slot={uid:null,mpath:mpath,model:m,currentPts:m.pontos,weaponName:"",upgrades:[]};
+  var card=buildCard(m); slot.uid=card.uid;
+  squad.push(slot);
+  if(emptyEl) emptyEl.style.display="none";
+  var div=document.createElement("div"); div.innerHTML=card.html;
+  if(cardsWrap) cardsWrap.appendChild(div);
+  var dashEl=document.getElementById(card.uid);
+  if(dashEl&&window.initUnitDashboard) window.initUnitDashboard(dashEl);
+  // Reset do dashboard com arma vazia (atualiza UI, zera custo de arma)
+  if(dashEl&&dashEl._updateWeapon) dashEl._updateWeapon("");
+  // Garante que o select não vá pra primeira opção sozinho
+  var sel=document.getElementById("w-sel-"+card.uid); if(sel) sel.value="";
+  applySlotEffects(slot);
+  syncSlotPtsFromBadges();
+  renderUpgradesFor(slot);
+  renderFactionInfo();
+  recalcTotal();
+}
+
+function removeUnit(cardUid){
+  var idx=squad.findIndex(function(s){return s.uid===cardUid;}); if(idx<0)return;
+  squad.splice(idx,1);
+  var w=document.getElementById("wrap_"+cardUid); if(w)w.remove();
+  if(!squad.length && emptyEl) emptyEl.style.display="";
+  recalcTotal();
+}
+
+function applyFilters(){
+  var name=root.querySelector(".js-sb-search").value.toLowerCase();
+  var noos=root.querySelector(".js-sb-noos").value;
+  var fac=root.querySelector(".js-sb-fac").value;
+  root.querySelectorAll(".js-sbcard").forEach(function(c){
+    var ok=(!name||c.dataset.name.includes(name))&&(!noos||c.dataset.noos===noos)&&(!fac||c.dataset.fac.split("|").includes(fac));
+    c.classList.toggle("hidden",!ok);
+  });
+}
+
+var sbSearch = root.querySelector(".js-sb-search");
+if(sbSearch) sbSearch.addEventListener("input",applyFilters);
+var sbNoos = root.querySelector(".js-sb-noos");
+if(sbNoos) sbNoos.addEventListener("change",applyFilters);
+var sbFac = root.querySelector(".js-sb-fac");
+if(sbFac) sbFac.addEventListener("change",applyFilters);
+
+root.addEventListener("click",function(e){
+  var addBtn=e.target.closest(".js-add-btn");
+  if(addBtn){addUnit(addBtn.dataset.mpath);return;}
+  var remBtn=e.target.closest(".js-remove-btn");
+  if(remBtn){removeUnit(remBtn.dataset.uid);return;}
+  var upgRow=e.target.closest(".sb-upgrade-row");
+  if(upgRow){
+    var uid=upgRow.getAttribute("data-uid");
+    var idx=parseInt(upgRow.getAttribute("data-upg-idx"),10);
+    if(uid && !isNaN(idx)) toggleUpgrade(uid,idx);
+    return;
+  }
+});
+
+root.addEventListener("change",function(e){
+  var t=e.target;
+  if(t.classList.contains("js-sb-fac-global")){
+    populateGlobalTactics(t.value);
+    var ts=getGlobalTatSel(); if(ts) ts.value="";
+    applyGlobalTacticsToAll();
+    return;
+  }
+  if(t.classList.contains("js-sb-tat-global")){
+    applyGlobalTacticsToAll();
+    return;
+  }
+  var root2=t.closest(".js-unit-dashboard");
+  if(!root2&&t.getAttribute("data-uid")) root2=document.getElementById(t.getAttribute("data-uid"));
+  if(!root2||!root2.classList.contains("js-unit-dashboard"))return;
+  var uid2=root2.id;
+  var slot=squad.find(function(s){return s.uid===uid2;}); if(!slot)return;
+  if(t.classList.contains("js-weapon-sel")){ slot.weaponName=t.value; }
+  setTimeout(function(){ syncSlotPtsFromBadges(); recalcTotal(); },50);
+});
+
+var btnZip = root.querySelector(".js-export-zip");
+if(btnZip) btnZip.addEventListener("click",function(){
+  var huds=cardsWrap?cardsWrap.querySelectorAll(".hud-outer-v13"):[];
+  if(!huds.length){alert("Adicione unidades ao esquadrão primeiro!");return;}
+  var btn=btnZip;
+  var origLabel=btn.textContent;
+  function setBusy(on, extra){
+    btn.disabled=!!on;
+    btn.textContent=on?("Exportando…"+(extra||"")):origLabel;
+  }
+  function loadLib(src, globalName, onload){
+    if(typeof window[globalName]!=="undefined"){ onload(); return; }
+    var s=document.createElement("script");
+    s.src=src;
+    s.async=true;
+    s.onload=function(){ onload(); };
+    s.onerror=function(){
+      setBusy(false);
+      alert("Não foi possível carregar "+globalName+" (rede bloqueada ou offline).");
+    };
+    document.head.appendChild(s);
+  }
+  function safeFileBase(name, fallback){
+    var n=String(name||fallback||"unit").replace(/[\/:*?"<>|]/g,"_");
+    n=n.replace(/\s+/g," ").trim();
+    if(!n.length) n=String(fallback||"unit");
+    return n;
+  }
+  setBusy(true," (preparar)");
+  loadLib("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js","html2canvas",function(){
+    loadLib("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js","JSZip",function(){
+      if(typeof html2canvas==="undefined"||typeof JSZip==="undefined"){
+        setBusy(false);
+        alert("Bibliotecas de exportação não carregaram.");
+        return;
+      }
+      var zip=new JSZip();
+      var idx=0;
+      var total=huds.length;
+      function afterAll(){
+        setBusy(true," (compactar)");
+        zip.generateAsync({type:"blob",compression:"DEFLATE",compressionOptions:{level:6}})
+          .then(function(blob){
+            var url=URL.createObjectURL(blob);
+            var a=document.createElement("a");
+            a.download="squad_noosphera.zip";
+            a.href=url;
+            a.rel="noopener";
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function(){
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+            },1500);
+            setBusy(false);
+          })
+          .catch(function(e){
+            console.error("JSZip",e);
+            setBusy(false);
+            alert("Erro ao gerar o ZIP: "+(e&&e.message?e.message:String(e)));
+          });
+      }
+      function runNext(){
+        if(idx>=total){ afterAll(); return; }
+        var hud=huds[idx];
+        var nDone=idx+1;
+        idx++;
+        setBusy(true," ("+nDone+"/"+total+")");
+        var scale=1;
+        if(typeof window.matchMedia==="function" && window.matchMedia("(min-width:1200px)").matches) scale=1.25;
+        html2canvas(hud,{
+          backgroundColor:"#050505",
+          scale:scale,
+          useCORS:true,
+          allowTaint:true,
+          logging:false
+        }).then(function(canvas){
+          var base=safeFileBase(hud.dataset&&hud.dataset.unitName,"unit_"+nDone);
+          canvas.toBlob(function(b){
+            if(!b){
+              console.warn("toBlob falhou para",base);
+            } else {
+              zip.file(base+".jpg",b);
+            }
+            setTimeout(runNext,40);
+          },"image/jpeg",0.82);
+        }).catch(function(err){
+          console.error("html2canvas",err);
+          alert("Falha ao capturar a ficha "+nDone+"/"+total+". Tente reduzir o zoom da página ou exportar uma unidade por vez.");
+          setTimeout(runNext,40);
+        });
+      }
+      runNext();
+    });
+  });
+});
+
+var btnDeckTts = root.querySelector(".js-export-deck-tts");
+if(btnDeckTts) btnDeckTts.addEventListener("click",function(){
+  var huds=cardsWrap?cardsWrap.querySelectorAll(".hud-outer-v13"):[];
+  if(!huds.length){alert("Adicione unidades ao esquadrão primeiro!");return;}
+  var btn=btnDeckTts;
+  var origLabel=btn.textContent;
+  function setBusy(on, extra){
+    btn.disabled=!!on;
+    btn.textContent=on?("Gerando folha…"+(extra||"")):origLabel;
+  }
+  function loadLib(src, globalName, onload){
+    if(typeof window[globalName]!=="undefined"){ onload(); return; }
+    var s=document.createElement("script");
+    s.src=src;
+    s.async=true;
+    s.onload=function(){ onload(); };
+    s.onerror=function(){
+      setBusy(false);
+      alert("Não foi possível carregar "+globalName+" (rede bloqueada ou offline).");
+    };
+    document.head.appendChild(s);
+  }
+  var n=huds.length;
+  var HUD_RATIO=1654/869;
+  /* Folha alta-res: TTS aceita texturas grandes; 512px/carta ficava ilegível ao encolher no tabuleiro. */
+  var MAX_SIDE=8192;
+  var IDEAL_CARD_W=1080;
+  var MIN_CARD_W=640;
+  var cols=Math.ceil(Math.sqrt(n));
+  var rows=Math.ceil(n/cols);
+  function deckCellDims(cardW){
+    var cardH=Math.round(cardW/HUD_RATIO);
+    return { cardW:cardW, cardH:cardH, sheetW:cols*cardW, sheetH:rows*cardH };
+  }
+  var CARD_W=IDEAL_CARD_W;
+  var d=deckCellDims(CARD_W);
+  var shrink=Math.min(MAX_SIDE/Math.max(d.sheetW,1), MAX_SIDE/Math.max(d.sheetH,1), 1);
+  if(shrink<1){
+    CARD_W=Math.max(MIN_CARD_W, Math.floor(CARD_W*shrink));
+    d=deckCellDims(CARD_W);
+    if(d.sheetW>MAX_SIDE||d.sheetH>MAX_SIDE){
+      shrink=Math.min(MAX_SIDE/d.sheetW, MAX_SIDE/d.sheetH);
+      CARD_W=Math.max(MIN_CARD_W, Math.floor(CARD_W*shrink));
+      d=deckCellDims(CARD_W);
+    }
+  }
+  var CARD_H=d.cardH, sheetW=d.sheetW, sheetH=d.sheetH;
+  var gfs=getGlobalFacSel(), gts=getGlobalTatSel();
+  var gFac=gfs&&gfs.value||"", gTat=gts&&gts.value||"";
+  var totPts=parseInt(totalEl?totalEl.textContent:"0",10)||0;
+
+  setBusy(true," (0/"+n+")");
+  loadLib("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js","html2canvas",function(){
+    loadLib("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js","JSZip",function(){
+      if(typeof html2canvas==="undefined"||typeof JSZip==="undefined"){
+        setBusy(false);
+        alert("Bibliotecas não carregaram.");
+        return;
+      }
+      var canvases=new Array(n);
+      var idx=0;
+      var dpr=(typeof window.devicePixelRatio==="number"&&window.devicePixelRatio>1)?window.devicePixelRatio:1;
+      var scale=Math.min(2.75, Math.max(2, Math.round(dpr*1.35)));
+      function runCap(){
+        if(idx>=n){
+          try{
+            var master=document.createElement("canvas");
+            master.width=sheetW;
+            master.height=sheetH;
+            var ctx=master.getContext("2d");
+            if(ctx.imageSmoothingEnabled!==undefined){ ctx.imageSmoothingEnabled=true; }
+            if(ctx.imageSmoothingQuality!==undefined){ ctx.imageSmoothingQuality="high"; }
+            ctx.fillStyle="#050505";
+            ctx.fillRect(0,0,sheetW,sheetH);
+            var pi;
+            for(pi=0;pi<n;pi++){
+              var row=Math.floor(pi/cols);
+              var col=pi%cols;
+              var cv=canvases[pi];
+              ctx.drawImage(cv,0,0,cv.width,cv.height,col*CARD_W,row*CARD_H,CARD_W,CARD_H);
+            }
+            for(;pi<cols*rows;pi++){
+              row=Math.floor(pi/cols);
+              col=pi%cols;
+              ctx.fillStyle="#121212";
+              ctx.fillRect(col*CARD_W,row*CARD_H,CARD_W,CARD_H);
+              ctx.strokeStyle="#333";
+              ctx.strokeRect(col*CARD_W+0.5,row*CARD_H+0.5,CARD_W-1,CARD_H-1);
+            }
+            var orderLines=[];
+            for(pi=0;pi<n;pi++){
+              var nm=(huds[pi].dataset&&huds[pi].dataset.unitName)||("(unidade "+(pi+1)+")");
+              orderLines.push(String(pi+1)+". "+nm);
+            }
+            var readme=[
+              "Noosphera — Custom Deck (Tabletop Simulator)",
+              "https://kb.tabletopsimulator.com/custom-content/custom-deck/",
+              "",
+              "1) Descompacte este ZIP.",
+              "2) Aloje noosphera_deck_face.png num URL público (HTTPS), ou use ficheiro local.",
+              "3) No TTS: Objects → Components → Custom → Deck.",
+              "   Face: URL ou caminho da imagem da folha.",
+              "   Width  (cartas na horizontal da folha): "+cols,
+              "   Height (cartas na vertical da folha):   "+rows,
+              "   Number (quantidade de cartas no baralho): "+n,
+              "",
+              "Recomendado: Unique Backs = Não; carregue um verso único em Back.",
+              "Opcional: Back is Hidden = Sim → usa o verso normal quando a carta está na mão.",
+              "",
+              "Ordem das cartas no deck (fileiras da folha: esquerda→direita, topo→baixo):",
+              orderLines.join("\n"),
+              "",
+              "Resumo do builder: facção="+gFac+" | tática="+gTat+" | total "+totPts+" pts",
+              "",
+              "Dimensões da folha: "+sheetW+"×"+sheetH+" px ("+CARD_W+"×"+CARD_H+" px por célula).",
+              "",
+              "Legibilidade: esta folha usa resolução alta (até "+MAX_SIDE+" px de lado). Se o TTS ou o hosting recusarem o ficheiro, reduza unidades por deck ou comprima num editor."
+            ].join("\n");
+
+            master.toBlob(function(faceBlob){
+              if(!faceBlob){ setBusy(false); alert("Falha ao gerar PNG."); return; }
+              var zip=new JSZip();
+              zip.file("noosphera_deck_face.png", faceBlob);
+              zip.file("LEIA-ME_deck_TTS.txt", readme);
+              zip.generateAsync({type:"blob",compression:"DEFLATE",compressionOptions:{level:6}})
+                .then(function(blob){
+                  var url=URL.createObjectURL(blob);
+                  var a=document.createElement("a");
+                  a.download="noosphera_tts_deck.zip";
+                  a.href=url;
+                  a.rel="noopener";
+                  document.body.appendChild(a);
+                  a.click();
+                  setTimeout(function(){
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                  },1500);
+                  setBusy(false);
+                  alert("ZIP gerado. Width="+cols+", Height="+rows+", Number="+n+". \nUse LEIA-ME_deck_TTS.txt ao criar o Custom Deck no TTS.");
+                })
+                .catch(function(e){
+                  console.error(e);
+                  setBusy(false);
+                  alert("Erro ao compactar: "+(e&&e.message?e.message:String(e)));
+                });
+            },"image/png");
+          }catch(ex){
+            console.error(ex);
+            setBusy(false);
+            alert("Erro ao montar folha: "+(ex&&ex.message?ex.message:String(ex)));
+          }
+          return;
+        }
+        var hud=huds[idx];
+        var cur=idx+1;
+        idx++;
+        setBusy(true," ("+cur+"/"+n+")");
+        html2canvas(hud,{
+          backgroundColor:"#050505",
+          scale:scale,
+          useCORS:true,
+          allowTaint:true,
+          logging:false
+        }).then(function(cv){
+          canvases[cur-1]=cv;
+          setTimeout(runCap,40);
+        }).catch(function(err){
+          console.error("html2canvas deck",err);
+          alert("Falha ao capturar unidade "+cur+"/"+n+".");
+          setBusy(false);
+        });
+      }
+      runCap();
+    });
+  });
+});
+root._sbInit=true;
+root.setAttribute("data-sb-engine-ready","1");
+} catch (err) {
+  console.error("Squad Builder engine:", err);
+  var r=document.getElementById("sb_m90qqv5q")||document.querySelector(".js-squad-builder-app");
+  if(r) r._sbInit=false;
+}
+})();</script></div></div></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div id="right-content" class="leaf" style="--sidebar-width: var(--sidebar-width-right);"></div></div></div></body></html>

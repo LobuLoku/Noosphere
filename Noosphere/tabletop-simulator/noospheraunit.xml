@@ -1,0 +1,17 @@
+<VerticalLayout height="400" width="320" spacing="4" childAlignment="UpperCenter" color="#00000000">
+  <Panel id="miniWrap" active="false" width="300" preferredHeight="96" color="#0f0f0fee">
+    <Text id="miniText" alignment="UpperLeft" fontSize="11" color="#e8e0ff" />
+  </Panel>
+  <HorizontalLayout preferredHeight="26" childForceExpandWidth="false" spacing="6">
+    <Button id="btnFull" preferredHeight="26" preferredWidth="110" fontSize="11" text="Ficha completa" colors="#2a1844|#4a2c66|#121018|#ffffff" />
+    <Button id="btnCollapse" preferredHeight="26" preferredWidth="70" fontSize="11" text="Fechar" colors="#442020|#663030|#121018|#ffffff" />
+  </HorizontalLayout>
+  <VerticalLayout id="fullWrap" active="false" height="340" width="300" color="#121018" spacing="2" padding="6 6 6 6">
+    <Text id="fullTitle" preferredHeight="28" alignment="MiddleCenter" fontSize="15" fontStyle="Bold" color="#d8b4fe" />
+    <Text id="fullPts" preferredHeight="18" alignment="MiddleCenter" fontSize="11" color="#a99bbd" />
+    <Text id="fullFac" preferredHeight="36" alignment="UpperLeft" fontSize="10" color="#8899aa" />
+    <VerticalScrollView height="240" scrollSensitivity="18">
+      <Text id="fullBody" alignment="UpperLeft" fontSize="10" color="#dde6ee" />
+    </VerticalScrollView>
+  </VerticalLayout>
+</VerticalLayout>
