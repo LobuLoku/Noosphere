@@ -1,0 +1,1285 @@
+﻿```dataviewjs
+/* ==========================================================
+   LÃ“GICA DO SISTEMA (V13.0 - RELATIONAL ABILITIES & KEYWORDS)
+   ========================================================== */
+
+let p = dv.current();
+if ((!p || !p.file) && typeof app !== "undefined" && dv.currentFilePath) {
+  try {
+    const fp = dv.currentFilePath;
+    const f = app.vault.getAbstractFileByPath(fp);
+    const mc = app.metadataCache.getCache(fp);
+    if (f && mc && mc.frontmatter && "stat" in f) {
+      p = Object.assign({}, mc.frontmatter, {
+        file: {
+          path: f.path,
+          name: f.name,
+          basename: f.basename,
+          extension: f.extension,
+          mtime: f.stat.mtime,
+        },
+      });
+    }
+  } catch (_e) {}
+}
+if ((!p || !p.file) && typeof app !== "undefined") {
+  try {
+    const af = app.workspace.getActiveFile();
+    if (af && af.path === dv.currentFilePath) {
+      const cand = dv.page(af.path);
+      if (cand && cand.file) p = cand;
+    }
+  } catch (_e2) {}
+}
+if (!p || !p.file) {
+  dv.paragraph("*Erro: metadata da ficha nÃ£o disponÃ­vel no Ã­ndice Dataview. Em DefiniÃ§Ãµes â†’ Dataview: experimente Â«Refresh IndexÂ» / Â«RebuildÂ» ou confira o YAML da nota.*");
+  return;
+}
+/** Obsidian pode usar origin https:// â€” nÃ£o confiar em window.location para isto */
+const isObsidian = typeof app !== "undefined";
+
+// 1. CORE RULES
+const coreRules = {
+  mov: "MOVIMENTO: DistÃ¢ncia mÃ¡xima em polegadas que o modelo pode se deslocar com uma aÃ§Ã£o de movimento, medida no terreno.",
+  vida: "VIDA: Quantidade de dano que o modelo pode sofrer antes de ser destruÃ­do.",
+  dec: "DECOERÃŠNCIA: Quanto o esquadrÃ£o Ã© afetado quando esta unidade morre â€” representa a coesÃ£o do grupo. DecoerÃªncia acumulada demais passa a gerar problemas ou penalidades ao squad.",
+  ap: "AP: Quantidade de aÃ§Ãµes que o modelo pode gastar por ativaÃ§Ã£o (habilidades, manobras, etc.).",
+  peso: "PESO MÃX: O limite de peso total que este modelo pode carregar em utilitÃ¡rios e armas.",
+  melee: "DEFESA CORPO A CORPO: Quanto de dano corpo a corpo o modelo absorve antes que o excesso cause dano Ã  vida.",
+  ranged: "DEFESA Ã€ DISTÃ‚NCIA: Quanto de dano Ã  distÃ¢ncia o modelo absorve antes que o excesso cause dano Ã  vida.",
+  special: "DEFESA ESPECIAL: Quanto de dano especial o modelo absorve antes que o excesso cause dano Ã  vida."
+};
+
+// ArrayBuffer to Base64 Helper
+function bufferToBase64(buf) {
+    var binStr = '';
+    var bytes = new Uint8Array(buf);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binStr += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binStr);
+}
+
+async function resolveImgBase64(imgRaw) {
+    if (!imgRaw) return "";
+    let path = imgRaw.path || String(imgRaw).replace(/\[\[|\]\]/g, '');
+    if (!path) return "";
+    if (path.startsWith("http")) return path;
+    if (isObsidian) {
+        const file = app.metadataCache.getFirstLinkpathDest(path, p.file.path);
+        if (file) {
+            let buffer = await app.vault.readBinary(file);
+            let b64 = bufferToBase64(buffer);
+            let ext = file.extension.toLowerCase();
+            let mime = (ext === 'jpg' || ext === 'jpeg') ? 'image/jpeg' : (ext === 'webp' ? 'image/webp' : 'image/png');
+            return `data:${mime};base64,${b64}`;
+        }
+    }
+    return path;
+}
+
+// 2. FETCH WEAPONS / UTILITIES (from utility_list property)
+function resolveLinkedUtilityPage(pathStr) {
+  let pg = dv.page(pathStr);
+  if (pg) return pg;
+  const baseName = pathStr.replace(/\\/g, "/").split("/").pop().replace(/\.md$/i, "");
+  let found = null;
+  dv.pages().forEach(function (q) {
+    if (found) return;
+    if (q.file.name.replace(/\.md$/i, "") === baseName) found = q;
+  });
+  return found;
+}
+
+let availableWeapons = [];
+// Read utility_list (YAML list) â€” fallback to legacy utility1..utility10
+let utilityLinks = [];
+if (p.utility_list && Array.isArray(p.utility_list) && p.utility_list.length > 0) {
+  utilityLinks = p.utility_list;
+} else if (p.utility_list && typeof p.utility_list === "string" && p.utility_list.trim()) {
+  utilityLinks = [p.utility_list];
+} else {
+  // Legacy fallback: utility1..utility10
+  for (let i = 1; i <= 10; i++) {
+    let uLink = p[`utility${i}`];
+    if (uLink) utilityLinks.push(uLink);
+  }
+}
+for (const uLink of utilityLinks) {
+  if (!uLink) continue;
+  let path = uLink.path || String(uLink).replace(/\[\[|\]\]/g, '').trim();
+  if (!path) continue;
+  let wPage = resolveLinkedUtilityPage(path);
+  if (wPage) {
+     let wImgRaw = wPage.utility_image || wPage.model_image || "";
+     let wImgB64 = await resolveImgBase64(wImgRaw);
+     const atk = wPage.equipamento_ataques;
+     const mir = wPage.equipamento_mira;
+     const dist = wPage.equipamento_distancia;
+     const dmg = wPage.damage_type;
+     const pes = wPage.equipamento_loadout;
+     const pmRaw = wPage.point_mod;
+     const hasPointMod = pmRaw !== undefined && pmRaw !== null && String(pmRaw).trim() !== "";
+
+     availableWeapons.push({
+         name: wPage.file?.name || path.split('/').pop().replace('.md',''),
+         tipo: wPage.tipo || "Weapon",
+         image: wImgB64,
+         ataques: atk != null && atk !== '' ? atk : null,
+         mira: mir != null && mir !== '' ? mir : null,
+         distancia: dist != null && dist !== '' ? dist : null,
+         dano: dmg != null && dmg !== '' ? dmg : null,
+         peso: pes != null && pes !== '' ? pes : null,
+         point_mod: hasPointMod ? pmRaw : null,
+         equipamento_ataques: atk,
+         equipamento_mira: mir,
+         equipamento_distancia: dist,
+         damage_type: dmg,
+         equipamento_loadout: pes,
+         keywords: wPage.equipamento_keywords || [],
+         caracteristicas: wPage.equipamento_caracteristicas || [],
+         passivas_de_utility: wPage.passivas_de_utility || []
+     });
+  }
+}
+
+function fmtPmSuffix(pm) {
+  if (pm == null || pm === "") return "";
+  const n = parseInt(pm, 10);
+  if (isNaN(n)) return "";
+  return ` (${n > 0 ? "+" : ""}${n} pts)`;
+}
+const weaponOptionsHtml =
+  `<option value="">â€” Escolha â€”</option>` +
+  `<option value="__none__">Sem loadout</option>` +
+  availableWeapons.map(w => `<option value="${w.name}">${w.name}${fmtPmSuffix(w.point_mod)}</option>`).join('');
+
+// 2.5 FETCH FACTIONS â€” mecÃ¢nica no YAML das pÃ¡ginas Wargame/03 FacÃ§Ãµes (Guia de TÃ¡ticas.md).
+function legacyTacticsFromBanner(f) {
+    const arr = [];
+    for (let n = 1; n <= 12; n++) {
+        const nm = f[`tactic${n}_name`];
+        if (nm) arr.push({ nome: String(nm).trim(), efeitos: {} });
+    }
+    return arr;
+}
+
+const factionsRaw = dv.pages('"Wargame/03 FacÃ§Ãµes"').map(f => {
+    const tacDescMap = {};
+    (f.file.lists || []).forEach(l => {
+        const txt = l.text;
+        if (txt.includes(':')) {
+            const colonIdx = txt.indexOf(':');
+            const key = txt.substring(0, colonIdx).trim().toLowerCase();
+            const val = txt.substring(colonIdx + 1).trim();
+            tacDescMap[key] = val;
+        }
+    });
+    const rawT = (f.taticas && f.taticas.length > 0) ? f.taticas : legacyTacticsFromBanner(f);
+    const taticas = rawT.map(t => ({
+        ...t,
+        descricao: tacDescMap[String(t.nome || '').toLowerCase()] || ''
+    }));
+    return {
+        name: f.file.name,
+        noosphera: f.noosphera,
+        taticas
+    };
+}).array();
+
+// 3. GLOSSÃRIOS (arma + utilities + passivas de modelo: Wargame/05 GlossÃ¡rios/GlossÃ¡rio - Passivas.md)
+const haGlos = dv.page("Wargame/05 GlossÃ¡rios/GlossÃ¡rio - AÃ§Ãµes.md")?.file?.lists || [];
+const hpGlos = dv.page("Wargame/05 GlossÃ¡rios/GlossÃ¡rio - Passivas.md")?.file?.lists || [];
+
+const buildMap = (lists) => {
+    let m = {};
+    lists.forEach(l => {
+        let txt = l.text;
+        if (txt.includes(':')) {
+            let [k, d] = txt.split(':');
+            m[k.trim().toLowerCase()] = d.trim();
+        }
+    });
+    return m;
+};
+const activeMap = buildMap(haGlos);
+const passiveMap = buildMap(hpGlos);
+const weaponMap = passiveMap;
+const utilityPassiveMap = passiveMap;
+const weaponMapJSON = JSON.stringify(weaponMap).replace(/'/g, "&#39;");
+
+// 4. PREPARAÃ‡ÃƒO DE TAGS E REGRAS
+const mercKwTooltip =
+    "MercenÃ¡rios podem integrar esquadrÃµes de qualquer facÃ§Ã£o na mesma Noosphera, sem custo extra por facÃ§Ã£o cruzada.";
+const kwMap = {
+    elite: "Elites sÃ£o modelos especiais que em alguns exÃ©rcitos sÃ£o limitados.",
+    unique: "UNIQUE significa que vocÃª nÃ£o pode pegar mais de um daquele model do seu squad.",
+    mercenary: mercKwTooltip,
+    mercenÃ¡rio: mercKwTooltip,
+    mercenario: mercKwTooltip,
+    mercenarios: mercKwTooltip,
+};
+function stripD(s) {
+    return String(s || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+}
+function kwNormBare(k) {
+    return stripD(k);
+}
+function kwListHasToken(list, tokens) {
+    const arr = Array.isArray(tokens) ? tokens : [tokens];
+    return list.some((k) => {
+        const x = kwNormBare(k);
+        return arr.some((t) => x === t);
+    });
+}
+function isBadgeKwInRow(k) {
+    const x = kwNormBare(k);
+    return x === "unique" || x === "elite" || x === "mercenary" || x === "mercenario" || x === "mercenarios";
+}
+
+/** ELITE jÃ¡ vai no badge do topo â€” nÃ£o repetir na coluna de passivas/caracterÃ­sticas do modelo (Ãºnico filtro deste tipo). */
+function omitEliteMirrorList(listRaw) {
+    const list = Array.isArray(listRaw) ? listRaw : listRaw ? String(listRaw).split(",").map((s) => s.trim()) : [];
+    return list.filter((item) => kwNormBare(item) !== "elite");
+}
+
+const renderTags = (tags, map, cssClass) => {
+    const list = Array.isArray(tags) ? tags : (tags ? String(tags).split(',').map(s => s.trim()) : []);
+    return list.map(item => {
+        let k = String(item).toLowerCase();
+        let desc = map[k] || "Regra especial (PÃ¡gina nÃ£o encontrada).";
+        desc = desc.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        return `<span class="${cssClass} tc-tooltip" data-desc="${desc}">${item}</span>`;
+    }).join('');
+};
+
+/** CaracterÃ­sticas de modelo: mesmo formato das passivas na coluna, glossÃ¡rio em GlossÃ¡rio - Passivas (Passivas padrÃ£o). */
+const MODEL_CHAR_COLOR = "#d8b4fe";
+const renderCaracteristicas = (listRaw, map, color) => {
+    const list = Array.isArray(listRaw) ? listRaw : (listRaw ? String(listRaw).split(',').map(s => s.trim()) : []);
+    if (list.length === 0) return "";
+    return list.map(item => {
+        let k = String(item).toLowerCase();
+        let desc = map[k] || "DescriÃ§Ã£o nÃ£o encontrada no glossÃ¡rio.";
+        let apCost = "";
+        let cleanDesc = desc;
+        const apMatch = desc.match(/^\[([ðŸ”´]+)\]\s*/);
+        if (apMatch) {
+            apCost = `<span style="margin-left: 5px; font-size: 0.78rem; letter-spacing: 1px;">${apMatch[1]}</span>`;
+            cleanDesc = desc.substring(apMatch[0].length);
+        }
+        return `<div class="model-char-row" data-char-key="${k.replace(/"/g, '&quot;')}" style="margin-bottom: 3px; font-family: sans-serif; font-size: 0.82rem; line-height: 1.35; background: transparent; padding: 2px 8px; border-left: 3px solid ${color}; break-inside: avoid; page-break-inside: avoid;">
+            <strong style="color: ${color}; text-transform: uppercase; font-size: 0.88rem;">${item}${apCost}:</strong>
+            <span style="color: #ccc;">${cleanDesc}</span>
+        </div>`;
+    }).join('');
+};
+
+const caracteristicasHtml = renderCaracteristicas(omitEliteMirrorList(p.caracteristicas), passiveMap, MODEL_CHAR_COLOR);
+
+// KEYWORDS (FacÃ§Ã£o e Noosphera primeiro)
+let rawKws = Array.isArray(p.keywords) ? p.keywords : (p.keywords ? String(p.keywords).split(',').map(s => s.trim()) : []);
+let kwList = [];
+if (p.noosphera) kwList.push(p.noosphera);
+if (p.faccao) {
+    if (Array.isArray(p.faccao)) kwList.push(...p.faccao);
+    else kwList.push(p.faccao);
+}
+rawKws.forEach(k => { if(!kwList.includes(k)) kwList.push(k); });
+
+const charsLower = p.caracteristicas
+    ? (Array.isArray(p.caracteristicas) ? p.caracteristicas : String(p.caracteristicas).split(","))
+          .map((c) => c.trim().toLowerCase())
+    : [];
+
+const isUnique =
+    kwListHasToken(kwList, "unique") || charsLower.includes("unique");
+const isElite =
+    kwListHasToken(kwList, "elite") || charsLower.includes("elite");
+const isMerc = kwListHasToken(kwList, ["mercenary", "mercenario", "mercenarios"]);
+
+const roleBadgesHtml =
+    (isUnique ? `<span class="unique-badge">UNIQUE</span>` : "") +
+    (isElite ? `<span class="elite-badge">ELITE</span>` : "") +
+    (isMerc ? `<span class="mercenary-badge">MERCENARY</span>` : "");
+
+const kwRowList = kwList.filter((k) => !isBadgeKwInRow(k));
+const modelKwTags = kwRowList
+    .map((k) => {
+        let kl = k.toLowerCase();
+        let kd = kwNormBare(k);
+        let tip = kwMap[kl] || kwMap[kd];
+        if (tip) {
+            let desc = tip.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+            return `<span class="model-kw tc-tooltip" data-desc="${desc}">${k}</span>`;
+        }
+        return `<span class="model-kw">${k}</span>`;
+    })
+    .join("");
+
+// HABILIDADES DINÃ‚MICAS
+const renderAbilities = (listRaw, map, typeLabel, color) => {
+    const list = Array.isArray(listRaw) ? listRaw : (listRaw ? String(listRaw).split(',').map(s => s.trim()) : []);
+    if (list.length === 0) return "";
+    return list.map(item => {
+        let k = String(item).toLowerCase();
+        let desc = map[k] || "DescriÃ§Ã£o nÃ£o encontrada no glossÃ¡rio.";
+        let apCost = "";
+        let cleanDesc = desc;
+        const apMatch = desc.match(/^\[([ðŸ”´]+)\]\s*/);
+        if (apMatch) {
+            apCost = `<span style="margin-left: 5px; font-size: 0.78rem; letter-spacing: 1px;">${apMatch[1]}</span>`;
+            cleanDesc = desc.substring(apMatch[0].length);
+        }
+        return `<div style="margin-bottom: 3px; font-family: sans-serif; font-size: 0.82rem; line-height: 1.35; background: transparent; padding: 2px 8px; border-left: 3px solid ${color}; break-inside: avoid; page-break-inside: avoid;">
+            <strong style="color: ${color}; text-transform: uppercase; font-size: 0.88rem;">${item}${apCost}:</strong> 
+            <span style="color: #ccc;">${cleanDesc}</span>
+        </div>`;
+    }).join('');
+};
+
+const renderPadrao = (listRaw, map, color) => {
+    const list = Array.isArray(listRaw) ? listRaw : (listRaw ? String(listRaw).split(',').map(s => s.trim()) : []);
+    if (list.length === 0) return "";
+    return list.map(item => {
+        let k = String(item).toLowerCase();
+        let desc = map[k] || "";
+        let apCost = "";
+        const apMatch = desc.match(/^\[([ðŸ”´ðŸ”]+)\]\s*/);
+        if (apMatch) {
+            apCost = `<span style="margin-left: 4px; font-size: 0.72rem; letter-spacing: 1px;">${apMatch[1]}</span>`;
+        }
+        return `<div style="font-family: sans-serif; font-size: 0.76rem; line-height: 1.28; background: transparent; padding: 2px 8px; border-left: 3px solid ${color}; break-inside: avoid; page-break-inside: avoid;">
+            <strong style="color: ${color}; text-transform: uppercase; font-size: 0.8rem;">${item}${apCost}</strong>
+        </div>`;
+    }).join('');
+};
+
+const padraoHtml = renderAbilities(p.habilidades_padrao, activeMap, "PadrÃ£o", "#ffffff");
+const activeHtml = renderAbilities(p.habilidades_ativas, activeMap, "Ativa", "#be63ff");
+const passiveHtml = renderAbilities(omitEliteMirrorList(p.habilidades_passivas), passiveMap, "Passiva", "#00bfff");
+
+// ArrayBuffer to Base64 Helper
+function bufferToBase64(buf) {
+    var binStr = '';
+    var bytes = new Uint8Array(buf);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binStr += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binStr);
+}
+
+// IMAGEM E DATA
+let imgURL = "";
+let imgPath = p.model_image?.path || String(p.model_image || "").replace(/\[\[|\]\]/g, '');
+if (isObsidian && imgPath) {
+    const file = app.metadataCache.getFirstLinkpathDest(imgPath, p.file.path);
+    if (file) {
+        let buffer = await app.vault.readBinary(file);
+        let b64 = bufferToBase64(buffer);
+        let ext = file.extension.toLowerCase();
+        let mime = (ext === 'jpg' || ext === 'jpeg') ? 'image/jpeg' : (ext === 'webp' ? 'image/webp' : 'image/png');
+        imgURL = `data:${mime};base64,${b64}`;
+    }
+} else { imgURL = imgPath; }
+
+let faviconURL = await resolveImgBase64("Recursos/Main Logo/Favicon fill White.png");
+
+function escCssUrl(u) {
+    return String(u || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+}
+
+const updatedDate = window.moment ? window.moment(p.file.mtime).format("DD/MM/YYYY") : new Date(p.file.mtime).toLocaleDateString();
+
+// 5. UI HTML INJECTION
+let uid = "uid_" + Math.random().toString(36).substr(2, 9);
+
+// Serialize data for the global engine (URI-encoded like Template â€” export-fixes decodeURIComponent)
+const dataWeapons = encodeURIComponent(JSON.stringify(availableWeapons));
+/** JSON completo dentro do HUD â€” data-weapons no atributo quebra com imagens base64 grandes no export HTML */
+const weaponsJsonEmbedded = JSON.stringify(availableWeapons).replace(/</g, '\\u003c');
+const dataFactions = encodeURIComponent(JSON.stringify(factionsRaw));
+const dataBaseStats = encodeURIComponent(JSON.stringify({
+    vida: p.vida,
+    armadura_melee: p.armadura_melee,
+    armadura_ranged: p.armadura_ranged,
+    armadura_special: p.armadura_special,
+    movimento: p.movimento,
+    decoerencia: p.decoerencia,
+    ap: Number(p.ap != null && p.ap !== '' ? p.ap : p.AP) || 0
+}));
+const dataMaps = encodeURIComponent(JSON.stringify({
+    active: activeMap,
+    passive: passiveMap,
+    weapon: weaponMap,
+    utilityPassive: utilityPassiveMap
+}));
+
+(function rykeWeaponAbilityBootstrap() {
+    if (window.__rykeWeaponAbilBlocks) return;
+    window.__rykeWeaponAbilBlocks = true;
+
+    function getWeapons(root) {
+        var weapons = [];
+        var jel = root.querySelector(".js-weapons-json");
+        if (jel && jel.textContent) { try { weapons = JSON.parse(jel.textContent); } catch (e) {} }
+        if (!weapons.length) { try { weapons = JSON.parse(decodeURIComponent(root.getAttribute("data-weapons") || "%5B%5D")); } catch (e2) {} }
+        return weapons;
+    }
+    function getMaps(root) {
+        try { return JSON.parse(decodeURIComponent(root.getAttribute("data-maps") || "%7B%7D")); } catch (e) { return {}; }
+    }
+    function findWeapon(weapons, name) {
+        if (!name || name === "__none__") return null;
+        for (var i = 0; i < weapons.length; i++) { if (weapons[i] && String(weapons[i].name) === name) return weapons[i]; }
+        return null;
+    }
+    function abilBlocks(list, map, color) {
+        if (!list || !list.length) return "";
+        var html = "";
+        for (var j = 0; j < list.length; j++) {
+            var item = String(list[j] || "").trim();
+            if (!item) continue;
+            var k = item.toLowerCase();
+            var desc = (map && map[k]) || "DescriÃ§Ã£o nÃ£o encontrada no glossÃ¡rio.";
+            var apCost = "", cleanDesc = desc;
+            var apMatch = cleanDesc.match(/^\[([ðŸ”´]+)\]\s*/);
+            if (apMatch) { apCost = '<span style="margin-left:4px;font-size:0.68rem;letter-spacing:1px;">' + apMatch[1] + "</span>"; cleanDesc = cleanDesc.substring(apMatch[0].length); }
+            html += '<div style="margin-bottom:4px;font-family:sans-serif;font-size:0.72rem;line-height:1.3;padding:2px 6px;border-left:3px solid ' + color + ';break-inside:avoid;page-break-inside:avoid">';
+            html += '<strong style="color:' + color + ';text-transform:uppercase;font-size:0.74rem;">' + item + apCost + ":</strong> ";
+            html += '<span style="color:#ccc;">' + cleanDesc + "</span></div>";
+        }
+        return html;
+    }
+
+    /** Update one utility slot (suffix = "A" or "B") */
+    function updateSlot(root, suffix, weaponName) {
+        var uid = root.id;
+        if (!uid) return;
+        var weapons = getWeapons(root);
+        var maps = getMaps(root);
+        var wMap = maps.weapon || maps.passive || {};
+        var uMap = maps.utilityPassive || maps.passive || {};
+        var isNone = (weaponName === "__none__");
+        var w = isNone ? null : findWeapon(weapons, weaponName);
+        var s = suffix; // "A" or "B"
+
+        var disp = document.getElementById("w-sel-display-" + s + "-" + uid);
+        var statsGrid = document.getElementById("w-stats-grid-" + s + "-" + uid);
+        var pesoEl = document.getElementById("w-peso-" + s + "-" + uid);
+        var pmEl = document.getElementById("w-pts-mod-" + s + "-" + uid);
+        var kwsEl = document.getElementById("w-kws-" + s + "-" + uid);
+        var tagsEl = document.getElementById("w-tags-" + s + "-" + uid);
+        var pasEl = document.getElementById("w-passives-" + s + "-" + uid);
+        var atkEl = document.getElementById("w-atk-" + s + "-" + uid);
+        var miraEl = document.getElementById("w-mira-" + s + "-" + uid);
+        var distEl = document.getElementById("w-dist-" + s + "-" + uid);
+        var dmgEl = document.getElementById("w-dmg-" + s + "-" + uid);
+
+        function txt(v) { return v == null ? "" : String(v); }
+        function nz(v, d) { var x = txt(v); return x.length ? x : d; }
+
+        if (disp) disp.textContent = isNone ? "SEM LOADOUT" : (weaponName || "â€” ESCOLHA â€”");
+        if (statsGrid) statsGrid.style.display = (w && w.tipo !== "Utility") ? "grid" : "none";
+        if (atkEl) atkEl.textContent = w ? nz(w.ataques, "0") : "0";
+        if (miraEl) miraEl.textContent = w ? nz(w.mira, "0") : "0";
+        if (distEl) distEl.textContent = w && txt(w.distancia).length ? txt(w.distancia) : "-";
+        if (dmgEl) dmgEl.textContent = w && txt(w.dano).length ? txt(w.dano) : "-";
+        if (pesoEl) pesoEl.textContent = isNone ? "0" : (w && txt(w.peso).length ? txt(w.peso) : "0");
+        if (pmEl) {
+            var pm = w && w.point_mod, pn = parseInt(pm, 10), showPm = !isNone && pm != null && pm !== "" && !isNaN(pn);
+            if (showPm) { pmEl.classList.add("is-visible"); pmEl.textContent = (pn > 0 ? "+" : "") + pn + " PTS"; }
+            else { pmEl.classList.remove("is-visible"); pmEl.textContent = ""; }
+        }
+        if (kwsEl) {
+            if (!w || !w.keywords || !w.keywords.length) kwsEl.innerHTML = "";
+            else kwsEl.innerHTML = w.keywords.map(function(k) {
+                return '<span style="font-size:0.5rem;text-transform:uppercase;color:#80e5ff;border:1px solid rgba(0,217,255,0.35);padding:1px 5px;border-radius:10px;">' + txt(k).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;") + "</span>";
+            }).join(" ");
+        }
+        if (tagsEl) tagsEl.innerHTML = w && w.caracteristicas ? abilBlocks(w.caracteristicas, wMap, "#00ffff") : "";
+        if (pasEl) pasEl.innerHTML = w && w.passivas_de_utility ? abilBlocks(w.passivas_de_utility, uMap, "#00bfff") : "";
+    }
+
+    /** Sync selectors so both slots can't pick the same weapon */
+    function syncSelectors(root) {
+        var selA = root.querySelector(".js-weapon-sel-A");
+        var selB = root.querySelector(".js-weapon-sel-B");
+        if (!selA || !selB) return;
+        var valA = selA.value, valB = selB.value;
+        // Re-enable all options first
+        [selA, selB].forEach(function(sel) {
+            for (var i = 0; i < sel.options.length; i++) sel.options[i].disabled = false;
+        });
+        // Disable the other slot's choice (skip "" and "__none__")
+        if (valA && valA !== "__none__") {
+            for (var i = 0; i < selB.options.length; i++) { if (selB.options[i].value === valA) selB.options[i].disabled = true; }
+        }
+        if (valB && valB !== "__none__") {
+            for (var i = 0; i < selA.options.length; i++) { if (selA.options[i].value === valB) selA.options[i].disabled = true; }
+        }
+    }
+
+    var prevInit = window.initUnitDashboard;
+    window.initUnitDashboard = function (root) {
+        if (typeof prevInit === "function") prevInit(root);
+        // Initialize both slots
+        var selA = root.querySelector(".js-weapon-sel-A");
+        var selB = root.querySelector(".js-weapon-sel-B");
+        if (selA) updateSlot(root, "A", selA.value);
+        if (selB) updateSlot(root, "B", selB.value);
+        syncSelectors(root);
+    };
+
+    document.addEventListener("change", function (ev) {
+        var t = ev.target;
+        if (!t) return;
+        var suffix = null;
+        if (t.classList.contains("js-weapon-sel-A")) suffix = "A";
+        else if (t.classList.contains("js-weapon-sel-B")) suffix = "B";
+        else if (t.classList.contains("js-weapon-sel")) suffix = "A"; // legacy fallback
+        if (!suffix) return;
+        var r = t.closest(".js-unit-dashboard");
+        if (!r) return;
+        updateSlot(r, suffix, t.value);
+        syncSelectors(r);
+    }, true);
+})();
+
+dv.container.innerHTML = `
+<style>
+    /* HIDE DEFAULT OBSIDIAN TITLE SO ONLY OUR HUD SHOWS */
+    .markdown-rendered h1:first-child, .inline-title { display: none !important; }
+
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+    /* â”€â”€ OUTER WRAPPER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .hud-outer-v13 {
+        position: relative; width: 100%;
+        aspect-ratio: 1654 / 869;
+        max-width: 1654px; max-height: 869px; margin: 0 auto 40px;
+        background: #080808; border: 1px solid #3a3a3a;
+        font-family: 'Orbitron', sans-serif !important; color: #fff;
+        display: flex; flex-direction: column;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.9); box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    /* â”€â”€ SCROLLBARS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .ryke-scrollbox::-webkit-scrollbar { width: 3px; }
+    .ryke-scrollbox::-webkit-scrollbar-thumb { background: #be63ff; border-radius: 10px; }
+    .ryke-scrollbox { overflow-y: auto !important; scrollbar-width: thin; scrollbar-color: #be63ff #111; }
+
+    /* â”€â”€ TOP BAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* Character art bleeds in from the right as an absolute img.          */
+    /* Content occupies the left ~60%, always readable.                    */
+    .top-bar {
+        position: relative; width: 100%; overflow: hidden;
+        background: linear-gradient(135deg, #0e0e0e 0%, #141414 100%);
+        border-bottom: 2px solid #be63ff;
+    }
+    /* Dark left-to-right gradient overlay keeps text readable over art */
+    .top-bar::after {
+        content: ''; position: absolute; inset: 0; z-index: 1;
+        background: linear-gradient(to right, #0e0e0e 38%, rgba(14,14,14,0.85) 58%, rgba(14,14,14,0.2) 80%, transparent 100%);
+        pointer-events: none;
+    }
+    /* Character art â€” absolute, right-aligned */
+    .top-hero-img {
+        position: absolute; right: 0; top: 0;
+        height: 100%; width: 50%;
+        /* 120% altura: zoom forte â€” corta bordas, modelo maior na faixa (tipo cover-ish) */
+        background-size: auto 120%; background-position: top center;
+        background-repeat: no-repeat;
+        z-index: 0; display: block; pointer-events: none;
+        /* Fade the left edge smoothly into the dark background */
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%);
+        mask-image: linear-gradient(to right, transparent 0%, black 30%);
+    }
+    /* Content block â€” sits above the gradient overlay */
+    .top-content {
+        position: relative; z-index: 2;
+        padding: 16px 24px; max-width: 62%;
+        display: flex; flex-direction: column; gap: 6px;
+    }
+
+    /* â”€â”€ BADGES & NAME â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .badge-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .pts-badge-new { background: #00ff88; color: #000; padding: 2px 10px; font-weight: 900; font-size: 0.78rem; display: inline-block; clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%); }
+    .unique-badge  { background: #ff3366; color: #fff; padding: 2px 10px; font-weight: 900; font-size: 0.78rem; display: inline-block; clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%); }
+    .hud-main-name { font-size: 1.9rem !important; font-weight: 900; text-transform: uppercase; line-height: 1; letter-spacing: -1px; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); margin: 2px 0; }
+    .kw-row { display: flex; flex-wrap: wrap; gap: 4px; }
+    .model-kw { font-size: 0.58rem; background: rgba(255,255,255,0.08); color: #ccc; border: 1px solid rgba(255,255,255,0.25); padding: 2px 6px; text-transform: uppercase; font-weight: bold; border-radius: 2px; }
+
+    /* â”€â”€ STATS ROW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* All 8 stats in one flex row. Core=cyan border, Defense=purple border */
+    .all-stats-row { display: flex; gap: 5px; flex-wrap: wrap; align-items: flex-start; margin-top: 2px; }
+    .stat-box {
+        display: flex; flex-direction: column; align-items: center;
+        background: rgba(0,0,0,0.65); border: 1px solid rgba(0,255,255,0.3);
+        padding: 3px 10px; border-radius: 2px; cursor: help; min-width: 48px;
+        box-sizing: border-box;
+    }
+    .stat-box.def { border-color: rgba(190,99,255,0.4); }
+    .stat-box.vida { border-color: rgba(255,50,100,0.5); }
+    .stat-lbl { font-size: 0.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; color: #00ffff; line-height: 1.2; }
+    .stat-box.def  .stat-lbl { color: #be63ff; }
+    .stat-box.vida .stat-lbl { color: #ff6688; }
+    .stat-val { font-size: 1.05rem; font-weight: 900; color: #fff; line-height: 1.1; margin-top: 1px; padding: 0 1px; box-sizing: border-box; }
+    .stat-div { width: 1px; background: rgba(190,99,255,0.3); align-self: stretch; margin: 0 3px; }
+    .date-line { font-size: 0.55rem; color: #555; font-family: monospace; margin-top: 4px; }
+
+    /* â”€â”€ BODY GRID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .hud-body-grid {
+        display: grid; grid-template-columns: 1fr minmax(200px,260px) minmax(200px,260px);
+        background: #0d0d0d; flex-grow: 1; min-height: 0;
+        border-top: 0;
+    }
+    .col-abilities { padding: 18px 20px; border-right: 1px solid #242424; display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+    .col-slot {
+        padding: 10px 10px 40px 10px; display: flex; flex-direction: column;
+        min-height: 0; gap: 6px; box-sizing: border-box; align-self: stretch;
+        border-right: 1px solid #1a1a1a;
+    }
+    .col-slot:last-child { border-right: none; }
+    .slot-head { flex-shrink: 0; }
+    .slot-scroll { flex: 1; min-height: 0; }
+
+    /* â”€â”€ ABILITY / TAG ELEMENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .model-tag  { font-size: 0.68rem; background: rgba(0,0,0,0.7); color: #fff; border: 1px solid rgba(0,191,255,0.45); padding: 3px 7px; text-transform: uppercase; font-weight: bold; border-radius: 2px; display: inline-block; cursor: help; }
+    .weapon-tag { font-size: 0.68rem; background: rgba(0,0,0,0.7); color: #fff; border: 1px solid rgba(0,255,255,0.45); padding: 3px 7px; text-transform: uppercase; font-weight: bold; border-radius: 2px; display: inline-block; cursor: help; }
+    .section-label { font-size: 0.8rem; color: #be63ff; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(190,99,255,0.2); padding-bottom: 4px; margin-bottom: 12px; }
+
+    /* â”€â”€ WEAPON SELECTOR (compact for dual slots) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .weapon-selector-wrapper {
+        position: relative; width: 100%; height: 28px;
+        background: rgba(0,255,255,0.04); border: 1px solid rgba(0,255,255,0.4); border-radius: 3px; margin-bottom: 6px;
+        transition: all 0.2s;
+    }
+    .weapon-selector-wrapper:hover { background: rgba(0,255,255,0.1); border-color: #00ffff; }
+    .weapon-selector-display { position: absolute; inset: 0; display: flex; align-items: center; padding-left: 8px; padding-right: 22px; color: #00ffff; font-weight: 900; font-size: 0.62rem; text-transform: uppercase; pointer-events: none; z-index: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .weapon-selector-wrapper::after { content: ''; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D\"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\" width%3D\"292\" height%3D\"292\"%3E%3Cpath fill%3D\"%2300ffff\" d%3D\"M287 69a18 18 0 0 0-13-5H18a18 18 0 0 0-13 18c0 5 2 9 5 13l128 128c4 4 8 5 13 5s9-1 13-5l128-128c4-4 5-8 5-13 0-5-2-9-5-13z\"%2F%3E%3C%2Fsvg%3E') center/contain no-repeat; pointer-events: none; z-index: 1; }
+    .weapon-selector {
+        position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
+        padding: 0 22px 0 8px; box-sizing: border-box; border: none; border-radius: 3px;
+        cursor: pointer; z-index: 4; opacity: 1; color: transparent;
+        -webkit-text-fill-color: transparent; background-color: transparent;
+        font-family: inherit; font-size: max(16px, 0.7rem); line-height: 28px;
+        appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    }
+
+    /* â”€â”€ SLOT INFO BAR (peso + pts prominent) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .slot-info-bar {
+        display: flex; align-items: center; gap: 6px; margin-bottom: 6px; flex-wrap: wrap;
+    }
+    .slot-peso-badge {
+        display: inline-flex; align-items: center; gap: 3px;
+        background: rgba(0,255,255,0.08); border: 1px solid rgba(0,255,255,0.35);
+        padding: 2px 8px; border-radius: 3px;
+    }
+    .slot-peso-badge .spb-val { font-size: 0.9rem; font-weight: 900; color: #00ffff; line-height: 1; }
+    .slot-peso-badge .spb-lbl { font-size: 0.45rem; font-weight: 800; color: #00ffff; opacity: 0.85; letter-spacing: 0.4px; }
+    .slot-pts-badge {
+        display: none; align-items: center;
+        background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.4);
+        padding: 2px 8px; border-radius: 3px;
+        font-size: 0.6rem; font-weight: 900; color: #00ff88; letter-spacing: 0.5px;
+    }
+    .slot-pts-badge.is-visible { display: inline-flex; }
+
+    /* â”€â”€ WEAPON STATS GRID (compact for dual slots) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .col-slot .w-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 6px; }
+    .col-slot .w-stats-grid .w-stat-item {
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        background: rgba(0,0,0,0.65); border: 1px solid rgba(0,255,255,0.3);
+        padding: 2px 4px; border-radius: 2px; box-sizing: border-box;
+        min-height: 38px; max-height: 38px; min-width: 0; width: 100%;
+    }
+    .col-slot .w-stats-grid .w-stat-lbl { font-size: 0.45rem; font-weight: 900; color: #00ffff; letter-spacing: 0.4px; text-transform: uppercase; line-height: 1.2; }
+    .col-slot .w-stats-grid .w-stat-val {
+        font-size: 0.9rem; font-weight: 900; color: #fff; line-height: 1.1; margin-top: 1px;
+        max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center;
+    }
+
+    /* â”€â”€ TOOLTIPS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .tc-tooltip { position: relative; cursor: help; }
+    .tc-tooltip:hover::after { content: attr(data-desc); position: absolute; bottom: 120%; left: 0; width: max-content; max-width: 240px; background: #000; color: #ddd; border: 1px solid #444; border-left: 3px solid #be63ff; padding: 10px; font-family: sans-serif; font-size: 0.85rem; line-height: 1.4; font-weight: normal; white-space: normal; text-transform: none; z-index: 9999; pointer-events: none; }
+
+    /* â”€â”€ BUTTONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .dl-btn    { position: absolute; bottom: 6px; right: 6px;   background: #222; color: #fff; border: none; padding: 4px 10px; font-size: 0.65rem; cursor: pointer; font-family: Orbitron; z-index: 10; }
+    .print-btn { position: absolute; bottom: 6px; right: 82px;  background: #222; color: #fff; border: none; padding: 4px 10px; font-size: 0.65rem; cursor: pointer; font-family: Orbitron; z-index: 10; }
+    .dl-btn:hover, .print-btn:hover { background: #be63ff; color: #000; }
+
+    /* â”€â”€ PRINT MODE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .print-mode .top-bar { background: #fff !important; border-color: #000 !important; }
+    .print-mode .top-bar::after { display: none !important; }
+    .print-mode .top-hero-img { display: none !important; }
+    .print-mode .top-content { max-width: 100% !important; }
+    .print-mode .hud-main-name { color: #000 !important; text-shadow: none !important; }
+    .print-mode .pts-badge-new { background: transparent !important; color: #000 !important; clip-path: none !important; border: none !important; font-weight: 900; }
+    .print-mode .pts-badge-new span { text-shadow: none !important; -webkit-text-stroke: 0 !important; }
+    .print-mode .unique-badge  { background: transparent !important; color: #000 !important; clip-path: none !important; border: 1px solid #000 !important; }
+    .print-mode .elite-badge  { background: transparent !important; color: #000 !important; clip-path: none !important; border: 1px solid #000 !important; }
+    .print-mode .mercenary-badge { background: transparent !important; color: #000 !important; clip-path: none !important; border: 1px solid #000 !important; }
+    .print-mode .model-kw  { background: transparent !important; color: #000 !important; border-color: #000 !important; }
+    .print-mode .stat-box  { background: #fff !important; border-color: #000 !important; }
+    .print-mode .stat-lbl  { color: #000 !important; }
+    .print-mode .stat-val  { color: #000 !important; }
+    .print-mode .hud-body-grid { background: #fff !important; }
+    .print-mode .col-abilities { border-color: #000 !important; }
+    .print-mode .col-slot .w-stats-grid .w-stat-item { background: #fff !important; border-color: #000 !important; }
+    .print-mode .col-slot .w-stats-grid .w-stat-val, .print-mode .col-slot .w-stats-grid .w-stat-lbl { color: #000 !important; }
+    .print-mode .slot-peso-badge { background: #fff !important; border: 1px solid #000 !important; }
+    .print-mode .slot-peso-badge .spb-val, .print-mode .slot-peso-badge .spb-lbl { color: #000 !important; }
+    .print-mode .slot-pts-badge { background: #fff !important; border: 1px solid #000 !important; color: #000 !important; }
+    .print-mode .model-tag, .print-mode .weapon-tag { background: #fff !important; color: #000 !important; border-color: #000 !important; }
+    .print-mode .section-label { color: #000 !important; }
+    .print-mode .weapon-selector-wrapper { background: #fff !important; border-color: #000 !important; }
+    .print-mode .weapon-selector-display { color: #000 !important; }
+    .print-mode img.favicon-logo { filter: invert(1); }
+    .print-mode strong, .print-mode span { color: #000 !important; text-shadow: none !important; -webkit-text-stroke: 0 !important; }
+
+    /* â”€â”€ MOBILE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    @media (max-width: 820px) {
+        .hud-outer-v13 { min-width: unset; }
+        .top-content { max-width: 100% !important; }
+        .top-hero-img { display: none; }
+        .top-bar::after { display: none; }
+        .hud-body-grid { grid-template-columns: 1fr !important; }
+        .col-abilities { border-right: none !important; border-bottom: 1px solid #222 !important; }
+        .col-slot { border-right: none !important; border-bottom: 1px solid #1a1a1a !important; }
+        .hud-main-name { font-size: 1.5rem !important; }
+        .all-stats-row { gap: 4px; }
+    }
+</style>
+
+<div style="max-width: 1654px; margin: 0 auto;">
+<div class="hud-outer-v13 js-unit-dashboard" id="${uid}"
+     data-weapons='${dataWeapons}'
+     data-factions='${dataFactions}'
+     data-base-stats='${dataBaseStats}'
+     data-maps='${dataMaps}'
+     data-unit-noos="${p.noosphera}"
+     data-unit-faccao="${Array.isArray(p.faccao) ? p.faccao[0] : (p.faccao || '')}"
+     data-base-pts="${parseInt(p.pontos) || 0}"
+     data-max-peso="${p.loadout_max || 0}"
+     data-unit-name="${p.file.name}"
+     data-mercenary="${isMerc ? "1" : "0"}">
+    <script type="application/json" class="js-weapons-json">${weaponsJsonEmbedded}</script>
+
+    <button class="dl-btn js-dl-btn"    data-uid="${uid}">ðŸ“¸ JPEG</button>
+    <button class="print-btn js-print-btn" data-uid="${uid}">ðŸ–¨ï¸ PRINT</button>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         TOP BAR
+         Character art is an absolute <img> bleeding in from the right.
+         A CSS gradient overlay (::after) fades the art into the dark bg.
+         All content (name, badges, stats) sits at z-index 2 over this.
+         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <div class="top-bar">
+
+        <div class="top-hero-img" style="background-image: url('${escCssUrl(imgURL)}'); ${imgURL ? '' : 'display:none;'}"></div>
+
+        <div class="top-content">
+            <!-- Logo + badges -->
+            <div class="badge-row">
+                <img id="favicon-${uid}" class="favicon-logo" src="${faviconURL}" style="width:36px;height:36px;object-fit:contain;opacity:0.9;">
+                <span class="pts-badge-new js-pts-badge" id="t-pts-badge-${uid}"><span id="t-pts-${uid}">${p.pontos || 0} PONTOS</span></span>
+                ${roleBadgesHtml}
+            </div>
+            <!-- Unit name -->
+            <div class="hud-main-name">${p.file.name}</div>
+            <!-- Keywords -->
+            <div class="kw-row">${modelKwTags}</div>
+            <!-- All stats in one row -->
+            <div class="all-stats-row">
+                <div class="stat-box tc-tooltip" data-desc="${coreRules.mov}"><span class="stat-lbl">MOV</span><span class="stat-val" id="t-mov-${uid}">${p.movimento}</span></div>
+                <div class="stat-box tc-tooltip" data-desc="${coreRules.dec}"><span class="stat-lbl">DEC</span><span class="stat-val" id="t-dec-${uid}">${p.decoerencia}</span></div>
+                <div class="stat-box tc-tooltip" data-desc="${coreRules.ap}"><span class="stat-lbl">AP</span><span class="stat-val" id="t-ap-${uid}">${Number(p.ap != null && p.ap !== '' ? p.ap : p.AP) || 0} <span style="font-size:0.75rem;color:#ff3366;">ðŸ”´</span></span></div>
+                <div class="stat-box tc-tooltip" data-desc="${coreRules.peso}"><span class="stat-lbl">PESO</span><span class="stat-val" id="peso-max-${uid}">${p.equipamento_loadout || 0}/${p.loadout_max}</span></div>
+                <div class="stat-div"></div>
+                <div class="stat-box vida tc-tooltip" data-desc="${coreRules.vida}"><span class="stat-lbl">VIDA</span><span class="stat-val" id="t-vida-${uid}">â¤ï¸ ${p.vida}</span></div>
+                <div class="stat-box def tc-tooltip" data-desc="${coreRules.melee}"><span class="stat-lbl">MELEE</span><span class="stat-val" id="t-def-melee-${uid}">ðŸ›¡ï¸ âš”ï¸ ${p.armadura_melee}</span></div>
+                <div class="stat-box def tc-tooltip" data-desc="${coreRules.ranged}"><span class="stat-lbl">RANGED</span><span class="stat-val" id="t-def-ranged-${uid}">ðŸ›¡ï¸ ðŸ”« ${p.armadura_ranged}</span></div>
+                <div class="stat-box def tc-tooltip" data-desc="${coreRules.special}"><span class="stat-lbl">SPECIAL</span><span class="stat-val" id="t-def-special-${uid}">ðŸ›¡ï¸ âš ï¸ ${p.armadura_special}</span></div>
+            </div>
+            <div class="date-line">ATUALIZADO EM: ${updatedDate}</div>
+        </div>
+
+    </div>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         BODY GRID â€” 3 columns: [abilities] [slot A] [slot B]
+         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <div class="hud-body-grid">
+
+        <div class="col-abilities ryke-scrollbox">
+            <div style="margin-bottom:4px;">${passiveHtml}</div>
+            <div id="t-tat-desc-${uid}" style="margin-bottom:4px;"></div>
+            <div id="m-tags-${uid}" style="display:flex;flex-direction:column;gap:4px;margin-bottom:4px;">
+                ${caracteristicasHtml}
+                <div id="t-tat-chars-${uid}"></div>
+            </div>
+            <div id="t-tat-passivas-${uid}"></div>
+            ${padraoHtml}
+            ${activeHtml}
+            <div id="t-tat-ativas-${uid}"></div>
+        </div>
+
+        <!-- SLOT A -->
+        <div class="col-slot">
+            <div class="slot-head">
+                <div style="font-size:0.45rem;font-weight:900;color:#00ffff;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;opacity:0.7;">SLOT 1</div>
+                <div class="weapon-selector-wrapper">
+                    <div id="w-sel-display-A-${uid}" class="weapon-selector-display">â€” ESCOLHA â€”</div>
+                    <select class="weapon-selector js-weapon-sel-A" data-uid="${uid}" id="w-sel-A-${uid}">${weaponOptionsHtml}</select>
+                </div>
+                <div class="slot-info-bar">
+                    <div class="slot-peso-badge"><span class="spb-val" id="w-peso-A-${uid}">0</span><span class="spb-lbl">PESO</span></div>
+                    <div class="slot-pts-badge" id="w-pts-mod-A-${uid}"></div>
+                    <div id="w-kws-A-${uid}" style="display:flex;flex-wrap:wrap;gap:3px;flex:1;min-width:0;"></div>
+                </div>
+            </div>
+            <div class="slot-scroll ryke-scrollbox">
+                <div class="w-stats-grid" id="w-stats-grid-A-${uid}">
+                    <div class="w-stat-item"><span class="w-stat-lbl">ATK</span><span class="w-stat-val" id="w-atk-A-${uid}">0</span></div>
+                    <div class="w-stat-item"><span class="w-stat-lbl">MIRA</span><span class="w-stat-val" id="w-mira-A-${uid}">0</span></div>
+                    <div class="w-stat-item"><span class="w-stat-lbl">DIST</span><span class="w-stat-val" id="w-dist-A-${uid}">-</span></div>
+                    <div class="w-stat-item"><span class="w-stat-lbl">DANO</span><span class="w-stat-val" id="w-dmg-A-${uid}">-</span></div>
+                </div>
+                <div id="w-tags-A-${uid}" style="display:flex;flex-direction:column;gap:4px;margin-top:4px;"></div>
+                <div id="w-passives-A-${uid}" style="margin-top:8px;"></div>
+            </div>
+        </div>
+
+        <!-- SLOT B -->
+        <div class="col-slot">
+            <div class="slot-head">
+                <div style="font-size:0.45rem;font-weight:900;color:#00ffff;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;opacity:0.7;">SLOT 2</div>
+                <div class="weapon-selector-wrapper">
+                    <div id="w-sel-display-B-${uid}" class="weapon-selector-display">â€” ESCOLHA â€”</div>
+                    <select class="weapon-selector js-weapon-sel-B" data-uid="${uid}" id="w-sel-B-${uid}">${weaponOptionsHtml}</select>
+                </div>
+                <div class="slot-info-bar">
+                    <div class="slot-peso-badge"><span class="spb-val" id="w-peso-B-${uid}">0</span><span class="spb-lbl">PESO</span></div>
+                    <div class="slot-pts-badge" id="w-pts-mod-B-${uid}"></div>
+                    <div id="w-kws-B-${uid}" style="display:flex;flex-wrap:wrap;gap:3px;flex:1;min-width:0;"></div>
+                </div>
+            </div>
+            <div class="slot-scroll ryke-scrollbox">
+                <div class="w-stats-grid" id="w-stats-grid-B-${uid}">
+                    <div class="w-stat-item"><span class="w-stat-lbl">ATK</span><span class="w-stat-val" id="w-atk-B-${uid}">0</span></div>
+                    <div class="w-stat-item"><span class="w-stat-lbl">MIRA</span><span class="w-stat-val" id="w-mira-B-${uid}">0</span></div>
+                    <div class="w-stat-item"><span class="w-stat-lbl">DIST</span><span class="w-stat-val" id="w-dist-B-${uid}">-</span></div>
+                    <div class="w-stat-item"><span class="w-stat-lbl">DANO</span><span class="w-stat-val" id="w-dmg-B-${uid}">-</span></div>
+                </div>
+                <div id="w-tags-B-${uid}" style="display:flex;flex-direction:column;gap:4px;margin-top:4px;"></div>
+                <div id="w-passives-B-${uid}" style="margin-top:8px;"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+`;
+
+// Initial Trigger for Obsidian view
+if (isObsidian) {
+    setTimeout(() => { 
+        const root = document.getElementById(uid);
+        if (root && window.initUnitDashboard) window.initUnitDashboard(root);
+    }, 100);
+}
+
+```
+
+---
+
+#### Mais:
+
+```dataviewjs
+/**
+ * Carrossel = mesmo markup/CSS de Wargame/Models.md (nb-card).
+ * Render: createEl + innerHTML (dv.paragraph quebra HTML complexo no Obsidian).
+ */
+let cur = dv.current();
+if ((!cur || !cur.file) && typeof app !== "undefined" && dv.currentFilePath) {
+  try {
+    const fp = dv.currentFilePath;
+    const f = app.vault.getAbstractFileByPath(fp);
+    const mc = app.metadataCache.getCache(fp);
+    if (f && mc && mc.frontmatter && "stat" in f) {
+      cur = Object.assign({}, mc.frontmatter, {
+        file: {
+          path: f.path,
+          name: f.name,
+          basename: f.basename,
+          extension: f.extension,
+          mtime: f.stat.mtime,
+        },
+      });
+    }
+  } catch (_e) {}
+}
+if ((!cur || !cur.file) && typeof app !== "undefined") {
+  try {
+    const af = app.workspace.getActiveFile();
+    if (af && af.path === dv.currentFilePath) {
+      const cand = dv.page(af.path);
+      if (cand && cand.file) cur = cand;
+    }
+  } catch (_e2) {}
+}
+const isObs = typeof app !== "undefined";
+const simBid = "sim_" + Math.random().toString(36).slice(2, 10);
+
+if (!cur?.file?.path) {
+  const err = dv.container.createEl("div");
+  err.textContent = "Modelos similares: nÃ£o foi possÃ­vel ler o ficheiro atual (metadata indisponÃ­vel).";
+} else {
+const SPECIAL_KWS = ["elite", "unique"];
+
+function kwBareMercCarousel(k) {
+  return String(k || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+function isMercKwCarousel(k) {
+  const x = kwBareMercCarousel(k);
+  return x === "mercenary" || x === "mercenario" || x === "mercenarios";
+}
+
+/** Exige .file â€” entradas sem nota (pasta, etc.) quebravam o .sort() com a.q.file */
+const allPages = dv
+  .pages('"Wargame/02 Models"')
+  .where((p) => p && p.file && p.file.path && (p.tipo === "Model" || p.faccao !== undefined));
+
+function norm(s) {
+  return String(s || "").trim().toLowerCase();
+}
+
+function esc(s) {
+  return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function buildTagSet(page) {
+  const set = new Set();
+  if (!page) return set;
+  if (page.noosphera) set.add(norm(page.noosphera));
+  const facs = Array.isArray(page.faccao) ? page.faccao : (page.faccao ? [page.faccao] : []);
+  facs.forEach(f => { if (f) set.add(norm(f)); });
+  const kws = Array.isArray(page.keywords)
+    ? page.keywords
+    : (page.keywords ? String(page.keywords).split(",").map(t => t.trim()) : []);
+  kws.forEach(k => { if (k) set.add(norm(k)); });
+  return set;
+}
+
+const myTags = buildTagSet(cur);
+const myPath = cur.file.path;
+
+function overlapScore(other) {
+  if (!other || !other.file || !other.file.path) return -1;
+  if (other.file.path === myPath) return -1;
+  const ot = buildTagSet(other);
+  let n = 0;
+  myTags.forEach(t => {
+    if (t && ot.has(t)) n++;
+  });
+  return n;
+}
+
+const scored = allPages
+  .map((q) => ({ q, s: overlapScore(q) }))
+  .filter((x) => x.s > 0 && x.q && x.q.file && x.q.file.path)
+  .sort((a, b) => {
+    const byScore = b.s - a.s;
+    if (byScore !== 0) return byScore;
+    const na = (a.q.file && a.q.file.name) || "";
+    const nb = (b.q.file && b.q.file.name) || "";
+    return String(na).localeCompare(String(nb));
+  });
+
+const chip = (txt, color, bg) =>
+  `<span style="font-size:.7rem;padding:4px 12px;border:1px solid ${color};color:${color};background:${bg};border-radius:20px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:1px;box-shadow:0 0 10px ${color}33;">${esc(txt)}</span>`;
+
+function cardHtml(p, matchScore) {
+  if (!p || !p.file || !p.file.path) return "";
+  let imgSrc = "";
+  let rawPath = "";
+  if (isObs && p.model_image) {
+    const raw = p.model_image?.path || String(p.model_image).replace(/\[\[|\]\]/g, "");
+    const f = app.metadataCache.getFirstLinkpathDest(raw, p.file.path);
+    if (f) {
+      imgSrc = app.vault.adapter.getResourcePath(f.path);
+      rawPath = f.path;
+    }
+  }
+
+  const chars = Array.isArray(p.caracteristicas) ? p.caracteristicas : (p.caracteristicas ? String(p.caracteristicas).split(",").map(s => s.trim()) : []);
+  const kws = Array.isArray(p.keywords) ? p.keywords : (p.keywords ? String(p.keywords).split(",").map(s => s.trim()) : []);
+  const facs = Array.isArray(p.faccao) ? p.faccao : (p.faccao ? [p.faccao] : []);
+  const specKwsModel = kws.filter(k => SPECIAL_KWS.includes(k.toLowerCase()) || isMercKwCarousel(k));
+  const normKwsModel = kws.filter(k => !SPECIAL_KWS.includes(k.toLowerCase()) && !isMercKwCarousel(k));
+
+  const loadouts = [];
+  // Read utility_list first, fallback to legacy utility1..10
+  let uList = [];
+  if (p.utility_list && Array.isArray(p.utility_list) && p.utility_list.length > 0) {
+    uList = p.utility_list;
+  } else if (p.utility_list && typeof p.utility_list === "string" && p.utility_list.trim()) {
+    uList = [p.utility_list];
+  } else {
+    for (let i = 1; i <= 10; i++) { const ul = p[`utility${i}`]; if (ul) uList.push(ul); }
+  }
+  for (const ul of uList) {
+    if (!ul) continue;
+    const rawU = ul?.path || String(ul).replace(/\[\[|\]\]/g, "").trim();
+    const name = rawU.split("/").pop().replace(/\.md$/i, "");
+    if (name) loadouts.push(name);
+  }
+
+  const tagsHtml = [
+    chip(p.noosphera || "?", "#00ffff", "rgba(0,255,255,.06)"),
+    ...facs.map(f => chip(String(f), "#be63ff", "rgba(190,99,255,.06)")),
+    ...specKwsModel.map(k => chip(k, "#ff3366", "rgba(255,51,102,.08)")),
+    ...chars.map(c => chip(c, "#00bfff", "rgba(0,191,255,.06)")),
+    ...normKwsModel.map(k => chip(k, "rgba(255,255,255,.4)", "rgba(255,255,255,.04)")),
+  ].join("");
+
+  const matchLbl = matchScore + " tag" + (matchScore !== 1 ? "s" : "") + " em comum";
+
+  return `
+  <div class="nb-card js-card" data-nav="${p.file.path}">
+    <div class="nb-img-box">
+      <div class="nb-pts">${p.pontos ?? 0}<small>PTS</small></div>
+      <div class="nb-sim-match">${esc(matchLbl)}</div>
+      ${imgSrc
+        ? `<img src="${esc(imgSrc)}" alt="" data-export-src="${esc(rawPath)}">`
+        : `<div style="height:100%;display:flex;align-items:center;justify-content:center;"><span style="font-size:4rem;opacity:.08;">â¬¡</span></div>`}
+      <div class="nb-armor">
+        <div class="nb-armor-pill"><span>âš”ï¸</span><span>${p.armadura_melee ?? 0}</span></div>
+        <div class="nb-armor-pill"><span>ðŸ”«</span><span>${p.armadura_ranged ?? 0}</span></div>
+        <div class="nb-armor-pill"><span>âš ï¸</span><span>${p.armadura_special ?? 0}</span></div>
+      </div>
+    </div>
+    <div class="nb-info">
+      <div class="nb-name">${esc(p.file.name)}</div>
+      <div class="nb-tags-row">${tagsHtml}</div>
+      <div class="nb-stats">
+        <div class="nb-stat"><span class="nb-stat-lbl">Movimento</span><span class="nb-stat-val c">${p.movimento ?? 0}</span></div>
+        <div class="nb-stat"><span class="nb-stat-lbl">Vida</span><span class="nb-stat-val">${p.vida ?? 0}</span></div>
+        <div class="nb-stat"><span class="nb-stat-lbl">DecoerÃªncia</span><span class="nb-stat-val c">${p.decoerencia ?? 0}</span></div>
+        <div class="nb-stat"><span class="nb-stat-lbl">AP</span><span class="nb-stat-val">${parseInt(p.ap != null && p.ap !== "" ? p.ap : p.AP) || 0}</span></div>
+      </div>
+    </div>
+    <div class="nb-loadout">
+      <div class="nb-loadout-lbl">Loadout Inicial</div>
+      <div class="nb-loadout-list">
+        ${loadouts.length
+          ? loadouts.map(l => `<span class="nb-litem">${esc(l)}</span>`).join("")
+          : `<span style="font-size:.72rem;color:#333;">Nenhum equipamento</span>`}
+      </div>
+    </div>
+  </div>`;
+}
+
+let simHtml = `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700&family=Inter:wght@200;300;400&display=swap');
+#${simBid} * { box-sizing: border-box; }
+#${simBid} { font-family: 'Inter', sans-serif !important; color: #e0d8f0 !important; width: 100%; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(190, 99, 255, 0.22); }
+
+#${simBid} .sim-head { display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+#${simBid} .sim-all-btn {
+  display: inline-block; padding: 18px 40px; border-radius: 40px;
+  border: 1px solid rgba(190, 99, 255, 0.5) !important; color: #f5f0ff !important; font-family: 'Orbitron', sans-serif;
+  font-size: 14px; letter-spacing: 3px; text-transform: uppercase; text-decoration: none !important;
+  background: rgba(190, 99, 255, 0.18) !important; transition: 0.25s; cursor: pointer;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+#${simBid} .sim-all-btn:hover { background: rgba(190, 99, 255, 0.32) !important; color: #fff !important; border-color: rgba(190, 99, 255, 0.75) !important; }
+
+/* Carrossel: uma linha, setas, scroll oculto */
+#${simBid} .nb-sim-carousel { display: flex; align-items: stretch; gap: 12px; position: relative; }
+#${simBid} .nb-sim-arrow {
+  flex: 0 0 44px; width: 44px; min-width: 44px; align-self: center; height: 120px;
+  border: 1px solid rgba(190, 99, 255, 0.35) !important; border-radius: 16px;
+  background: rgba(15, 5, 25, 0.75) !important; color: #d8b4fe !important; font-size: 2rem; line-height: 1;
+  cursor: pointer; transition: 0.25s; font-family: 'Orbitron', sans-serif; padding: 0;
+}
+#${simBid} .nb-sim-arrow:hover { background: rgba(190, 99, 255, 0.25) !important; color: #fff !important; border-color: rgba(190, 99, 255, 0.7) !important; }
+#${simBid} .nb-sim-arrow[disabled] { opacity: 0.25; pointer-events: none; }
+#${simBid} .nb-sim-viewport {
+  flex: 1; min-width: 0; overflow-x: auto; overflow-y: hidden;
+  scroll-behavior: smooth; scroll-snap-type: x mandatory;
+  scrollbar-width: none; -ms-overflow-style: none;
+  padding-bottom: 8px;
+}
+#${simBid} .nb-sim-viewport::-webkit-scrollbar { display: none; }
+#${simBid} .nb-sim-track { display: flex; gap: 30px; align-items: stretch; }
+
+/* Cards = Tactical Browser (Models.md) */
+#${simBid} .nb-card {
+  background: rgba(15, 5, 25, 0.6) !important; border: 1px solid rgba(190, 99, 255, 0.12) !important;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important; cursor: pointer;
+  display: flex; flex-direction: column; position: relative; border-radius: 24px; overflow: hidden;
+  flex: 0 0 min(320px, calc(100vw - 140px)); scroll-snap-align: start; max-width: 380px;
+}
+#${simBid} .nb-card:hover { border-color: rgba(190, 99, 255, 0.5) !important; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(190, 99, 255, 0.2) !important; transform: translateY(-10px) !important; }
+
+#${simBid} .nb-img-box { width: 100%; height: 340px; background: #05020a; overflow: hidden; position: relative; }
+#${simBid} .nb-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: 0.8s; filter: grayscale(0.4) brightness(0.7); }
+#${simBid} .nb-card:hover .nb-img-box img { filter: grayscale(0) brightness(1.1); transform: scale(1.08); }
+
+#${simBid} .nb-pts { position: absolute; top: 18px; left: 18px; z-index: 5; background: rgba(0, 255, 136, 0.95) !important; color: #000 !important; font-weight: 700; font-size: 1.35rem; padding: 8px 18px; border-radius: 40px; box-shadow: 0 0 25px rgba(0, 255, 136, 0.4) !important; }
+#${simBid} .nb-pts small { font-size: 10px; display: block; letter-spacing: 1px; font-weight: 400; text-transform: uppercase; margin-bottom: -2px; }
+
+#${simBid} .nb-sim-match {
+  position: absolute; bottom: 18px; left: 18px; z-index: 6; max-width: calc(100% - 36px);
+  font-size: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; font-family: 'Orbitron', sans-serif;
+  color: #fff !important; padding: 8px 14px; border-radius: 12px;
+  background: rgba(190, 99, 255, 0.92) !important; border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+#${simBid} .nb-armor { position: absolute; top: 18px; right: 18px; z-index: 5; display: flex; flex-direction: column; gap: 10px; }
+#${simBid} .nb-armor-pill { background: rgba(5, 0, 10, 0.85); border: 1px solid rgba(190, 99, 255, 0.4) !important; padding: 10px 16px; border-radius: 40px; display: flex; align-items: center; gap: 12px; backdrop-filter: blur(10px); transition: 0.4s; }
+#${simBid} .nb-armor-pill span:last-child { font-size: 1.15rem; font-weight: 300; color: #d8b4fe !important; font-family: 'Orbitron'; text-shadow: 0 0 10px rgba(190, 99, 255, 0.4); }
+#${simBid} .nb-card:hover .nb-armor-pill { border-color: rgba(190, 99, 255, 0.7) !important; box-shadow: 0 0 20px rgba(190, 99, 255, 0.25) !important; }
+
+#${simBid} .nb-info { padding: 28px 22px 0; flex-grow: 1; min-width: 0; }
+#${simBid} .nb-name { font-size: 1.25rem; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; color: #f5f0ff !important; margin-bottom: 12px; font-family: 'Orbitron', sans-serif !important; text-shadow: 0 0 15px rgba(190, 99, 255, 0.3) !important; }
+#${simBid} .nb-tags-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+
+#${simBid} .nb-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+#${simBid} .nb-stat {
+  background: rgba(5, 0, 10, 0.5) !important;
+  border: 1px solid rgba(190, 99, 255, 0.15) !important;
+  padding: 10px 4px;
+  text-align: center;
+  border-radius: 12px;
+  min-width: 0;
+  overflow: hidden;
+}
+#${simBid} .nb-stat-lbl {
+  font-size: 8px;
+  color: #a99bbd !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 300;
+  line-height: 1.15;
+  word-break: break-word;
+  hyphens: auto;
+}
+#${simBid} .nb-stat-val {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #fff !important;
+  display: block;
+  line-height: 1;
+  font-family: 'Orbitron';
+}
+#${simBid} .nb-stat-val.c { color: #80e5ff !important; text-shadow: 0 0 15px rgba(0, 217, 255, 0.4) !important; }
+
+#${simBid} .nb-loadout { border-top: 1px solid rgba(190, 99, 255, 0.15) !important; padding: 25px; background: rgba(5, 0, 10, 0.3); }
+#${simBid} .nb-loadout-lbl { font-size: 10px; color: #a99bbd !important; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; font-weight: 300; }
+#${simBid} .nb-loadout-list { display: flex; flex-wrap: wrap; gap: 10px; }
+#${simBid} .nb-litem { font-size: 11px; padding: 5px 15px; border: 1px solid rgba(0, 217, 255, 0.3) !important; color: #80e5ff !important; background: rgba(0, 217, 255, 0.1) !important; text-transform: uppercase; font-weight: 300; border-radius: 30px; letter-spacing: 1.5px; }
+
+#${simBid} .sim-empty { color: #a99bbd !important; font-size: 12px; padding: 28px 16px; text-align: center; border: 1px dashed rgba(190, 99, 255, 0.2); border-radius: 16px; font-weight: 300; }
+</style>
+<div id="${simBid}">
+  <div class="sim-head">
+    <a class="internal-link sim-all-btn" data-link-path="Wargame/Models.md">VER MAIS MODELOS</a>
+  </div>
+`;
+
+if (scored.length === 0) {
+  simHtml += `<div class="sim-empty">Nenhum outro modelo compartilha noosphera, facÃ§Ã£o ou keyword com esta ficha. Use o botÃ£o acima para abrir o navegador completo.</div></div>`;
+} else {
+  simHtml += `
+  <div class="nb-sim-carousel">
+    <button type="button" class="nb-sim-arrow nb-sim-prev" aria-label="Anterior">â€¹</button>
+    <div class="nb-sim-viewport">
+      <div class="nb-sim-track">
+        ${scored.map(({ q, s }) => cardHtml(q, s)).join("")}
+      </div>
+    </div>
+    <button type="button" class="nb-sim-arrow nb-sim-next" aria-label="PrÃ³ximo">â€º</button>
+  </div></div>`;
+}
+
+const simWrap = dv.container.createEl("div");
+simWrap.innerHTML = simHtml;
+
+if (scored.length > 0) {
+  const sc = document.createElement("script");
+  sc.textContent = `(function(){
+  var root = document.getElementById("${simBid}");
+  if(!root) return;
+  var viewport = root.querySelector(".nb-sim-viewport");
+  var track = root.querySelector(".nb-sim-track");
+  var prev = root.querySelector(".nb-sim-prev");
+  var next = root.querySelector(".nb-sim-next");
+  if(!viewport || !track || !prev || !next) return;
+  var cards = track.querySelectorAll(".nb-card");
+  if(!cards.length) return;
+
+  var gap = 30;
+  function stepPx() {
+    var c = cards[0];
+    return (c ? c.getBoundingClientRect().width : 320) + gap;
+  }
+  function maxScroll() {
+    return Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+  }
+  function toggleArrows() {
+    var m = maxScroll();
+    var show = m > 8;
+    prev.style.visibility = show ? "visible" : "hidden";
+    next.style.visibility = show ? "visible" : "hidden";
+    prev.disabled = !show;
+    next.disabled = !show;
+  }
+  function goNext(e) {
+    if(e){ e.preventDefault(); e.stopPropagation(); }
+    var m = maxScroll();
+    if(m <= 0) return;
+    if(viewport.scrollLeft >= m - 6) viewport.scrollTo({ left: 0, behavior: "smooth" });
+    else viewport.scrollBy({ left: stepPx(), behavior: "smooth" });
+  }
+  function goPrev(e) {
+    if(e){ e.preventDefault(); e.stopPropagation(); }
+    var m = maxScroll();
+    if(m <= 0) return;
+    if(viewport.scrollLeft <= 6) viewport.scrollTo({ left: m, behavior: "smooth" });
+    else viewport.scrollBy({ left: -stepPx(), behavior: "smooth" });
+  }
+  prev.addEventListener("click", goPrev);
+  next.addEventListener("click", goNext);
+  window.addEventListener("resize", toggleArrows);
+  toggleArrows();
+})();`;
+  simWrap.appendChild(sc);
+}
+}
+```
+
+
