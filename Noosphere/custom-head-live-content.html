@@ -41,7 +41,8 @@ body{--line-width:100%!important;--line-width-adaptive:100%!important;--file-lin
 .ns-sub-link:hover{border-color:rgba(190,99,255,0.35);background:rgba(190,99,255,0.12)}
 .ns-sep{height:1px;background:rgba(190,99,255,0.1);margin:14px 0}
 
-.tab-panel-container .content-container>div:not(.selected){display:none!important}
+.tab-panel-container .content-container>div:only-child{display:block!important}
+.tab-panel-container .content-container>div:not(.selected):not(:only-child){display:none!important}
 .tab-panel-container .content-container>div.selected{display:block!important}
 @media(max-width:720px){.ns-col{width:240px}.ns-col-sub{width:260px}.ns-brand span{display:none}}
 </style>
@@ -89,6 +90,136 @@ function hydrate(){if(_hy)return;_hy=true;var cc=document.querySelector("#center
 function decodeSb(s){if(!s)return"";return String(s).replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&apos;/g,"'").replace(/&#x27;/gi,"'").replace(/&#(\d+);/g,function(_,n){return String.fromCharCode(parseInt(n,10));}).replace(/&#x([0-9a-f]+);/gi,function(_,h){return String.fromCharCode(parseInt(h,16));}).replace(/&amp;/g,"&");}
 function initSB(r){var s=r||document,apps=s.querySelectorAll?s.querySelectorAll(".js-squad-builder-app"):[];Array.prototype.forEach.call(apps,function(a){if(!a||a.getAttribute("data-sb-engine-ready")==="1"||a._sbInit===true||a.__nsLock)return;var t=a.querySelector(".js-sb-engine-script");var tv=t?(String(t.value||t.textContent||"").trim()):"";if(!tv)return;a.__nsLock=true;try{(new Function(decodeSb(tv)))();}catch(e){console.error("SB:",e);a._sbInit=false;a.__nsLock=false;}});}
 window.tryInitNoospheraSquadBuilder=initSB;
+/* Model HUD weapon/utility selects: exported HTML has no DataviewJS — mirror Casaca Escuro.md rykeWeaponAbilityBootstrap when editing */
+(function rykeWeaponAbilityBootstrap() {
+    if (window.__rykeWeaponAbilBlocks) return;
+    window.__rykeWeaponAbilBlocks = true;
+
+    function getWeapons(root) {
+        var weapons = [];
+        var jel = root.querySelector(".js-weapons-json");
+        if (jel && jel.textContent) { try { weapons = JSON.parse(jel.textContent); } catch (e) {} }
+        if (!weapons.length) { try { weapons = JSON.parse(decodeURIComponent(root.getAttribute("data-weapons") || "%5B%5D")); } catch (e2) {} }
+        return weapons;
+    }
+    function getMaps(root) {
+        try { return JSON.parse(decodeURIComponent(root.getAttribute("data-maps") || "%7B%7D")); } catch (e) { return {}; }
+    }
+    function findWeapon(weapons, name) {
+        if (!name || name === "__none__") return null;
+        for (var i = 0; i < weapons.length; i++) { if (weapons[i] && String(weapons[i].name) === name) return weapons[i]; }
+        return null;
+    }
+    function abilBlocks(list, map, color) {
+        if (!list || !list.length) return "";
+        var html = "";
+        for (var j = 0; j < list.length; j++) {
+            var item = String(list[j] || "").trim();
+            if (!item) continue;
+            var k = item.toLowerCase();
+            var desc = (map && map[k]) || "Descrição não encontrada no glossário.";
+            var apCost = "", cleanDesc = desc;
+            var apMatch = cleanDesc.match(/^\[([🔴]+)\]\s*/);
+            if (apMatch) { apCost = '<span style="margin-left:4px;font-size:0.68rem;letter-spacing:1px;">' + apMatch[1] + "</span>"; cleanDesc = cleanDesc.substring(apMatch[0].length); }
+            html += '<div style="margin-bottom:4px;font-family:sans-serif;font-size:0.72rem;line-height:1.3;padding:2px 6px;border-left:3px solid ' + color + ';break-inside:avoid;page-break-inside:avoid">';
+            html += '<strong style="color:' + color + ';text-transform:uppercase;font-size:0.74rem;">' + item + apCost + ":</strong> ";
+            html += '<span style="color:#ccc;">' + cleanDesc + "</span></div>";
+        }
+        return html;
+    }
+
+    /** Update one utility slot (suffix = "A" or "B") */
+    function updateSlot(root, suffix, weaponName) {
+        var uid = root.id;
+        if (!uid) return;
+        var weapons = getWeapons(root);
+        var maps = getMaps(root);
+        var wMap = maps.weapon || maps.passive || {};
+        var uMap = maps.utilityPassive || maps.passive || {};
+        var isNone = (weaponName === "__none__");
+        var w = isNone ? null : findWeapon(weapons, weaponName);
+        var s = suffix; // "A" or "B"
+
+        var disp = document.getElementById("w-sel-display-" + s + "-" + uid);
+        var statsGrid = document.getElementById("w-stats-grid-" + s + "-" + uid);
+        var pesoEl = document.getElementById("w-peso-" + s + "-" + uid);
+        var pmEl = document.getElementById("w-pts-mod-" + s + "-" + uid);
+        var kwsEl = document.getElementById("w-kws-" + s + "-" + uid);
+        var tagsEl = document.getElementById("w-tags-" + s + "-" + uid);
+        var pasEl = document.getElementById("w-passives-" + s + "-" + uid);
+        var atkEl = document.getElementById("w-atk-" + s + "-" + uid);
+        var miraEl = document.getElementById("w-mira-" + s + "-" + uid);
+        var distEl = document.getElementById("w-dist-" + s + "-" + uid);
+        var dmgEl = document.getElementById("w-dmg-" + s + "-" + uid);
+
+        function txt(v) { return v == null ? "" : String(v); }
+        function nz(v, d) { var x = txt(v); return x.length ? x : d; }
+
+        if (disp) disp.textContent = isNone ? "SEM LOADOUT" : (weaponName || "— ESCOLHA —");
+        if (statsGrid) statsGrid.style.display = (w && w.tipo !== "Utility") ? "grid" : "none";
+        if (atkEl) atkEl.textContent = w ? nz(w.ataques, "0") : "0";
+        if (miraEl) miraEl.textContent = w ? nz(w.mira, "0") : "0";
+        if (distEl) distEl.textContent = w && txt(w.distancia).length ? txt(w.distancia) : "-";
+        if (dmgEl) dmgEl.textContent = w && txt(w.dano).length ? txt(w.dano) : "-";
+        if (pesoEl) pesoEl.textContent = isNone ? "0" : (w && txt(w.peso).length ? txt(w.peso) : "0");
+        if (pmEl) {
+            var pm = w && w.point_mod, pn = parseInt(pm, 10), showPm = !isNone && pm != null && pm !== "" && !isNaN(pn);
+            if (showPm) { pmEl.classList.add("is-visible"); pmEl.textContent = (pn > 0 ? "+" : "") + pn + " PTS"; }
+            else { pmEl.classList.remove("is-visible"); pmEl.textContent = ""; }
+        }
+        if (kwsEl) {
+            if (!w || !w.keywords || !w.keywords.length) kwsEl.innerHTML = "";
+            else kwsEl.innerHTML = w.keywords.map(function(k) {
+                return '<span style="font-size:0.5rem;text-transform:uppercase;color:#80e5ff;border:1px solid rgba(0,217,255,0.35);padding:1px 5px;border-radius:10px;">' + txt(k).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;") + "</span>";
+            }).join(" ");
+        }
+        if (tagsEl) tagsEl.innerHTML = w && w.caracteristicas ? abilBlocks(w.caracteristicas, wMap, "#00ffff") : "";
+        if (pasEl) pasEl.innerHTML = w && w.passivas_de_utility ? abilBlocks(w.passivas_de_utility, uMap, "#00bfff") : "";
+    }
+
+    /** Sync selectors so both slots can't pick the same weapon */
+    function syncSelectors(root) {
+        var selA = root.querySelector(".js-weapon-sel-A");
+        var selB = root.querySelector(".js-weapon-sel-B");
+        if (!selA || !selB) return;
+        var valA = selA.value, valB = selB.value;
+        [selA, selB].forEach(function(sel) {
+            for (var i = 0; i < sel.options.length; i++) sel.options[i].disabled = false;
+        });
+        if (valA && valA !== "__none__") {
+            for (var i = 0; i < selB.options.length; i++) { if (selB.options[i].value === valA) selB.options[i].disabled = true; }
+        }
+        if (valB && valB !== "__none__") {
+            for (var i = 0; i < selA.options.length; i++) { if (selA.options[i].value === valB) selA.options[i].disabled = true; }
+        }
+    }
+
+    var prevInit = window.initUnitDashboard;
+    window.initUnitDashboard = function (root) {
+        if (typeof prevInit === "function") prevInit(root);
+        var selA = root.querySelector(".js-weapon-sel-A");
+        var selB = root.querySelector(".js-weapon-sel-B");
+        if (selA) updateSlot(root, "A", selA.value);
+        if (selB) updateSlot(root, "B", selB.value);
+        syncSelectors(root);
+    };
+
+    document.addEventListener("change", function (ev) {
+        var t = ev.target;
+        if (!t) return;
+        var suffix = null;
+        if (t.classList.contains("js-weapon-sel-A")) suffix = "A";
+        else if (t.classList.contains("js-weapon-sel-B")) suffix = "B";
+        else if (t.classList.contains("js-weapon-sel")) suffix = "A";
+        if (!suffix) return;
+        var r = t.closest(".js-unit-dashboard");
+        if (!r) return;
+        updateSlot(r, suffix, t.value);
+        syncSelectors(r);
+    }, true);
+})();
+function initUnitDashboardRoots(){var fn=window.initUnitDashboard;if(typeof fn!=="function")return;var roots=document.querySelectorAll(".js-unit-dashboard");for(var i=0;i<roots.length;i++){try{fn(roots[i]);}catch(err){console.error("initUnitDashboard:",err);}}}
+function ensureTabPanelsVisible(){document.querySelectorAll(".tab-panel-container .content-container").forEach(function(cc){var kids=cc.children;if(!kids||kids.length<=1)return;for(var i=0;i<kids.length;i++){if(kids[i].classList&&kids[i].classList.contains("selected"))return;}if(kids[0])kids[0].classList.add("selected");});}
 function initSbInlineEngines(scope){var roots=[];var cc=document.querySelector("#center-content");if(cc)roots.push(cc);if(scope&&scope!==cc&&scope.nodeType===1)roots.push(scope);if(!roots.length)roots.push(document.body);var seen={};for(var r=0;r<roots.length;r++){var scripts=roots[r].querySelectorAll?roots[r].querySelectorAll("script.js-sb-engine-inline"):[];for(var i=0;i<scripts.length;i++){var sc=scripts[i];if(sc.closest&&sc.closest("head"))continue;var bid=sc.getAttribute("data-sb-bid")||"";if(!bid)continue;var uid=bid+":"+(sc.textContent||"").length;if(seen[uid])continue;seen[uid]=1;var esc=bid.replace(/\\/g,"\\\\").replace(/"/g,'\\"');var app=document.getElementById(bid)||document.querySelector(".js-squad-builder-app[data-sb-bid=\""+esc+"\"]");if(!app)continue;if(app.getAttribute("data-sb-engine-ready")==="1"||app._sbInit===true)continue;var src=(sc.textContent||"").trim();if(!src)continue;try{(new Function(src))();}catch(e){console.error("SB-inline:",e);}}}}
 var _pt=null;function initPsi(){if(_pt){clearInterval(_pt);_pt=null;}var w=document.querySelector("#wave-p"),p=document.querySelector("#live-p"),s=document.querySelector("#live-stab");if(!w||!p)return;var b=parseInt(p.innerText.replace(/[^0-9]/g,""),10)||50,t=0;_pt=setInterval(function(){var mY=80;t+=.07;var d="M 0 "+mY+" ";for(var i=0;i<=800;i+=10){var dt=0;if(b>300)dt=(Math.random()-.5)*(b/50);d+="L "+i+" "+Math.max(10,Math.min(150,mY+Math.sin(i*.015-t)*Math.min(65,b/28+12)+dt))+" ";}w.setAttribute("d",d);var v=b+Math.sin(t)*(b>500?4:1);p.innerText=String(Math.max(0,Math.floor(v)));if(s)s.innerText=(100-v/20+Math.random()*.3).toFixed(1)+"%";},70);}
 
@@ -103,7 +234,7 @@ var tl=e.target.closest&&e.target.closest(".tab-container .tab");if(tl){e.preven
 },true);
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){document.querySelectorAll(".nexus-overlay").forEach(function(o){o.classList.remove("active");});closeSB();}});
 
-function runPatch(){hydrate();initSB(document);initSbInlineEngines(document);initPsi();}
+function runPatch(){hydrate();ensureTabPanelsVisible();initSB(document);initSbInlineEngines(document);initPsi();initUnitDashboardRoots();}
 window.noospheraRunExportPatchCycle=runPatch;
 
 /* SIDEBAR */
