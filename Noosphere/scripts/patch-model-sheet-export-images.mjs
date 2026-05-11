@@ -182,10 +182,12 @@ if(!jel)return;
 try{
 var W=JSON.parse(jel.textContent||"[]");
 for(var j=0;j<W.length;j++){var w=W[j];if(!w)continue;var rr=w.imageRaw;if(rr){var hh=_href(rr);if(hh)w.image=hh;}}
-jel.textContent=JSON.stringify(W);
+jel.textContent=JSON.stringify(W).replace(/</g,"\\\\u003c");
 }catch(_e){}
 }
-_patch(document.getElementById("\${uid}"));
+var __nwr=document.getElementById("\${uid}");
+_patch(__nwr);
+if(__nwr&&typeof window.initUnitDashboard==="function")try{window.initUnitDashboard(__nwr);}catch(__e){}
 })();
     </script>
 `;
