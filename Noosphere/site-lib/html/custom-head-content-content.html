@@ -11,8 +11,8 @@ body{--line-width:100%!important;--line-width-adaptive:100%!important;--file-lin
 .ns-brand{display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none}
 .ns-brand img{height:36px;width:auto;filter:drop-shadow(0 0 8px rgba(190,99,255,0.3))}
 .ns-brand span{font-size:12px;letter-spacing:4px;color:var(--ns-purple-dim);opacity:0.9}
-.ns-tabs{display:flex;gap:10px}
-.ns-tab{appearance:none;border:1px solid rgba(190,99,255,0.3);background:rgba(30,10,50,0.4);color:var(--ns-purple-dim);font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:3px;padding:10px 24px;border-radius:999px;cursor:pointer;transition:.25s}
+.ns-tabs{display:flex;gap:10px;align-items:center}
+.ns-tab{appearance:none;border:1px solid rgba(190,99,255,0.3);background:rgba(30,10,50,0.4);color:var(--ns-purple-dim);font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:3px;padding:0 24px;min-height:42px;border-radius:999px;cursor:pointer;transition:.25s;display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1.15}
 .ns-tab:hover{border-color:rgba(190,99,255,0.6);color:#fff}
 .ns-tab.is-active{background:rgba(190,99,255,0.18);border-color:var(--ns-purple);color:#fff;box-shadow:0 0 20px rgba(190,99,255,0.25)}
 #ns-overlay{position:fixed;top:var(--ns-top-h);left:0;right:0;bottom:0;z-index:2147482800;background:rgba(0,0,0,0.4);display:none}
@@ -24,27 +24,29 @@ body{--line-width:100%!important;--line-width-adaptive:100%!important;--file-lin
 .ns-col{width:280px;height:100%;overflow-y:auto;padding:20px 14px;font-family:'Inter',sans-serif;border-right:1px solid var(--ns-border);background:linear-gradient(165deg,rgba(18,6,32,0.97),rgba(10,2,18,0.99));backdrop-filter:blur(20px);box-shadow:4px 0 20px rgba(0,0,0,0.3)}
 .ns-col-sub{width:300px;display:none;border-right:1px solid var(--ns-border)}
 .ns-col-sub.is-visible{display:block}
+.ns-col-deep{width:280px;display:none;border-right:1px solid var(--ns-border)}
+.ns-col-deep.is-visible{display:block}
 
 /* HIGHLIGHTED PAGES */
-.ns-highlight{display:block;width:100%;text-align:left;padding:14px 18px;margin-bottom:6px;border-radius:10px;border:1px solid rgba(190,99,255,0.3);background:rgba(190,99,255,0.08);color:#fff;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.5px;cursor:pointer;transition:.2s;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ns-highlight{display:flex;align-items:center;justify-content:center;text-align:center;width:100%;gap:10px;padding:14px 16px;margin-bottom:6px;border-radius:10px;border:1px solid rgba(190,99,255,0.3);background:rgba(190,99,255,0.08);color:#fff;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.5px;cursor:pointer;transition:.2s;box-sizing:border-box;line-height:1.35}
 .ns-highlight:hover{background:rgba(190,99,255,0.2);border-color:var(--ns-purple);box-shadow:0 0 16px rgba(190,99,255,0.15)}
 
 /* FOLDER BUTTONS */
-.ns-folder-btn{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;padding:12px 16px;margin-bottom:4px;border-radius:10px;border:1px solid transparent;background:rgba(25,8,45,0.3);color:#ccc4e8;font-family:'Inter',sans-serif;font-size:14px;cursor:pointer;transition:.2s}
+.ns-folder-btn{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;width:100%;padding:12px 36px 12px 18px;margin-bottom:4px;border-radius:10px;border:1px solid transparent;background:rgba(25,8,45,0.3);color:#ccc4e8;font-family:'Inter',sans-serif;font-size:14px;cursor:pointer;transition:.2s;line-height:1.35}
 .ns-folder-btn:hover,.ns-folder-btn.is-active{border-color:rgba(190,99,255,0.35);background:rgba(190,99,255,0.1);color:#fff}
-.ns-folder-btn::after{content:'›';font-size:18px;color:var(--ns-purple);opacity:0.6;transition:.2s}
+.ns-folder-btn::after{content:'›';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--ns-purple);opacity:0.6;transition:.2s;line-height:1}
 .ns-folder-btn:hover::after,.ns-folder-btn.is-active::after{opacity:1}
 
 /* SUB ITEMS */
-.ns-sub-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ns-purple);opacity:0.85;margin-bottom:12px;padding:8px 0;border-bottom:1px solid rgba(190,99,255,0.15);font-weight:600}
-.ns-sub-link{display:block;width:100%;text-align:left;padding:12px 16px;margin-bottom:3px;border-radius:10px;border:1px solid transparent;background:rgba(25,8,45,0.25);color:#eae4ff;font-family:'Inter',sans-serif;font-size:14px;cursor:pointer;transition:.2s;line-height:1.4}
+.ns-sub-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ns-purple);opacity:0.85;margin-bottom:12px;padding:8px 0;border-bottom:1px solid rgba(190,99,255,0.15);font-weight:600;text-align:center;line-height:1.35}
+.ns-sub-link{display:flex;align-items:center;justify-content:center;text-align:center;width:100%;padding:12px 14px;margin-bottom:3px;border-radius:10px;border:1px solid transparent;background:rgba(25,8,45,0.25);color:#eae4ff;font-family:'Inter',sans-serif;font-size:14px;cursor:pointer;transition:.2s;line-height:1.35}
 .ns-sub-link:hover{border-color:rgba(190,99,255,0.35);background:rgba(190,99,255,0.12)}
 .ns-sep{height:1px;background:rgba(190,99,255,0.1);margin:14px 0}
 
 .tab-panel-container .content-container>div:only-child{display:block!important}
 .tab-panel-container .content-container>div:not(.selected):not(:only-child){display:none!important}
 .tab-panel-container .content-container>div.selected{display:block!important}
-@media(max-width:720px){.ns-col{width:240px}.ns-col-sub{width:260px}.ns-brand span{display:none}}
+@media(max-width:720px){.ns-col{width:240px}.ns-col-sub,.ns-col-deep{width:240px}.ns-brand span{display:none}}
 </style>
 <script>
 (function(){
@@ -73,15 +75,19 @@ var UNIVERSO={highlights:[
 {l:"🗺 Buscador de Locais",p:"Worldbuilding/Buscador de Locais.md"},
 {l:"📜 Buscador de Contos",p:"Worldbuilding/Buscador de Contos.md"},
 {l:"🔮 Esferas",p:"Worldbuilding/Esferas.md"}
-],folders:[
-{name:"Osmirate / Personagens",items:[{l:"Alexandra",p:"Worldbuilding/Osmirate/Personagens/Alexandra.md"},{l:"Aylin Karzeth",p:"Worldbuilding/Osmirate/Personagens/Aylin Karzeth.md"},{l:"Ellara",p:"Worldbuilding/Osmirate/Personagens/Ellara.md"},{l:"Havva",p:"Worldbuilding/Osmirate/Personagens/Havva.md"},{l:"Hulya Gezer",p:"Worldbuilding/Osmirate/Personagens/Hulya Gezer.md"},{l:"Iris Markellos",p:"Worldbuilding/Osmirate/Personagens/Iris Markellos.md"},{l:"Jesslyn",p:"Worldbuilding/Osmirate/Personagens/Jesslyn.md"},{l:"Katerina",p:"Worldbuilding/Osmirate/Personagens/Katerina.md"},{l:"Kesi",p:"Worldbuilding/Osmirate/Personagens/Kesi.md"},{l:"Mihaela",p:"Worldbuilding/Osmirate/Personagens/Mihaela.md"},{l:"Mihri",p:"Worldbuilding/Osmirate/Personagens/Mihri.md"},{l:"Onur Dogan",p:"Worldbuilding/Osmirate/Personagens/Onur Dogan.md"},{l:"The Medusa",p:"Worldbuilding/Osmirate/Personagens/The Medusa.md"},{l:"Toll Kumru",p:"Worldbuilding/Osmirate/Personagens/Toll Kumru.md"},{l:"Volkan Arslan",p:"Worldbuilding/Osmirate/Personagens/Volkan Arslan.md"},{l:"Yasmin Grahas",p:"Worldbuilding/Osmirate/Personagens/Yasmin Grahas.md"},{l:"Zaya",p:"Worldbuilding/Osmirate/Personagens/Zaya.md"}]},
-{name:"Osmirate / Lugares",items:[{l:"Karvash",p:"Worldbuilding/Osmirate/Lugares/Karvash.md"},{l:"Khariz Vela",p:"Worldbuilding/Osmirate/Lugares/Khariz Vela.md"},{l:"Synod",p:"Worldbuilding/Osmirate/Lugares/Synod.md"},{l:"Vehren",p:"Worldbuilding/Osmirate/Lugares/Vehren.md"},{l:"Velisar",p:"Worldbuilding/Osmirate/Lugares/Velisar.md"}]},
-{name:"Osmirate / Facções",items:[{l:"Comerciantes de Deriva",p:"Worldbuilding/Osmirate/Facções e Organizações/Comerciantes de Deriva (Drift Traders).md"},{l:"Eidolons",p:"Worldbuilding/Osmirate/Facções e Organizações/Eidolons.md"},{l:"Mercadores",p:"Worldbuilding/Osmirate/Facções e Organizações/Mercadores.md"},{l:"Sucateiros",p:"Worldbuilding/Osmirate/Facções e Organizações/Sucateiros (Scavengers).md"},{l:"Teologia do Sinal",p:"Worldbuilding/Osmirate/Facções e Organizações/Teologia do Sinal.md"}]},
-{name:"Osmirate / Sistemas",items:[{l:"Arcanos",p:"Worldbuilding/Osmirate/Sistemas e História/Arcanos.md"},{l:"Archotech",p:"Worldbuilding/Osmirate/Sistemas e História/Archotech.md"},{l:"Ciência Sem Nome",p:"Worldbuilding/Osmirate/Sistemas e História/Ciência Sem Nome.md"},{l:"Combustível e Energia",p:"Worldbuilding/Osmirate/Sistemas e História/Combustível e Energia.md"},{l:"Linearchs e o Colapso",p:"Worldbuilding/Osmirate/Sistemas e História/Linearchs e o Colapso Genômico.md"}]},
-{name:"Osmirate / Cultura",items:[{l:"Bens de Prestígio",p:"Worldbuilding/Osmirate/Cultura/Bens de Prestígio.md"},{l:"Os Grandes Jogos",p:"Worldbuilding/Osmirate/Cultura/Os Grandes Jogos.md"}]},
-{name:"Ryke / Personagens",items:[{l:"Charlotte Vayne",p:"Worldbuilding/Ryke/Personagens/Charlotte Vayne.md"},{l:"Delilah",p:"Worldbuilding/Ryke/Personagens/Delilah.md"},{l:"Hans, o Indelével",p:"Worldbuilding/Ryke/Personagens/Hans, o Indelével.md"},{l:"Helena Callahan",p:"Worldbuilding/Ryke/Personagens/Helena Callahan.md"},{l:"Kess Olmann",p:"Worldbuilding/Ryke/Personagens/Kess Olmann.md"},{l:"Lilliane Firnoff",p:"Worldbuilding/Ryke/Personagens/Lilliane Firnoff.md"},{l:"Violetta Firnof",p:"Worldbuilding/Ryke/Personagens/Violetta Firnof.md"}]},
-{name:"Ryke / Organizações",items:[{l:"O Soberano",p:"Worldbuilding/Ryke/Organizações/O Soberano.md"},{l:"Os Casacos",p:"Worldbuilding/Ryke/Organizações/Os Casacos.md"},{l:"Os Clorídios",p:"Worldbuilding/Ryke/Organizações/Os Clorídios.md"}]},
-{name:"Ryke / Sistemas",items:[{l:"ASPCs",p:"Worldbuilding/Ryke/Sistemas/Sociedade/ASPCs.md"},{l:"Doutrina Corporal",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Doutrina Corporal.md"},{l:"Hub de Sistemas",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Hub de Sistemas.md"},{l:"Malha Cognitiva",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Malha Cognitiva.md"},{l:"PSI",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Índice de Dissonância Quântica (PSI).md"}]}
+],realms:[
+{name:"Osmirate",sections:[
+{name:"Personagens",items:[{l:"Alexandra",p:"Worldbuilding/Osmirate/Personagens/Alexandra.md"},{l:"Aylin Karzeth",p:"Worldbuilding/Osmirate/Personagens/Aylin Karzeth.md"},{l:"Ellara",p:"Worldbuilding/Osmirate/Personagens/Ellara.md"},{l:"Havva",p:"Worldbuilding/Osmirate/Personagens/Havva.md"},{l:"Hulya Gezer",p:"Worldbuilding/Osmirate/Personagens/Hulya Gezer.md"},{l:"Iris Markellos",p:"Worldbuilding/Osmirate/Personagens/Iris Markellos.md"},{l:"Jesslyn",p:"Worldbuilding/Osmirate/Personagens/Jesslyn.md"},{l:"Katerina",p:"Worldbuilding/Osmirate/Personagens/Katerina.md"},{l:"Kesi",p:"Worldbuilding/Osmirate/Personagens/Kesi.md"},{l:"Mihaela",p:"Worldbuilding/Osmirate/Personagens/Mihaela.md"},{l:"Mihri",p:"Worldbuilding/Osmirate/Personagens/Mihri.md"},{l:"Onur Dogan",p:"Worldbuilding/Osmirate/Personagens/Onur Dogan.md"},{l:"The Medusa",p:"Worldbuilding/Osmirate/Personagens/The Medusa.md"},{l:"Toll Kumru",p:"Worldbuilding/Osmirate/Personagens/Toll Kumru.md"},{l:"Volkan Arslan",p:"Worldbuilding/Osmirate/Personagens/Volkan Arslan.md"},{l:"Yasmin Grahas",p:"Worldbuilding/Osmirate/Personagens/Yasmin Grahas.md"},{l:"Zaya",p:"Worldbuilding/Osmirate/Personagens/Zaya.md"}]},
+{name:"Lugares",items:[{l:"Karvash",p:"Worldbuilding/Osmirate/Lugares/Karvash.md"},{l:"Khariz Vela",p:"Worldbuilding/Osmirate/Lugares/Khariz Vela.md"},{l:"Synod",p:"Worldbuilding/Osmirate/Lugares/Synod.md"},{l:"Vehren",p:"Worldbuilding/Osmirate/Lugares/Vehren.md"},{l:"Velisar",p:"Worldbuilding/Osmirate/Lugares/Velisar.md"}]},
+{name:"Facções",items:[{l:"Comerciantes de Deriva",p:"Worldbuilding/Osmirate/Facções e Organizações/Comerciantes de Deriva (Drift Traders).md"},{l:"Eidolons",p:"Worldbuilding/Osmirate/Facções e Organizações/Eidolons.md"},{l:"Mercadores",p:"Worldbuilding/Osmirate/Facções e Organizações/Mercadores.md"},{l:"Sucateiros",p:"Worldbuilding/Osmirate/Facções e Organizações/Sucateiros (Scavengers).md"},{l:"Teologia do Sinal",p:"Worldbuilding/Osmirate/Facções e Organizações/Teologia do Sinal.md"}]},
+{name:"Sistemas",items:[{l:"Arcanos",p:"Worldbuilding/Osmirate/Sistemas e História/Arcanos.md"},{l:"Archotech",p:"Worldbuilding/Osmirate/Sistemas e História/Archotech.md"},{l:"Ciência Sem Nome",p:"Worldbuilding/Osmirate/Sistemas e História/Ciência Sem Nome.md"},{l:"Combustível e Energia",p:"Worldbuilding/Osmirate/Sistemas e História/Combustível e Energia.md"},{l:"Linearchs e o Colapso",p:"Worldbuilding/Osmirate/Sistemas e História/Linearchs e o Colapso Genômico.md"}]},
+{name:"Cultura",items:[{l:"Bens de Prestígio",p:"Worldbuilding/Osmirate/Cultura/Bens de Prestígio.md"},{l:"Os Grandes Jogos",p:"Worldbuilding/Osmirate/Cultura/Os Grandes Jogos.md"}]}
+]},
+{name:"Ryke",sections:[
+{name:"Personagens",items:[{l:"Charlotte Vayne",p:"Worldbuilding/Ryke/Personagens/Charlotte Vayne.md"},{l:"Delilah",p:"Worldbuilding/Ryke/Personagens/Delilah.md"},{l:"Hans, o Indelével",p:"Worldbuilding/Ryke/Personagens/Hans, o Indelével.md"},{l:"Helena Callahan",p:"Worldbuilding/Ryke/Personagens/Helena Callahan.md"},{l:"Kess Olmann",p:"Worldbuilding/Ryke/Personagens/Kess Olmann.md"},{l:"Lilliane Firnoff",p:"Worldbuilding/Ryke/Personagens/Lilliane Firnoff.md"},{l:"Violetta Firnof",p:"Worldbuilding/Ryke/Personagens/Violetta Firnof.md"}]},
+{name:"Organizações",items:[{l:"O Soberano",p:"Worldbuilding/Ryke/Organizações/O Soberano.md"},{l:"Os Casacos",p:"Worldbuilding/Ryke/Organizações/Os Casacos.md"},{l:"Os Clorídios",p:"Worldbuilding/Ryke/Organizações/Os Clorídios.md"}]},
+{name:"Sistemas",items:[{l:"ASPCs",p:"Worldbuilding/Ryke/Sistemas/Sociedade/ASPCs.md"},{l:"Doutrina Corporal",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Doutrina Corporal.md"},{l:"Hub de Sistemas",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Hub de Sistemas.md"},{l:"Malha Cognitiva",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Malha Cognitiva.md"},{l:"PSI",p:"Worldbuilding/Ryke/Sistemas/Sociedade/Índice de Dissonância Quântica (PSI).md"}]}
+]}
 ]};
 
 /* HYDRATION */
@@ -115,20 +121,80 @@ var _open=false;
 function openSB(){var a=document.getElementById("ns-aside"),o=document.getElementById("ns-overlay");if(a)a.classList.add("is-open");if(o)o.classList.add("is-open");_open=true;}
 function closeSB(){var a=document.getElementById("ns-aside"),o=document.getElementById("ns-overlay");if(a)a.classList.remove("is-open");if(o)o.classList.remove("is-open");_open=false;document.querySelectorAll(".ns-tab").forEach(function(b){b.classList.remove("is-active");});}
 
+function renderUniverseThreeCols(data){
+  var aside=document.getElementById("ns-aside");if(!aside)return;aside.innerHTML="";
+  var colMain=document.createElement("div");colMain.className="ns-col";
+  var colSec=document.createElement("div");colSec.className="ns-col ns-col-sub";
+  var colPages=document.createElement("div");colPages.className="ns-col ns-col-sub ns-col-deep";
+
+  data.highlights.forEach(function(h){
+    var btn=document.createElement("button");btn.type="button";btn.className="ns-highlight";btn.textContent=h.l;
+    btn.addEventListener("click",function(){spaNav(h.p);closeSB();});
+    colMain.appendChild(btn);
+  });
+  if(data.realms&&data.realms.length){var sep=document.createElement("div");sep.className="ns-sep";colMain.appendChild(sep);var hubLbl=document.createElement("div");hubLbl.className="ns-sub-title";hubLbl.textContent="Noosphera";colMain.appendChild(hubLbl);}
+
+  var realmBtns=[];
+  data.realms.forEach(function(realm){
+    var btn=document.createElement("button");btn.type="button";btn.className="ns-folder-btn";
+    btn.textContent=realm.name;
+    realmBtns.push(btn);
+    function pickRealm(){
+      realmBtns.forEach(function(b){b.classList.remove("is-active");});
+      btn.classList.add("is-active");
+      colSec.innerHTML="";
+      colPages.innerHTML="";
+      colPages.classList.remove("is-visible");
+      var secBtns=[];
+      realm.sections.forEach(function(sec){
+        var sb=document.createElement("button");sb.type="button";sb.className="ns-folder-btn";
+        sb.textContent=sec.name;
+        secBtns.push(sb);
+        function pickSec(){
+          secBtns.forEach(function(x){x.classList.remove("is-active");});
+          sb.classList.add("is-active");
+          colPages.innerHTML="";
+          var title=document.createElement("div");title.className="ns-sub-title";title.textContent=realm.name+" › "+sec.name;
+          colPages.appendChild(title);
+          sec.items.forEach(function(it){
+            var link=document.createElement("button");link.type="button";link.className="ns-sub-link";link.textContent=it.l;
+            link.addEventListener("click",function(){spaNav(it.p);closeSB();});
+            colPages.appendChild(link);
+          });
+          colPages.classList.add("is-visible");
+        }
+        sb.addEventListener("mouseenter",pickSec);
+        sb.addEventListener("click",pickSec);
+        colSec.appendChild(sb);
+      });
+      colSec.classList.add("is-visible");
+    }
+    btn.addEventListener("mouseenter",pickRealm);
+    btn.addEventListener("click",pickRealm);
+    colMain.appendChild(btn);
+  });
+  aside.appendChild(colMain);aside.appendChild(colSec);aside.appendChild(colPages);
+}
+
 function renderSB(data){
+  if(data.realms&&data.realms.length){
+    renderUniverseThreeCols(data);
+    return;
+  }
   var aside=document.getElementById("ns-aside");if(!aside)return;aside.innerHTML="";
   var col1=document.createElement("div");col1.className="ns-col";
   var col2=document.createElement("div");col2.className="ns-col ns-col-sub";
   /* Highlights */
-  data.highlights.forEach(function(h){
+  (data.highlights||[]).forEach(function(h){
     var btn=document.createElement("button");btn.type="button";btn.className="ns-highlight";btn.textContent=h.l;
     btn.addEventListener("click",function(){spaNav(h.p);closeSB();});
     col1.appendChild(btn);
   });
-  if(data.folders.length){var sep=document.createElement("div");sep.className="ns-sep";col1.appendChild(sep);}
-  /* Folders */
+  var folders=data.folders||[];
+  if(folders.length){var sep=document.createElement("div");sep.className="ns-sep";col1.appendChild(sep);}
+  /* Folders (Wargame) */
   var folderBtns=[];
-  data.folders.forEach(function(f,idx){
+  folders.forEach(function(f,idx){
     var btn=document.createElement("button");btn.type="button";btn.className="ns-folder-btn";
     btn.textContent=f.name;
     folderBtns.push(btn);
