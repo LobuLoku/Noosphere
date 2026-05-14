@@ -63,18 +63,18 @@ window.noospheraSpaNavigate=spaNav;
 var WARGAME={highlights:[
 {l:"⚔ Buscador de Modelos",p:"Wargame/Buscador de Modelos.md"},
 {l:"🏰 Buscador de Facções",p:"Wargame/Buscador de Facções.md"},
+{l:"🔧 Buscador de Arsenal",p:"Wargame/Buscador de Utilities.md"},
+{l:"🎴 Buscador de Cartas",p:"Wargame/Buscador de Cartas.md"},
 {l:"🛠 Squad Builder",p:"Wargame/Squad Builder.md"}
 ],folders:[
 {name:"Regras Core",items:[{l:"Core Rules",p:"Wargame/01 Regras Core/Core Rules.md"},{l:"Missões e Gambles",p:"Wargame/01 Regras Core/Missões e Gambles.md"}]},
-{name:"Facções",items:[{l:"Casacas",p:"Wargame/03 Facções/Casacas.md"},{l:"Casas Linearcas",p:"Wargame/03 Facções/Casas Linearcas.md"},{l:"Chloriders",p:"Wargame/03 Facções/Chloriders.md"},{l:"Technokratas",p:"Wargame/03 Facções/Technokratas.md"},{l:"Undermovement",p:"Wargame/03 Facções/Undermovement.md"}]},
-{name:"Glossários",items:[{l:"Ações",p:"Wargame/05 Glossários/Glossário - Ações.md"},{l:"Passivas",p:"Wargame/05 Glossários/Glossário - Passivas.md"},{l:"Status",p:"Wargame/05 Glossários/Glossário - Status.md"}]}
+{name:"Glossários",items:[{l:"Ações",p:"Wargame/05 Glossários/Glossário - Ações.md"},{l:"Passivas",p:"Wargame/05 Glossários/Glossário - Passivas.md"},{l:"Cartas",p:"Wargame/05 Glossários/Glossário - Cartas.md"},{l:"Status",p:"Wargame/05 Glossários/Glossário - Status.md"}]}
 ]};
 var UNIVERSO={highlights:[
 {l:"📚 Buscador de Lore",p:"Worldbuilding/Buscador de Lore.md"},
 {l:"👤 Buscador de Pessoas",p:"Worldbuilding/Buscador de Pessoas.md"},
 {l:"🗺 Buscador de Locais",p:"Worldbuilding/Buscador de Locais.md"},
-{l:"📜 Buscador de Contos",p:"Worldbuilding/Buscador de Contos.md"},
-{l:"🔮 Esferas",p:"Worldbuilding/Esferas.md"}
+{l:"📜 Buscador de Contos",p:"Worldbuilding/Buscador de Contos.md"}
 ],realms:[
 {name:"Osmirate",sections:[
 {name:"Personagens",items:[{l:"Alexandra",p:"Worldbuilding/Osmirate/Personagens/Alexandra.md"},{l:"Aylin Karzeth",p:"Worldbuilding/Osmirate/Personagens/Aylin Karzeth.md"},{l:"Ellara",p:"Worldbuilding/Osmirate/Personagens/Ellara.md"},{l:"Havva",p:"Worldbuilding/Osmirate/Personagens/Havva.md"},{l:"Hulya Gezer",p:"Worldbuilding/Osmirate/Personagens/Hulya Gezer.md"},{l:"Iris Markellos",p:"Worldbuilding/Osmirate/Personagens/Iris Markellos.md"},{l:"Jesslyn",p:"Worldbuilding/Osmirate/Personagens/Jesslyn.md"},{l:"Katerina",p:"Worldbuilding/Osmirate/Personagens/Katerina.md"},{l:"Kesi",p:"Worldbuilding/Osmirate/Personagens/Kesi.md"},{l:"Mihaela",p:"Worldbuilding/Osmirate/Personagens/Mihaela.md"},{l:"Mihri",p:"Worldbuilding/Osmirate/Personagens/Mihri.md"},{l:"Onur Dogan",p:"Worldbuilding/Osmirate/Personagens/Onur Dogan.md"},{l:"The Medusa",p:"Worldbuilding/Osmirate/Personagens/The Medusa.md"},{l:"Toll Kumru",p:"Worldbuilding/Osmirate/Personagens/Toll Kumru.md"},{l:"Volkan Arslan",p:"Worldbuilding/Osmirate/Personagens/Volkan Arslan.md"},{l:"Yasmin Grahas",p:"Worldbuilding/Osmirate/Personagens/Yasmin Grahas.md"},{l:"Zaya",p:"Worldbuilding/Osmirate/Personagens/Zaya.md"}]},
@@ -134,6 +134,30 @@ window.tryInitNoospheraSquadBuilder=initSB;
         return html;
     }
 
+    function utilityPassivaOrAcaoBlocks(list, passiveMap, activeMap, color) {
+        if (!list || !list.length) return "";
+        passiveMap = passiveMap || {};
+        activeMap = activeMap || {};
+        var html = "";
+        for (var j = 0; j < list.length; j++) {
+            var item = String(list[j] || "").trim();
+            if (!item) continue;
+            var k = item.toLowerCase();
+            var inPass = passiveMap[k];
+            var inAct = activeMap[k];
+            var desc = inPass || inAct || "Descrição não encontrada no glossário.";
+            var isActGrant = !!inAct && !inPass;
+            var label = isActGrant ? ("GANHE A AÇÃO: " + item) : item;
+            var apCost = "", cleanDesc = desc;
+            var apMatch = cleanDesc.match(/^\[([🔴]+)\]\s*/);
+            if (apMatch) { apCost = '<span style="margin-left:4px;font-size:0.68rem;letter-spacing:1px;">' + apMatch[1] + "</span>"; cleanDesc = cleanDesc.substring(apMatch[0].length); }
+            html += '<div style="margin-bottom:4px;font-family:sans-serif;font-size:0.72rem;line-height:1.3;padding:2px 6px;border-left:3px solid ' + color + ';break-inside:avoid;page-break-inside:avoid">';
+            html += '<strong style="color:' + color + ';text-transform:uppercase;font-size:0.74rem;">' + label + apCost + ":</strong> ";
+            html += '<span style="color:#ccc;">' + cleanDesc + "</span></div>";
+        }
+        return html;
+    }
+
     /** Update one utility slot (suffix = "A" or "B") */
     function updateSlot(root, suffix, weaponName) {
         var uid = root.id;
@@ -180,7 +204,7 @@ window.tryInitNoospheraSquadBuilder=initSB;
             }).join(" ");
         }
         if (tagsEl) tagsEl.innerHTML = w && w.caracteristicas ? abilBlocks(w.caracteristicas, wMap, "#00ffff") : "";
-        if (pasEl) pasEl.innerHTML = w && w.passivas_de_utility ? abilBlocks(w.passivas_de_utility, uMap, "#00bfff") : "";
+        if (pasEl) pasEl.innerHTML = w && w.passivas_de_utility ? utilityPassivaOrAcaoBlocks(w.passivas_de_utility, uMap, maps.active || {}, "#00bfff") : "";
     }
 
     /** Sync selectors so both slots can't pick the same weapon */
