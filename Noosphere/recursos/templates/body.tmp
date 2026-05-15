@@ -389,7 +389,7 @@ if (isObsidian && imgPath) {
     }
 } else { imgURL = imgPath; }
 
-let faviconURL = await resolveImgBase64("Recursos/Main Logo/Favicon fill White.png");
+let faviconURL = await resolveImgBase64("Recursos/Main Logo/Logo.svg");
 
 function escCssUrl(u) {
     return String(u || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'");
