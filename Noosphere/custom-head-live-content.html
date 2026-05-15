@@ -94,7 +94,7 @@ var UNIVERSO={highlights:[
 var _hy=false;
 function hydrate(){if(_hy)return;_hy=true;var cc=document.querySelector("#center-content");if(!cc){_hy=false;return;}var ls=Array.prototype.slice.call(cc.querySelectorAll("script:not([data-nh])"));ls.forEach(function(o){if(!(o instanceof HTMLScriptElement)||o.closest("head"))return;var s=o.getAttribute("src")||"";if(/webpage\.js/i.test(s)||/site-lib/i.test(s))return;o.setAttribute("data-nh","1");var n=document.createElement("script");Array.prototype.forEach.call(o.attributes,function(a){if(a.name!=="data-nh")n.setAttribute(a.name,a.value);});n.textContent=o.textContent;n.async=false;n.setAttribute("data-nh","1");if(o.parentNode)o.parentNode.replaceChild(n,o);});_hy=false;}
 function decodeSb(s){if(!s)return"";return String(s).replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&apos;/g,"'").replace(/&#x27;/gi,"'").replace(/&#(\d+);/g,function(_,n){return String.fromCharCode(parseInt(n,10));}).replace(/&#x([0-9a-f]+);/gi,function(_,h){return String.fromCharCode(parseInt(h,16));}).replace(/&amp;/g,"&");}
-function initSB(r){var s=r||document,apps=s.querySelectorAll?s.querySelectorAll(".js-squad-builder-app"):[];Array.prototype.forEach.call(apps,function(a){if(!a||a.getAttribute("data-sb-engine-ready")==="1"||a._sbInit===true||a.__nsLock)return;var t=a.querySelector(".js-sb-engine-script");var tv=t?(String(t.value||t.textContent||"").trim()):"";if(!tv)return;a.__nsLock=true;try{(new Function(decodeSb(tv)))();}catch(e){console.error("SB:",e);a._sbInit=false;a.__nsLock=false;}});}
+function initSB(r){var s=r||document,apps=s.querySelectorAll?s.querySelectorAll(".js-squad-builder-app"):[];Array.prototype.forEach.call(apps,function(a){if(!a||a.getAttribute("data-sb-engine-ready")==="1"||a._sbInit===true||a.__nsLock)return;var bid=String(a.getAttribute("data-sb-bid")||a.id||"");var esc=bid.replace(/\\/g,"\\\\").replace(/"/g,'\\"');var t=a.querySelector(".js-sb-engine-script");var tv=t?(String(t.value||t.textContent||"").trim()):"";if(!tv&&bid){var isc=document.querySelector("script.js-sb-engine-inline[data-sb-bid=\""+esc+"\"]");tv=isc?(String(isc.textContent||"").trim()):"";}if(!tv)return;a.__nsLock=true;try{(new Function(decodeSb(tv)))();}catch(e){console.error("SB:",e);a._sbInit=false;if(a.removeAttribute)a.removeAttribute("data-sb-engine-ready");a.__nsLock=false;}});}
 window.tryInitNoospheraSquadBuilder=initSB;
 /* Model HUD weapon/utility selects: exported HTML has no DataviewJS — mirror Casaca Escuro.md rykeWeaponAbilityBootstrap when editing */
 (function rykeWeaponAbilityBootstrap() {
@@ -255,6 +255,9 @@ var _pt=null;function initPsi(){if(_pt){clearInterval(_pt);_pt=null;}var w=docum
 
 /* EVENTS */
 document.addEventListener("click",function(e){
+if(e.target.closest&&e.target.closest(".js-squad-builder-app"))return;
+if(e.target.closest&&e.target.closest(".js-unit-dashboard"))return;
+var tg=e.target&&e.target.tagName;if(tg==="SELECT"||tg==="OPTION"||tg==="OPTGROUP")return;
 var hub=e.target.closest&&e.target.closest(".js-hub-card");if(hub){e.preventDefault();var tk=hub.getAttribute("data-target");if(tk){var ov=document.getElementById("nexus-overlay-"+tk);if(ov)ov.classList.add("active");}return;}
 var cl=e.target.closest&&e.target.closest(".js-close-overlay");if(cl){e.preventDefault();e.stopPropagation();var ox=cl.closest(".nexus-overlay");if(ox)ox.classList.remove("active");return;}
 var ni=e.target.closest&&e.target.closest(".nav-item[data-nav]");if(ni){e.preventDefault();e.stopPropagation();spaNav(ni.getAttribute("data-nav"));document.querySelectorAll(".nexus-overlay").forEach(function(o){o.classList.remove("active");});return;}
