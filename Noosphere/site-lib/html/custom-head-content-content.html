@@ -109,9 +109,20 @@ window.tryInitNoospheraSquadBuilder=initSB;
     function getMaps(root) {
         try { return JSON.parse(decodeURIComponent(root.getAttribute("data-maps") || "%7B%7D")); } catch (e) { return {}; }
     }
+    function normWeaponKey(n) {
+        var s = String(n || "").trim();
+        if (!s) return "";
+        if (/\.md$/i.test(s)) s = s.slice(0, -3);
+        return s;
+    }
     function findWeapon(weapons, name) {
         if (!name || name === "__none__") return null;
-        for (var i = 0; i < weapons.length; i++) { if (weapons[i] && String(weapons[i].name) === name) return weapons[i]; }
+        var target = normWeaponKey(name);
+        for (var i = 0; i < weapons.length; i++) {
+            var cw = weapons[i];
+            if (!cw) continue;
+            if (String(cw.name) === name || normWeaponKey(cw.name) === target) return cw;
+        }
         return null;
     }
     function abilBlocks(list, map, color) {
@@ -202,6 +213,27 @@ window.tryInitNoospheraSquadBuilder=initSB;
         }
         if (tagsEl) tagsEl.innerHTML = w && w.caracteristicas ? abilBlocks(w.caracteristicas, wMap, "#00ffff") : "";
         if (pasEl) pasEl.innerHTML = w && w.passivas_de_utility ? utilityPassivaOrAcaoBlocks(w.passivas_de_utility, uMap, maps.active || {}, "#00bfff") : "";
+        var tw = root.querySelector("#w-thumb-wrap-" + s + "-" + uid), ti = root.querySelector("#w-thumb-img-" + s + "-" + uid);
+        if (tw && ti) {
+            var iu = "";
+            if (!isNone && w) {
+                iu = (w.image || "").trim();
+                if (!iu && w.imageRaw && typeof window.noospheraVaultPathToHref === "function") {
+                    try { iu = window.noospheraVaultPathToHref(String(w.imageRaw).replace(/\\/g, "/")) || ""; } catch (_e2) {}
+                }
+                if (!iu && w.imageRaw) iu = String(w.imageRaw);
+            }
+            var iraw = !isNone && w && w.imageRaw ? String(w.imageRaw).replace(/\\/g, "/") : "";
+            if (iu && !isNone) {
+                tw.style.display = "block";
+                ti.setAttribute("src", iu);
+                if (iraw) ti.setAttribute("data-export-src", iraw); else ti.removeAttribute("data-export-src");
+            } else {
+                tw.style.display = "none";
+                ti.removeAttribute("src");
+                ti.removeAttribute("data-export-src");
+            }
+        }
     }
 
     function syncSelectors(root) {
@@ -265,7 +297,7 @@ var tl=e.target.closest&&e.target.closest(".tab-container .tab");if(tl){e.preven
 },true);
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){document.querySelectorAll(".nexus-overlay").forEach(function(o){o.classList.remove("active");});closeSB();}});
 
-function runPatch(){hydrate();ensureTabPanelsVisible();initSB(document);initSbInlineEngines(document);initPsi();initUnitDashboardRoots();}
+function runPatch(){hydrate();ensureTabPanelsVisible();initSB(document);initSbInlineEngines(document);initPsi();initUnitDashboardRoots();if(window.__nsSbRetryT)clearTimeout(window.__nsSbRetryT);window.__nsSbRetryT=setTimeout(function(){window.__nsSbRetryT=null;document.querySelectorAll(".js-squad-builder-app").forEach(function(el){if(el.getAttribute("data-sb-engine-ready")==="1")return;el.__nsLock=false;try{el.removeAttribute("data-sb-engine-ready");}catch(_e){}});initSB(document);initSbInlineEngines(document);},450);}
 window.noospheraRunExportPatchCycle=runPatch;
 
 /* SIDEBAR */
