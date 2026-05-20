@@ -13,8 +13,8 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700;900&family=Inter:wght@200;300;400&display=swap');
 
-#nb-05x5fyg7 * { box-sizing:border-box; }
-#nb-05x5fyg7 { font-family:'Inter', sans-serif !important; color:#e0d8f0 !important; width:100%; }
+#nb-npfv7j0b * { box-sizing:border-box; }
+#nb-npfv7j0b { font-family:'Inter', sans-serif !important; color:#e0d8f0 !important; width:100%; }
 
 /* ── FILTER PANEL ── */
 .nb-filters { 
@@ -28,8 +28,8 @@
 .nb-filter-row { display: grid !important; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; }
 .nb-filter-label { font-size: 11px !important; color: #d8b4fe !important; letter-spacing: 2px !important; text-transform: uppercase !important; margin-bottom: 8px !important; display: block !important; font-family: 'Inter', sans-serif !important; font-weight: 300 !important; opacity: 0.8; }
 
-#nb-05x5fyg7 input.nb-input,
-#nb-05x5fyg7 select.nb-sel {
+#nb-npfv7j0b input.nb-input,
+#nb-npfv7j0b select.nb-sel {
     width: 100% !important; background: rgba(10, 0, 20, 0.7) !important; border: 1px solid rgba(190, 99, 255, 0.25) !important;
     color: #ffffff !important; padding: 18px 25px !important; font-family: 'Orbitron', sans-serif !important;
     font-size: 14px !important; font-weight: 300 !important; outline: none !important; transition: 0.4s !important;
@@ -38,8 +38,8 @@
     line-height: 1.4 !important; display: block !important; letter-spacing: 1px !important;
     cursor: pointer;
 }
-#nb-05x5fyg7 input.nb-input:focus,
-#nb-05x5fyg7 select.nb-sel:focus { border-color: rgba(190, 99, 255, 0.8) !important; box-shadow: 0 0 25px rgba(190, 99, 255, 0.3) !important; background: rgba(25, 10, 45, 0.9) !important; }
+#nb-npfv7j0b input.nb-input:focus,
+#nb-npfv7j0b select.nb-sel:focus { border-color: rgba(190, 99, 255, 0.8) !important; box-shadow: 0 0 25px rgba(190, 99, 255, 0.3) !important; background: rgba(25, 10, 45, 0.9) !important; }
 
 /* ── SECTION HEADERS ── */
 .nb-sec { font-size: 10px; color: #a99bbd !important; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 300; opacity: 0.8; }
@@ -211,7 +211,7 @@
 }
 </style>
 
-<div id="nb-05x5fyg7">
+<div id="nb-npfv7j0b">
 <div class="nb-filters">
 
   <div class="nb-filter-row">
@@ -258,27 +258,27 @@
     </div>
   </div>
 
-  <button type="button" class="nb-adv-toggle js-adv-toggle" style="align-self:flex-start;font-size:11px;padding:10px 22px;border:1px solid rgba(190,99,255,0.3);color:#d8b4fe;background:rgba(190,99,255,0.08);cursor:pointer;border-radius:30px;font-family:'Orbitron',sans-serif;letter-spacing:1.5px;text-transform:uppercase;transition:0.3s;">▶ Mostrar Filtros Avançados</button>
+  <button type="button" class="nb-adv-toggle js-adv-toggle" onclick="var s=this.nextElementSibling;var o=s.style.display==='flex';s.style.display=o?'none':'flex';this.textContent=o?'▶ Mostrar Filtros Avançados':'▼ Esconder Filtros Avançados';" style="align-self:flex-start;font-size:11px;padding:10px 22px;border:1px solid rgba(190,99,255,0.3);color:#d8b4fe;background:rgba(190,99,255,0.08);cursor:pointer;border-radius:30px;font-family:'Orbitron',sans-serif;letter-spacing:1.5px;text-transform:uppercase;transition:0.3s;">▶ Mostrar Filtros Avançados</button>
   <div class="nb-adv-section js-adv-section" style="display:none;flex-direction:column;gap:25px;">
 
   <div>
     <div class="nb-sec">Passivas do Modelo</div>
     <div class="nb-chips">
-      <button class="nb-chip" data-g="pass" data-v="agressivo">Agressivo</button><button class="nb-chip" data-g="pass" data-v="anti-riot">Anti-Riot</button><button class="nb-chip" data-g="pass" data-v="armas integradas">Armas Integradas</button><button class="nb-chip" data-g="pass" data-v="artificial">Artificial</button><button class="nb-chip" data-g="pass" data-v="assassino">Assassino</button><button class="nb-chip" data-g="pass" data-v="banho de sangue">Banho de Sangue</button><button class="nb-chip" data-g="pass" data-v="comandante">Comandante</button><button class="nb-chip" data-g="pass" data-v="corredor">Corredor</button><button class="nb-chip" data-g="pass" data-v="corrida silenciosa">Corrida Silenciosa</button><button class="nb-chip" data-g="pass" data-v="dissidente">Dissidente</button><button class="nb-chip" data-g="pass" data-v="duelista">Duelista</button><button class="nb-chip" data-g="pass" data-v="estoico">Estoico</button><button class="nb-chip" data-g="pass" data-v="evasivo">Evasivo</button><button class="nb-chip" data-g="pass" data-v="geração de capital">Geração de Capital</button><button class="nb-chip" data-g="pass" data-v="infiltrador">Infiltrador</button><button class="nb-chip" data-g="pass" data-v="mochila adaptada">Mochila Adaptada</button><button class="nb-chip" data-g="pass" data-v="prazeres carnais">Prazeres Carnais</button><button class="nb-chip" data-g="pass" data-v="preferência física">Preferência Física</button><button class="nb-chip" data-g="pass" data-v="preparado">Preparado</button><button class="nb-chip" data-g="pass" data-v="profissional">Profissional</button><button class="nb-chip" data-g="pass" data-v="protetor">Protetor</button><button class="nb-chip" data-g="pass" data-v="resistente">Resistente</button><button class="nb-chip" data-g="pass" data-v="versátil melee">Versátil Melee</button>
+      <button class="nb-chip" data-g="pass" data-v="agressivo">Agressivo</button><button class="nb-chip" data-g="pass" data-v="anti-riot">Anti-Riot</button><button class="nb-chip" data-g="pass" data-v="armas integradas">Armas Integradas</button><button class="nb-chip" data-g="pass" data-v="artificial">Artificial</button><button class="nb-chip" data-g="pass" data-v="assassino">Assassino</button><button class="nb-chip" data-g="pass" data-v="banho de sangue">Banho de Sangue</button><button class="nb-chip" data-g="pass" data-v="corredor">Corredor</button><button class="nb-chip" data-g="pass" data-v="corrida silenciosa">Corrida Silenciosa</button><button class="nb-chip" data-g="pass" data-v="dissidente">Dissidente</button><button class="nb-chip" data-g="pass" data-v="duelista">Duelista</button><button class="nb-chip" data-g="pass" data-v="esquiva tática">Esquiva Tática</button><button class="nb-chip" data-g="pass" data-v="estoico">Estoico</button><button class="nb-chip" data-g="pass" data-v="evasivo">Evasivo</button><button class="nb-chip" data-g="pass" data-v="furtivo">Furtivo</button><button class="nb-chip" data-g="pass" data-v="geração de capital">Geração de Capital</button><button class="nb-chip" data-g="pass" data-v="infiltrador">Infiltrador</button><button class="nb-chip" data-g="pass" data-v="inteligente">Inteligente</button><button class="nb-chip" data-g="pass" data-v="masoquismo">Masoquismo</button><button class="nb-chip" data-g="pass" data-v="mochila adaptada">Mochila Adaptada</button><button class="nb-chip" data-g="pass" data-v="prazeres carnais">Prazeres Carnais</button><button class="nb-chip" data-g="pass" data-v="preferência física">Preferência Física</button><button class="nb-chip" data-g="pass" data-v="preferência ranged">Preferência Ranged</button><button class="nb-chip" data-g="pass" data-v="preparado">Preparado</button><button class="nb-chip" data-g="pass" data-v="profissional">Profissional</button><button class="nb-chip" data-g="pass" data-v="protetor">Protetor</button><button class="nb-chip" data-g="pass" data-v="reflexos aprimorados">Reflexos Aprimorados</button><button class="nb-chip" data-g="pass" data-v="resistente">Resistente</button><button class="nb-chip" data-g="pass" data-v="versátil melee">Versátil Melee</button><button class="nb-chip" data-g="pass" data-v="preciso">preciso</button>
     </div>
   </div>
 
   <div>
     <div class="nb-sec">Ações do Modelo</div>
     <div class="nb-chips">
-      <button class="nb-chip" data-g="act" data-v="análise">Análise</button><button class="nb-chip" data-g="act" data-v="cobrar taxas">Cobrar Taxas</button><button class="nb-chip" data-g="act" data-v="comandar">Comandar</button><button class="nb-chip" data-g="act" data-v="combate arriscado">Combate Arriscado</button><button class="nb-chip" data-g="act" data-v="combater">Combater</button><button class="nb-chip" data-g="act" data-v="correr">Correr</button><button class="nb-chip" data-g="act" data-v="inspirar">Inspirar</button><button class="nb-chip" data-g="act" data-v="investida">Investida</button><button class="nb-chip" data-g="act" data-v="mover">Mover</button><button class="nb-chip" data-g="act" data-v="sobrecarga">Sobrecarga</button><button class="nb-chip" data-g="act" data-v="tunelamento dissidente">Tunelamento Dissidente</button>
+      <button class="nb-chip" data-g="act" data-v="análise">Análise</button><button class="nb-chip" data-g="act" data-v="carne imortal">Carne Imortal</button><button class="nb-chip" data-g="act" data-v="cobrar taxas">Cobrar Taxas</button><button class="nb-chip" data-g="act" data-v="comandar">Comandar</button><button class="nb-chip" data-g="act" data-v="combate arriscado">Combate Arriscado</button><button class="nb-chip" data-g="act" data-v="combater">Combater</button><button class="nb-chip" data-g="act" data-v="correr">Correr</button><button class="nb-chip" data-g="act" data-v="distribuir recursos">Distribuir Recursos</button><button class="nb-chip" data-g="act" data-v="encantar tempestade">Encantar Tempestade</button><button class="nb-chip" data-g="act" data-v="espelho dissidente">Espelho Dissidente</button><button class="nb-chip" data-g="act" data-v="explorar fraquezas">Explorar Fraquezas</button><button class="nb-chip" data-g="act" data-v="inspirar">Inspirar</button><button class="nb-chip" data-g="act" data-v="investida">Investida</button><button class="nb-chip" data-g="act" data-v="mover">Mover</button><button class="nb-chip" data-g="act" data-v="patrulhar">Patrulhar</button><button class="nb-chip" data-g="act" data-v="tunelamento dissidente">Tunelamento Dissidente</button>
     </div>
   </div>
 
   <div>
     <div class="nb-sec">Keywords do Modelo</div>
     <div class="nb-chips">
-      <button class="nb-chip" data-g="kw" data-v="aprimorado">Aprimorado</button><button class="nb-chip" data-g="kw" data-v="artificial">Artificial</button><button class="nb-chip" data-g="kw" data-v="casaca azul">Casaca Azul</button><button class="nb-chip" data-g="kw" data-v="casaca dourado">Casaca Dourado</button><button class="nb-chip" data-g="kw" data-v="casaca escuro">Casaca Escuro</button><button class="nb-chip" data-g="kw" data-v="casaca pálido">Casaca Pálido</button><button class="nb-chip" data-g="kw" data-v="casaca púrpura">Casaca Púrpura</button><button class="nb-chip" data-g="kw" data-v="civil">Civil</button><button class="nb-chip" data-g="kw" data-v="comando">Comando</button><button class="nb-chip" data-g="kw" data-v="concepta">Concepta</button><button class="nb-chip" data-g="kw" data-v="confederado">Confederado</button><button class="nb-chip" data-g="kw" data-v="dissidente">Dissidente</button><button class="nb-chip" data-g="kw" data-v="forças do basileu">Forças do Basileu</button><button class="nb-chip" data-g="kw" data-v="infantaria">Infantaria</button><button class="nb-chip" data-g="kw" data-v="kthon">Kthon</button><button class="nb-chip" data-g="kw" data-v="manikin">Manikin</button><button class="nb-chip" data-g="kw" data-v="monstro">Monstro</button><button class="nb-chip" data-g="kw" data-v="nomikon">Nomikon</button><button class="nb-chip" data-g="kw" data-v="oficial">Oficial</button><button class="nb-chip" data-g="kw" data-v="pesquisador">Pesquisador</button><button class="nb-chip" data-g="kw" data-v="veículo">Veículo</button>
+      <button class="nb-chip" data-g="kw" data-v="aprimorado">Aprimorado</button><button class="nb-chip" data-g="kw" data-v="artificial">Artificial</button><button class="nb-chip" data-g="kw" data-v="casaca azul">Casaca Azul</button><button class="nb-chip" data-g="kw" data-v="casaca dourado">Casaca Dourado</button><button class="nb-chip" data-g="kw" data-v="casaca escuro">Casaca Escuro</button><button class="nb-chip" data-g="kw" data-v="casaca pálido">Casaca Pálido</button><button class="nb-chip" data-g="kw" data-v="casaca púrpura">Casaca Púrpura</button><button class="nb-chip" data-g="kw" data-v="civil">Civil</button><button class="nb-chip" data-g="kw" data-v="comando">Comando</button><button class="nb-chip" data-g="kw" data-v="concepta">Concepta</button><button class="nb-chip" data-g="kw" data-v="confederado">Confederado</button><button class="nb-chip" data-g="kw" data-v="dissidente">Dissidente</button><button class="nb-chip" data-g="kw" data-v="forças do basileu">Forças do Basileu</button><button class="nb-chip" data-g="kw" data-v="infantaria">Infantaria</button><button class="nb-chip" data-g="kw" data-v="kthon">Kthon</button><button class="nb-chip" data-g="kw" data-v="manikin">Manikin</button><button class="nb-chip" data-g="kw" data-v="monstro">Monstro</button><button class="nb-chip" data-g="kw" data-v="nomikon">Nomikon</button><button class="nb-chip" data-g="kw" data-v="oficial">Oficial</button><button class="nb-chip" data-g="kw" data-v="pesquisador">Pesquisador</button><button class="nb-chip" data-g="kw" data-v="terrorista">Terrorista</button><button class="nb-chip" data-g="kw" data-v="veículo">Veículo</button>
     </div>
   </div>
 
@@ -289,37 +289,37 @@
       <div class="nb-range-grp">
         <span class="nb-range-lbl">Vida</span>
         <input type="range" class="nb-range" data-stat="vida" min="0" max="10" value="0" step="1">
-        <span class="nb-range-val" id="nb-05x5fyg7-rv-vida">0</span>
+        <span class="nb-range-val" id="nb-npfv7j0b-rv-vida">0</span>
       </div>
       <div class="nb-range-grp">
         <span class="nb-range-lbl">Movimento</span>
         <input type="range" class="nb-range" data-stat="mov" min="0" max="30" value="0" step="1">
-        <span class="nb-range-val" id="nb-05x5fyg7-rv-mov">0</span>
+        <span class="nb-range-val" id="nb-npfv7j0b-rv-mov">0</span>
       </div>
       <div class="nb-range-grp">
         <span class="nb-range-lbl">Decoerência</span>
         <input type="range" class="nb-range" data-stat="dec" min="0" max="15" value="0" step="1">
-        <span class="nb-range-val" id="nb-05x5fyg7-rv-dec">0</span>
+        <span class="nb-range-val" id="nb-npfv7j0b-rv-dec">0</span>
       </div>
       <div class="nb-range-grp">
         <span class="nb-range-lbl">AP</span>
         <input type="range" class="nb-range" data-stat="ap" min="0" max="8" value="0" step="1">
-        <span class="nb-range-val" id="nb-05x5fyg7-rv-ap">0</span>
+        <span class="nb-range-val" id="nb-npfv7j0b-rv-ap">0</span>
       </div>
       <div class="nb-range-grp">
         <span class="nb-range-lbl">Def. Melee</span>
         <input type="range" class="nb-range" data-stat="arm_m" min="0" max="6" value="0" step="1">
-        <span class="nb-range-val" id="nb-05x5fyg7-rv-arm_m">0</span>
+        <span class="nb-range-val" id="nb-npfv7j0b-rv-arm_m">0</span>
       </div>
       <div class="nb-range-grp">
         <span class="nb-range-lbl">Def. Ranged</span>
         <input type="range" class="nb-range" data-stat="arm_r" min="0" max="6" value="0" step="1">
-        <span class="nb-range-val" id="nb-05x5fyg7-rv-arm_r">0</span>
+        <span class="nb-range-val" id="nb-npfv7j0b-rv-arm_r">0</span>
       </div>
       <div class="nb-range-grp">
         <span class="nb-range-lbl">Def. Special</span>
         <input type="range" class="nb-range" data-stat="arm_s" min="0" max="6" value="0" step="1">
-        <span class="nb-range-val" id="nb-05x5fyg7-rv-arm_s">0</span>
+        <span class="nb-range-val" id="nb-npfv7j0b-rv-arm_s">0</span>
       </div>
     </div>
   </div>
@@ -333,7 +333,7 @@
     <div style="font-size:10px; color:#d8b4fe; letter-spacing:2px; font-weight:300; text-transform:uppercase;">Tactical Browser</div>
   </div>
 
-<div class="nb-grid" id="nb-05x5fyg7-grid">
+<div class="nb-grid" id="nb-npfv7j0b-grid">
   
   
   
@@ -478,7 +478,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Agente Fiscal Casaca Dourado.md" data-name="agente fiscal casaca dourado" data-noos="ryke" data-fac="casacas" data-pass="comandante" data-act="mover|combater|cobrar taxas" data-kw="casaca dourado|oficial" data-skw="elite" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="3" data-arm_r="3" data-arm_s="1" data-pts="90" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Agente Fiscal Casaca Dourado.md" data-name="agente fiscal casaca dourado" data-noos="ryke" data-fac="casacas" data-pass="profissional|preparado" data-act="mover|combater|cobrar taxas|distribuir recursos" data-kw="casaca dourado|oficial" data-skw="elite" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="3" data-arm_r="3" data-arm_s="1" data-pts="90" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -493,7 +493,7 @@
 
     <div class="nb-info">
       <div class="nb-name">Agente Fiscal Casaca Dourado</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Casacas</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Elite</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Comandante</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Casaca Dourado</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Oficial</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Casacas</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Elite</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Profissional</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Preparado</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Casaca Dourado</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Oficial</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
@@ -505,11 +505,11 @@
     <div class="nb-loadout">
       <div class="nb-loadout-lbl">Loadout Inicial</div>
       <div class="nb-loadout-list">
-        <span class="nb-lo-thumb-wrap" tabindex="0" title="arfugel 12 · Weapon · Atk 3 · 1&quot; - 14&quot;" data-tip="arfugel 12 · Weapon · Atk 3 · 1&quot; - 14&quot;"><img class="nb-lo-thumb" src="recursos/imagens/utility-image/ryke/arfugel-12.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Arfugel 12.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></span><span class="nb-lo-thumb-wrap" tabindex="0" title="Rugel Compacta 9 · Weapon · Atk 2 · Mira 0 · 1&quot; - 12&quot;" data-tip="Rugel Compacta 9 · Weapon · Atk 2 · Mira 0 · 1&quot; - 12&quot;"><img class="nb-lo-thumb" src="recursos/imagens/utility-image/ryke/rugel-compact-9.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Rugel Compact 9.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></span>
+        <span class="nb-lo-thumb-wrap" tabindex="0" title="arfugel 12 · Weapon · Atk 3 · 1&quot; - 14&quot;" data-tip="arfugel 12 · Weapon · Atk 3 · 1&quot; - 14&quot;"><img class="nb-lo-thumb" src="recursos/imagens/utility-image/ryke/arfugel-12.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Arfugel 12.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></span><span class="nb-lo-thumb-wrap" tabindex="0" title="Rugel Compacta 9 · Weapon · Atk 2 · Mira 0 · 1&quot; - 12&quot;" data-tip="Rugel Compacta 9 · Weapon · Atk 2 · Mira 0 · 1&quot; - 12&quot;"><img class="nb-lo-thumb" src="recursos/imagens/utility-image/ryke/rugel-compact-9.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Rugel Compact 9.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></span><span class="nb-lo-thumb-wrap" tabindex="0" title="Escopeta Khemistra de Tanque · Weapon · Atk 6 · Mira Desvantagem +2 · 2&quot; - 14&quot;" data-tip="Escopeta Khemistra de Tanque · Weapon · Atk 6 · Mira Desvantagem +2 · 2&quot; - 14&quot;"><img class="nb-lo-thumb" src="recursos/imagens/utility-image/ryke/tank-fed-khemistra-shotgun.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Tank Fed Khemistra Shotgun.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></span>
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Alindra a açougueira.md" data-name="alindra a açougueira" data-noos="ryke" data-fac="chloriders" data-pass="dissidente|preferência física|banho de sangue" data-act="correr|combater|combate arriscado" data-kw="" data-skw="unique" data-vida="5" data-mov="10" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Alindra a açougueira.md" data-name="alindra a açougueira" data-noos="ryke" data-fac="chloriders" data-pass="dissidente|preferência física|banho de sangue|reflexos aprimorados" data-act="correr|combater|combate arriscado" data-kw="terrorista|infantaria" data-skw="unique" data-vida="9" data-mov="10" data-dec="3" data-ap="3" data-arm_m="2" data-arm_r="0" data-arm_s="1" data-pts="130" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -517,18 +517,18 @@
       <img src="recursos/imagens/renders/chloriders/açougueira.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Açougueira.png" referrerpolicy="no-referrer" target="_self">
       <div class="nb-armor">
         <div class="nb-armor-pill"><span>⚔️</span><span>2</span></div>
-        <div class="nb-armor-pill"><span>🔫</span><span>2</span></div>
-        <div class="nb-armor-pill"><span>⚠️</span><span>2</span></div>
+        <div class="nb-armor-pill"><span>🔫</span><span>0</span></div>
+        <div class="nb-armor-pill"><span>⚠️</span><span>1</span></div>
       </div>
     </div>
 
     <div class="nb-info">
       <div class="nb-name">Alindra a açougueira</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Preferência Física</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Banho de Sangue</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Preferência Física</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Banho de Sangue</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Reflexos Aprimorados</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Terrorista</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Infantaria</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">10</span></div>
-        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
-        <div class="nb-stat" title="Decoerência"><span class="nb-stat-lbl">DEC</span><span class="nb-stat-val c">2</span></div>
+        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">9</span></div>
+        <div class="nb-stat" title="Decoerência"><span class="nb-stat-lbl">DEC</span><span class="nb-stat-val c">3</span></div>
         <div class="nb-stat" title="AP (ações por ativação)"><span class="nb-stat-lbl">AP</span><span class="nb-stat-val">3</span></div>
       </div>
     </div>
@@ -633,7 +633,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Arkwright.md" data-name="arkwright" data-noos="ryke" data-fac="casacas" data-pass="comandante" data-act="mover|combater|inspirar" data-kw="casaca pálido|comando" data-skw="unique" data-vida="6" data-mov="6" data-dec="3" data-ap="4" data-arm_m="3" data-arm_r="3" data-arm_s="2" data-pts="135" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Arkwright.md" data-name="arkwright" data-noos="ryke" data-fac="casacas" data-pass="inteligente" data-act="mover|combater|inspirar" data-kw="casaca pálido|comando" data-skw="unique" data-vida="6" data-mov="6" data-dec="4" data-ap="4" data-arm_m="3" data-arm_r="3" data-arm_s="2" data-pts="135" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -648,11 +648,11 @@
 
     <div class="nb-info">
       <div class="nb-name">Arkwright</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Casacas</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Comandante</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Casaca Pálido</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Comando</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Casacas</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Inteligente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Casaca Pálido</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Comando</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">6</span></div>
-        <div class="nb-stat" title="Decoerência"><span class="nb-stat-lbl">DEC</span><span class="nb-stat-val c">3</span></div>
+        <div class="nb-stat" title="Decoerência"><span class="nb-stat-lbl">DEC</span><span class="nb-stat-val c">4</span></div>
         <div class="nb-stat" title="AP (ações por ativação)"><span class="nb-stat-lbl">AP</span><span class="nb-stat-val">4</span></div>
       </div>
     </div>
@@ -912,25 +912,25 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Caçador de Insetos.md" data-name="caçador de insetos" data-noos="ryke" data-fac="chloriders" data-pass="corrida silenciosa" data-act="mover|combater" data-kw="" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Caçador de Insetos.md" data-name="caçador de insetos" data-noos="ryke" data-fac="chloriders" data-pass="corrida silenciosa|agressivo|versátil melee" data-act="mover|combater" data-kw="terrorista|infantaria" data-skw="unique" data-vida="6" data-mov="6" data-dec="2" data-ap="3" data-arm_m="3" data-arm_r="2" data-arm_s="1" data-pts="130" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
       <div class="nb-pts"><span class="nb-pts-num">130</span><span class="nb-pts-suf">PTS</span></div>
       <img src="recursos/imagens/renders/chloriders/caçador-de-insetos.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Caçador de Insetos.png" referrerpolicy="no-referrer" target="_self">
       <div class="nb-armor">
-        <div class="nb-armor-pill"><span>⚔️</span><span>2</span></div>
+        <div class="nb-armor-pill"><span>⚔️</span><span>3</span></div>
         <div class="nb-armor-pill"><span>🔫</span><span>2</span></div>
-        <div class="nb-armor-pill"><span>⚠️</span><span>2</span></div>
+        <div class="nb-armor-pill"><span>⚠️</span><span>1</span></div>
       </div>
     </div>
 
     <div class="nb-info">
       <div class="nb-name">Caçador de Insetos</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Corrida Silenciosa</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Corrida Silenciosa</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Agressivo</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Versátil Melee</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Terrorista</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Infantaria</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
-        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
+        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">6</span></div>
         <div class="nb-stat" title="Decoerência"><span class="nb-stat-lbl">DEC</span><span class="nb-stat-val c">2</span></div>
         <div class="nb-stat" title="AP (ações por ativação)"><span class="nb-stat-lbl">AP</span><span class="nb-stat-val">3</span></div>
       </div>
@@ -943,7 +943,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Camilla Gatilho.md" data-name="camilla gatilho" data-noos="ryke" data-fac="chloriders" data-pass="agressivo|dissidente" data-act="mover|combater|tunelamento dissidente" data-kw="" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Camilla Gatilho.md" data-name="camilla gatilho" data-noos="ryke" data-fac="chloriders" data-pass="agressivo|dissidente" data-act="mover|combater|tunelamento dissidente" data-kw="terrorista|infantaria" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -958,7 +958,7 @@
 
     <div class="nb-info">
       <div class="nb-name">Camilla Gatilho</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Agressivo</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Agressivo</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Terrorista</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Infantaria</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
@@ -1191,7 +1191,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Casaca Pistoleiro.md" data-name="casaca pistoleiro" data-noos="ryke" data-fac="casacas" data-pass="agressivo" data-act="mover|combater|comandar|sobrecarga" data-kw="casaca pálido|infantaria" data-skw="" data-vida="5" data-mov="8" data-dec="2" data-ap="4" data-arm_m="1" data-arm_r="4" data-arm_s="1" data-pts="80" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Casaca Pistoleiro.md" data-name="casaca pistoleiro" data-noos="ryke" data-fac="casacas" data-pass="agressivo" data-act="mover|explorar fraquezas" data-kw="casaca pálido|infantaria" data-skw="" data-vida="5" data-mov="8" data-dec="2" data-ap="4" data-arm_m="1" data-arm_r="4" data-arm_s="1" data-pts="80" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -1315,7 +1315,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Comandante Casaca.md" data-name="comandante casaca" data-noos="ryke" data-fac="casacas" data-pass="comandante" data-act="mover|combater|comandar" data-kw="casaca pálido|comando" data-skw="unique|elite" data-vida="6" data-mov="6" data-dec="3" data-ap="5" data-arm_m="3" data-arm_r="3" data-arm_s="2" data-pts="110" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Comandante Casaca.md" data-name="comandante casaca" data-noos="ryke" data-fac="casacas" data-pass="" data-act="mover|combater|comandar" data-kw="casaca pálido|comando" data-skw="unique|elite" data-vida="6" data-mov="6" data-dec="3" data-ap="5" data-arm_m="3" data-arm_r="3" data-arm_s="2" data-pts="110" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -1330,7 +1330,7 @@
 
     <div class="nb-info">
       <div class="nb-name">Comandante Casaca</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Casacas</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Elite</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Comandante</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Casaca Pálido</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Comando</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Casacas</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Elite</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Casaca Pálido</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Comando</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">6</span></div>
@@ -1563,37 +1563,6 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Demolidor.md" data-name="demolidor" data-noos="ryke" data-fac="chloriders" data-pass="" data-act="mover|combater" data-kw="" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
-
-    <div class="nb-card-surface">
-    <div class="nb-img-box">
-      <div class="nb-pts"><span class="nb-pts-num">130</span><span class="nb-pts-suf">PTS</span></div>
-      <img src="recursos/imagens/renders/chloriders/demolidor.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Demolidor.png" referrerpolicy="no-referrer" target="_self">
-      <div class="nb-armor">
-        <div class="nb-armor-pill"><span>⚔️</span><span>2</span></div>
-        <div class="nb-armor-pill"><span>🔫</span><span>2</span></div>
-        <div class="nb-armor-pill"><span>⚠️</span><span>2</span></div>
-      </div>
-    </div>
-
-    <div class="nb-info">
-      <div class="nb-name">Demolidor</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span></div>
-      <div class="nb-stats">
-        <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
-        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
-        <div class="nb-stat" title="Decoerência"><span class="nb-stat-lbl">DEC</span><span class="nb-stat-val c">2</span></div>
-        <div class="nb-stat" title="AP (ações por ativação)"><span class="nb-stat-lbl">AP</span><span class="nb-stat-val">3</span></div>
-      </div>
-    </div>
-
-    <div class="nb-loadout">
-      <div class="nb-loadout-lbl">Loadout Inicial</div>
-      <div class="nb-loadout-list">
-        <span class="nb-lo-thumb-wrap nb-lo-fallback" tabindex="0" title="Utility Template" data-tip="Utility Template"><span class="nb-lo-fallback-txt">UT</span></span><span class="nb-lo-thumb-wrap nb-lo-fallback" tabindex="0" title="Weapon Template" data-tip="Weapon Template"><span class="nb-lo-fallback-txt">WE</span></span>
-      </div>
-    </div>
-    </div>
   </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Drone Casaca.md" data-name="drone casaca" data-noos="ryke" data-fac="casacas" data-pass="artificial|estoico|armas integradas" data-act="mover|combater|comandar" data-kw="artificial|casaca pálido" data-skw="" data-vida="3" data-mov="7" data-dec="1" data-ap="3" data-arm_m="1" data-arm_r="2" data-arm_s="2" data-pts="55" data-date="1779159600000">
 
     <div class="nb-card-surface">
@@ -1625,7 +1594,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Drone Casaca Cão.md" data-name="drone casaca cão" data-noos="ryke" data-fac="casacas" data-pass="artificial|estoico|armas integradas" data-act="mover|combater|comandar|sobrecarga" data-kw="artificial|casaca pálido" data-skw="" data-vida="4" data-mov="8" data-dec="1" data-ap="3" data-arm_m="2" data-arm_r="1" data-arm_s="2" data-pts="70" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Drone Casaca Cão.md" data-name="drone casaca cão" data-noos="ryke" data-fac="casacas" data-pass="artificial|estoico|armas integradas" data-act="mover|explorar fraquezas" data-kw="artificial|casaca pálido" data-skw="" data-vida="4" data-mov="8" data-dec="1" data-ap="3" data-arm_m="2" data-arm_r="1" data-arm_s="2" data-pts="70" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -1656,7 +1625,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Drone Casaca Monstro.md" data-name="drone casaca monstro" data-noos="ryke" data-fac="casacas" data-pass="artificial|estoico|armas integradas" data-act="mover|combater|comandar|sobrecarga" data-kw="artificial|casaca pálido|monstro" data-skw="" data-vida="6" data-mov="6" data-dec="2" data-ap="3" data-arm_m="3" data-arm_r="2" data-arm_s="0" data-pts="85" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Drone Casaca Monstro.md" data-name="drone casaca monstro" data-noos="ryke" data-fac="casacas" data-pass="artificial|estoico|armas integradas" data-act="mover|combater" data-kw="artificial|casaca pálido|monstro" data-skw="" data-vida="6" data-mov="6" data-dec="2" data-ap="3" data-arm_m="3" data-arm_r="2" data-arm_s="0" data-pts="85" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -1904,7 +1873,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Espadachim Corredor.md" data-name="espadachim corredor" data-noos="ryke" data-fac="chloriders" data-pass="corrida silenciosa" data-act="mover|combater" data-kw="" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Espadachim Corredor.md" data-name="espadachim corredor" data-noos="ryke" data-fac="chloriders" data-pass="corrida silenciosa" data-act="mover|combater|explorar fraquezas" data-kw="infantaria" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="3" data-arm_s="1" data-pts="130" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -1912,14 +1881,14 @@
       <img src="recursos/imagens/renders/chloriders/espadachim-corredor.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Espadachim Corredor.png" referrerpolicy="no-referrer" target="_self">
       <div class="nb-armor">
         <div class="nb-armor-pill"><span>⚔️</span><span>2</span></div>
-        <div class="nb-armor-pill"><span>🔫</span><span>2</span></div>
-        <div class="nb-armor-pill"><span>⚠️</span><span>2</span></div>
+        <div class="nb-armor-pill"><span>🔫</span><span>3</span></div>
+        <div class="nb-armor-pill"><span>⚠️</span><span>1</span></div>
       </div>
     </div>
 
     <div class="nb-info">
       <div class="nb-name">Espadachim Corredor</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Corrida Silenciosa</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Corrida Silenciosa</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Infantaria</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
@@ -1935,7 +1904,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Explorador Casaca Púrpura.md" data-name="explorador casaca púrpura" data-noos="ryke" data-fac="casacas" data-pass="estoico" data-act="mover|combater" data-kw="casaca púrpura|casaca pálido|oficial" data-skw="" data-vida="5" data-mov="9" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="1" data-pts="85" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Casacos/Explorador Casaca Púrpura.md" data-name="explorador casaca púrpura" data-noos="ryke" data-fac="casacas" data-pass="estoico|preparado" data-act="explorar fraquezas|análise|patrulhar" data-kw="casaca púrpura|casaca pálido|oficial" data-skw="" data-vida="5" data-mov="9" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="1" data-pts="85" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -1950,7 +1919,7 @@
 
     <div class="nb-info">
       <div class="nb-name">Explorador Casaca Púrpura</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Casacas</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Estoico</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Casaca Púrpura</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Casaca Pálido</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Oficial</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Casacas</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Estoico</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Preparado</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Casaca Púrpura</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Casaca Pálido</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Oficial</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">9</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
@@ -1997,22 +1966,22 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Fuzileira da Fronteira.md" data-name="fuzileira da fronteira" data-noos="ryke" data-fac="chloriders" data-pass="profissional" data-act="mover|combater" data-kw="" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Fuzileira da Fronteira.md" data-name="fuzileira da fronteira" data-noos="ryke" data-fac="chloriders" data-pass="profissional|esquiva tática" data-act="mover|combater" data-kw="infantaria" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="1" data-arm_r="4" data-arm_s="2" data-pts="130" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
       <div class="nb-pts"><span class="nb-pts-num">130</span><span class="nb-pts-suf">PTS</span></div>
       <img src="recursos/imagens/renders/chloriders/fuzileira-da-fronteira.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Fuzileira da Fronteira.png" referrerpolicy="no-referrer" target="_self">
       <div class="nb-armor">
-        <div class="nb-armor-pill"><span>⚔️</span><span>2</span></div>
-        <div class="nb-armor-pill"><span>🔫</span><span>2</span></div>
+        <div class="nb-armor-pill"><span>⚔️</span><span>1</span></div>
+        <div class="nb-armor-pill"><span>🔫</span><span>4</span></div>
         <div class="nb-armor-pill"><span>⚠️</span><span>2</span></div>
       </div>
     </div>
 
     <div class="nb-info">
       <div class="nb-name">Fuzileira da Fronteira</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Profissional</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Profissional</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Esquiva Tática</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Infantaria</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
@@ -2183,25 +2152,25 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Hans.md" data-name="hans" data-noos="ryke" data-fac="chloriders" data-pass="profissional|dissidente" data-act="mover|combater" data-kw="" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Hans.md" data-name="hans" data-noos="ryke" data-fac="chloriders" data-pass="profissional|dissidente|resistente|preparado|estoico|masoquismo" data-act="mover|combater|espelho dissidente|carne imortal" data-kw="comando" data-skw="unique" data-vida="12" data-mov="6" data-dec="2" data-ap="3" data-arm_m="1" data-arm_r="2" data-arm_s="3" data-pts="220" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
-      <div class="nb-pts"><span class="nb-pts-num">130</span><span class="nb-pts-suf">PTS</span></div>
+      <div class="nb-pts"><span class="nb-pts-num">220</span><span class="nb-pts-suf">PTS</span></div>
       <img src="recursos/imagens/renders/chloriders/hans.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Hans.png" referrerpolicy="no-referrer" target="_self">
       <div class="nb-armor">
-        <div class="nb-armor-pill"><span>⚔️</span><span>2</span></div>
+        <div class="nb-armor-pill"><span>⚔️</span><span>1</span></div>
         <div class="nb-armor-pill"><span>🔫</span><span>2</span></div>
-        <div class="nb-armor-pill"><span>⚠️</span><span>2</span></div>
+        <div class="nb-armor-pill"><span>⚠️</span><span>3</span></div>
       </div>
     </div>
 
     <div class="nb-info">
       <div class="nb-name">Hans</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Profissional</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Profissional</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Resistente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Preparado</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Estoico</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Masoquismo</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Comando</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
-        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
+        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">12</span></div>
         <div class="nb-stat" title="Decoerência"><span class="nb-stat-lbl">DEC</span><span class="nb-stat-val c">2</span></div>
         <div class="nb-stat" title="AP (ações por ativação)"><span class="nb-stat-lbl">AP</span><span class="nb-stat-val">3</span></div>
       </div>
@@ -2400,12 +2369,12 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Khragam o Matador.md" data-name="khragam o matador" data-noos="ryke" data-fac="chloriders" data-pass="dissidente" data-act="mover|combater" data-kw="" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Jovem Demolidor.md" data-name="jovem demolidor" data-noos="ryke" data-fac="chloriders" data-pass="" data-act="mover|combater" data-kw="infantaria" data-skw="unique" data-vida="4" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
       <div class="nb-pts"><span class="nb-pts-num">130</span><span class="nb-pts-suf">PTS</span></div>
-      <img src="recursos/imagens/renders/chloriders/khragam-o-matador.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Khragam o Matador.png" referrerpolicy="no-referrer" target="_self">
+      <img src="recursos/imagens/renders/chloriders/demolidor.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Demolidor.png" referrerpolicy="no-referrer" target="_self">
       <div class="nb-armor">
         <div class="nb-armor-pill"><span>⚔️</span><span>2</span></div>
         <div class="nb-armor-pill"><span>🔫</span><span>2</span></div>
@@ -2414,11 +2383,11 @@
     </div>
 
     <div class="nb-info">
-      <div class="nb-name">Khragam o Matador</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span></div>
+      <div class="nb-name">Jovem Demolidor</div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Infantaria</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
-        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
+        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">4</span></div>
         <div class="nb-stat" title="Decoerência"><span class="nb-stat-lbl">DEC</span><span class="nb-stat-val c">2</span></div>
         <div class="nb-stat" title="AP (ações por ativação)"><span class="nb-stat-lbl">AP</span><span class="nb-stat-val">3</span></div>
       </div>
@@ -2431,7 +2400,38 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Ryke Mercs/Kthon Caçador.md" data-name="kthon caçador" data-noos="ryke" data-fac="mercenarios" data-pass="" data-act="mover|combater" data-kw="kthon|aprimorado" data-skw="mercenary" data-vida="6" data-mov="6" data-dec="2" data-ap="5" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="125" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Khragam o Matador.md" data-name="khragam o matador" data-noos="ryke" data-fac="chloriders" data-pass="dissidente|preferência ranged" data-act="mover|inspirar|explorar fraquezas" data-kw="comando" data-skw="unique" data-vida="7" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="4" data-arm_s="2" data-pts="130" data-date="1779159600000">
+
+    <div class="nb-card-surface">
+    <div class="nb-img-box">
+      <div class="nb-pts"><span class="nb-pts-num">130</span><span class="nb-pts-suf">PTS</span></div>
+      <img src="recursos/imagens/renders/chloriders/khragam-o-matador.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Khragam o Matador.png" referrerpolicy="no-referrer" target="_self">
+      <div class="nb-armor">
+        <div class="nb-armor-pill"><span>⚔️</span><span>2</span></div>
+        <div class="nb-armor-pill"><span>🔫</span><span>4</span></div>
+        <div class="nb-armor-pill"><span>⚠️</span><span>2</span></div>
+      </div>
+    </div>
+
+    <div class="nb-info">
+      <div class="nb-name">Khragam o Matador</div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Preferência Ranged</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Comando</span></div>
+      <div class="nb-stats">
+        <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
+        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">7</span></div>
+        <div class="nb-stat" title="Decoerência"><span class="nb-stat-lbl">DEC</span><span class="nb-stat-val c">2</span></div>
+        <div class="nb-stat" title="AP (ações por ativação)"><span class="nb-stat-lbl">AP</span><span class="nb-stat-val">3</span></div>
+      </div>
+    </div>
+
+    <div class="nb-loadout">
+      <div class="nb-loadout-lbl">Loadout Inicial</div>
+      <div class="nb-loadout-list">
+        <span style="font-size:.72rem;color:#555;">Nenhum equipamento</span>
+      </div>
+    </div>
+    </div>
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Ryke Mercs/Kthon Caçador.md" data-name="kthon caçador" data-noos="ryke" data-fac="mercenarios" data-pass="esquiva tática" data-act="mover|combater" data-kw="kthon|aprimorado" data-skw="mercenary" data-vida="6" data-mov="6" data-dec="2" data-ap="5" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="125" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -2446,7 +2446,7 @@
 
     <div class="nb-info">
       <div class="nb-name">Kthon Caçador</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Mercenary</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Kthon</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Aprimorado</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Mercenary</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Esquiva Tática</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Kthon</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Aprimorado</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">6</span></div>
@@ -2462,7 +2462,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Ryke Mercs/Kthon Pistoleiro.md" data-name="kthon pistoleiro" data-noos="ryke" data-fac="mercenarios" data-pass="" data-act="mover|combater" data-kw="kthon|aprimorado" data-skw="mercenary" data-vida="6" data-mov="6" data-dec="2" data-ap="5" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="125" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Ryke Mercs/Kthon Pistoleiro.md" data-name="kthon pistoleiro" data-noos="ryke" data-fac="mercenarios" data-pass="esquiva tática" data-act="mover|combater" data-kw="kthon|aprimorado" data-skw="mercenary" data-vida="6" data-mov="6" data-dec="2" data-ap="5" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="125" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -2477,7 +2477,7 @@
 
     <div class="nb-info">
       <div class="nb-name">Kthon Pistoleiro</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Mercenary</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Kthon</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Aprimorado</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Mercenary</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Esquiva Tática</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Kthon</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Aprimorado</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">6</span></div>
@@ -2741,7 +2741,7 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Murmurador.md" data-name="murmurador" data-noos="ryke" data-fac="chloriders" data-pass="profissional|dissidente" data-act="mover|combater" data-kw="" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Murmurador.md" data-name="murmurador" data-noos="ryke" data-fac="chloriders" data-pass="profissional|dissidente|assassino|furtivo|preciso" data-act="mover|combater" data-kw="comando" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
@@ -2756,7 +2756,7 @@
 
     <div class="nb-info">
       <div class="nb-name">Murmurador</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Profissional</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Profissional</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Assassino</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Furtivo</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">preciso</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Comando</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
@@ -3578,22 +3578,22 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Stormsinger.md" data-name="stormsinger" data-noos="ryke" data-fac="chloriders" data-pass="dissidente" data-act="mover|combater" data-kw="" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="2" data-pts="130" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Stormsinger.md" data-name="stormsinger" data-noos="ryke" data-fac="chloriders" data-pass="dissidente|banho de sangue|estoico|evasivo" data-act="mover|combater|análise|encantar tempestade" data-kw="oficial|terrorista|aprimorado" data-skw="unique" data-vida="5" data-mov="6" data-dec="2" data-ap="3" data-arm_m="1" data-arm_r="3" data-arm_s="2" data-pts="100" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
-      <div class="nb-pts"><span class="nb-pts-num">130</span><span class="nb-pts-suf">PTS</span></div>
+      <div class="nb-pts"><span class="nb-pts-num">100</span><span class="nb-pts-suf">PTS</span></div>
       <img src="recursos/imagens/renders/chloriders/stormsinger.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Stormsinger.png" referrerpolicy="no-referrer" target="_self">
       <div class="nb-armor">
-        <div class="nb-armor-pill"><span>⚔️</span><span>2</span></div>
-        <div class="nb-armor-pill"><span>🔫</span><span>2</span></div>
+        <div class="nb-armor-pill"><span>⚔️</span><span>1</span></div>
+        <div class="nb-armor-pill"><span>🔫</span><span>3</span></div>
         <div class="nb-armor-pill"><span>⚠️</span><span>2</span></div>
       </div>
     </div>
 
     <div class="nb-info">
       <div class="nb-name">Stormsinger</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Banho de Sangue</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Estoico</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Evasivo</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Oficial</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Terrorista</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Aprimorado</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">6</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">5</span></div>
@@ -3605,7 +3605,7 @@
     <div class="nb-loadout">
       <div class="nb-loadout-lbl">Loadout Inicial</div>
       <div class="nb-loadout-list">
-        <span class="nb-lo-thumb-wrap nb-lo-fallback" tabindex="0" title="Utility Template" data-tip="Utility Template"><span class="nb-lo-fallback-txt">UT</span></span><span class="nb-lo-thumb-wrap nb-lo-fallback" tabindex="0" title="Weapon Template" data-tip="Weapon Template"><span class="nb-lo-fallback-txt">WE</span></span>
+        <span class="nb-lo-thumb-wrap" tabindex="0" title="Escopeta Khemistra de Tanque · Weapon · Atk 6 · Mira Desvantagem +2 · 2&quot; - 14&quot;" data-tip="Escopeta Khemistra de Tanque · Weapon · Atk 6 · Mira Desvantagem +2 · 2&quot; - 14&quot;"><img class="nb-lo-thumb" src="recursos/imagens/utility-image/ryke/tank-fed-khemistra-shotgun.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Tank Fed Khemistra Shotgun.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></span><span class="nb-lo-thumb-wrap" tabindex="0" title="faca de grafeno · Weapon · Atk 3 · 1&quot;" data-tip="faca de grafeno · Weapon · Atk 3 · 1&quot;"><img class="nb-lo-thumb" src="recursos/imagens/utility-image/ryke/graphene-knife.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Graphene Knife.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></span>
       </div>
     </div>
     </div>
@@ -3950,11 +3950,11 @@
       </div>
     </div>
     </div>
-  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Yelena a vermelha.md" data-name="yelena a vermelha" data-noos="ryke" data-fac="chloriders" data-pass="preferência física|dissidente|prazeres carnais|banho de sangue" data-act="mover|combater|investida" data-kw="" data-skw="unique" data-vida="6" data-mov="8" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="1" data-pts="140" data-date="1779159600000">
+  </div><div class="nb-card js-card" data-nav="Wargame/02 Models/Chloriders/Yelena a vermelha.md" data-name="yelena a vermelha" data-noos="ryke" data-fac="chloriders" data-pass="preferência física|dissidente|prazeres carnais|banho de sangue" data-act="mover|combater|investida|combate arriscado" data-kw="comando" data-skw="unique" data-vida="6" data-mov="8" data-dec="2" data-ap="3" data-arm_m="2" data-arm_r="2" data-arm_s="1" data-pts="170" data-date="1779159600000">
 
     <div class="nb-card-surface">
     <div class="nb-img-box">
-      <div class="nb-pts"><span class="nb-pts-num">140</span><span class="nb-pts-suf">PTS</span></div>
+      <div class="nb-pts"><span class="nb-pts-num">170</span><span class="nb-pts-suf">PTS</span></div>
       <img src="recursos/imagens/renders/chloriders/yelena-the-red.png" data-export-src="Recursos/Imagens/Renders/Chloriders/Yelena the Red.png" referrerpolicy="no-referrer" target="_self">
       <div class="nb-armor">
         <div class="nb-armor-pill"><span>⚔️</span><span>2</span></div>
@@ -3965,7 +3965,7 @@
 
     <div class="nb-info">
       <div class="nb-name">Yelena a vermelha</div>
-      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Preferência Física</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Prazeres Carnais</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Banho de Sangue</span></div>
+      <div class="nb-tags-row"><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00ffff;color:#00ffff;background:rgba(0,255,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00ffff28;">Ryke</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #be63ff;color:#be63ff;background:rgba(190,99,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #be63ff28;">Chloriders</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #ff3366;color:#ff3366;background:rgba(255,51,102,.08);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #ff336628;">Unique</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Preferência Física</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Dissidente</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Prazeres Carnais</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid #00bfff;color:#00bfff;background:rgba(0,191,255,.06);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px #00bfff28;">Banho de Sangue</span><span style="font-size:.5rem;padding:2px 7px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px rgba(255,255,255,.4)28;">Comando</span></div>
       <div class="nb-stats">
         <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">8</span></div>
         <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">6</span></div>
@@ -3982,9 +3982,9 @@
     </div>
     </div>
   </div></div></div><script>(function(){
-  const root = document.getElementById("nb-05x5fyg7");
+  const root = document.getElementById("nb-npfv7j0b");
   if(!root) return;
-  const grid  = root.querySelector("#nb-05x5fyg7-grid");
+  const grid  = root.querySelector("#nb-npfv7j0b-grid");
   const cards = Array.from(grid.querySelectorAll(".js-card"));
   const countEl = root.querySelector(".nb-count-num");
   const active = {pass:new Set(), act:new Set(), kw:new Set(), skw:new Set()};
@@ -4078,7 +4078,7 @@
     r.addEventListener("input", () => {
       const v = parseInt(r.value);
       ranges[r.dataset.stat] = v;
-      const el = document.getElementById("nb-05x5fyg7-rv-"+r.dataset.stat);
+      const el = document.getElementById("nb-npfv7j0b-rv-"+r.dataset.stat);
       if(el) el.textContent = v;
       upd();
     });
