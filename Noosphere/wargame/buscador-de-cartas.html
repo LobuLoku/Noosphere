@@ -1,0 +1,1541 @@
+<!DOCTYPE html> <html lang="pt-br"><head>
+<title>Buscador de Cartas</title>
+<base href="..">
+<meta name="pathname" content="wargame/buscador-de-cartas.html">
+<meta name="description" content="Noosphera - Buscador de Cartas">
+<meta property="og:title" content="Buscador de Cartas">
+<meta property="og:description" content="Noosphera - Buscador de Cartas">
+<meta property="og:type" content="website">
+<meta property="og:url" content="wargame/buscador-de-cartas.html">
+<meta property="og:image" content="recursos/imagens/utility-image/ryke/aphid-maxigun.png">
+<meta charset="UTF-8"><meta property="og:site_name" content="Noosphera"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0"><script async="" id="webpage-script" src="site-lib/scripts/webpage.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><link rel="preload" href="site-lib/styles/snippets.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/snippets.css"></noscript><link rel="stylesheet" href="site-lib/styles/obsidian.css"><link rel="preload" href="site-lib/styles/other-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/other-plugins.css"></noscript><link rel="stylesheet" href="site-lib/styles/theme.css"><link rel="preload" href="site-lib/styles/global-variable-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/global-variable-styles.css"></noscript><link rel="preload" href="site-lib/styles/supported-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/supported-plugins.css"></noscript><link rel="preload" href="site-lib/styles/main-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/main-styles.css"></noscript><style>body{--line-width:40em;--line-width-adaptive:40em;--file-line-width:40em;--sidebar-width:min(20em, 80vw);--collapse-arrow-size:11px;--tree-vertical-spacing:1.3em;--sidebar-margin:12px}:root{background-color:#202124}.sidebar{height:100%;font-size:14px;z-index:10;min-width:calc(var(--sidebar-width) + var(--divider-width-hover));max-width:calc(var(--sidebar-width) + var(--divider-width-hover));position:relative;overflow:hidden;overflow:clip;transition:min-width ease-in-out,max-width ease-in-out;transition-duration:.2s;contain:size}#left-sidebar{left:0}#right-sidebar{right:0}.sidebar.is-collapsed{min-width:0;max-width:0}.sidebar.floating{position:absolute}.sidebar .leaf-content{height:100%;min-width:calc(var(--sidebar-width) - var(--divider-width-hover));top:0;padding:var(--sidebar-margin);padding-top:4em;line-height:var(--line-height-tight);background-color:var(--background-secondary);transition:background-color,border-right,border-left,box-shadow;transition-duration:var(--color-fade-speed);transition-timing-function:ease-in-out;position:absolute;display:flex;flex-direction:column}.sidebar:not(.is-collapsed) .leaf-content{min-width:calc(max(100%,var(--sidebar-width)) - 3px);max-width:calc(max(100%,var(--sidebar-width)) - 3px)}#left-sidebar-content{left:0;border-top-right-radius:var(--radius-l);border-bottom-right-radius:var(--radius-l)}#right-sidebar-content{right:0;border-top-left-radius:var(--radius-l);border-bottom-left-radius:var(--radius-l)}.sidebar #left-sidebar-content,.sidebar #right-sidebar-content{contain:none!important;container-type:normal!important;animation:none!important}.sidebar:has(.leaf-content:empty):has(.topbar-content:empty){display:none}.sidebar-topbar{height:calc(2.3em + 2 * var(--sidebar-margin));width:var(--sidebar-width);padding:var(--sidebar-margin);z-index:1;position:fixed;display:flex;align-items:center;transition:width ease-in-out;transition-duration:inherit}.sidebar.is-collapsed .sidebar-topbar{width:calc(2.3em + var(--sidebar-margin) * 2)}.sidebar .sidebar-topbar.is-collapsed{width:0}#left-sidebar .sidebar-topbar{left:0;flex-direction:row;border-top-right-radius:var(--radius-l)}#right-sidebar .sidebar-topbar{right:0;flex-direction:row-reverse;border-top-left-radius:var(--radius-l)}#left-sidebar .topbar-content{margin-right:calc(2.3em + var(--sidebar-margin));flex-direction:row}#right-sidebar .topbar-content{margin-left:calc(2.3em + var(--sidebar-margin));flex-direction:row-reverse}.topbar-content{overflow:hidden visible;overflow:clip visible;width:100%;height:100%;display:flex;align-items:center;transition:inherit}.sidebar.is-collapsed .topbar-content{width:0;transition:inherit}.clickable-icon.sidebar-collapse-icon{background-color:transparent;color:var(--icon-color-focused);padding:2px!important;margin:0!important;height:100%!important;width:2.3em!important;margin-inline:0.14em!important;position:absolute}#left-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);right:var(--sidebar-margin)}#right-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);left:var(--sidebar-margin)}.clickable-icon.sidebar-collapse-icon svg.svg-icon{width:100%;height:100%}.feature-title{margin-left:1px;text-transform:uppercase;letter-spacing:.06em;margin-top:.75em;margin-bottom:.75em}.feature-header{display:flex;align-items:center;padding-top:0;font-size:1em;padding-left:0}body.floating-sidebars .sidebar{position:absolute}body{transition:background-color var(--color-fade-speed) ease-in-out}#navbar:not(:empty){display:flex;align-items:center;justify-content:space-between;padding:.5em 1em;width:100%}#main{display:flex;flex-direction:column;height:100%;width:100%;align-items:stretch;justify-content:center}#main-horizontal{display:flex;flex-direction:row;flex-grow:1;width:100%;align-items:stretch;justify-content:center}#center-content{flex-basis:100%;max-width:100%;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;transition:opacity .2s ease-in-out;contain:inline-size}.hide{opacity:0!important;transition:opacity .2s ease-in-out;pointer-events:none}#center-content>.obsidian-document{padding-left:2em;padding-right:1em;margin-bottom:0;width:100%;width:-webkit-fill-available;width:-moz-available;width:fill-available;transition:background-color var(--color-fade-speed) ease-in-out;border-top-right-radius:var(--window-radius,var(--radius-m));border-top-left-radius:var(--window-radius,var(--radius-m));overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;contain:inline-size}body #center-content>.obsidian-document>.markdown-preview-sizer{padding-bottom:80vh;width:100%;max-width:var(--line-width);flex-basis:var(--line-width);transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document>div{width:100%!important;transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document:not([data-type=markdown]).embed{display:flex;padding:1em;height:100%;width:100%;align-items:center;justify-content:center}#center-content>.obsidian-document:not([data-type=markdown]).embed>*{max-width:100%;max-height:100%;object-fit:contain}:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math,table)){overflow-x:auto!important}#center-content>.obsidian-document:not([data-type=markdown]){overflow-x:auto;contain:content;padding:0;margin:0;height:100%}.obsidian-document[data-type=attachment]{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}.obsidian-document[data-type=attachment]>*{outline:0;border:none;box-shadow:none}.obsidian-document[data-type=attachment] :is(img){max-width:90%;max-height:90%;object-fit:contain}.obsidian-document[data-type=attachment]>:is(audio){width:100%;max-width:min(90%,var(--line-width))}.obsidian-document[data-type=attachment]>:is(embed,iframe,video){width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.canvas-wrapper>:is(.header,.footer){z-index:100;position:absolute;display:flex;justify-content:center;flex-direction:column;width:100%;align-items:center}.scroll-highlight{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1000;background-color:hsla(var(--color-accent-hsl),.25);opacity:0;padding:1em;inset:50%;translate:-50% -50%;border-radius:var(--radius-s)}</style><script defer="">async function loadIncludes(){let e=document.querySelectorAll("link[itemprop='include']");for(const t of e){let e=t.getAttribute("href");try{let o="";if(e.startsWith("https:")||e.startsWith("http:")||"file:"!=window.location.protocol){const n=await fetch(e);if(!n.ok){console.log("Could not include file: "+e),t?.remove();continue}o=await n.text()}else{const t=document.getElementById(btoa(encodeURI(e)));if(t){const e=JSON.parse(decodeURI(atob(t.getAttribute("value")??"")));o=e?.data??""}}let n=document.createRange().createContextualFragment(o);t.before(n),t.remove(),console.log("Included text: "+o),console.log("Included file: "+e)}catch(o){t?.remove(),console.log("Could not include file: "+e,o);continue}}}document.addEventListener("DOMContentLoaded",(()=>{loadIncludes()}));let isFileProtocol="file:"==location.protocol;function waitLoadScripts(e,t){let o=e.map((e=>document.getElementById(e+"-script")));!function e(n){let l=o[n],c=n+1;l?(l&&"true"!=l.getAttribute("loaded")||n<o.length&&e(c),n<o.length&&l.addEventListener("load",(()=>e(c)))):n<o.length?e(c):t()}(0)}</script></head><body class="publish css-settings-manager is-frameless is-hidden-frameless styled-scrollbars show-inline-title show-ribbon outliner-plugin-dnd highlightr-realistic ctp-latte ctp-mocha ctp-accent-maroon anuppuccin-accent-toggle anp-current-line anp-latex-inline-text anp-latex-block-text anp-hide-external-link-icon anp-h1-red anp-h2-peach anp-h3-green anp-h4-teal anp-h5-lavender anp-h6-mauve anp-bold-red anp-italic-green anp-highlight-yellow anp-default-tab is-focused"><script defer="">let theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");"dark"==theme?(document.body.classList.add("theme-dark"),document.body.classList.remove("theme-light")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark")),window.innerWidth<480?document.body.classList.add("is-phone"):window.innerWidth<768?document.body.classList.add("is-tablet"):window.innerWidth<1024?document.body.classList.add("is-small-screen"):document.body.classList.add("is-large-screen")</script><div class="parsed-feature-container" style="display: contents;"><link itemprop="include" href="site-lib/html/custom-head-content-content.html"></div><div id="main"><div id="navbar"></div><div id="main-horizontal"><div id="left-content" class="leaf" style="--sidebar-width: var(--sidebar-width-left);"><div id="left-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="left-sidebar-content" class="leaf-content"></div></div><script defer="">let ls = document.querySelector("#left-sidebar"); ls.classList.toggle("is-collapsed", window.innerWidth < 768); ls.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-left-width"));</script></div></div><div id="center-content" class="leaf"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event allow-fold-headings allow-fold-lists show-indentation-guide is-readable-line-width" data-type="markdown"><style id="MJX-CHTML-styles"></style><pre class="frontmatter language-yaml" style="display: none;"><code class="language-yaml is-loaded"><span class="token key atrule">tags</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> wargame</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="Buscador_de_Cartas_0">Buscador de Cartas</h1><div class="data-bar"></div></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-pre"><div class="block-language-dataviewjs node-insert-event" style="overflow-x: auto;"><div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700;900&family=Inter:wght@200;300;400;600&display=swap');
+
+#cb-br-hw2p1bgi * { box-sizing: border-box; }
+#cb-br-hw2p1bgi { font-family:'Inter', sans-serif !important; color:#e0d8f0 !important; width:100%; }
+
+.cb-filters {
+  background: radial-gradient(circle at top left, rgba(30, 10, 50, 0.4), rgba(18, 5, 30, 0.6)) !important;
+  border: 1px solid rgba(229, 79, 109, 0.22) !important;
+  padding: 40px !important; margin-bottom: 40px;
+  display: flex !important; flex-direction: column !important; gap: 25px !important;
+  border-radius: 30px; backdrop-filter: blur(25px) !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 30px rgba(229, 79, 109, 0.05);
+}
+.cb-filter-row { display: grid !important; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; }
+.cb-filter-label { font-size: 11px !important; color: #f8c6d0 !important; letter-spacing: 2px !important; text-transform: uppercase !important; margin-bottom: 8px !important; display: block !important; font-family: 'Inter', sans-serif !important; font-weight: 300 !important; opacity: 0.85; }
+
+#cb-br-hw2p1bgi input.cb-input,
+#cb-br-hw2p1bgi select.cb-sel {
+  width: 100% !important; background: rgba(10, 0, 20, 0.7) !important; border: 1px solid rgba(229, 79, 109, 0.28) !important;
+  color: #ffffff !important; padding: 18px 25px !important; font-family: 'Orbitron', sans-serif !important;
+  font-size: 14px !important; font-weight: 300 !important; outline: none !important; transition: 0.4s !important;
+  -webkit-appearance: none !important; appearance: none !important;
+  border-radius: 40px !important; box-shadow: none !important; height: auto !important;
+  line-height: 1.4 !important; display: block !important; letter-spacing: 1px !important; cursor: pointer;
+}
+#cb-br-hw2p1bgi input.cb-input:focus,
+#cb-br-hw2p1bgi select.cb-sel:focus { border-color: rgba(229, 79, 109, 0.75) !important; box-shadow: 0 0 25px rgba(229, 79, 109, 0.25) !important; background: rgba(25, 10, 45, 0.9) !important; }
+
+.cb-sec { font-size: 10px; color: #a99bbd !important; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 300; opacity: 0.85; }
+.cb-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.cb-chip {
+  font-size: 11px; padding: 8px 18px; border: 1px solid rgba(229, 79, 109, 0.18) !important; color: #a99bbd !important;
+  background: transparent !important; cursor: pointer; border-radius: 30px; text-transform: uppercase;
+  font-family: 'Inter', sans-serif; transition: 0.3s; white-space: nowrap; letter-spacing: 1px;
+}
+.cb-chip:hover { border-color: rgba(229, 79, 109, 0.5) !important; color: #fff !important; background: rgba(229, 79, 109, 0.1) !important; }
+.cb-chip.on-pink { border-color: #E54F6D !important; color: #fff !important; background: rgba(229, 79, 109, 0.2) !important; box-shadow: 0 0 20px rgba(229, 79, 109, 0.18) !important; }
+.cb-chip.on-gold { border-color: #F8C630 !important; color: #fff !important; background: rgba(248, 198, 48, 0.15) !important; box-shadow: 0 0 20px rgba(248, 198, 48, 0.15) !important; }
+.cb-chip.on-cyan { border-color: #00d9ff !important; color: #fff !important; background: rgba(0, 217, 255, 0.2) !important; box-shadow: 0 0 20px rgba(0, 217, 255, 0.2) !important; }
+.cb-chip.on-green { border-color: #44ff88 !important; color: #fff !important; background: rgba(68, 255, 136, 0.15) !important; box-shadow: 0 0 20px rgba(68, 255, 136, 0.15) !important; }
+.cb-chip.on-red { border-color: #ff3366 !important; color: #fff !important; background: rgba(255, 51, 102, 0.2) !important; box-shadow: 0 0 20px rgba(255, 51, 102, 0.2) !important; }
+.cb-adv-toggle:hover { background: rgba(229, 79, 109, 0.2) !important; border-color: rgba(229, 79, 109, 0.6) !important; color: #fff !important; }
+
+.cb-range-row { display: flex; flex-wrap: wrap; gap: 20px; }
+.cb-range-grp { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.cb-range-grp input[type=range] { width: 110px; accent-color: #E54F6D; cursor: pointer; }
+.cb-range-lbl { font-size: 10px; color: #f8c6d0 !important; letter-spacing: 1px; text-transform: uppercase; font-weight: 300; }
+.cb-range-val { font-size: 14px; color: #fff !important; font-weight: 300; min-width: 28px; text-align: center; font-family: 'Orbitron'; }
+
+.cb-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; padding: 15px 25px; background: rgba(5, 0, 10, 0.5) !important; border: 1px solid rgba(229, 79, 109, 0.15) !important; border-radius: 15px; }
+.cb-count { font-size: 12px; color: #a99bbd !important; letter-spacing: 1px; text-transform: uppercase; font-weight: 300; }
+.cb-count em { color: #f8c6d0 !important; font-style: normal; font-weight: 400; text-shadow: 0 0 10px rgba(229, 79, 109, 0.25); }
+
+.cb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(226px, 1fr)); gap: 18px; align-items: start; }
+.cb-card-slot { cursor: pointer; position: relative; max-width: 230px; margin: 0 auto; width: 100%; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+.cb-card-slot:hover { transform: translateY(-6px); }
+.cb-card-slot.hidden { display: none; }
+.cb-preview-outer {
+  width: 100%; max-width: 210px; margin: 0 auto; aspect-ratio: 1246 / 2079;
+  overflow: hidden; border-radius: 8px; box-shadow: 0 16px 40px rgba(0,0,0,0.55);
+  pointer-events: none; user-select: none;
+}
+.cb-preview-inner { width: 420px; zoom: 0.5; margin: 0 auto; }
+
+#cb-br-hw2p1bgi .cb-preview-host { width: 420px; font-family: 'Inter', sans-serif !important; color: #ebe4f8 !important; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-card {
+  --tc-accent: #E54F6D;
+  --tc-block-gap: 7px;
+  --tc-comp-border: color-mix(in srgb, var(--tc-accent) 7%, transparent);
+  position: relative; width: 420px; aspect-ratio: 1246 / 2079;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 18%, color-mix(in srgb, var(--tc-accent) 14%, transparent), transparent 55%),
+    linear-gradient(168deg, rgba(22, 8, 38, 0.98) 0%, rgba(8, 3, 16, 0.99) 48%, rgba(12, 5, 22, 1) 100%);
+  border: none; border-radius: 8px; overflow: hidden;
+  display: grid; grid-template-rows: auto minmax(0, 28%) auto minmax(0, 1fr); padding: 0;
+}
+#cb-br-hw2p1bgi .cb-preview-host .tc-card.tc-unique { --tc-accent: #F8C630; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-title-bar { display:flex; align-items:center; justify-content:center; min-height:3.1rem; padding:20px 16px 10px; text-align:center; background:rgba(5,0,12,0.35); z-index:3; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-title { font-family:'Orbitron',sans-serif !important; font-size:0.74rem !important; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; line-height:1.25; color:#faf5ff !important; margin:0; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-card.tc-unique .tc-title { color:var(--tc-accent) !important; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-art-zone { position:relative; display:flex; align-items:stretch; justify-content:center; padding:2px 0; min-height:0; max-height:100%; overflow:hidden; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-art-layout { display:flex; align-items:center; justify-content:center; width:100%; height:100%; min-height:0; max-height:100%; gap:0; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-res-orbs { flex:0 0 72px; display:flex; flex-direction:column; justify-content:center; align-items:center; align-self:center; min-height:calc(4*16px + 3*8px); z-index:2; padding:0 4px 0 48px; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-meta-rail { flex:0 0 auto; display:flex; flex-direction:row; align-items:center; justify-content:flex-end; align-self:center; min-height:calc(4*16px + 3*8px); padding:0 36px 0 2px; gap:5px; z-index:2; max-width:46%; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-meta-cols { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-meta-cols--special { gap:8px; margin-left:2px; padding-left:4px; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-meta-col { display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-meta-item { color:#fff !important; font-family:'Orbitron',sans-serif !important; font-weight:700; text-transform:uppercase; line-height:1; white-space:nowrap; word-break:keep-all; writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg); display:inline-block; flex-shrink:0; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-meta-item--core { font-size:0.68rem; letter-spacing:0.07em; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-meta-item--special { font-size:0.56rem; font-weight:600; letter-spacing:0.06em; opacity:0.95; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-res-orb { width:16px; height:16px; border-radius:50%; background:#fff; flex-shrink:0; margin:4px 0; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-art-main { flex:1 1 auto; display:flex; align-items:center; justify-content:center; min-width:0; height:100%; max-height:100%; overflow:hidden; padding:0 4px; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-art { display:block; max-width:min(100%,200px); max-height:92%; width:auto; height:auto; object-fit:contain; object-position:center; pointer-events:none; user-select:none; margin:0 auto; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-art-placeholder { font-size:2rem; opacity:0.08; font-family:'Orbitron',sans-serif; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-tags-row { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:2px 0; padding:3px 12px 0; line-height:1.45; z-index:3; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-tag { font-size:0.52rem; text-transform:uppercase; letter-spacing:0.07em; font-weight:400; font-family:'Inter',sans-serif; color:#9a90ad !important; opacity:0.88; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-tag-sep { color:rgba(255,255,255,0.18) !important; font-size:0.48rem; margin:0 5px; user-select:none; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-body { padding:var(--tc-block-gap) 12px 10px; min-height:0; overflow:hidden; z-index:3; display:flex; flex-direction:column; gap:var(--tc-block-gap); }
+#cb-br-hw2p1bgi .cb-preview-host .tc-arsenal-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-stat { display:flex; align-items:center; justify-content:center; gap:5px; background:rgba(5,0,10,0.32); border:1px solid var(--tc-comp-border); border-radius:5px; padding:6px 8px; min-width:0; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-stat-lbl { font-size:0.58rem; color:#a99bbd !important; text-transform:uppercase; letter-spacing:0.55px; font-weight:600; white-space:nowrap; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-stat-val { font-family:'Orbitron',sans-serif; font-size:0.92rem; font-weight:700; color:#fff !important; line-height:1.1; word-break:break-word; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-stat-val.accent { color:var(--tc-accent) !important; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-stat-val.dmg { font-size:0.82rem; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-section { background:rgba(5,0,12,0.26); border:1px solid var(--tc-comp-border); border-radius:6px; padding:7px 9px 8px; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-section-label { font-family:'Inter',sans-serif; font-size:0.86rem; line-height:1.32; color:var(--tc-accent) !important; margin-bottom:6px; font-weight:600; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-gloss-line { margin-top:4px; padding-left:8px; border-left:2px solid color-mix(in srgb, var(--tc-accent) 55%, transparent); color:#cfc4e4; font-size:0.62rem; line-height:1.36; font-weight:300; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-gloss-line:first-of-type { margin-top:0; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-gloss-line strong { text-transform:uppercase; font-weight:600; font-size:0.6rem; color:var(--tc-accent) !important; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-gloss-pass { border-left-color:color-mix(in srgb, var(--tc-accent) 45%, transparent); }
+#cb-br-hw2p1bgi .cb-preview-host .tc-effect-body { font-size:0.68rem; line-height:1.38; color:#e8dff8 !important; font-weight:300; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-effect-or { text-align:center; font-size:0.72rem; font-weight:600; font-style:italic; color:var(--tc-accent) !important; margin:5px 0; letter-spacing:0.04em; opacity:0.9; }
+#cb-br-hw2p1bgi .cb-preview-host .tc-effect-empty { font-size:0.64rem; color:#8a7da0 !important; font-style:italic; }
+</style>
+
+<div id="cb-br-hw2p1bgi">
+<div class="cb-filters">
+  <div class="cb-filter-row">
+    <div>
+      <span class="cb-filter-label">Consulta de Cartas</span>
+      <input class="cb-input cb-search" type="text" placeholder="Buscar por nome..." value="">
+    </div>
+    <div>
+      <span class="cb-filter-label">Categoria</span>
+      <select class="cb-sel cb-sel-cat">
+        <option value="">Todas as categorias</option>
+        <option value="arma">Arma</option><option value="utilitario">Utilitário</option><option value="esquema">Esquema</option><option value="aposta">Aposta</option>
+      </select>
+    </div>
+    <div>
+      <span class="cb-filter-label">Noosphera</span>
+      <select class="cb-sel cb-sel-noos">
+        <option value="">Todas</option>
+        <option value="osmirate">Osmirate</option><option value="ryke">Ryke</option>
+      </select>
+    </div>
+    <div>
+      <span class="cb-filter-label">Ordenar por</span>
+      <select class="cb-sel cb-sort">
+        <option value="name">Nome (A-Z)</option>
+        <option value="res_desc">Maior Ressonância</option>
+        <option value="load_desc">Maior Peso</option>
+        <option value="load_asc">Menor Peso</option>
+        <option value="atk_desc">Maior ATK</option>
+        <option value="date">Recentes</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <div class="cb-sec">Categoria (atalho)</div>
+    <div class="cb-chips">
+      <button type="button" class="cb-chip" data-g="cat" data-v="arma">Arma</button><button type="button" class="cb-chip" data-g="cat" data-v="utilitario">Utilitário</button><button type="button" class="cb-chip" data-g="cat" data-v="esquema">Esquema</button><button type="button" class="cb-chip" data-g="cat" data-v="aposta">Aposta</button>
+    </div>
+  </div>
+
+  <button type="button" class="cb-adv-toggle js-adv-toggle" style="align-self:flex-start;font-size:11px;padding:10px 22px;border:1px solid rgba(229,79,109,0.3);color:#f8c6d0;background:rgba(229,79,109,0.08);cursor:pointer;border-radius:30px;font-family:'Orbitron',sans-serif;letter-spacing:1.5px;text-transform:uppercase;transition:0.3s;">▶ Mostrar Filtros Avançados</button>
+  <div class="cb-adv-section js-adv-section" style="display:none;flex-direction:column;gap:25px;">
+
+  <div>
+    <div class="cb-sec">Keywords</div>
+    <div class="cb-chips">
+      <button type="button" class="cb-chip" data-g="kw" data-v="acoplavel">Acoplável</button><button type="button" class="cb-chip" data-g="kw" data-v="canhao">Canhão</button><button type="button" class="cb-chip" data-g="kw" data-v="chemical ammo">Chemical Ammo</button><button type="button" class="cb-chip" data-g="kw" data-v="concussivo">Concussivo</button><button type="button" class="cb-chip" data-g="kw" data-v="consumivel">Consumível</button><button type="button" class="cb-chip" data-g="kw" data-v="dead margin">Dead Margin</button><button type="button" class="cb-chip" data-g="kw" data-v="experimental">Experimental</button><button type="button" class="cb-chip" data-g="kw" data-v="focalizador">Focalizador</button><button type="button" class="cb-chip" data-g="kw" data-v="granada">Granada</button><button type="button" class="cb-chip" data-g="kw" data-v="hmg">HMG</button><button type="button" class="cb-chip" data-g="kw" data-v="heavy ammo">Heavy Ammo</button><button type="button" class="cb-chip" data-g="kw" data-v="light ammo">Light Ammo</button><button type="button" class="cb-chip" data-g="kw" data-v="lamina">Lâmina</button><button type="button" class="cb-chip" data-g="kw" data-v="medium ammo">Medium Ammo</button><button type="button" class="cb-chip" data-g="kw" data-v="melee">Melee</button><button type="button" class="cb-chip" data-g="kw" data-v="missile ammo">Missile Ammo</button><button type="button" class="cb-chip" data-g="kw" data-v="medico">Médico</button><button type="button" class="cb-chip" data-g="kw" data-v="phase">Phase</button><button type="button" class="cb-chip" data-g="kw" data-v="pistola">Pistola</button><button type="button" class="cb-chip" data-g="kw" data-v="pneumatic">Pneumatic</button><button type="button" class="cb-chip" data-g="kw" data-v="protecao">Proteção</button><button type="button" class="cb-chip" data-g="kw" data-v="ranged">Ranged</button><button type="button" class="cb-chip" data-g="kw" data-v="revolver">Revolver</button><button type="button" class="cb-chip" data-g="kw" data-v="revolver">Revólver</button><button type="button" class="cb-chip" data-g="kw" data-v="rifle">Rifle</button><button type="button" class="cb-chip" data-g="kw" data-v="smg">SMG</button><button type="button" class="cb-chip" data-g="kw" data-v="shotgun">Shotgun</button><button type="button" class="cb-chip" data-g="kw" data-v="sniper">Sniper</button><button type="button" class="cb-chip" data-g="kw" data-v="special ammo">Special Ammo</button><button type="button" class="cb-chip" data-g="kw" data-v="suporte">Suporte</button>
+    </div>
+  </div>
+
+  <div>
+    <div class="cb-sec">Características (Equipar)</div>
+    <div class="cb-chips">
+      <button type="button" class="cb-chip" data-g="char" data-v="anti armadura">Anti Armadura</button><button type="button" class="cb-chip" data-g="char" data-v="anti armadura pesada">Anti Armadura Pesada</button><button type="button" class="cb-chip" data-g="char" data-v="arma real">Arma Real</button><button type="button" class="cb-chip" data-g="char" data-v="artilharia">Artilharia</button><button type="button" class="cb-chip" data-g="char" data-v="confiavel">Confiável</button><button type="button" class="cb-chip" data-g="char" data-v="decadente">Decadente</button><button type="button" class="cb-chip" data-g="char" data-v="dispersao">Dispersão</button><button type="button" class="cb-chip" data-g="char" data-v="esmagar">Esmagar</button><button type="button" class="cb-chip" data-g="char" data-v="eviscerar">Eviscerar</button><button type="button" class="cb-chip" data-g="char" data-v="focal">Focal</button><button type="button" class="cb-chip" data-g="char" data-v="nao letal">Não Letal</button><button type="button" class="cb-chip" data-g="char" data-v="pesado">Pesado</button><button type="button" class="cb-chip" data-g="char" data-v="spray">Spray</button>
+    </div>
+  </div>
+
+  <div>
+    <div class="cb-sec">Passivas de utility</div>
+    <div class="cb-chips">
+      <button type="button" class="cb-chip" data-g="pass" data-v="armadura">Armadura</button><button type="button" class="cb-chip" data-g="pass" data-v="ataque com sobrecarga">Ataque com Sobrecarga</button><button type="button" class="cb-chip" data-g="pass" data-v="cura">Cura</button><button type="button" class="cb-chip" data-g="pass" data-v="energetico">Energético</button><button type="button" class="cb-chip" data-g="pass" data-v="ingerir narcoticos">Ingerir Narcóticos</button><button type="button" class="cb-chip" data-g="pass" data-v="medicina automatica">Medicina Automática</button><button type="button" class="cb-chip" data-g="pass" data-v="suporte aprimorado">Suporte Aprimorado</button>
+    </div>
+  </div>
+
+  <div>
+    <div class="cb-sec">Tipo de dano (Arma)</div>
+    <div class="cb-chips">
+      <button type="button" class="cb-chip" data-g="dmg" data-v="melee">Melee</button><button type="button" class="cb-chip" data-g="dmg" data-v="ranged">Ranged</button><button type="button" class="cb-chip" data-g="dmg" data-v="special (gas)">Special (Gas)</button><button type="button" class="cb-chip" data-g="dmg" data-v="special [eletric]">Special [Eletric]</button><button type="button" class="cb-chip" data-g="dmg" data-v="special [fire]">Special [Fire]</button><button type="button" class="cb-chip" data-g="dmg" data-v="special [quantic]">Special [Quantic]</button>
+    </div>
+  </div>
+
+  <div>
+    <div class="cb-sec">Atributos mínimos</div>
+    <div class="cb-range-row">
+      
+      <div class="cb-range-grp">
+        <span class="cb-range-lbl">Ressonância</span>
+        <input type="range" class="cb-range" data-stat="res" min="0" max="4" value="0" step="1">
+        <span class="cb-range-val" id="cb-br-hw2p1bgi-rv-res">0</span>
+      </div>
+      <div class="cb-range-grp">
+        <span class="cb-range-lbl">ATK</span>
+        <input type="range" class="cb-range" data-stat="atk" min="0" max="12" value="0" step="1">
+        <span class="cb-range-val" id="cb-br-hw2p1bgi-rv-atk">0</span>
+      </div>
+      <div class="cb-range-grp">
+        <span class="cb-range-lbl">Peso</span>
+        <input type="range" class="cb-range" data-stat="load" min="0" max="15" value="0" step="1">
+        <span class="cb-range-val" id="cb-br-hw2p1bgi-rv-load">0</span>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<div class="cb-bar">
+  <div class="cb-count">Visíveis: <em class="cb-count-num">37</em> · Total: 37</div>
+  <div style="font-size:10px; color:#f8c6d0; letter-spacing:2px; font-weight:300; text-transform:uppercase;">Card Browser</div>
+</div>
+
+<div class="cb-grid" id="cb-br-hw2p1bgi-grid">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Aphid 33 Metralhadora.md" data-name="aphid 33 metralhadora" data-cat="arma" data-noos="ryke" data-kw="ranged|medium ammo|hmg" data-char="eviscerar|focal" data-pass="" data-dmg="ranged" data-atk="5" data-load="8" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Aphid_33_Metralhadora_0">Aphid 33 Metralhadora</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/aphid-maxigun.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Aphid Maxigun.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 8</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Medium Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">HMG</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">5</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Vant -1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">4 - 22</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Eviscerar:</strong> Pra cada TRIGGER, dê +1 de dano extra.</div><div class="tc-gloss-line tc-gloss-char"><strong>Focal:</strong> Para cada ataque subsequente que você usar essa arma dentro do mesmo turno, ganhe Vantagem -1.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Arfugel 12.md" data-name="arfugel 12" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|pneumatic|revolver" data-char="confiavel|anti armadura" data-pass="" data-dmg="ranged" data-atk="3" data-load="2" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Arfugel_12_0">Arfugel 12</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/arfugel-12.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Arfugel 12.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Light Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Pneumatic</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Revólver</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">3</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">1" - 14</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Confiável:</strong> Pra cada TRIGGER, ganhe 1🟦 Buff.</div><div class="tc-gloss-line tc-gloss-char"><strong>Anti Armadura:</strong> Essa arma ignora 1 de armadura do tipo apropriado.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Bolsa de Sangue.md" data-name="bolsa de sangue" data-cat="utilitario" data-noos="ryke" data-kw="consumivel|medico" data-char="" data-pass="medicina automatica" data-dmg="" data-atk="0" data-load="1" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Bolsa_de_Sangue_0">Bolsa de Sangue</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/blood-bag.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Blood bag.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 1</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Consumível</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Médico</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-pass"><strong>Medicina Automática:</strong> Ao tomar dano, teste GRIT 3+, se for um sucesso, você recupera 1 de vida.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Cantil de Energético.md" data-name="cantil de energético" data-cat="utilitario" data-noos="ryke" data-kw="consumivel" data-char="" data-pass="energetico" data-dmg="" data-atk="0" data-load="1" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Cantil_de_Energético_0">Cantil de Energético</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/cantil-de-energético.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Cantil de Energético.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 1</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Consumível</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-pass"><strong>Energético:</strong> Uma vez por turno, você escolher uma ação específica, essa ação pode ser repetida múltiplas vezes.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Colete.md" data-name="colete" data-cat="utilitario" data-noos="ryke" data-kw="protecao" data-char="" data-pass="armadura" data-dmg="" data-atk="0" data-load="4" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Colete_0">Colete</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/colete.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Colete.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 4</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Proteção</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-pass"><strong>Armadura:</strong> Ganhe +1 de cada tipo de defesa.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Escopeta de Cano Duplo.md" data-name="escopeta de cano duplo" data-cat="arma" data-noos="osmirate" data-kw="ranged|medium ammo|shotgun" data-char="spray|dispersao" data-pass="" data-dmg="ranged" data-atk="4" data-load="4" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Escopeta_de_Cano_Duplo_0">Escopeta de Cano Duplo</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/linearch/double-barreled-shotgun.png" alt="" data-export-src="Recursos/Imagens/Utility image/Linearch/Double Barreled Shotgun.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Osmirate</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 4</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Medium Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Shotgun</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">4</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">+0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">2" - 10</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Spray:</strong> Você pode simultaneamente atacar múltiplos alvos se eles estiverem a menos de 3” entre eles, role separado para cada um. Você ganha Desvantagem +1 para cada alvo extra.</div><div class="tc-gloss-line tc-gloss-char"><strong>Dispersão:</strong> Se estiver dentro da metade da distância máxima da arma, dê +2 ATK.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Escopeta Khemistra de Tanque.md" data-name="escopeta khemistra de tanque" data-cat="arma" data-noos="ryke" data-kw="ranged|heavy ammo|shotgun" data-char="dispersao|decadente" data-pass="ataque com sobrecarga" data-dmg="ranged" data-atk="6" data-load="6" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Escopeta_Khemistra_de_Tanque_0">Escopeta Khemistra de Tanque</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/tank-fed-khemistra-shotgun.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Tank Fed Khemistra Shotgun.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 6</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Heavy Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Shotgun</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">6</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Desv +2</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">2" - 14</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Dispersão:</strong> Se estiver dentro da metade da distância máxima da arma, dê +2 ATK.</div><div class="tc-gloss-line tc-gloss-char"><strong>Decadente:</strong> Pra cada TRIGGER, queime uma carta.</div><div class="tc-gloss-line tc-gloss-pass tc-gloss-act-grant"><strong>GANHE A AÇÃO: Ataque com Sobrecarga:</strong> 🔷 ​​| Ataque | Combata com +2 ATK, depois faça um EDGE 5+, se for um fracasso, você recebe 1 de dano Quântico. Você pode gastar 2 🟦 e testar com Vantagem -1.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Escopeta QhadPhase.md" data-name="escopeta qhadphase" data-cat="arma" data-noos="osmirate" data-kw="ranged|medium ammo|shotgun|phase" data-char="dispersao" data-pass="" data-dmg="special [fire]" data-atk="4" data-load="5" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Escopeta_QhadPhase_0">Escopeta QhadPhase</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/linearch/qhadphase-shotgun.png" alt="" data-export-src="Recursos/Imagens/Utility image/Linearch/QhadPhase Shotgun.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Osmirate</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 5</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Medium Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Shotgun</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Phase</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">4</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Desv +1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">2" - 8</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Special [Fire]</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Dispersão:</strong> Se estiver dentro da metade da distância máxima da arma, dê +2 ATK.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Espuma.md" data-name="espuma" data-cat="utilitario" data-noos="ryke" data-kw="medico|suporte" data-char="" data-pass="cura" data-dmg="" data-atk="0" data-load="2" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Espuma_0">Espuma</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/foam.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Foam.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Médico</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Suporte</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-pass tc-gloss-act-grant"><strong>GANHE A AÇÃO: Cura:</strong> 🔷​​ | Suporte | Escolhe outro modelo do seu Squad visível em 4", role 3 dados: para cada 3+, cure 1 ponto de vida por sucesso.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Exoesqueleto de Batalha.md" data-name="exoesqueleto de batalha" data-cat="utilitario" data-noos="ryke" data-kw="suporte|dead margin" data-char="" data-pass="suporte aprimorado" data-dmg="" data-atk="0" data-load="8" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Exoesqueleto_de_Batalha_0">Exoesqueleto de Batalha</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/exoesqueleton.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Exoesqueleton.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 8</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Suporte</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Dead Margin</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-pass"><strong>Suporte Aprimorado:</strong> O model conta como se tivesse as Keywords Grande e Aprimorado. Armas consomem -1 de Loadout.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Faca de Açougueiro.md" data-name="faca de açougueiro" data-cat="arma" data-noos="ryke" data-kw="melee|lamina" data-char="decadente" data-pass="" data-dmg="melee" data-atk="4" data-load="2" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Faca_de_Açougueiro_0">Faca de Açougueiro</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/butcher-knife.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Butcher Knife.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Melee</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Lâmina</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">4</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Vant -1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Melee</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Decadente:</strong> Pra cada TRIGGER, queime uma carta.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Faca de Grafeno.md" data-name="faca de grafeno" data-cat="arma" data-noos="ryke" data-kw="melee|lamina" data-char="eviscerar" data-pass="" data-dmg="melee" data-atk="3" data-load="2" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Faca_de_Grafeno_0">Faca de Grafeno</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/graphene-knife.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Graphene Knife.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Melee</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Lâmina</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">3</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Melee</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Eviscerar:</strong> Pra cada TRIGGER, dê +1 de dano extra.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Folha Iterativa.md" data-name="folha iterativa" data-cat="utilitario" data-noos="ryke" data-kw="suporte" data-char="" data-pass="" data-dmg="" data-atk="0" data-load="1" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Folha_Iterativa_0">Folha Iterativa</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/iterative-sheet.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Iterative Sheet.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 1</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Suporte</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-effect-empty">Defina <code>equipamento_caracteristicas</code> e/ou <code>passivas_de_utility</code>.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Granada Consumntor.md" data-name="granada consumntor" data-cat="arma" data-noos="ryke" data-kw="ranged|heavy ammo" data-char="" data-pass="" data-dmg="special [quantic]" data-atk="4" data-load="2" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Granada_Consumntor_0">Granada Consumntor</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/consumntor-grenade.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Consumntor Grenade.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Heavy Ammo</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">4</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">+0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">4" - 12"</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Special [Quantic]</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-effect-empty">Defina <code>equipamento_caracteristicas</code> e/ou <code>passivas_de_utility</code>.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Granada de Fragmentação.md" data-name="granada de fragmentação" data-cat="arma" data-noos="ryke" data-kw="ranged|heavy ammo|granada" data-char="" data-pass="" data-dmg="special [fire]" data-atk="4" data-load="2" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Granada_de_Fragmentação_0">Granada de Fragmentação</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/frag-grenade.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Frag Grenade.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Heavy Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Granada</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">4</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">+0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">4" - 12</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Special [Fire]</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-effect-empty">Defina <code>equipamento_caracteristicas</code> e/ou <code>passivas_de_utility</code>.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Granada de Napalm Controlado.md" data-name="granada de napalm controlado" data-cat="arma" data-noos="ryke" data-kw="ranged|chemical ammo|granada" data-char="" data-pass="" data-dmg="special [fire]" data-atk="3" data-load="3" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Granada_de_Napalm_Controlado_0">Granada de Napalm Controlado</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/controlled-napalm-grenade.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Controlled Napalm Grenade.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 3</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Chemical Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Granada</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">3</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Desv +1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">4" - 10</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Special [Fire]</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-effect-empty">Defina <code>equipamento_caracteristicas</code> e/ou <code>passivas_de_utility</code>.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Harkel X9-07.md" data-name="harkel x9-07" data-cat="arma" data-noos="ryke" data-kw="ranged|medium ammo|rifle" data-char="confiavel" data-pass="" data-dmg="ranged" data-atk="4" data-load="3" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Harkel_X9-07_0">Harkel X9-07</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/harkel-x9-07.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Harkel X9-07.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 3</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Medium Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Rifle</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">4</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Vant -1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">1" - 14</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Confiável:</strong> Pra cada TRIGGER, ganhe 1🟦 Buff.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Kotho SMG.md" data-name="kotho smg" data-cat="arma" data-noos="ryke" data-kw="ranged|medium ammo|smg" data-char="spray|decadente" data-pass="" data-dmg="ranged" data-atk="5" data-load="3" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Kotho_SMG_0">Kotho SMG</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/kotho-smg.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Kotho SMG.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 3</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Medium Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">SMG</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">5</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Vant -1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">1" - 12</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Spray:</strong> Você pode simultaneamente atacar múltiplos alvos se eles estiverem a menos de 3” entre eles, role separado para cada um. Você ganha Desvantagem +1 para cada alvo extra.</div><div class="tc-gloss-line tc-gloss-char"><strong>Decadente:</strong> Pra cada TRIGGER, queime uma carta.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Koval Field-17.md" data-name="koval field-17" data-cat="arma" data-noos="ryke" data-kw="ranged|medium ammo|smg" data-char="spray|confiavel" data-pass="" data-dmg="ranged" data-atk="5" data-load="4" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Koval_Field-17_0">Koval Field-17</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/koval-field-17.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Koval Field-17.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 4</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Medium Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">SMG</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">5</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">+0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">6" - 20</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Spray:</strong> Você pode simultaneamente atacar múltiplos alvos se eles estiverem a menos de 3” entre eles, role separado para cada um. Você ganha Desvantagem +1 para cada alvo extra.</div><div class="tc-gloss-line tc-gloss-char"><strong>Confiável:</strong> Pra cada TRIGGER, ganhe 1🟦 Buff.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Lança-Foguetes.md" data-name="lança-foguetes" data-cat="arma" data-noos="ryke" data-kw="ranged|missile ammo|canhao" data-char="pesado" data-pass="" data-dmg="special [fire]" data-atk="8" data-load="10" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Lança-Foguetes_0">Lança-Foguetes</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/rocket-launcher.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Rocket Launcher.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 10</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Missile Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Canhão</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">8</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Desv +1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">12" - 30</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Special [Fire]</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Pesado:</strong> Você tem +1 ATK se você ainda não se moveu esse turno.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Lançador Químico.md" data-name="lançador químico" data-cat="arma" data-noos="ryke" data-kw="ranged|chemical ammo|canhao" data-char="nao letal|spray" data-pass="" data-dmg="special (gas)" data-atk="4" data-load="8" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Lançador_Químico_0">Lançador Químico</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/chemthrower.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/ChemThrower.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 8</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Chemical Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Canhão</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">4</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Vant -1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">2" - 10</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Special (Gas)</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Não Letal:</strong> Essa arma não é capaz de causar o último dano em um modelo.</div><div class="tc-gloss-line tc-gloss-char"><strong>Spray:</strong> Você pode simultaneamente atacar múltiplos alvos se eles estiverem a menos de 3” entre eles, role separado para cada um. Você ganha Desvantagem +1 para cada alvo extra.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Martelo de Escória.md" data-name="martelo de escória" data-cat="arma" data-noos="ryke" data-kw="melee|concussivo" data-char="esmagar|eviscerar" data-pass="" data-dmg="melee" data-atk="5" data-load="5" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Martelo_de_Escória_0">Martelo de Escória</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/slag-hammer.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Slag hammer.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 5</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Melee</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Concussivo</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">5</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Desv +1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Melee</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Esmagar:</strong> Pra cada TRIGGER, o alvo recebe 1 🟥 Debuff.</div><div class="tc-gloss-line tc-gloss-char"><strong>Eviscerar:</strong> Pra cada TRIGGER, dê +1 de dano extra.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Medidor de Dissidência.md" data-name="medidor de dissidência" data-cat="utilitario" data-noos="ryke" data-kw="suporte" data-char="" data-pass="" data-dmg="" data-atk="0" data-load="2" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Medidor_de_Dissidência_0">Medidor de Dissidência</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/medidor-de-dissidencia.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Medidor de Dissidencia.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Suporte</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-effect-empty">Defina <code>equipamento_caracteristicas</code> e/ou <code>passivas_de_utility</code>.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Mochila de bioquímica.md" data-name="mochila de bioquímica" data-cat="utilitario" data-noos="ryke" data-kw="chemical ammo|suporte" data-char="" data-pass="" data-dmg="" data-atk="0" data-load="5" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Mochila_de_bioquímica_0">Mochila de bioquímica</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/mochila-de-bioquímica.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Mochila de bioquímica.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 5</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Chemical Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Suporte</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-effect-empty">Defina <code>equipamento_caracteristicas</code> e/ou <code>passivas_de_utility</code>.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Mosquete.md" data-name="mosquete" data-cat="arma" data-noos="ryke" data-kw="ranged|medium ammo|sniper" data-char="anti armadura" data-pass="" data-dmg="ranged" data-atk="2" data-load="5" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Mosquete_0">Mosquete</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/linearch/musket.png" alt="" data-export-src="Recursos/Imagens/Utility image/Linearch/Musket.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 5</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Medium Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Sniper</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">2</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">5" - 20</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Anti Armadura:</strong> Essa arma ignora 1 de armadura do tipo apropriado.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Pílulas.md" data-name="pílulas" data-cat="utilitario" data-noos="ryke" data-kw="consumivel" data-char="" data-pass="ingerir narcoticos" data-dmg="" data-atk="0" data-load="2" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Pílulas_0">Pílulas</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/pills.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Pills.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Consumível</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-pass tc-gloss-act-grant"><strong>GANHE A AÇÃO: Ingerir Narcóticos:</strong> 🔷 ​​| Consumível | Teste  EDGE 5+, se for um sucesso ganhe +1 🟦 Buff e receba 1 🔷AP de volta, se falhar no teste nada acontece.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Pistola QuadPhase.md" data-name="pistola quadphase" data-cat="arma" data-noos="osmirate" data-kw="ranged|light ammo|pistola|shotgun|phase" data-char="dispersao" data-pass="" data-dmg="special [fire]" data-atk="3" data-load="3" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Pistola_QuadPhase_0">Pistola QuadPhase</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/linearch/quadphase-pistol.png" alt="" data-export-src="Recursos/Imagens/Utility image/Linearch/QuadPhase Pistol.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Osmirate</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 3</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Light Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Pistola</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Shotgun</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Phase</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">3</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">+0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">2" - 12</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Special [Fire]</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Dispersão:</strong> Se estiver dentro da metade da distância máxima da arma, dê +2 ATK.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Pistola Real Phase.md" data-name="pistola real phase" data-cat="arma" data-noos="osmirate" data-kw="ranged|light ammo|pistola|phase" data-char="arma real|anti armadura" data-pass="" data-dmg="special [fire]" data-atk="3" data-load="3" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Pistola_Real_Phase_0">Pistola Real Phase</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/linearch/royal-phase-pistol.png" alt="" data-export-src="Recursos/Imagens/Utility image/Linearch/Royal Phase Pistol.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Osmirate</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 3</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Light Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Pistola</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Phase</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">3</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Desv +1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">2" - 14</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Special [Fire]</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Arma Real:</strong> Descrição não encontrada no glossário.</div><div class="tc-gloss-line tc-gloss-char"><strong>Anti Armadura:</strong> Essa arma ignora 1 de armadura do tipo apropriado.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Químicos Estranhos.md" data-name="químicos estranhos" data-cat="utilitario" data-noos="ryke" data-kw="chemical ammo" data-char="" data-pass="" data-dmg="" data-atk="0" data-load="4" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Químicos_Estranhos_0">Químicos Estranhos</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/weird-chemicals.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Weird Chemicals.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 4</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Chemical Ammo</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-effect-empty">Defina <code>equipamento_caracteristicas</code> e/ou <code>passivas_de_utility</code>.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Rádio Cajado.md" data-name="rádio cajado" data-cat="arma" data-noos="osmirate" data-kw="ranged|focalizador|special ammo" data-char="artilharia" data-pass="" data-dmg="special [eletric]" data-atk="2" data-load="3" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Rádio_Cajado_0">Rádio Cajado</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/linearch/radio-cajado.png" alt="" data-export-src="Recursos/Imagens/Utility image/Linearch/Radio Cajado.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Osmirate</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 3</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Focalizador</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Special Ammo</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">2</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">DeVant +1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">6" - 22</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Special [Eletric]</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Artilharia:</strong> Essa arma não precisa de visão direta para realizar ataques.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Rádio Tático.md" data-name="rádio tático" data-cat="utilitario" data-noos="ryke" data-kw="suporte" data-char="" data-pass="" data-dmg="" data-atk="0" data-load="2" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Rádio_Tático_0">Rádio Tático</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/tactic-radio.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Tactic Radio.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Suporte</span></div>
+    <div class="tc-body">
+      
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-effect-empty">Defina <code>equipamento_caracteristicas</code> e/ou <code>passivas_de_utility</code>.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Revólver Khemistra de Tanque.md" data-name="revólver khemistra de tanque" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|medium ammo|revolver" data-char="decadente" data-pass="ataque com sobrecarga" data-dmg="ranged" data-atk="4" data-load="3" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Revólver_Khemistra_de_Tanque_0">Revólver Khemistra de Tanque</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/tank-fed-khemistra-revolver.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Tank Fed Khemistra Revolver.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 3</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Light Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Medium Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Revolver</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">4</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Desv +1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">2" - 14</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Decadente:</strong> Pra cada TRIGGER, queime uma carta.</div><div class="tc-gloss-line tc-gloss-pass tc-gloss-act-grant"><strong>GANHE A AÇÃO: Ataque com Sobrecarga:</strong> 🔷 ​​| Ataque | Combata com +2 ATK, depois faça um EDGE 5+, se for um fracasso, você recebe 1 de dano Quântico. Você pode gastar 2 🟦 e testar com Vantagem -1.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Rifle Fendt.md" data-name="rifle fendt" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|pneumatic|rifle" data-char="spray" data-pass="" data-dmg="ranged" data-atk="3" data-load="4" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Rifle_Fendt_0">Rifle Fendt</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/fendt-rifle.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Fendt Rifle.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 4</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Light Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Pneumatic</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Rifle</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">3</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Desv +1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">1" - 18</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Spray:</strong> Você pode simultaneamente atacar múltiplos alvos se eles estiverem a menos de 3” entre eles, role separado para cada um. Você ganha Desvantagem +1 para cada alvo extra.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Rugel Compacta 9.md" data-name="rugel compacta 9" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|pneumatic|pistola" data-char="confiavel" data-pass="" data-dmg="ranged" data-atk="3" data-load="2" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Rugel_Compacta_9_0">Rugel Compacta 9</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/rugel-compact-9.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Rugel Compact 9.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Light Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Pneumatic</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Pistola</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">3</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">1" - 14</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Confiável:</strong> Pra cada TRIGGER, ganhe 1🟦 Buff.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Rugel Estendida 9-S.md" data-name="rugel estendida 9-s" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|pneumatic|pistola" data-char="confiavel" data-pass="" data-dmg="ranged" data-atk="3" data-load="3" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Rugel_Estendida_9-S_0">Rugel Estendida 9-S</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/rugel-compact-9-s.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Rugel Compact 9-S.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 3</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Light Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Pneumatic</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Pistola</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">3</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">Vant -1</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">1" - 14</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Confiável:</strong> Pra cada TRIGGER, ganhe 1🟦 Buff.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Serra de Mão.md" data-name="serra de mão" data-cat="arma" data-noos="ryke" data-kw="melee|lamina|experimental|acoplavel" data-char="anti armadura pesada" data-pass="" data-dmg="melee" data-atk="2" data-load="3" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Serra_de_Mão_0">Serra de Mão</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/handsaw.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/HandSaw.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 3</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Melee</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Lâmina</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Experimental</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Acoplável</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">2</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">2</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Melee</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Anti Armadura Pesada:</strong> Essa arma ignora 3 de armadura do tipo apropriado.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Velt Zapper.md" data-name="velt zapper" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|pistola|acoplavel" data-char="" data-pass="" data-dmg="special [eletric]" data-atk="2" data-load="3" data-res="1" data-date="1779591600000">
+    <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
+  <div class="tc-card" style="--tc-accent:#E54F6D;">
+    <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Velt_Zapper_0">Velt Zapper</h2></div>
+    <div class="tc-art-zone">
+      <div class="tc-art-layout">
+        <div class="tc-res-orbs"><span class="tc-res-orb"></span></div>
+        <div class="tc-art-main"><img class="tc-art" src="recursos/imagens/utility-image/ryke/velt-zapper.png" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Velt Zapper.png" loading="lazy" decoding="async" referrerpolicy="no-referrer" target="_self"></div>
+        <div class="tc-meta-rail">
+    <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Arma</span></div></div>
+    <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 3</span></div></div>
+  </div>
+      </div>
+    </div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Light Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Pistola</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Acoplável</span></div>
+    <div class="tc-body">
+      <div class="tc-arsenal-grid">
+        <div class="tc-stat"><span class="tc-stat-lbl">ATK</span><span class="tc-stat-val accent">2</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">MIRA</span><span class="tc-stat-val accent">0</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DIST</span><span class="tc-stat-val">2" - 8</span></div>
+        <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Special [Eletric]</span></div>
+     </div>
+      <div class="tc-section tc-equip-section">
+        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-effect-empty">Defina <code>equipamento_caracteristicas</code> e/ou <code>passivas_de_utility</code>.</div>
+       </div>
+      <div class="tc-section tc-strat-section">
+        <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
+        <div class="tc-effect-body">Preencher efeito</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  </div></div></div><script>(function(){
+  const root = document.getElementById("cb-br-hw2p1bgi");
+  if(!root) return;
+  const grid = root.querySelector("#cb-br-hw2p1bgi-grid");
+  const cards = Array.from(grid.querySelectorAll(".js-card"));
+  const countEl = root.querySelector(".cb-count-num");
+  const active = { cat:new Set(), kw:new Set(), char:new Set(), pass:new Set(), dmg:new Set() };
+  const ranges = { res:0, atk:0, load:0 };
+
+  const upd = () => {
+    const name = root.querySelector(".cb-search").value.toLowerCase();
+    const catSel = root.querySelector(".cb-sel-cat").value;
+    const noos = root.querySelector(".cb-sel-noos").value;
+    const sort = root.querySelector(".cb-sort").value;
+
+    let vis = 0;
+    cards.forEach(c => {
+      const split = k => (c.dataset[k]||"").split("|").filter(Boolean);
+      const ok =
+        (!name || c.dataset.name.includes(name)) &&
+        (!catSel || c.dataset.cat === catSel) &&
+        (!noos || c.dataset.noos === noos) &&
+        ([...active.cat].length === 0 || [...active.cat].some(v => c.dataset.cat === v)) &&
+        ([...active.kw  ].every(v => split("kw").includes(v))) &&
+        ([...active.char].every(v => split("char").includes(v))) &&
+        ([...active.pass].every(v => split("pass").includes(v))) &&
+        ([...active.dmg ].every(v => (c.dataset.dmg||"").includes(v))) &&
+        parseInt(c.dataset.res||0)  >= ranges.res &&
+        parseInt(c.dataset.atk||0)  >= ranges.atk &&
+        parseInt(c.dataset.load||0) >= ranges.load;
+      c.classList.toggle("hidden", !ok);
+      if(ok) vis++;
+    });
+    if(countEl) countEl.textContent = vis;
+
+    const n = v=>parseInt(v||0);
+    cards.sort((a,b)=>{
+      switch(sort){
+        case "name": return a.dataset.name.localeCompare(b.dataset.name);
+        case "res_desc": return n(b.dataset.res)-n(a.dataset.res);
+        case "load_desc": return n(b.dataset.load)-n(a.dataset.load);
+        case "load_asc":  return n(a.dataset.load)-n(b.dataset.load);
+        case "atk_desc":  return n(b.dataset.atk)-n(a.dataset.atk);
+        case "date":      return n(b.dataset.date)-n(a.dataset.date);
+        default: return 0;
+      }
+    });
+    let reorder=false,i,gch=grid.children;
+    for(i=0;i<cards.length;i++){ if(gch[i]!==cards[i]){ reorder=true; break; } }
+    if(reorder) cards.forEach(function(c){ grid.appendChild(c); });
+  };
+
+  root.querySelector(".cb-search").addEventListener("input", upd);
+  root.querySelector(".cb-sel-cat").addEventListener("change", upd);
+  root.querySelector(".cb-sel-noos").addEventListener("change", upd);
+  root.querySelector(".cb-sort").addEventListener("change", upd);
+
+  root.querySelectorAll(".cb-chip").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const g = btn.dataset.g, v = btn.dataset.v;
+      const set = active[g];
+      let cls = "on-pink";
+      if(g==="cat") cls = "on-gold";
+      if(g==="char") cls = "on-cyan";
+      if(g==="pass") cls = "on-green";
+      if(g==="dmg") cls = "on-red";
+      if(set.has(v)){ set.delete(v); btn.classList.remove("on-pink","on-gold","on-cyan","on-green","on-red"); }
+      else { set.add(v); btn.classList.add(cls); }
+      upd();
+    });
+  });
+
+  root.querySelectorAll(".cb-range").forEach(r => {
+    const stat = r.dataset.stat;
+    let v = parseInt(r.value);
+    ranges[stat] = v;
+    const el = document.getElementById("cb-br-hw2p1bgi-rv-"+stat);
+    if(el) el.textContent = v;
+    r.addEventListener("input", () => {
+      v = parseInt(r.value);
+      ranges[stat] = v;
+      const ell = document.getElementById("cb-br-hw2p1bgi-rv-"+stat);
+      if(ell) ell.textContent = v;
+      upd();
+    });
+  });
+
+  const advBtn = root.querySelector(".js-adv-toggle");
+  const advSec = root.querySelector(".js-adv-section");
+  if (advBtn && advSec) {
+    advBtn.addEventListener("click", () => {
+      const open = advSec.style.display === "flex";
+      advSec.style.display = open ? "none" : "flex";
+      advBtn.textContent = open ? "\u25b6 Mostrar Filtros Avan\u00e7ados" : "\u25bc Esconder Filtros Avan\u00e7ados";
+    });
+  }
+
+  cards.forEach(function(slot){
+    slot.addEventListener("click", function(){
+      var p = slot.getAttribute("data-nav");
+      if(!p || typeof app==="undefined") return;
+      var f = app.vault.getAbstractFileByPath(p);
+      if(f) app.workspace.getLeaf(false).openFile(f);
+    });
+  });
+
+  upd();
+})();</script></div></div></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div id="right-content" class="leaf" style="--sidebar-width: var(--sidebar-width-right);"><div id="right-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="right-sidebar-content" class="leaf-content"></div></div><script defer="">let rs = document.querySelector("#right-sidebar"); rs.classList.toggle("is-collapsed", window.innerWidth < 768); rs.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-right-width"));</script></div></div></div></div></body></html>

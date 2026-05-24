@@ -1,0 +1,505 @@
+/**
+ * Carrossel de Modelos da Facção (V3 — alinhado ao Buscador de Modelos)
+ * Copiado para dataviewjs em Wargame/02 Facções/*.md
+ */
+const cur = dv.current();
+const isObs = typeof app !== "undefined";
+const simBid = "sim_" + Math.random().toString(36).slice(2, 10);
+
+if (!cur || !cur.file) {
+  dv.paragraph("⚠️ Erro: Não foi possível carregar os dados da página atual.");
+} else {
+const SPECIAL_KWS = ["elite", "unique"];
+
+function norm(s) {
+  return String(s || "").trim().toLowerCase();
+}
+
+function esc(s) {
+  return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function escAttr(s) {
+  return String(s ?? "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/\r?\n/g, " ");
+}
+
+function normKwBare(k) {
+  return String(k || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function isMercKeyword(k) {
+  const x = normKwBare(k);
+  return x === "mercenary" || x === "mercenario" || x === "mercenarios";
+}
+
+function _toStrArr(val) {
+  if (!val) return [];
+  const arr = Array.isArray(val) ? val : String(val).split(",");
+  return arr
+    .map((x) => {
+      if (x && typeof x === "object" && x.path) {
+        return String(x.path).replace(/\\/g, "/").split("/").pop().replace(/\.md$/i, "").trim();
+      }
+      return String(x || "").trim();
+    })
+    .filter(Boolean);
+}
+
+function resolveLinkedUtilityPage(pathStr) {
+  let pg = dv.page(pathStr);
+  if (pg) return pg;
+  const baseName = pathStr.replace(/\\/g, "/").split("/").pop().replace(/\.md$/i, "");
+  const baseLower = baseName.toLowerCase();
+  let found = null;
+  function matchPage(q) {
+    return q.file.name.replace(/\.md$/i, "").toLowerCase() === baseLower;
+  }
+  dv.pages('"Wargame/04 Cartas"').forEach((q) => {
+    if (found) return;
+    if (matchPage(q)) found = q;
+  });
+  if (!found) {
+    dv.pages('"Wargame/04 Utilities"').forEach((q) => {
+      if (found) return;
+      if (matchPage(q)) found = q;
+    });
+  }
+  if (!found) {
+    dv.pages().forEach((q) => {
+      if (found) return;
+      if (matchPage(q)) found = q;
+    });
+  }
+  return found;
+}
+
+function equipImgRaw(pg) {
+  return pg.card_image || pg.utility_image || pg.model_image || "";
+}
+
+function equipTipoLegacy(pg) {
+  if (pg.tipo != null && String(pg.tipo).trim()) return String(pg.tipo).trim();
+  const cat = pg.categoria ? String(pg.categoria).trim() : "";
+  if (cat === "Arma") return "Weapon";
+  if (cat === "Utilitário" || cat === "Utilitario") return "Utility";
+  return "Weapon";
+}
+
+function resolveImg(imgRaw, contextPath) {
+  if (!imgRaw) return { src: "", raw: "" };
+  const path = imgRaw.path || String(imgRaw).replace(/\[\[|\]\]/g, "");
+  if (!path || !isObs) return { src: path || "", raw: path || "" };
+  if (path.startsWith("http")) return { src: path, raw: path };
+  const file = app.metadataCache.getFirstLinkpathDest(path, contextPath);
+  if (!file) return { src: "", raw: "" };
+  return { src: app.vault.adapter.getResourcePath(file.path), raw: file.path };
+}
+
+function loadoutTooltip(wp, displayName) {
+  if (!wp) return displayName;
+  const bits = [displayName];
+  const tipo = wp ? equipTipoLegacy(wp) : "";
+  if (tipo) bits.push(tipo);
+  const atk = wp.equipamento_ataques,
+    mir = wp.equipamento_mira,
+    dist = wp.equipamento_distancia;
+  if (atk != null && atk !== "") bits.push(`Atk ${atk}`);
+  if (mir != null && mir !== "") bits.push(`Mira ${mir}`);
+  if (dist != null && dist !== "") bits.push(`${dist}`);
+  return bits.join(" · ");
+}
+
+let myFactions = [];
+if (cur.faccao) {
+  const fv = dv.array(cur.faccao);
+  myFactions = fv.map((f) => norm(f)).array();
+} else {
+  myFactions = [norm(cur.file.name)];
+}
+
+const scored = dv
+  .pages('"Wargame/03 Models"')
+  .where((p) => {
+    if (!p || !p.file || p.file.path === cur.file.path) return false;
+    if (!p.faccao) return false;
+    const pFacs = dv.array(p.faccao).map((f) => norm(f));
+    return pFacs.some((f) => myFactions.includes(f));
+  })
+  .array()
+  .sort((a, b) => {
+    const nameA = a?.file?.name || "";
+    const nameB = b?.file?.name || "";
+    return nameA.localeCompare(nameB);
+  });
+
+const chip = (txt, color, bg) =>
+  `<span style="font-size:.5rem;padding:2px 7px;border:1px solid ${color};color:${color};background:${bg};border-radius:12px;text-transform:uppercase;font-weight:300;white-space:nowrap;font-family:'Orbitron',sans-serif;letter-spacing:.35px;box-shadow:0 0 6px ${color}28;">${esc(txt)}</span>`;
+
+function cardHtml(p) {
+  if (!p || !p.file) return "";
+  let imgSrc = "";
+  let rawPath = "";
+  if (isObs && p.model_image) {
+    const raw = p.model_image?.path || String(p.model_image).replace(/\[\[|\]\]/g, "");
+    const f = app.metadataCache.getFirstLinkpathDest(raw, p.file.path);
+    if (f) {
+      imgSrc = app.vault.adapter.getResourcePath(f.path);
+      rawPath = f.path;
+    }
+  }
+
+  const passivas = _toStrArr(p.passivas);
+  const kws = Array.isArray(p.keywords) ? p.keywords : (p.keywords ? String(p.keywords).split(",").map((s) => s.trim()) : []);
+  const facs = Array.isArray(p.faccao) ? p.faccao : (p.faccao ? [p.faccao] : []);
+  const specKwsModel = [
+    ...kws.filter((k) => SPECIAL_KWS.includes(k.toLowerCase()) || isMercKeyword(k)),
+    ...passivas.filter((c) => SPECIAL_KWS.includes(c.toLowerCase())),
+  ];
+  const normKwsModel = kws.filter((k) => !SPECIAL_KWS.includes(k.toLowerCase()) && !isMercKeyword(k));
+  const normPassModel = passivas.filter((c) => !SPECIAL_KWS.includes(c.toLowerCase()));
+
+  const loadoutItems = [];
+  let uList = [];
+  if (p.utility_list && Array.isArray(p.utility_list) && p.utility_list.length > 0) {
+    uList = p.utility_list;
+  } else if (p.utility_list && typeof p.utility_list === "string" && p.utility_list.trim()) {
+    uList = [p.utility_list];
+  } else {
+    for (let i = 1; i <= 10; i++) {
+      const ul = p[`utility${i}`];
+      if (ul) uList.push(ul);
+    }
+  }
+  for (const ul of uList) {
+    if (!ul) continue;
+    const pathStr = ul?.path || String(ul).replace(/\[\[|\]\]/g, "").trim();
+    const displayName = pathStr.split("/").pop().replace(/\.md$/i, "");
+    if (!displayName) continue;
+    const wp = resolveLinkedUtilityPage(pathStr);
+    const ctx = wp?.file?.path || p.file.path;
+    const io = wp ? resolveImg(equipImgRaw(wp), ctx) : { src: "", raw: "" };
+    loadoutItems.push({
+      displayName,
+      wp,
+      imgSrc: io.src || "",
+      rawPath: io.raw || "",
+    });
+  }
+  const loadoutStripHtml = loadoutItems.length
+    ? loadoutItems
+        .map((item) => {
+          const tip = escAttr(loadoutTooltip(item.wp, item.displayName));
+          const rawAttr = item.rawPath ? ` data-export-src="${escAttr(item.rawPath)}"` : "";
+          if (item.imgSrc || item.rawPath) {
+            return `<span class="nb-lo-thumb-wrap" tabindex="0" title="${tip}" data-tip="${tip}"><img class="nb-lo-thumb" src="${escAttr(item.imgSrc)}" alt=""${rawAttr} loading="lazy" decoding="async"></span>`;
+          }
+          const initials = esc(item.displayName.slice(0, 2).toUpperCase());
+          return `<span class="nb-lo-thumb-wrap nb-lo-fallback" tabindex="0" title="${tip}" data-tip="${tip}"><span class="nb-lo-fallback-txt">${initials}</span></span>`;
+        })
+        .join("")
+    : `<span style="font-size:.72rem;color:#555;">Nenhum equipamento</span>`;
+
+  const tagsHtml = [
+    chip(p.noosphera || "?", "#00ffff", "rgba(0,255,255,.06)"),
+    ...facs.map((f) => chip(String(f), "#be63ff", "rgba(190,99,255,.06)")),
+    ...specKwsModel.map((k) => chip(k, "#ff3366", "rgba(255,51,102,.08)")),
+    ...normPassModel.map((c) => chip(c, "#00bfff", "rgba(0,191,255,.06)")),
+    ...normKwsModel.map((k) => chip(k, "rgba(255,255,255,.4)", "rgba(255,255,255,.04)")),
+  ].join("");
+
+  return `
+  <div class="nb-card js-card" data-nav="${p.file.path}">
+    <div class="nb-card-surface">
+    <div class="nb-img-box">
+      <div class="nb-pts"><span class="nb-pts-num">${p.pontos ?? 0}</span><span class="nb-pts-suf">PTS</span></div>
+      ${imgSrc
+        ? `<img src="${escAttr(imgSrc)}" alt="" data-export-src="${escAttr(rawPath)}">`
+        : `<div style="height:100%;display:flex;align-items:center;justify-content:center;"><span style="font-size:4rem;opacity:.08;">⬡</span></div>`}
+      <div class="nb-armor">
+        <div class="nb-armor-pill"><span>⚔️</span><span>${p.armadura_melee ?? 0}</span></div>
+        <div class="nb-armor-pill"><span>🔫</span><span>${p.armadura_ranged ?? 0}</span></div>
+        <div class="nb-armor-pill"><span>⚠️</span><span>${p.armadura_special ?? 0}</span></div>
+      </div>
+    </div>
+
+    <div class="nb-info">
+      <div class="nb-name">${esc(p.file.name)}</div>
+      <div class="nb-tags-row">${tagsHtml}</div>
+      <div class="nb-stats">
+        <div class="nb-stat" title="Movimento"><span class="nb-stat-lbl">MOV</span><span class="nb-stat-val c">${p.movimento ?? 0}</span></div>
+        <div class="nb-stat" title="Vida"><span class="nb-stat-lbl">VIDA</span><span class="nb-stat-val">${p.vida ?? 0}</span></div>
+        <div class="nb-stat" title="Decoerência"><span class="nb-stat-lbl">DEC</span><span class="nb-stat-val c">${p.decoerencia ?? 0}</span></div>
+        <div class="nb-stat" title="AP (ações por ativação)"><span class="nb-stat-lbl">AP</span><span class="nb-stat-val">${parseInt(p.ap != null && p.ap !== "" ? p.ap : p.AP) || 0}</span></div>
+      </div>
+    </div>
+
+    <div class="nb-loadout">
+      <div class="nb-loadout-lbl">Loadout Inicial</div>
+      <div class="nb-loadout-list">
+        ${loadoutStripHtml}
+      </div>
+    </div>
+    </div>
+  </div>`;
+}
+
+let simHtml = `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700;900&family=Inter:wght@200;300;400&display=swap');
+#${simBid} * { box-sizing: border-box; }
+#${simBid} { font-family: 'Inter', sans-serif !important; color: #e0d8f0 !important; width: 100%; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(190, 99, 255, 0.22); }
+
+#${simBid} .sim-head { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+#${simBid} .sim-all-btn {
+  display: inline-block; padding: 14px 32px; border-radius: 40px;
+  border: 1px solid rgba(190, 99, 255, 0.5) !important; color: #f5f0ff !important; font-family: 'Orbitron', sans-serif;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none !important;
+  background: rgba(190, 99, 255, 0.18) !important; transition: 0.25s; cursor: pointer;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+#${simBid} .sim-all-btn:hover { background: rgba(190, 99, 255, 0.32) !important; color: #fff !important; border-color: rgba(190, 99, 255, 0.75) !important; }
+
+#${simBid} .nb-sim-carousel { display: flex; align-items: stretch; gap: 10px; position: relative; }
+#${simBid} .nb-sim-arrow {
+  flex: 0 0 40px; width: 40px; min-width: 40px; align-self: center; height: 96px;
+  border: 1px solid rgba(190, 99, 255, 0.35) !important; border-radius: 14px;
+  background: rgba(15, 5, 25, 0.75) !important; color: #d8b4fe !important; font-size: 1.75rem; line-height: 1;
+  cursor: pointer; transition: 0.25s; font-family: 'Orbitron', sans-serif; padding: 0;
+}
+#${simBid} .nb-sim-arrow:hover { background: rgba(190, 99, 255, 0.25) !important; color: #fff !important; border-color: rgba(190, 99, 255, 0.7) !important; }
+#${simBid} .nb-sim-arrow[disabled] { opacity: 0.25; pointer-events: none; }
+#${simBid} .nb-sim-viewport {
+  flex: 1; min-width: 0; overflow-x: auto; overflow-y: hidden;
+  scroll-behavior: smooth; scroll-snap-type: x mandatory;
+  scrollbar-width: none; -ms-overflow-style: none;
+  padding-bottom: 6px;
+}
+#${simBid} .nb-sim-viewport::-webkit-scrollbar { display: none; }
+#${simBid} .nb-sim-track { display: flex; gap: 14px; align-items: stretch; }
+
+#${simBid} .nb-card {
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  flex: 0 0 min(200px, calc(100vw - 130px));
+  max-width: 260px;
+  scroll-snap-align: start;
+}
+#${simBid} .nb-card-surface {
+  background: rgba(15, 5, 25, 0.6) !important;
+  border: 1px solid rgba(190, 99, 255, 0.12) !important;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 100%;
+}
+#${simBid} .nb-card:hover .nb-card-surface {
+  border-color: rgba(190, 99, 255, 0.5) !important;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 30px rgba(190, 99, 255, 0.2) !important;
+  transform: translateY(-10px);
+}
+
+#${simBid} .nb-img-box { width: 100%; height: 210px; background: linear-gradient(180deg, #161322 0%, #1e1a2e 55%, #252038 100%); overflow: hidden; position: relative; }
+#${simBid} .nb-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: 0.8s; filter: grayscale(0.28) brightness(0.84); }
+#${simBid} .nb-card:hover .nb-img-box img { filter: grayscale(0) brightness(1.1); transform: scale(1.08); }
+
+#${simBid} .nb-pts {
+  position: absolute; bottom: 10px; left: 8px; top: auto; z-index: 5;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px;
+  min-width: 2.75rem;
+  padding: 9px 11px 10px;
+  border-radius: 16px;
+  background: rgba(0, 255, 136, 0.96) !important; color: #000 !important;
+  box-shadow: 0 0 22px rgba(0, 255, 136, 0.38) !important;
+  line-height: 1;
+}
+#${simBid} .nb-pts-num {
+  font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 900;
+  letter-spacing: -0.03em; line-height: 1;
+}
+#${simBid} .nb-pts-suf {
+  font-family: 'Orbitron', sans-serif; font-size: 10px; font-weight: 900;
+  letter-spacing: 2px; text-transform: uppercase; line-height: 1; opacity: 0.98;
+}
+
+#${simBid} .nb-armor { position: absolute; top: 6px; right: 6px; z-index: 5; display: flex; flex-direction: column; gap: 4px; }
+#${simBid} .nb-armor-pill {
+  background: rgba(5, 0, 10, 0.85); border: 1px solid rgba(190, 99, 255, 0.4) !important;
+  padding: 3px 7px 3px 8px; border-radius: 999px; display: flex; align-items: center; gap: 5px;
+  backdrop-filter: blur(10px); transition: 0.4s;
+}
+#${simBid} .nb-armor-pill span:first-child { font-size: 0.62rem; line-height: 1; opacity: 0.95; }
+#${simBid} .nb-armor-pill span:last-child { font-size: 0.74rem; font-weight: 600; color: #d8b4fe !important; font-family: 'Orbitron'; text-shadow: 0 0 8px rgba(190, 99, 255, 0.35); min-width: 1ch; text-align: center; }
+#${simBid} .nb-card:hover .nb-armor-pill { border-color: rgba(190, 99, 255, 0.7) !important; box-shadow: 0 0 14px rgba(190, 99, 255, 0.22) !important; }
+
+#${simBid} .nb-info { padding: 10px 10px 8px; flex-grow: 0; flex-shrink: 0; }
+#${simBid} .nb-name { font-size: 0.78rem; font-weight: 300; text-transform: uppercase; letter-spacing: 1.2px; color: #f5f0ff !important; margin-bottom: 6px; font-family: 'Orbitron', sans-serif !important; text-shadow: 0 0 15px rgba(190, 99, 255, 0.3) !important; line-height: 1.2; }
+#${simBid} .nb-tags-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 6px; }
+
+#${simBid} .nb-stats {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 6px;
+  margin-bottom: 0;
+}
+#${simBid} .nb-stat {
+  background: rgba(5, 0, 10, 0.5) !important;
+  border: 1px solid rgba(190, 99, 255, 0.15) !important;
+  padding: 6px 5px;
+  text-align: center;
+  border-radius: 8px;
+  min-width: 0;
+}
+#${simBid} .nb-stat-lbl {
+  font-size: 8px; color: #a99bbd !important; text-transform: uppercase;
+  letter-spacing: 0.6px; display: block; margin-bottom: 3px; font-weight: 600;
+  line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#${simBid} .nb-stat-val { font-size: 0.98rem; font-weight: 600; color: #fff !important; display: block; line-height: 1.05; font-family: 'Orbitron'; }
+#${simBid} .nb-stat-val.c { color: #80e5ff !important; text-shadow: 0 0 12px rgba(0, 217, 255, 0.35) !important; }
+
+#${simBid} .nb-loadout { border-top: 1px solid rgba(190, 99, 255, 0.15) !important; padding: 8px 10px 10px; margin-top: 0; background: rgba(5, 0, 10, 0.3); }
+#${simBid} .nb-loadout-lbl { font-size: 9px; color: #a99bbd !important; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; font-weight: 300; }
+#${simBid} .nb-loadout-list {
+  display: flex; flex-wrap: nowrap; gap: 5px; align-items: center;
+  overflow-x: auto; overflow-y: visible; max-width: 100%;
+  padding-bottom: 2px; min-height: 32px;
+}
+#${simBid} .nb-loadout-list::-webkit-scrollbar { height: 4px; }
+#${simBid} .nb-loadout-list::-webkit-scrollbar-thumb { background: rgba(190, 99, 255, 0.35); border-radius: 4px; }
+#${simBid} .nb-lo-thumb-wrap {
+  position: relative; flex: 0 0 auto;
+  width: 30px; height: 30px; border-radius: 8px; overflow: visible;
+  border: 1px solid rgba(0, 217, 255, 0.35) !important;
+  background: rgba(5, 0, 12, 0.85);
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.12);
+}
+#${simBid} .nb-lo-thumb-wrap:hover { border-color: rgba(190, 99, 255, 0.75) !important; box-shadow: 0 0 12px rgba(190, 99, 255, 0.25); z-index: 8; }
+#${simBid} .nb-lo-thumb {
+  width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 7px;
+  filter: grayscale(0.25) brightness(0.92);
+}
+#${simBid} .nb-lo-thumb-wrap:hover .nb-lo-thumb { filter: grayscale(0) brightness(1.05); }
+#${simBid} .nb-lo-fallback {
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+#${simBid} .nb-lo-fallback-txt {
+  font-family: 'Orbitron', sans-serif; font-size: 8px; font-weight: 700;
+  color: #80e5ff !important; letter-spacing: 0.5px; text-transform: uppercase;
+  line-height: 1; text-align: center; padding: 2px;
+}
+#${simBid} .nb-lo-thumb-wrap[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute; left: 50%; bottom: calc(100% + 6px); transform: translateX(-50%);
+  padding: 6px 9px; border-radius: 8px; max-width: min(220px, 70vw);
+  background: rgba(8, 2, 18, 0.96); border: 1px solid rgba(190, 99, 255, 0.45);
+  color: #f0eaff !important; font-size: 10px; font-weight: 400; line-height: 1.25;
+  font-family: 'Inter', sans-serif; white-space: normal; text-align: center;
+  pointer-events: none; opacity: 0; visibility: hidden;
+  transition: opacity 0.12s ease, visibility 0.12s ease;
+  z-index: 40;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.55);
+}
+#${simBid} .nb-lo-thumb-wrap[data-tip]:hover::after,
+#${simBid} .nb-lo-thumb-wrap[data-tip]:focus-visible::after {
+  opacity: 1; visibility: visible;
+}
+
+#${simBid} .sim-empty { color: #a99bbd !important; font-size: 12px; padding: 28px 16px; text-align: center; border: 1px dashed rgba(190, 99, 255, 0.2); border-radius: 16px; font-weight: 300; }
+#${simBid} .sim-count { text-align: center; font-size: 11px; color: #a99bbd; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+#${simBid} .sim-count em { color: #d8b4fe; font-style: normal; font-weight: 400; }
+</style>
+<div id="${simBid}">
+  <div class="sim-head">
+    <a class="internal-link sim-all-btn" data-link-path="Wargame/Buscador de Modelos.md">VER TODOS OS MODELOS</a>
+  </div>
+`;
+
+if (scored.length === 0) {
+  simHtml += `<div class="sim-empty">Nenhum modelo encontrado para a facção: <strong style="color:#d8b4fe;">${esc(myFactions.join(", "))}</strong></div></div>`;
+} else {
+  simHtml += `
+  <div class="sim-count"><em>${scored.length}</em> modelo${scored.length !== 1 ? "s" : ""} nesta facção</div>
+  <div class="nb-sim-carousel">
+    <button type="button" class="nb-sim-arrow nb-sim-prev" aria-label="Anterior">‹</button>
+    <div class="nb-sim-viewport">
+      <div class="nb-sim-track">
+        ${scored.map((q) => cardHtml(q)).join("")}
+      </div>
+    </div>
+    <button type="button" class="nb-sim-arrow nb-sim-next" aria-label="Próximo">›</button>
+  </div></div>`;
+}
+
+const simWrap = dv.container.createEl("div");
+simWrap.innerHTML = simHtml;
+
+if (scored.length > 0) {
+  const sc = document.createElement("script");
+  sc.textContent = `(function(){
+  var root = document.getElementById("${simBid}");
+  if(!root) return;
+  var viewport = root.querySelector(".nb-sim-viewport");
+  var track = root.querySelector(".nb-sim-track");
+  var prev = root.querySelector(".nb-sim-prev");
+  var next = root.querySelector(".nb-sim-next");
+  if(!viewport || !track || !prev || !next) return;
+  var cards = track.querySelectorAll(".nb-card");
+  if(!cards.length) return;
+
+  var gap = 14;
+  function stepPx() {
+    var c = cards[0];
+    return (c ? c.getBoundingClientRect().width : 200) + gap;
+  }
+  function maxScroll() {
+    return Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+  }
+  function toggleArrows() {
+    var m = maxScroll();
+    var show = m > 8;
+    prev.style.visibility = show ? "visible" : "hidden";
+    next.style.visibility = show ? "visible" : "hidden";
+    prev.disabled = !show;
+    next.disabled = !show;
+  }
+  function goNext(e) {
+    if(e){ e.preventDefault(); e.stopPropagation(); }
+    var m = maxScroll();
+    if(m <= 0) return;
+    if(viewport.scrollLeft >= m - 6) viewport.scrollTo({ left: 0, behavior: "smooth" });
+    else viewport.scrollBy({ left: stepPx(), behavior: "smooth" });
+  }
+  function goPrev(e) {
+    if(e){ e.preventDefault(); e.stopPropagation(); }
+    var m = maxScroll();
+    if(m <= 0) return;
+    if(viewport.scrollLeft <= 6) viewport.scrollTo({ left: m, behavior: "smooth" });
+    else viewport.scrollBy({ left: -stepPx(), behavior: "smooth" });
+  }
+  prev.addEventListener("click", goPrev);
+  next.addEventListener("click", goNext);
+  window.addEventListener("resize", toggleArrows);
+  toggleArrows();
+
+  cards.forEach(function(slot){
+    slot.addEventListener("click", function(){
+      var p = slot.getAttribute("data-nav");
+      if(!p || typeof app==="undefined") return;
+      var f = app.vault.getAbstractFileByPath(p);
+      if(f) app.workspace.getLeaf(false).openFile(f);
+    });
+  });
+})();`;
+  simWrap.appendChild(sc);
+}
+}
