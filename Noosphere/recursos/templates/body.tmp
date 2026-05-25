@@ -389,7 +389,16 @@ if (isObsidian && imgPath) {
     }
 } else { imgURL = imgPath; }
 
-let faviconURL = await resolveImgBase64("Recursos/Main Logo/Logo.svg");
+let faviconURL = "";
+const FAVICON_RAW = "Recursos/Main Logo/Favicon fill White.png";
+if (isObsidian) {
+    try {
+        const favFile = app.vault.getAbstractFileByPath(FAVICON_RAW);
+        if (favFile) {
+            faviconURL = await resolveImgBase64(FAVICON_RAW);
+        }
+    } catch (_favErr) {}
+}
 
 function escCssUrl(u) {
     return String(u || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'");
@@ -813,7 +822,7 @@ dv.container.innerHTML = `
         <div class="top-content">
             <!-- Logo + badges -->
             <div class="badge-row">
-                <img id="favicon-${uid}" class="favicon-logo" src="${faviconURL}" style="width:36px;height:36px;object-fit:contain;opacity:0.9;">
+                <img id="favicon-${uid}" class="favicon-logo" src="${faviconURL}" data-export-src="Recursos/Main Logo/Favicon fill White.png" style="width:36px;height:36px;object-fit:contain;opacity:0.9;">
                 <span class="pts-badge-new js-pts-badge" id="t-pts-badge-${uid}"><span id="t-pts-${uid}">${p.pontos || 0} PONTOS</span></span>
                 ${roleBadgesHtml}
             </div>
