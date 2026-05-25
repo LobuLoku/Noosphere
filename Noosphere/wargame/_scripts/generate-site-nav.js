@@ -38,6 +38,10 @@ const SKIP_BASENAMES = new Set([
   "buscador de contos",
 ]);
 
+const SKIP_REALM_DIRS = new Set(["contos"]);
+
+const WARGAME_SKIP_FILES = /^template/i;
+
 function norm(s) {
   return String(s || "").trim();
 }
@@ -61,20 +65,55 @@ function vaultPath(absPath) {
 
 function buildWargameFolders() {
   const folders = [];
-  const coreDir = path.join(ROOT, "Wargame/01 Regras Core");
-  const glossDir = path.join(coreDir, "Glossários");
+  const wargameRoot = path.join(ROOT, "Wargame");
+  if (!fs.existsSync(wargameRoot)) return folders;
 
-  const coreItems = listMdFiles(coreDir).map((f) => ({
-    l: labelFromFile(f),
-    p: vaultPath(f),
-  }));
-  if (coreItems.length) folders.push({ name: "Regras Core", items: coreItems });
+  const numberedDirs = fs
+    .readdirSync(wargameRoot, { withFileTypes: true })
+    .filter((e) => e.isDirectory() && /^\d{2}\s/.test(e.name))
+    .sort((a, b) => a.name.localeCompare(b.name, "pt", { numeric: true }));
 
-  const glossItems = listMdFiles(glossDir).map((f) => ({
-    l: labelFromFile(f),
-    p: vaultPath(f),
-  }));
-  if (glossItems.length) folders.push({ name: "Glossários", items: glossItems });
+  for (const ent of numberedDirs) {
+    const dirAbs = path.join(wargameRoot, ent.name);
+    const dirName = ent.name;
+
+    if (dirName.startsWith("01 ")) {
+      const glossDir = path.join(dirAbs, "Glossários");
+      const coreItems = listMdFiles(dirAbs)
+        .filter((f) => !vaultPath(f).includes("/Glossários/"))
+        .map((f) => ({ l: labelFromFile(f), p: vaultPath(f) }));
+      if (coreItems.length) folders.push({ name: dirName, items: coreItems });
+
+      const glossItems = listMdFiles(glossDir).map((f) => ({
+        l: labelFromFile(f),
+        p: vaultPath(f),
+      }));
+      if (glossItems.length) folders.push({ name: "Glossários", items: glossItems });
+      continue;
+    }
+
+    const subdirs = fs
+      .readdirSync(dirAbs, { withFileTypes: true })
+      .filter((e) => e.isDirectory())
+      .sort((a, b) => a.name.localeCompare(b.name, "pt"));
+
+    if (subdirs.length) {
+      for (const sub of subdirs) {
+        const subAbs = path.join(dirAbs, sub.name);
+        const items = listMdFiles(subAbs)
+          .filter((f) => !WARGAME_SKIP_FILES.test(labelFromFile(f)))
+          .map((f) => ({ l: labelFromFile(f), p: vaultPath(f) }));
+        if (!items.length) continue;
+        folders.push({ name: `${dirName} — ${sub.name}`, items });
+      }
+      continue;
+    }
+
+    const items = listMdFiles(dirAbs)
+      .filter((f) => !WARGAME_SKIP_FILES.test(labelFromFile(f)))
+      .map((f) => ({ l: labelFromFile(f), p: vaultPath(f) }));
+    if (items.length) folders.push({ name: dirName, items });
+  }
 
   return folders;
 }
@@ -99,6 +138,7 @@ function buildUniversoRealms() {
     .sort((a, b) => a.localeCompare(b, "pt"));
 
   for (const realmName of realmDirs) {
+    if (SKIP_REALM_DIRS.has(realmName.toLowerCase())) continue;
     const realmAbs = path.join(wbRoot, realmName);
     const sectionMap = new Map();
 

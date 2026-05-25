@@ -13,8 +13,8 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700;900&family=Inter:wght@200;300;400;600&display=swap');
 
-#cb-br-1krnk0r5 * { box-sizing: border-box; }
-#cb-br-1krnk0r5 { font-family:'Inter', sans-serif !important; color:#e0d8f0 !important; width:100%; }
+#cb-br-7sjr11a3 * { box-sizing: border-box; }
+#cb-br-7sjr11a3 { font-family:'Inter', sans-serif !important; color:#e0d8f0 !important; width:100%; }
 
 .cb-filters {
   background: radial-gradient(circle at top left, rgba(30, 10, 50, 0.4), rgba(18, 5, 30, 0.6)) !important;
@@ -27,8 +27,8 @@
 .cb-filter-row { display: grid !important; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; }
 .cb-filter-label { font-size: 11px !important; color: #f8c6d0 !important; letter-spacing: 2px !important; text-transform: uppercase !important; margin-bottom: 8px !important; display: block !important; font-family: 'Inter', sans-serif !important; font-weight: 300 !important; opacity: 0.85; }
 
-#cb-br-1krnk0r5 input.cb-input,
-#cb-br-1krnk0r5 select.cb-sel {
+#cb-br-7sjr11a3 input.cb-input,
+#cb-br-7sjr11a3 select.cb-sel {
   width: 100% !important; background: rgba(10, 0, 20, 0.7) !important; border: 1px solid rgba(229, 79, 109, 0.28) !important;
   color: #ffffff !important; padding: 18px 25px !important; font-family: 'Orbitron', sans-serif !important;
   font-size: 14px !important; font-weight: 300 !important; outline: none !important; transition: 0.4s !important;
@@ -36,8 +36,8 @@
   border-radius: 40px !important; box-shadow: none !important; height: auto !important;
   line-height: 1.4 !important; display: block !important; letter-spacing: 1px !important; cursor: pointer;
 }
-#cb-br-1krnk0r5 input.cb-input:focus,
-#cb-br-1krnk0r5 select.cb-sel:focus { border-color: rgba(229, 79, 109, 0.75) !important; box-shadow: 0 0 25px rgba(229, 79, 109, 0.25) !important; background: rgba(25, 10, 45, 0.9) !important; }
+#cb-br-7sjr11a3 input.cb-input:focus,
+#cb-br-7sjr11a3 select.cb-sel:focus { border-color: rgba(229, 79, 109, 0.75) !important; box-shadow: 0 0 25px rgba(229, 79, 109, 0.25) !important; background: rgba(25, 10, 45, 0.9) !important; }
 
 .cb-sec { font-size: 10px; color: #a99bbd !important; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 300; opacity: 0.85; }
 .cb-chips { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -75,61 +75,57 @@
 }
 .cb-preview-inner { width: 420px; zoom: 0.5; margin: 0 auto; }
 
-#cb-br-1krnk0r5 .cb-preview-host { width: 420px; font-family: 'Inter', sans-serif !important; color: #ebe4f8 !important; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-card {
-  --tc-bg: #2E0738;
-  --tc-accent: #d4a8e8;
+#cb-br-7sjr11a3 .cb-preview-host { width: 420px; font-family: 'Inter', sans-serif !important; color: #ebe4f8 !important; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-card {
+  --tc-bg: #1C1C24;
+  --tc-accent: #be63ff;
   --tc-block-gap: 7px;
-  --tc-comp-border: color-mix(in srgb, var(--tc-accent) 7%, transparent);
+  --tc-comp-border: color-mix(in srgb, var(--tc-accent) 22%, transparent);
   position: relative; width: 420px; aspect-ratio: 1246 / 2079;
-  background:
-    radial-gradient(ellipse 120% 80% at 50% 18%, color-mix(in srgb, var(--tc-bg) 55%, white 45%), transparent 55%),
-    linear-gradient(168deg, color-mix(in srgb, var(--tc-bg) 85%, black 15%) 0%, var(--tc-bg) 50%, color-mix(in srgb, var(--tc-bg) 90%, black 10%) 100%);
+  background: linear-gradient(168deg, color-mix(in srgb, var(--tc-bg) 90%, white 10%) 0%, var(--tc-bg) 50%, color-mix(in srgb, var(--tc-bg) 84%, black 16%) 100%);
   border: none; border-radius: 8px; overflow: hidden;
   display: grid; grid-template-rows: auto minmax(0, 28%) auto minmax(0, 1fr); padding: 0;
 }
-#cb-br-1krnk0r5 .cb-preview-host .tc-card.tc-elite { --tc-bg: #83283B; --tc-accent: #ffc4cc; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-card.tc-unique { --tc-bg: #CEB762; --tc-accent: #2a2210; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-title-bar { display:flex; align-items:center; justify-content:center; min-height:3.1rem; padding:20px 16px 10px; text-align:center; background:rgba(5,0,12,0.35); z-index:3; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-title { font-family:'Orbitron',sans-serif !important; font-size:0.74rem !important; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; line-height:1.25; color:#faf5ff !important; margin:0; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-card.tc-elite .tc-title,
-#cb-br-1krnk0r5 .cb-preview-host .tc-card.tc-unique .tc-title { color:var(--tc-accent) !important; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-art-zone { position:relative; display:flex; align-items:stretch; justify-content:center; padding:2px 0; min-height:0; max-height:100%; overflow:hidden; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-art-layout { display:flex; align-items:center; justify-content:center; width:100%; height:100%; min-height:0; max-height:100%; gap:0; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-res-orbs { flex:0 0 72px; display:flex; flex-direction:column; justify-content:center; align-items:center; align-self:center; min-height:calc(4*16px + 3*8px); z-index:2; padding:0 4px 0 48px; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-meta-rail { flex:0 0 auto; display:flex; flex-direction:row; align-items:center; justify-content:flex-end; align-self:center; min-height:calc(4*16px + 3*8px); padding:0 36px 0 2px; gap:5px; z-index:2; max-width:46%; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-meta-cols { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-meta-cols--special { gap:8px; margin-left:2px; padding-left:4px; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-meta-col { display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-meta-item { color:#fff !important; font-family:'Orbitron',sans-serif !important; font-weight:700; text-transform:uppercase; line-height:1; white-space:nowrap; word-break:keep-all; writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg); display:inline-block; flex-shrink:0; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-meta-item--core { font-size:0.68rem; letter-spacing:0.07em; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-meta-item--special { font-size:0.56rem; font-weight:600; letter-spacing:0.06em; opacity:0.95; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-res-orb { width:16px; height:16px; border-radius:50%; background:#fff; flex-shrink:0; margin:4px 0; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-art-main { flex:1 1 auto; display:flex; align-items:center; justify-content:center; min-width:0; height:100%; max-height:100%; overflow:hidden; padding:0 4px; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-art { display:block; max-width:min(100%,200px); max-height:92%; width:auto; height:auto; object-fit:contain; object-position:center; pointer-events:none; user-select:none; margin:0 auto; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-art-placeholder { font-size:2rem; opacity:0.08; font-family:'Orbitron',sans-serif; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-tags-row { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:2px 0; padding:3px 12px 0; line-height:1.45; z-index:3; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-tag { font-size:0.52rem; text-transform:uppercase; letter-spacing:0.07em; font-weight:400; font-family:'Inter',sans-serif; color:#9a90ad !important; opacity:0.88; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-tag-sep { color:rgba(255,255,255,0.18) !important; font-size:0.48rem; margin:0 5px; user-select:none; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-body { padding:var(--tc-block-gap) 12px 10px; min-height:0; overflow:hidden; z-index:3; display:flex; flex-direction:column; gap:var(--tc-block-gap); }
-#cb-br-1krnk0r5 .cb-preview-host .tc-arsenal-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-stat { display:flex; align-items:center; justify-content:center; gap:5px; background:rgba(5,0,10,0.32); border:1px solid var(--tc-comp-border); border-radius:5px; padding:6px 8px; min-width:0; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-stat-lbl { font-size:0.58rem; color:#a99bbd !important; text-transform:uppercase; letter-spacing:0.55px; font-weight:600; white-space:nowrap; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-stat-val { font-family:'Orbitron',sans-serif; font-size:0.92rem; font-weight:700; color:#fff !important; line-height:1.1; word-break:break-word; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-stat-val.accent { color:var(--tc-accent) !important; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-stat-val.dmg { font-size:0.82rem; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-section { background:rgba(5,0,12,0.26); border:1px solid var(--tc-comp-border); border-radius:6px; padding:7px 9px 8px; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-section-label { font-family:'Inter',sans-serif; font-size:0.86rem; line-height:1.32; color:var(--tc-accent) !important; margin-bottom:6px; font-weight:600; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-gloss-line { margin-top:4px; padding-left:8px; border-left:2px solid color-mix(in srgb, var(--tc-accent) 55%, transparent); color:#cfc4e4; font-size:0.62rem; line-height:1.36; font-weight:300; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-gloss-line:first-of-type { margin-top:0; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-gloss-line strong { text-transform:uppercase; font-weight:600; font-size:0.6rem; color:var(--tc-accent) !important; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-gloss-pass { border-left-color:color-mix(in srgb, var(--tc-accent) 45%, transparent); }
-#cb-br-1krnk0r5 .cb-preview-host .tc-effect-body { font-size:0.68rem; line-height:1.38; color:#e8dff8 !important; font-weight:300; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-effect-or { text-align:center; font-size:0.72rem; font-weight:600; font-style:italic; color:var(--tc-accent) !important; margin:5px 0; letter-spacing:0.04em; opacity:0.9; }
-#cb-br-1krnk0r5 .cb-preview-host .tc-effect-empty { font-size:0.64rem; color:#8a7da0 !important; font-style:italic; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-card.tc-elite { --tc-bg: #20374E; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-card.tc-unique { --tc-bg: #402248; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-title-bar { display:flex; align-items:center; justify-content:center; min-height:3.1rem; padding:20px 16px 10px; text-align:center; background:rgba(5,0,12,0.35); z-index:3; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-title { font-family:'Orbitron',sans-serif !important; font-size:0.74rem !important; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; line-height:1.25; color:#fff !important; margin:0; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-art-zone { position:relative; display:flex; align-items:stretch; justify-content:center; padding:2px 0; min-height:0; max-height:100%; overflow:hidden; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-art-layout { display:flex; align-items:center; justify-content:center; width:100%; height:100%; min-height:0; max-height:100%; gap:0; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-res-orbs { flex:0 0 72px; display:flex; flex-direction:column; justify-content:center; align-items:center; align-self:center; min-height:calc(4*16px + 3*8px); z-index:2; padding:0 4px 0 48px; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-meta-rail { flex:0 0 auto; display:flex; flex-direction:row; align-items:center; justify-content:flex-end; align-self:center; min-height:calc(4*16px + 3*8px); padding:0 36px 0 2px; gap:5px; z-index:2; max-width:46%; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-meta-cols { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-meta-cols--special { gap:8px; margin-left:2px; padding-left:4px; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-meta-col { display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-meta-item { color:#fff !important; font-family:'Orbitron',sans-serif !important; font-weight:700; text-transform:uppercase; line-height:1; white-space:nowrap; word-break:keep-all; writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg); display:inline-block; flex-shrink:0; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-meta-item--core { font-size:0.68rem; letter-spacing:0.07em; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-meta-item--special { font-size:0.56rem; font-weight:600; letter-spacing:0.06em; opacity:0.95; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-res-orb { width:16px; height:16px; border-radius:50%; background:#fff; flex-shrink:0; margin:4px 0; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-art-main { flex:1 1 auto; display:flex; align-items:center; justify-content:center; min-width:0; height:100%; max-height:100%; overflow:hidden; padding:0 4px; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-art { display:block; max-width:min(100%,200px); max-height:92%; width:auto; height:auto; object-fit:contain; object-position:center; pointer-events:none; user-select:none; margin:0 auto; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-art-placeholder { font-size:2rem; opacity:0.08; font-family:'Orbitron',sans-serif; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-tags-row { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:2px 0; padding:3px 12px 0; line-height:1.45; z-index:3; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-tag { font-size:0.52rem; text-transform:uppercase; letter-spacing:0.07em; font-weight:400; font-family:'Inter',sans-serif; color:#9a90ad !important; opacity:0.88; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-tag-sep { color:rgba(255,255,255,0.18) !important; font-size:0.48rem; margin:0 5px; user-select:none; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-body { padding:var(--tc-block-gap) 12px 10px; min-height:0; overflow:hidden; z-index:3; display:flex; flex-direction:column; gap:var(--tc-block-gap); }
+#cb-br-7sjr11a3 .cb-preview-host .tc-arsenal-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-stat { display:flex; align-items:center; justify-content:center; gap:5px; background:rgba(5,0,10,0.32); border:1px solid var(--tc-comp-border); border-radius:5px; padding:6px 8px; min-width:0; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-stat-lbl { font-size:0.58rem; color:#a99bbd !important; text-transform:uppercase; letter-spacing:0.55px; font-weight:600; white-space:nowrap; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-stat-val { font-family:'Orbitron',sans-serif; font-size:0.92rem; font-weight:700; color:#fff !important; line-height:1.1; word-break:break-word; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-stat-val.accent { color:#fff !important; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-stat-val.dmg { font-size:0.82rem; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-section { background:rgba(5,0,12,0.26); border:1px solid var(--tc-comp-border); border-radius:6px; padding:7px 9px 8px; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-section-label { font-family:'Inter',sans-serif; font-size:0.86rem; line-height:1.32; color:#fff !important; margin-bottom:6px; font-weight:600; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-gloss-line { margin-top:4px; padding-left:8px; border-left:2px solid color-mix(in srgb, var(--tc-accent) 55%, transparent); color:rgba(255,255,255,0.88); font-size:0.62rem; line-height:1.36; font-weight:300; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-gloss-line:first-of-type { margin-top:0; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-gloss-line strong { text-transform:uppercase; font-weight:600; font-size:0.6rem; color:#fff !important; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-gloss-pass { border-left-color:color-mix(in srgb, var(--tc-accent) 45%, transparent); }
+#cb-br-7sjr11a3 .cb-preview-host .tc-effect-body { font-size:0.68rem; line-height:1.38; color:rgba(255,255,255,0.9) !important; font-weight:300; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-effect-or { text-align:center; font-size:0.72rem; font-weight:600; font-style:italic; color:rgba(255,255,255,0.72) !important; margin:5px 0; letter-spacing:0.04em; }
+#cb-br-7sjr11a3 .cb-preview-host .tc-effect-empty { font-size:0.64rem; color:#8a7da0 !important; font-style:italic; }
 </style>
 
-<div id="cb-br-1krnk0r5">
+<div id="cb-br-7sjr11a3">
 <div class="cb-filters">
   <div class="cb-filter-row">
     <div>
@@ -208,17 +204,17 @@
       <div class="cb-range-grp">
         <span class="cb-range-lbl">Ressonância</span>
         <input type="range" class="cb-range" data-stat="res" min="0" max="4" value="0" step="1">
-        <span class="cb-range-val" id="cb-br-1krnk0r5-rv-res">0</span>
+        <span class="cb-range-val" id="cb-br-7sjr11a3-rv-res">0</span>
       </div>
       <div class="cb-range-grp">
         <span class="cb-range-lbl">ATK</span>
         <input type="range" class="cb-range" data-stat="atk" min="0" max="12" value="0" step="1">
-        <span class="cb-range-val" id="cb-br-1krnk0r5-rv-atk">0</span>
+        <span class="cb-range-val" id="cb-br-7sjr11a3-rv-atk">0</span>
       </div>
       <div class="cb-range-grp">
         <span class="cb-range-lbl">Peso</span>
         <input type="range" class="cb-range" data-stat="load" min="0" max="15" value="0" step="1">
-        <span class="cb-range-val" id="cb-br-1krnk0r5-rv-load">0</span>
+        <span class="cb-range-val" id="cb-br-7sjr11a3-rv-load">0</span>
       </div>
     </div>
   </div>
@@ -231,7 +227,7 @@
   <div style="font-size:10px; color:#f8c6d0; letter-spacing:2px; font-weight:300; text-transform:uppercase;">Card Browser</div>
 </div>
 
-<div class="cb-grid" id="cb-br-1krnk0r5-grid">
+<div class="cb-grid" id="cb-br-7sjr11a3-grid">
   
   
   
@@ -270,7 +266,7 @@
   
   <div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Aphid 33 Metralhadora.md" data-name="aphid 33 metralhadora" data-cat="arma" data-noos="ryke" data-kw="ranged|medium ammo|hmg|unique" data-char="eviscerar|focal" data-pass="" data-dmg="ranged" data-atk="5" data-load="8" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card tc-unique" style="--tc-bg:#CEB762;--tc-accent:#2a2210;">
+  <div class="tc-card tc-unique" style="--tc-bg:#402248;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Aphid_33_Metralhadora_0">Aphid 33 Metralhadora</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -303,7 +299,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Arfugel 12.md" data-name="arfugel 12" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|pneumatic|revolver" data-char="confiavel|anti armadura" data-pass="" data-dmg="ranged" data-atk="3" data-load="2" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Arfugel_12_0">Arfugel 12</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -336,7 +332,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Bolsa de Sangue.md" data-name="bolsa de sangue" data-cat="utilitario" data-noos="ryke" data-kw="consumivel|medico" data-char="" data-pass="medicina automatica" data-dmg="" data-atk="0" data-load="1" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Bolsa_de_Sangue_0">Bolsa de Sangue</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -364,7 +360,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Cantil de Energético.md" data-name="cantil de energético" data-cat="utilitario" data-noos="ryke" data-kw="consumivel" data-char="" data-pass="energetico" data-dmg="" data-atk="0" data-load="1" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Cantil_de_Energético_0">Cantil de Energético</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -392,7 +388,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Colete.md" data-name="colete" data-cat="utilitario" data-noos="ryke" data-kw="protecao" data-char="" data-pass="armadura" data-dmg="" data-atk="0" data-load="4" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Colete_0">Colete</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -420,7 +416,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Escopeta de Cano Duplo.md" data-name="escopeta de cano duplo" data-cat="arma" data-noos="osmirate" data-kw="ranged|medium ammo|shotgun" data-char="spray|dispersao" data-pass="" data-dmg="ranged" data-atk="4" data-load="4" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Escopeta_de_Cano_Duplo_0">Escopeta de Cano Duplo</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -453,7 +449,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Escopeta Khemistra de Tanque.md" data-name="escopeta khemistra de tanque" data-cat="arma" data-noos="ryke" data-kw="ranged|heavy ammo|shotgun" data-char="dispersao|decadente" data-pass="ataque com sobrecarga" data-dmg="ranged" data-atk="6" data-load="6" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Escopeta_Khemistra_de_Tanque_0">Escopeta Khemistra de Tanque</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -486,7 +482,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Escopeta QhadPhase.md" data-name="escopeta qhadphase" data-cat="arma" data-noos="osmirate" data-kw="ranged|medium ammo|shotgun|phase" data-char="dispersao" data-pass="" data-dmg="special [fire]" data-atk="4" data-load="5" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Escopeta_QhadPhase_0">Escopeta QhadPhase</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -519,7 +515,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Espuma.md" data-name="espuma" data-cat="utilitario" data-noos="ryke" data-kw="medico|suporte" data-char="" data-pass="cura" data-dmg="" data-atk="0" data-load="2" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Espuma_0">Espuma</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -547,7 +543,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Exoesqueleto de Batalha.md" data-name="exoesqueleto de batalha" data-cat="utilitario" data-noos="ryke" data-kw="suporte|dead margin" data-char="" data-pass="suporte aprimorado" data-dmg="" data-atk="0" data-load="8" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Exoesqueleto_de_Batalha_0">Exoesqueleto de Batalha</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -575,7 +571,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Faca de Açougueiro.md" data-name="faca de açougueiro" data-cat="arma" data-noos="ryke" data-kw="melee|lamina" data-char="decadente" data-pass="" data-dmg="melee" data-atk="4" data-load="2" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Faca_de_Açougueiro_0">Faca de Açougueiro</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -608,7 +604,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Faca de Grafeno.md" data-name="faca de grafeno" data-cat="arma" data-noos="ryke" data-kw="melee|lamina" data-char="eviscerar" data-pass="" data-dmg="melee" data-atk="3" data-load="2" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Faca_de_Grafeno_0">Faca de Grafeno</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -641,7 +637,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Folha Iterativa.md" data-name="folha iterativa" data-cat="utilitario" data-noos="ryke" data-kw="suporte" data-char="" data-pass="" data-dmg="" data-atk="0" data-load="1" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Folha_Iterativa_0">Folha Iterativa</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -669,7 +665,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Granada Consumntor.md" data-name="granada consumntor" data-cat="arma" data-noos="ryke" data-kw="ranged|heavy ammo" data-char="" data-pass="" data-dmg="special [quantic]" data-atk="4" data-load="2" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Granada_Consumntor_0">Granada Consumntor</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -702,7 +698,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Granada de Fragmentação.md" data-name="granada de fragmentação" data-cat="arma" data-noos="ryke" data-kw="ranged|heavy ammo|granada" data-char="" data-pass="" data-dmg="special [fire]" data-atk="4" data-load="2" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Granada_de_Fragmentação_0">Granada de Fragmentação</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -735,7 +731,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Granada de Napalm Controlado.md" data-name="granada de napalm controlado" data-cat="arma" data-noos="ryke" data-kw="ranged|chemical ammo|granada|elite" data-char="" data-pass="" data-dmg="special [fire]" data-atk="3" data-load="3" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card tc-elite" style="--tc-bg:#83283B;--tc-accent:#ffc4cc;">
+  <div class="tc-card tc-elite" style="--tc-bg:#20374E;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Granada_de_Napalm_Controlado_0">Granada de Napalm Controlado</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -768,7 +764,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Harkel X9-07.md" data-name="harkel x9-07" data-cat="arma" data-noos="ryke" data-kw="ranged|medium ammo|rifle" data-char="confiavel" data-pass="" data-dmg="ranged" data-atk="4" data-load="3" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Harkel_X9-07_0">Harkel X9-07</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -801,7 +797,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Kotho SMG.md" data-name="kotho smg" data-cat="arma" data-noos="ryke" data-kw="ranged|medium ammo|smg" data-char="spray|decadente" data-pass="" data-dmg="ranged" data-atk="5" data-load="3" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Kotho_SMG_0">Kotho SMG</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -834,7 +830,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Koval Field-17.md" data-name="koval field-17" data-cat="arma" data-noos="ryke" data-kw="ranged|medium ammo|smg" data-char="spray|confiavel" data-pass="" data-dmg="ranged" data-atk="5" data-load="4" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Koval_Field-17_0">Koval Field-17</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -867,7 +863,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Lança-Foguetes.md" data-name="lança-foguetes" data-cat="arma" data-noos="ryke" data-kw="ranged|missile ammo|canhao|unique" data-char="pesado" data-pass="" data-dmg="special [fire]" data-atk="8" data-load="10" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card tc-unique" style="--tc-bg:#CEB762;--tc-accent:#2a2210;">
+  <div class="tc-card tc-unique" style="--tc-bg:#402248;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Lança-Foguetes_0">Lança-Foguetes</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -900,7 +896,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Lançador Químico.md" data-name="lançador químico" data-cat="arma" data-noos="ryke" data-kw="ranged|chemical ammo|canhao" data-char="nao letal|spray" data-pass="" data-dmg="special (gas)" data-atk="4" data-load="8" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Lançador_Químico_0">Lançador Químico</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -933,7 +929,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Martelo de Escória.md" data-name="martelo de escória" data-cat="arma" data-noos="ryke" data-kw="melee|concussivo" data-char="esmagar|eviscerar" data-pass="" data-dmg="melee" data-atk="5" data-load="5" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Martelo_de_Escória_0">Martelo de Escória</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -966,7 +962,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Medidor de Dissidência.md" data-name="medidor de dissidência" data-cat="utilitario" data-noos="ryke" data-kw="suporte" data-char="" data-pass="" data-dmg="" data-atk="0" data-load="2" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Medidor_de_Dissidência_0">Medidor de Dissidência</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -994,7 +990,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Mochila de bioquímica.md" data-name="mochila de bioquímica" data-cat="utilitario" data-noos="ryke" data-kw="chemical ammo|suporte" data-char="" data-pass="" data-dmg="" data-atk="0" data-load="5" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Mochila_de_bioquímica_0">Mochila de bioquímica</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1022,7 +1018,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Mosquete.md" data-name="mosquete" data-cat="arma" data-noos="ryke" data-kw="ranged|medium ammo|sniper" data-char="anti armadura" data-pass="" data-dmg="ranged" data-atk="2" data-load="5" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Mosquete_0">Mosquete</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1055,7 +1051,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Pílulas.md" data-name="pílulas" data-cat="utilitario" data-noos="ryke" data-kw="consumivel" data-char="" data-pass="ingerir narcoticos" data-dmg="" data-atk="0" data-load="2" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Pílulas_0">Pílulas</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1083,7 +1079,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Pistola QuadPhase.md" data-name="pistola quadphase" data-cat="arma" data-noos="osmirate" data-kw="ranged|light ammo|pistola|shotgun|phase" data-char="dispersao" data-pass="" data-dmg="special [fire]" data-atk="3" data-load="3" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Pistola_QuadPhase_0">Pistola QuadPhase</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1116,7 +1112,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Pistola Real Phase.md" data-name="pistola real phase" data-cat="arma" data-noos="osmirate" data-kw="ranged|light ammo|pistola|phase" data-char="arma real|anti armadura" data-pass="" data-dmg="special [fire]" data-atk="3" data-load="3" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Pistola_Real_Phase_0">Pistola Real Phase</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1149,7 +1145,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Químicos Estranhos.md" data-name="químicos estranhos" data-cat="utilitario" data-noos="ryke" data-kw="chemical ammo" data-char="" data-pass="" data-dmg="" data-atk="0" data-load="4" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Químicos_Estranhos_0">Químicos Estranhos</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1177,7 +1173,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Osmirate/Rádio Cajado.md" data-name="rádio cajado" data-cat="arma" data-noos="osmirate" data-kw="ranged|focalizador|special ammo" data-char="artilharia" data-pass="" data-dmg="special [eletric]" data-atk="2" data-load="3" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Rádio_Cajado_0">Rádio Cajado</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1210,7 +1206,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Rádio Tático.md" data-name="rádio tático" data-cat="utilitario" data-noos="ryke" data-kw="suporte" data-char="" data-pass="" data-dmg="" data-atk="0" data-load="2" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Rádio_Tático_0">Rádio Tático</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1238,7 +1234,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Revólver Khemistra de Tanque.md" data-name="revólver khemistra de tanque" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|medium ammo|revolver" data-char="decadente" data-pass="ataque com sobrecarga" data-dmg="ranged" data-atk="4" data-load="3" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Revólver_Khemistra_de_Tanque_0">Revólver Khemistra de Tanque</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1271,7 +1267,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Rifle Fendt.md" data-name="rifle fendt" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|pneumatic|rifle" data-char="spray" data-pass="" data-dmg="ranged" data-atk="3" data-load="4" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Rifle_Fendt_0">Rifle Fendt</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1304,7 +1300,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Rugel Compacta 9.md" data-name="rugel compacta 9" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|pneumatic|pistola" data-char="confiavel" data-pass="" data-dmg="ranged" data-atk="3" data-load="2" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Rugel_Compacta_9_0">Rugel Compacta 9</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1337,7 +1333,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Rugel Estendida 9-S.md" data-name="rugel estendida 9-s" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|pneumatic|pistola" data-char="confiavel" data-pass="" data-dmg="ranged" data-atk="3" data-load="3" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Rugel_Estendida_9-S_0">Rugel Estendida 9-S</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1370,7 +1366,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Serra de Mão.md" data-name="serra de mão" data-cat="arma" data-noos="ryke" data-kw="melee|lamina|experimental|acoplavel" data-char="anti armadura pesada" data-pass="" data-dmg="melee" data-atk="2" data-load="3" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Serra_de_Mão_0">Serra de Mão</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1403,7 +1399,7 @@
 </div></div></div>
   </div><div class="cb-card-slot js-card" data-nav="Wargame/04 Cartas/Ryke/Velt Zapper.md" data-name="velt zapper" data-cat="arma" data-noos="ryke" data-kw="ranged|light ammo|pistola|acoplavel" data-char="" data-pass="" data-dmg="special [eletric]" data-atk="2" data-load="3" data-res="1" data-date="1779591600000">
     <div class="cb-preview-outer"><div class="cb-preview-inner"><div class="cb-preview-host">
-  <div class="tc-card" style="--tc-bg:#2E0738;--tc-accent:#d4a8e8;">
+  <div class="tc-card" style="--tc-bg:#1C1C24;--tc-accent:#be63ff;">
     <div class="tc-title-bar"><h2 class="tc-title heading" dir="auto" id="Velt_Zapper_0">Velt Zapper</h2></div>
     <div class="tc-art-zone">
       <div class="tc-art-layout">
@@ -1435,9 +1431,9 @@
   </div>
 </div></div></div>
   </div></div></div><script>(function(){
-  const root = document.getElementById("cb-br-1krnk0r5");
+  const root = document.getElementById("cb-br-7sjr11a3");
   if(!root) return;
-  const grid = root.querySelector("#cb-br-1krnk0r5-grid");
+  const grid = root.querySelector("#cb-br-7sjr11a3-grid");
   const cards = Array.from(grid.querySelectorAll(".js-card"));
   const countEl = root.querySelector(".cb-count-num");
   const active = { cat:new Set(), kw:new Set(), char:new Set(), pass:new Set(), dmg:new Set() };
@@ -1510,12 +1506,12 @@
     const stat = r.dataset.stat;
     let v = parseInt(r.value);
     ranges[stat] = v;
-    const el = document.getElementById("cb-br-1krnk0r5-rv-"+stat);
+    const el = document.getElementById("cb-br-7sjr11a3-rv-"+stat);
     if(el) el.textContent = v;
     r.addEventListener("input", () => {
       v = parseInt(r.value);
       ranges[stat] = v;
-      const ell = document.getElementById("cb-br-1krnk0r5-rv-"+stat);
+      const ell = document.getElementById("cb-br-7sjr11a3-rv-"+stat);
       if(ell) ell.textContent = v;
       upd();
     });

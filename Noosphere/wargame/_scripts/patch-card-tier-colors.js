@@ -12,60 +12,30 @@ function walk(dir, out = []) {
   return out;
 }
 
-const colorConstsOld = `const ACCENT_NORMAL = "#E54F6D";
-const ACCENT_UNIQUE = "#F8C630";`;
-
-const colorConstsNew = `const COLOR_COMMON = "#2E0738";
-const COLOR_ELITE = "#83283B";
-const COLOR_UNIQUE = "#CEB762";
-const ACCENT_COMMON = "#d4a8e8";
-const ACCENT_ELITE = "#ffc4cc";
-const ACCENT_UNIQUE = "#2a2210";`;
-
-const cardCssOld = `#\${uid} .tc-card {
-  --tc-accent: \${ACCENT_NORMAL};
-  --tc-block-gap: 7px;
-  --tc-comp-border: color-mix(in srgb, var(--tc-accent) 7%, transparent);
-  position: relative;
-  width: min(100%, 420px);
-  aspect-ratio: 1246 / 2079;
-  background:
-    radial-gradient(ellipse 120% 80% at 50% 18%, color-mix(in srgb, var(--tc-accent) 14%, transparent), transparent 55%),
-    linear-gradient(168deg, rgba(22, 8, 38, 0.98) 0%, rgba(8, 3, 16, 0.99) 48%, rgba(12, 5, 22, 1) 100%);
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: auto minmax(0, 28%) auto minmax(0, 1fr);
-  padding: 0;
-}
-
-#\${uid} .tc-card.tc-unique {
-  --tc-accent: \${ACCENT_UNIQUE};
-}`;
-
-const cardCssNew = `#\${uid} .tc-card {
-  --tc-bg: \${COLOR_COMMON};
-  --tc-accent: \${ACCENT_COMMON};
-  --tc-block-gap: 7px;
-  --tc-comp-border: color-mix(in srgb, var(--tc-accent) 7%, transparent);
-  position: relative;
-  width: min(100%, 420px);
-  aspect-ratio: 1246 / 2079;
-  background:
-    radial-gradient(ellipse 120% 80% at 50% 18%, color-mix(in srgb, var(--tc-bg) 55%, white 45%), transparent 55%),
-    linear-gradient(168deg, color-mix(in srgb, var(--tc-bg) 85%, black 15%) 0%, var(--tc-bg) 50%, color-mix(in srgb, var(--tc-bg) 90%, black 10%) 100%);
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: auto minmax(0, 28%) auto minmax(0, 1fr);
-  padding: 0;
-}
-
-#\${uid} .tc-card.tc-elite {
+const replacements = [
+  [
+    `const COLOR_COMMON = "#292932";
+const COLOR_ELITE = "#20374E";
+const COLOR_UNIQUE = "#402248";
+const ACCENT_COMMON = "#be63ff";
+const ACCENT_ELITE = "#e85a6b";
+const ACCENT_UNIQUE = "#e8c048";`,
+    `const COLOR_COMMON = "#1C1C24";
+const COLOR_ELITE = "#20374E";
+const COLOR_UNIQUE = "#402248";
+const ACCENT = "#be63ff";`,
+  ],
+  [
+    `  --tc-accent: \${ACCENT_COMMON};`,
+    `  --tc-accent: \${ACCENT};`,
+  ],
+  [
+    `    radial-gradient(ellipse 120% 70% at 50% 12%, color-mix(in srgb, var(--tc-accent) 14%, transparent), transparent 58%),
+    linear-gradient(168deg, color-mix(in srgb, var(--tc-bg) 94%, var(--tc-accent) 6%) 0%, var(--tc-bg) 52%, color-mix(in srgb, var(--tc-bg) 88%, black 12%) 100%);`,
+    `    linear-gradient(168deg, color-mix(in srgb, var(--tc-bg) 90%, white 10%) 0%, var(--tc-bg) 50%, color-mix(in srgb, var(--tc-bg) 84%, black 16%) 100%);`,
+  ],
+  [
+    `#\${uid} .tc-card.tc-elite {
   --tc-bg: \${COLOR_ELITE};
   --tc-accent: \${ACCENT_ELITE};
 }
@@ -73,53 +43,121 @@ const cardCssNew = `#\${uid} .tc-card {
 #\${uid} .tc-card.tc-unique {
   --tc-bg: \${COLOR_UNIQUE};
   --tc-accent: \${ACCENT_UNIQUE};
-}`;
+}`,
+    `#\${uid} .tc-card.tc-elite {
+  --tc-bg: \${COLOR_ELITE};
+}
 
-const titleOld = `#\${uid} .tc-card.tc-unique .tc-title {
-  color: var(--tc-accent) !important;
-}`;
+#\${uid} .tc-card.tc-unique {
+  --tc-bg: \${COLOR_UNIQUE};
+}`,
+  ],
+  [
+    `  color: var(--tc-accent) !important;
+  margin: 0;
+}
 
-const titleNew = `#\${uid} .tc-card.tc-elite .tc-title,
 #\${uid} .tc-card.tc-unique .tc-title {
   color: var(--tc-accent) !important;
-}`;
-
-const overflowOld = `#\${uid} .tc-card.tc-unique .tc-overflow-warn {
-  background: rgba(248, 198, 48, 0.96) !important;
-  color: #1a1000 !important;
-}`;
-
-const overflowNew = `#\${uid} .tc-card.tc-elite .tc-overflow-warn {
-  background: rgba(131, 40, 59, 0.96) !important;
+  text-shadow: 0 0 18px color-mix(in srgb, var(--tc-accent) 35%, transparent);
+}`,
+    `  color: #fff !important;
+  margin: 0;
+}`,
+  ],
+  [
+    `#\${uid} .tc-card.tc-elite .tc-overflow-warn {
+  background: rgba(232, 90, 107, 0.92) !important;
   color: #fff !important;
 }
 #\${uid} .tc-card.tc-unique .tc-overflow-warn {
-  background: rgba(206, 183, 98, 0.96) !important;
+  background: rgba(232, 192, 72, 0.92) !important;
   color: #1a1000 !important;
-}`;
+}`,
+    `#\${uid} .tc-card.tc-elite .tc-overflow-warn,
+#\${uid} .tc-card.tc-unique .tc-overflow-warn {
+  background: rgba(190, 99, 255, 0.92) !important;
+  color: #fff !important;
+}`,
+  ],
+  [
+    `#\${uid} .tc-stat-val.accent { color: var(--tc-accent) !important; }`,
+    `#\${uid} .tc-stat-val.accent { color: #fff !important; }`,
+  ],
+  [
+    `  color: var(--tc-accent) !important;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+#\${uid} .tc-gloss-line {
+  margin-top: 4px;
+  padding-left: 8px;
+  border-left: 2px solid color-mix(in srgb, var(--tc-accent) 55%, transparent);
+  color: #cfc4e4;`,
+    `  color: #fff !important;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+#\${uid} .tc-gloss-line {
+  margin-top: 4px;
+  padding-left: 8px;
+  border-left: 2px solid color-mix(in srgb, var(--tc-accent) 55%, transparent);
+  color: rgba(255, 255, 255, 0.88);`,
+  ],
+  [
+    `  color: var(--tc-accent) !important;
+}
+#\${uid} .tc-gloss-char strong { color: var(--tc-accent) !important; }
+#\${uid} .tc-gloss-pass { border-left-color: color-mix(in srgb, var(--tc-accent) 45%, transparent); }
+#\${uid} .tc-gloss-pass strong { color: var(--tc-accent) !important; }
+
+#\${uid} .tc-effect-body {
+  font-size: 0.68rem;
+  line-height: 1.38;
+  color: #e8dff8 !important;`,
+    `  color: #fff !important;
+}
+#\${uid} .tc-gloss-char strong { color: #fff !important; }
+#\${uid} .tc-gloss-pass { border-left-color: color-mix(in srgb, var(--tc-accent) 45%, transparent); }
+#\${uid} .tc-gloss-pass strong { color: #fff !important; }
+
+#\${uid} .tc-effect-body {
+  font-size: 0.68rem;
+  line-height: 1.38;
+  color: rgba(255, 255, 255, 0.9) !important;`,
+  ],
+  [
+    `  color: var(--tc-accent) !important;
+  margin: 5px 0;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}`,
+    `  color: rgba(255, 255, 255, 0.72) !important;
+  margin: 5px 0;
+  letter-spacing: 0.04em;
+}`,
+  ],
+];
 
 let updated = 0;
 for (const fp of walk(cardsDir)) {
   if (path.basename(fp).toLowerCase().includes("template")) continue;
   let text = fs.readFileSync(fp, "utf8");
-  if (!text.includes("function isUniqueKw(k)")) continue;
-  if (!text.includes('ACCENT_NORMAL = "#E54F6D"') && text.includes("COLOR_COMMON")) {
+  if (!text.includes("const COLOR_COMMON")) continue;
+
+  let changed = false;
+  for (const [from, to] of replacements) {
+    if (text.includes(from)) {
+      text = text.replace(from, to);
+      changed = true;
+    }
+  }
+  if (!changed) {
     console.log("skip (already patched):", path.relative(cardsDir, fp));
     continue;
   }
-
-  text = text.replace(colorConstsOld, colorConstsNew);
-  text = text.replace(
-    'const uniqueClass = isUnica || isElite ? " tc-unique" : "";',
-    'const tierClass = isUnica ? " tc-unique" : (isElite ? " tc-elite" : "");'
-  );
-  text = text.replace(cardCssOld, cardCssNew);
-  text = text.replace(titleOld, titleNew);
-  text = text.replace(overflowOld, overflowNew);
-  text = text.replace(
-    '<div class="tc-card${uniqueClass}">',
-    '<div class="tc-card${tierClass}">'
-  );
 
   fs.writeFileSync(fp, text, "utf8");
   updated++;
