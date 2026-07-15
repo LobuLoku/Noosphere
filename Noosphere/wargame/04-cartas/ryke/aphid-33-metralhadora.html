@@ -15,12 +15,13 @@
   <span class="token punctuation">-</span> Medium Ammo
   <span class="token punctuation">-</span> HMG
   <span class="token punctuation">-</span> Unique
+  <span class="token punctuation">-</span> Acessório
 <span class="token key atrule">card_image</span><span class="token punctuation">:</span> <span class="token string">"[[Aphid Maxigun.png]]"</span>
 <span class="token key atrule">ressonancia</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
 <span class="token key atrule">estrategizar</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> Preencher efeito
 <span class="token key atrule">custo_estrategizar</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
-<span class="token key atrule">custo_equipar</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
+<span class="token key atrule">custo_equipar</span><span class="token punctuation">:</span> <span class="token string">"2"</span>
 <span class="token key atrule">equipamento_ataques</span><span class="token punctuation">:</span> <span class="token number">5</span>
 <span class="token key atrule">equipamento_mira</span><span class="token punctuation">:</span> Vantagem <span class="token punctuation">-</span><span class="token number">1</span>
 <span class="token key atrule">equipamento_distancia</span><span class="token punctuation">:</span> 4 <span class="token punctuation">-</span> <span class="token number">22</span>
@@ -37,9 +38,9 @@
   <span class="token punctuation">-</span> Ryke</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="Aphid_33_Metralhadora_0">Aphid 33 Metralhadora</h1><div class="data-bar"></div></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-h2"><h2 data-heading="Carta" dir="auto" class="heading" id="Carta_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Carta</h2></div><div class="el-pre"><div class="block-language-dataviewjs node-insert-event" style="overflow-x: auto;"><style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700;900&family=Inter:wght@200;300;400;600&display=swap');
 .markdown-rendered h1:first-child, .inline-title { display: none !important; }
 
-#tc_xi5zwx06, #tc_xi5zwx06 * { box-sizing: border-box; }
+#tc_rw8k6zt3, #tc_rw8k6zt3 * { box-sizing: border-box; }
 
-#tc_xi5zwx06 {
+#tc_rw8k6zt3 {
   font-family: 'Inter', sans-serif !important;
   color: #ebe4f8 !important;
   width: 100%;
@@ -48,11 +49,14 @@
   padding: 8px 0 32px;
 }
 
-#tc_xi5zwx06 .tc-card {
+#tc_rw8k6zt3 .tc-card {
   --tc-bg: #1C1C24;
   --tc-accent: #be63ff;
   --tc-block-gap: 7px;
   --tc-comp-border: color-mix(in srgb, var(--tc-accent) 22%, transparent);
+  --tc-res-count: 0;
+  --tc-res-orb: 16px;
+  --tc-res-gap: 8px;
   position: relative;
   width: min(100%, 420px);
   aspect-ratio: 1246 / 2079;
@@ -67,15 +71,15 @@
   padding: 0;
 }
 
-#tc_xi5zwx06 .tc-card.tc-elite {
+#tc_rw8k6zt3 .tc-card.tc-elite {
   --tc-bg: #20374E;
 }
 
-#tc_xi5zwx06 .tc-card.tc-unique {
+#tc_rw8k6zt3 .tc-card.tc-unique {
   --tc-bg: #402248;
 }
 
-#tc_xi5zwx06 .tc-title-bar {
+#tc_rw8k6zt3 .tc-title-bar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +90,7 @@
   background: rgba(5, 0, 12, 0.35);
   z-index: 3;
 }
-#tc_xi5zwx06 .tc-title {
+#tc_rw8k6zt3 .tc-title {
   font-family: 'Orbitron', sans-serif !important;
   font-size: clamp(0.66rem, 2.8vw, 0.84rem) !important;
   font-weight: 700;
@@ -97,7 +101,7 @@
   margin: 0;
 }
 
-#tc_xi5zwx06 .tc-art-zone {
+#tc_rw8k6zt3 .tc-art-zone {
   position: relative;
   display: flex;
   align-items: stretch;
@@ -107,7 +111,7 @@
   max-height: 100%;
   overflow: hidden;
 }
-#tc_xi5zwx06 .tc-art-layout {
+#tc_rw8k6zt3 .tc-art-layout {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,49 +121,62 @@
   max-height: 100%;
   gap: 0;
 }
-#tc_xi5zwx06 .tc-res-orbs {
+#tc_rw8k6zt3 .tc-res-orbs {
   flex: 0 0 72px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-self: center;
-  min-height: calc(4 * 16px + 3 * 8px);
+  min-height: 0;
   z-index: 2;
   padding: 0 4px 0 48px;
 }
-#tc_xi5zwx06 .tc-meta-rail {
+#tc_rw8k6zt3 .tc-res-orbs:not(.tc-res-orbs--empty) {
+  min-height: calc(var(--tc-res-count) * var(--tc-res-orb) + max(0, var(--tc-res-count) - 1) * var(--tc-res-gap));
+}
+#tc_rw8k6zt3 .tc-res-orbs--empty {
+  visibility: hidden;
+  flex-basis: 0;
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#tc_rw8k6zt3 .tc-res-orbs--many .tc-res-orb {
+  margin: 2px 0;
+}
+#tc_rw8k6zt3 .tc-meta-rail {
   flex: 0 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
   align-self: center;
-  min-height: calc(4 * 16px + 3 * 8px);
+  min-height: calc(max(var(--tc-res-count), 1) * var(--tc-res-orb) + max(0, max(var(--tc-res-count), 1) - 1) * var(--tc-res-gap));
   padding: 0 36px 0 2px;
   gap: 5px;
   z-index: 2;
   max-width: 46%;
 }
-#tc_xi5zwx06 .tc-meta-cols {
+#tc_rw8k6zt3 .tc-meta-cols {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
 }
-#tc_xi5zwx06 .tc-meta-cols--special {
+#tc_rw8k6zt3 .tc-meta-cols--special {
   gap: 8px;
   margin-left: 2px;
   padding-left: 4px;
 }
-#tc_xi5zwx06 .tc-meta-col {
+#tc_rw8k6zt3 .tc-meta-col {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-#tc_xi5zwx06 .tc-meta-item {
+#tc_rw8k6zt3 .tc-meta-item {
   color: #ffffff !important;
   font-family: 'Orbitron', sans-serif !important;
   font-weight: 700;
@@ -173,25 +190,25 @@
   display: inline-block;
   flex-shrink: 0;
 }
-#tc_xi5zwx06 .tc-meta-item--core {
+#tc_rw8k6zt3 .tc-meta-item--core {
   font-size: clamp(0.58rem, 2.35vw, 0.74rem);
   letter-spacing: 0.07em;
 }
-#tc_xi5zwx06 .tc-meta-item--special {
+#tc_rw8k6zt3 .tc-meta-item--special {
   font-size: clamp(0.48rem, 1.95vw, 0.62rem);
   font-weight: 600;
   letter-spacing: 0.06em;
   opacity: 0.95;
 }
-#tc_xi5zwx06 .tc-res-orb {
-  width: 16px;
-  height: 16px;
+#tc_rw8k6zt3 .tc-res-orb {
+  width: var(--tc-res-orb, 16px);
+  height: var(--tc-res-orb, 16px);
   border-radius: 50%;
   background: #ffffff;
   flex-shrink: 0;
-  margin: 4px 0;
+  margin: calc(var(--tc-res-gap, 8px) / 2) 0;
 }
-#tc_xi5zwx06 .tc-art-main {
+#tc_rw8k6zt3 .tc-art-main {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -202,7 +219,7 @@
   overflow: hidden;
   padding: 0 4px;
 }
-#tc_xi5zwx06 .tc-art {
+#tc_rw8k6zt3 .tc-art {
   display: block;
   max-width: min(100%, 200px);
   max-height: 92%;
@@ -214,13 +231,13 @@
   user-select: none;
   margin: 0 auto;
 }
-#tc_xi5zwx06 .tc-art-placeholder {
+#tc_rw8k6zt3 .tc-art-placeholder {
   font-size: 2rem;
   opacity: 0.08;
   font-family: 'Orbitron', sans-serif;
 }
 
-#tc_xi5zwx06 .tc-tags-row {
+#tc_rw8k6zt3 .tc-tags-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -231,25 +248,25 @@
   line-height: 1.45;
   z-index: 3;
 }
-#tc_xi5zwx06 .tc-tag {
+#tc_rw8k6zt3 .tc-tag {
   font-size: 0.52rem;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   font-weight: 400;
   font-family: 'Inter', sans-serif;
 }
-#tc_xi5zwx06 .tc-tag--kw {
+#tc_rw8k6zt3 .tc-tag--kw {
   color: #9a90ad !important;
   opacity: 0.88;
 }
-#tc_xi5zwx06 .tc-tag-sep {
+#tc_rw8k6zt3 .tc-tag-sep {
   color: rgba(255, 255, 255, 0.18) !important;
   font-size: 0.48rem;
   margin: 0 5px;
   user-select: none;
 }
 
-#tc_xi5zwx06 .tc-body {
+#tc_rw8k6zt3 .tc-body {
   padding: var(--tc-block-gap) 12px 10px;
   min-height: 0;
   overflow: hidden;
@@ -259,7 +276,7 @@
   gap: var(--tc-block-gap);
 }
 
-#tc_xi5zwx06 .tc-overflow-warn {
+#tc_rw8k6zt3 .tc-overflow-warn {
   position: absolute;
   bottom: 8px;
   left: 10px;
@@ -275,18 +292,18 @@
   z-index: 25;
   pointer-events: none;
 }
-#tc_xi5zwx06 .tc-card.tc-elite .tc-overflow-warn,
-#tc_xi5zwx06 .tc-card.tc-unique .tc-overflow-warn {
+#tc_rw8k6zt3 .tc-card.tc-elite .tc-overflow-warn,
+#tc_rw8k6zt3 .tc-card.tc-unique .tc-overflow-warn {
   background: rgba(190, 99, 255, 0.92) !important;
   color: #fff !important;
 }
 
-#tc_xi5zwx06 .tc-arsenal-grid {
+#tc_rw8k6zt3 .tc-arsenal-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 4px;
 }
-#tc_xi5zwx06 .tc-stat {
+#tc_rw8k6zt3 .tc-stat {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -298,7 +315,7 @@
   padding: 6px 8px;
   min-width: 0;
 }
-#tc_xi5zwx06 .tc-stat-lbl {
+#tc_rw8k6zt3 .tc-stat-lbl {
   display: inline;
   font-size: 0.58rem;
   color: #a99bbd !important;
@@ -308,7 +325,7 @@
   flex-shrink: 0;
   white-space: nowrap;
 }
-#tc_xi5zwx06 .tc-stat-val {
+#tc_rw8k6zt3 .tc-stat-val {
   display: inline;
   font-family: 'Orbitron', sans-serif;
   font-size: 0.92rem;
@@ -318,16 +335,16 @@
   word-break: break-word;
   min-width: 0;
 }
-#tc_xi5zwx06 .tc-stat-val.accent { color: #fff !important; }
-#tc_xi5zwx06 .tc-stat-val.dmg { font-size: 0.82rem; }
+#tc_rw8k6zt3 .tc-stat-val.accent { color: #fff !important; }
+#tc_rw8k6zt3 .tc-stat-val.dmg { font-size: 0.82rem; }
 
-#tc_xi5zwx06 .tc-section {
+#tc_rw8k6zt3 .tc-section {
   background: rgba(5, 0, 12, 0.26);
   border: 1px solid var(--tc-comp-border);
   border-radius: 6px;
   padding: 7px 9px 8px;
 }
-#tc_xi5zwx06 .tc-section-label {
+#tc_rw8k6zt3 .tc-section-label {
   font-family: 'Inter', sans-serif;
   font-size: 0.86rem;
   line-height: 1.32;
@@ -336,7 +353,7 @@
   font-weight: 600;
 }
 
-#tc_xi5zwx06 .tc-gloss-line {
+#tc_rw8k6zt3 .tc-gloss-line {
   margin-top: 4px;
   padding-left: 8px;
   border-left: 2px solid color-mix(in srgb, var(--tc-accent) 55%, transparent);
@@ -345,24 +362,24 @@
   line-height: 1.36;
   font-weight: 300;
 }
-#tc_xi5zwx06 .tc-gloss-line:first-of-type { margin-top: 0; }
-#tc_xi5zwx06 .tc-gloss-line strong {
+#tc_rw8k6zt3 .tc-gloss-line:first-of-type { margin-top: 0; }
+#tc_rw8k6zt3 .tc-gloss-line strong {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.6rem;
   color: #fff !important;
 }
-#tc_xi5zwx06 .tc-gloss-char strong { color: #fff !important; }
-#tc_xi5zwx06 .tc-gloss-pass { border-left-color: color-mix(in srgb, var(--tc-accent) 45%, transparent); }
-#tc_xi5zwx06 .tc-gloss-pass strong { color: #fff !important; }
+#tc_rw8k6zt3 .tc-gloss-char strong { color: #fff !important; }
+#tc_rw8k6zt3 .tc-gloss-pass { border-left-color: color-mix(in srgb, var(--tc-accent) 45%, transparent); }
+#tc_rw8k6zt3 .tc-gloss-pass strong { color: #fff !important; }
 
-#tc_xi5zwx06 .tc-effect-body {
+#tc_rw8k6zt3 .tc-effect-body {
   font-size: 0.68rem;
   line-height: 1.38;
   color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 300;
 }
-#tc_xi5zwx06 .tc-effect-or {
+#tc_rw8k6zt3 .tc-effect-or {
   text-align: center;
   font-size: 0.72rem;
   font-weight: 600;
@@ -371,16 +388,16 @@
   margin: 5px 0;
   letter-spacing: 0.04em;
 }
-#tc_xi5zwx06 .tc-effect-empty {
+#tc_rw8k6zt3 .tc-effect-empty {
   font-size: 0.64rem;
   color: #8a7da0 !important;
   font-style: italic;
 }
-#tc_xi5zwx06 .tc-effect-empty code {
+#tc_rw8k6zt3 .tc-effect-empty code {
   font-size: 0.58rem;
   color: #c4b8dc !important;
-}</style><div><div id="tc_xi5zwx06">
-  <div class="tc-card tc-unique">
+}</style><div><div id="tc_rw8k6zt3">
+  <div class="tc-card tc-unique" style="--tc-res-count:1;--tc-res-orb:16px;--tc-res-gap:8px;">
     <div class="tc-title-bar">
       <h2 class="tc-title heading" id="Aphid_33_Metralhadora_1">Aphid 33 Metralhadora</h2>
     </div>
@@ -396,7 +413,7 @@
       </div>
     </div>
 
-    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Medium Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">HMG</span></div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Ranged</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Medium Ammo</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">HMG</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Acessório</span></div>
 
     <div class="tc-body js-tc-body">
       <div class="tc-arsenal-grid">
@@ -406,7 +423,7 @@
         <div class="tc-stat"><span class="tc-stat-lbl">DANO</span><span class="tc-stat-val dmg">Ranged</span></div>
      </div>
       <div class="tc-section tc-equip-section">
-        <div class="tc-section-label">Equipar: 🔷 | Especial</div>
+        <div class="tc-section-label">Equipar: 🔷🔷 | Especial</div>
         <div class="tc-gloss-line tc-gloss-char"><strong>Eviscerar:</strong> Pra cada TRIGGER, dê +1 de dano extra.</div><div class="tc-gloss-line tc-gloss-char"><strong>Focal:</strong> Para cada ataque subsequente que você usar essa arma dentro do mesmo turno, ganhe Vantagem -1.</div>
        </div>
       <div class="tc-section tc-strat-section">
@@ -416,7 +433,7 @@
     </div>
   </div>
 </div><script>(function(){
-  var bid = "tc_xi5zwx06";
+  var bid = "tc_rw8k6zt3";
   function run(){
     var rootEl = document.getElementById(bid);
     if(!rootEl) return;
@@ -438,7 +455,7 @@
   var img = rootEl && rootEl.querySelector(".tc-art");
   if(img && !img.complete) img.addEventListener("load", run);
 })();</script><script>(function(){
-  var bid = "tc_xi5zwx06";
+  var bid = "tc_rw8k6zt3";
   var root = document.getElementById(bid);
   if(!root) return;
   function tcCheckCardOverflow(){

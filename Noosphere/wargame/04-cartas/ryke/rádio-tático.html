@@ -12,15 +12,19 @@
 <span class="token key atrule">noosphera</span><span class="token punctuation">:</span> Ryke
 <span class="token key atrule">keywords</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> Suporte
+  <span class="token punctuation">-</span> Ferramenta
+  <span class="token punctuation">-</span> Elite
 <span class="token key atrule">card_image</span><span class="token punctuation">:</span> <span class="token string">"[[Recursos/Imagens/Utility image/Ryke/Tactic Radio.png]]"</span>
-<span class="token key atrule">ressonancia</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
+<span class="token key atrule">ressonancia</span><span class="token punctuation">:</span> <span class="token string">"4"</span>
 <span class="token key atrule">estrategizar</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> Preencher efeito
+  <span class="token punctuation">-</span> Reserva Tática
 <span class="token key atrule">custo_estrategizar</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
 <span class="token key atrule">custo_equipar</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
 <span class="token key atrule">equipamento_loadout</span><span class="token punctuation">:</span> <span class="token number">2</span>
-<span class="token key atrule">equipamento_caracteristicas</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token key atrule">passivas_de_utility</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token key atrule">equipamento_caracteristicas</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> Inteligente
+  <span class="token punctuation">-</span> Criar Plano
+<span class="token key atrule">passivas_de_utility</span><span class="token punctuation">:</span>
 <span class="token key atrule">point_mod</span><span class="token punctuation">:</span> <span class="token string">"-10"</span>
 <span class="token key atrule">tags</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> wargame
@@ -28,9 +32,9 @@
   <span class="token punctuation">-</span> Ryke</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="Rádio_Tático_0">Rádio Tático</h1><div class="data-bar"></div></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-h2"><h2 data-heading="Carta" dir="auto" class="heading" id="Carta_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Carta</h2></div><div class="el-pre"><div class="block-language-dataviewjs node-insert-event" style="overflow-x: auto;"><style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700;900&family=Inter:wght@200;300;400;600&display=swap');
 .markdown-rendered h1:first-child, .inline-title { display: none !important; }
 
-#tc_2vp6v9kd, #tc_2vp6v9kd * { box-sizing: border-box; }
+#tc_ooqyqwii, #tc_ooqyqwii * { box-sizing: border-box; }
 
-#tc_2vp6v9kd {
+#tc_ooqyqwii {
   font-family: 'Inter', sans-serif !important;
   color: #ebe4f8 !important;
   width: 100%;
@@ -39,11 +43,14 @@
   padding: 8px 0 32px;
 }
 
-#tc_2vp6v9kd .tc-card {
+#tc_ooqyqwii .tc-card {
   --tc-bg: #1C1C24;
   --tc-accent: #be63ff;
   --tc-block-gap: 7px;
   --tc-comp-border: color-mix(in srgb, var(--tc-accent) 22%, transparent);
+  --tc-res-count: 0;
+  --tc-res-orb: 16px;
+  --tc-res-gap: 8px;
   position: relative;
   width: min(100%, 420px);
   aspect-ratio: 1246 / 2079;
@@ -58,15 +65,15 @@
   padding: 0;
 }
 
-#tc_2vp6v9kd .tc-card.tc-elite {
+#tc_ooqyqwii .tc-card.tc-elite {
   --tc-bg: #20374E;
 }
 
-#tc_2vp6v9kd .tc-card.tc-unique {
+#tc_ooqyqwii .tc-card.tc-unique {
   --tc-bg: #402248;
 }
 
-#tc_2vp6v9kd .tc-title-bar {
+#tc_ooqyqwii .tc-title-bar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +84,7 @@
   background: rgba(5, 0, 12, 0.35);
   z-index: 3;
 }
-#tc_2vp6v9kd .tc-title {
+#tc_ooqyqwii .tc-title {
   font-family: 'Orbitron', sans-serif !important;
   font-size: clamp(0.66rem, 2.8vw, 0.84rem) !important;
   font-weight: 700;
@@ -88,7 +95,7 @@
   margin: 0;
 }
 
-#tc_2vp6v9kd .tc-art-zone {
+#tc_ooqyqwii .tc-art-zone {
   position: relative;
   display: flex;
   align-items: stretch;
@@ -98,7 +105,7 @@
   max-height: 100%;
   overflow: hidden;
 }
-#tc_2vp6v9kd .tc-art-layout {
+#tc_ooqyqwii .tc-art-layout {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,49 +115,62 @@
   max-height: 100%;
   gap: 0;
 }
-#tc_2vp6v9kd .tc-res-orbs {
+#tc_ooqyqwii .tc-res-orbs {
   flex: 0 0 72px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-self: center;
-  min-height: calc(4 * 16px + 3 * 8px);
+  min-height: 0;
   z-index: 2;
   padding: 0 4px 0 48px;
 }
-#tc_2vp6v9kd .tc-meta-rail {
+#tc_ooqyqwii .tc-res-orbs:not(.tc-res-orbs--empty) {
+  min-height: calc(var(--tc-res-count) * var(--tc-res-orb) + max(0, var(--tc-res-count) - 1) * var(--tc-res-gap));
+}
+#tc_ooqyqwii .tc-res-orbs--empty {
+  visibility: hidden;
+  flex-basis: 0;
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#tc_ooqyqwii .tc-res-orbs--many .tc-res-orb {
+  margin: 2px 0;
+}
+#tc_ooqyqwii .tc-meta-rail {
   flex: 0 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
   align-self: center;
-  min-height: calc(4 * 16px + 3 * 8px);
+  min-height: calc(max(var(--tc-res-count), 1) * var(--tc-res-orb) + max(0, max(var(--tc-res-count), 1) - 1) * var(--tc-res-gap));
   padding: 0 36px 0 2px;
   gap: 5px;
   z-index: 2;
   max-width: 46%;
 }
-#tc_2vp6v9kd .tc-meta-cols {
+#tc_ooqyqwii .tc-meta-cols {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
 }
-#tc_2vp6v9kd .tc-meta-cols--special {
+#tc_ooqyqwii .tc-meta-cols--special {
   gap: 8px;
   margin-left: 2px;
   padding-left: 4px;
 }
-#tc_2vp6v9kd .tc-meta-col {
+#tc_ooqyqwii .tc-meta-col {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-#tc_2vp6v9kd .tc-meta-item {
+#tc_ooqyqwii .tc-meta-item {
   color: #ffffff !important;
   font-family: 'Orbitron', sans-serif !important;
   font-weight: 700;
@@ -164,25 +184,25 @@
   display: inline-block;
   flex-shrink: 0;
 }
-#tc_2vp6v9kd .tc-meta-item--core {
+#tc_ooqyqwii .tc-meta-item--core {
   font-size: clamp(0.58rem, 2.35vw, 0.74rem);
   letter-spacing: 0.07em;
 }
-#tc_2vp6v9kd .tc-meta-item--special {
+#tc_ooqyqwii .tc-meta-item--special {
   font-size: clamp(0.48rem, 1.95vw, 0.62rem);
   font-weight: 600;
   letter-spacing: 0.06em;
   opacity: 0.95;
 }
-#tc_2vp6v9kd .tc-res-orb {
-  width: 16px;
-  height: 16px;
+#tc_ooqyqwii .tc-res-orb {
+  width: var(--tc-res-orb, 16px);
+  height: var(--tc-res-orb, 16px);
   border-radius: 50%;
   background: #ffffff;
   flex-shrink: 0;
-  margin: 4px 0;
+  margin: calc(var(--tc-res-gap, 8px) / 2) 0;
 }
-#tc_2vp6v9kd .tc-art-main {
+#tc_ooqyqwii .tc-art-main {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -193,7 +213,7 @@
   overflow: hidden;
   padding: 0 4px;
 }
-#tc_2vp6v9kd .tc-art {
+#tc_ooqyqwii .tc-art {
   display: block;
   max-width: min(100%, 200px);
   max-height: 92%;
@@ -205,13 +225,13 @@
   user-select: none;
   margin: 0 auto;
 }
-#tc_2vp6v9kd .tc-art-placeholder {
+#tc_ooqyqwii .tc-art-placeholder {
   font-size: 2rem;
   opacity: 0.08;
   font-family: 'Orbitron', sans-serif;
 }
 
-#tc_2vp6v9kd .tc-tags-row {
+#tc_ooqyqwii .tc-tags-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -222,25 +242,25 @@
   line-height: 1.45;
   z-index: 3;
 }
-#tc_2vp6v9kd .tc-tag {
+#tc_ooqyqwii .tc-tag {
   font-size: 0.52rem;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   font-weight: 400;
   font-family: 'Inter', sans-serif;
 }
-#tc_2vp6v9kd .tc-tag--kw {
+#tc_ooqyqwii .tc-tag--kw {
   color: #9a90ad !important;
   opacity: 0.88;
 }
-#tc_2vp6v9kd .tc-tag-sep {
+#tc_ooqyqwii .tc-tag-sep {
   color: rgba(255, 255, 255, 0.18) !important;
   font-size: 0.48rem;
   margin: 0 5px;
   user-select: none;
 }
 
-#tc_2vp6v9kd .tc-body {
+#tc_ooqyqwii .tc-body {
   padding: var(--tc-block-gap) 12px 10px;
   min-height: 0;
   overflow: hidden;
@@ -250,7 +270,7 @@
   gap: var(--tc-block-gap);
 }
 
-#tc_2vp6v9kd .tc-overflow-warn {
+#tc_ooqyqwii .tc-overflow-warn {
   position: absolute;
   bottom: 8px;
   left: 10px;
@@ -266,18 +286,18 @@
   z-index: 25;
   pointer-events: none;
 }
-#tc_2vp6v9kd .tc-card.tc-elite .tc-overflow-warn,
-#tc_2vp6v9kd .tc-card.tc-unique .tc-overflow-warn {
+#tc_ooqyqwii .tc-card.tc-elite .tc-overflow-warn,
+#tc_ooqyqwii .tc-card.tc-unique .tc-overflow-warn {
   background: rgba(190, 99, 255, 0.92) !important;
   color: #fff !important;
 }
 
-#tc_2vp6v9kd .tc-arsenal-grid {
+#tc_ooqyqwii .tc-arsenal-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 4px;
 }
-#tc_2vp6v9kd .tc-stat {
+#tc_ooqyqwii .tc-stat {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -289,7 +309,7 @@
   padding: 6px 8px;
   min-width: 0;
 }
-#tc_2vp6v9kd .tc-stat-lbl {
+#tc_ooqyqwii .tc-stat-lbl {
   display: inline;
   font-size: 0.58rem;
   color: #a99bbd !important;
@@ -299,7 +319,7 @@
   flex-shrink: 0;
   white-space: nowrap;
 }
-#tc_2vp6v9kd .tc-stat-val {
+#tc_ooqyqwii .tc-stat-val {
   display: inline;
   font-family: 'Orbitron', sans-serif;
   font-size: 0.92rem;
@@ -309,16 +329,16 @@
   word-break: break-word;
   min-width: 0;
 }
-#tc_2vp6v9kd .tc-stat-val.accent { color: #fff !important; }
-#tc_2vp6v9kd .tc-stat-val.dmg { font-size: 0.82rem; }
+#tc_ooqyqwii .tc-stat-val.accent { color: #fff !important; }
+#tc_ooqyqwii .tc-stat-val.dmg { font-size: 0.82rem; }
 
-#tc_2vp6v9kd .tc-section {
+#tc_ooqyqwii .tc-section {
   background: rgba(5, 0, 12, 0.26);
   border: 1px solid var(--tc-comp-border);
   border-radius: 6px;
   padding: 7px 9px 8px;
 }
-#tc_2vp6v9kd .tc-section-label {
+#tc_ooqyqwii .tc-section-label {
   font-family: 'Inter', sans-serif;
   font-size: 0.86rem;
   line-height: 1.32;
@@ -327,7 +347,7 @@
   font-weight: 600;
 }
 
-#tc_2vp6v9kd .tc-gloss-line {
+#tc_ooqyqwii .tc-gloss-line {
   margin-top: 4px;
   padding-left: 8px;
   border-left: 2px solid color-mix(in srgb, var(--tc-accent) 55%, transparent);
@@ -336,24 +356,24 @@
   line-height: 1.36;
   font-weight: 300;
 }
-#tc_2vp6v9kd .tc-gloss-line:first-of-type { margin-top: 0; }
-#tc_2vp6v9kd .tc-gloss-line strong {
+#tc_ooqyqwii .tc-gloss-line:first-of-type { margin-top: 0; }
+#tc_ooqyqwii .tc-gloss-line strong {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.6rem;
   color: #fff !important;
 }
-#tc_2vp6v9kd .tc-gloss-char strong { color: #fff !important; }
-#tc_2vp6v9kd .tc-gloss-pass { border-left-color: color-mix(in srgb, var(--tc-accent) 45%, transparent); }
-#tc_2vp6v9kd .tc-gloss-pass strong { color: #fff !important; }
+#tc_ooqyqwii .tc-gloss-char strong { color: #fff !important; }
+#tc_ooqyqwii .tc-gloss-pass { border-left-color: color-mix(in srgb, var(--tc-accent) 45%, transparent); }
+#tc_ooqyqwii .tc-gloss-pass strong { color: #fff !important; }
 
-#tc_2vp6v9kd .tc-effect-body {
+#tc_ooqyqwii .tc-effect-body {
   font-size: 0.68rem;
   line-height: 1.38;
   color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 300;
 }
-#tc_2vp6v9kd .tc-effect-or {
+#tc_ooqyqwii .tc-effect-or {
   text-align: center;
   font-size: 0.72rem;
   font-weight: 600;
@@ -362,47 +382,47 @@
   margin: 5px 0;
   letter-spacing: 0.04em;
 }
-#tc_2vp6v9kd .tc-effect-empty {
+#tc_ooqyqwii .tc-effect-empty {
   font-size: 0.64rem;
   color: #8a7da0 !important;
   font-style: italic;
 }
-#tc_2vp6v9kd .tc-effect-empty code {
+#tc_ooqyqwii .tc-effect-empty code {
   font-size: 0.58rem;
   color: #c4b8dc !important;
-}</style><div><div id="tc_2vp6v9kd">
-  <div class="tc-card">
+}</style><div><div id="tc_ooqyqwii">
+  <div class="tc-card tc-elite" style="--tc-res-count:4;--tc-res-orb:16px;--tc-res-gap:8px;">
     <div class="tc-title-bar">
       <h2 class="tc-title heading" id="Rádio_Tático_1">Rádio Tático</h2>
     </div>
 
     <div class="tc-art-zone">
       <div class="tc-art-layout">
-        <div class="tc-res-orbs" aria-label="1 ponto de ressonância"><span class="tc-res-orb"></span></div>
+        <div class="tc-res-orbs" aria-label="4 pontos de ressonância"><span class="tc-res-orb"></span><span class="tc-res-orb"></span><span class="tc-res-orb"></span><span class="tc-res-orb"></span></div>
         <div class="tc-art-main"><img class="tc-art" src=".html" alt="" data-export-src="Recursos/Imagens/Utility image/Ryke/Tactic Radio.png" target="_self"></div>
         <div class="tc-meta-rail">
   <div class="tc-meta-cols tc-meta-cols--core"><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Ryke</span></div><div class="tc-meta-col tc-meta-col--core"><span class="tc-meta-item tc-meta-item--core">Utilitário</span></div></div>
-  <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
+  <div class="tc-meta-cols tc-meta-cols--special"><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Elite</span></div><div class="tc-meta-col tc-meta-col--special"><span class="tc-meta-item tc-meta-item--special">Peso: 2</span></div></div>
 </div>
       </div>
     </div>
 
-    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Suporte</span></div>
+    <div class="tc-tags-row"><span class="tc-tag tc-tag--kw">Suporte</span><span class="tc-tag-sep">·</span><span class="tc-tag tc-tag--kw">Ferramenta</span></div>
 
     <div class="tc-body js-tc-body">
       
       <div class="tc-section tc-equip-section">
         <div class="tc-section-label">Equipar: 🔷 | Especial</div>
-        <div class="tc-effect-empty">Defina <code>equipamento_caracteristicas</code> e/ou <code>passivas_de_utility</code>.</div>
+        <div class="tc-gloss-line tc-gloss-char"><strong>Inteligente:</strong> Uma vez por rodada, ao receber 🟦Buff, receba +1 do que o normal.</div><div class="tc-gloss-line tc-gloss-pass tc-gloss-act-grant"><strong>GANHE A AÇÃO: Criar Plano:</strong> 🔷🔷 ​| Técnica | Role EDGE 5+, se for um sucesso você pode puxar 4 cartas do seu deck e ficar com 2. Se falhar, você puxa apenas 3 e fica com uma. Cartas remanescentes são descartadas.</div>
        </div>
       <div class="tc-section tc-strat-section">
         <div class="tc-section-label">Estrategizar: 🔷 | Especial</div>
-        <div class="tc-effect-body">Preencher efeito</div>
+        <div class="tc-effect-body">Puxe uma quantidade de cartas do seu deck igual ao valor de Ressonância nessa carta.</div>
       </div>
     </div>
   </div>
 </div><script>(function(){
-  var bid = "tc_2vp6v9kd";
+  var bid = "tc_ooqyqwii";
   function run(){
     var rootEl = document.getElementById(bid);
     if(!rootEl) return;
@@ -424,7 +444,7 @@
   var img = rootEl && rootEl.querySelector(".tc-art");
   if(img && !img.complete) img.addEventListener("load", run);
 })();</script><script>(function(){
-  var bid = "tc_2vp6v9kd";
+  var bid = "tc_ooqyqwii";
   var root = document.getElementById(bid);
   if(!root) return;
   function tcCheckCardOverflow(){
